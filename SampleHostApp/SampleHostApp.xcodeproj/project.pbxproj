@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		713F3E141D7B88DD0072C9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E131D7B88DD0072C9E9 /* AppDelegate.swift */; };
+		713F3E161D7B88DD0072C9E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E151D7B88DD0072C9E9 /* ViewController.swift */; };
+		713F3E191D7B88DD0072C9E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 713F3E171D7B88DD0072C9E9 /* Main.storyboard */; };
+		713F3E1C1D7B88DD0072C9E9 /* SampleHostApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E1A1D7B88DD0072C9E9 /* SampleHostApp.xcdatamodeld */; };
+		713F3E1E1D7B88DD0072C9E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 713F3E1D1D7B88DD0072C9E9 /* Assets.xcassets */; };
+		713F3E211D7B88DD0072C9E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 713F3E1F1D7B88DD0072C9E9 /* LaunchScreen.storyboard */; };
+		713F3E2C1D7B88DD0072C9E9 /* SampleHostAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E2B1D7B88DD0072C9E9 /* SampleHostAppTests.swift */; };
+		713F3E371D7B88DD0072C9E9 /* SampleHostAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E361D7B88DD0072C9E9 /* SampleHostAppUITests.swift */; };
+		713F3E4F1D7BA0FA0072C9E9 /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */; };
+		713F3E501D7BA11F0072C9E9 /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */; };
+		713F3E511D7BA11F0072C9E9 /* KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		713F3E281D7B88DD0072C9E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 713F3E081D7B88DD0072C9E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 713F3E0F1D7B88DD0072C9E9;
+			remoteInfo = SampleHostApp;
+		};
+		713F3E331D7B88DD0072C9E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 713F3E081D7B88DD0072C9E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 713F3E0F1D7B88DD0072C9E9;
+			remoteInfo = SampleHostApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		713F3E521D7BA11F0072C9E9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				713F3E511D7BA11F0072C9E9 /* KiboEngageSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		713F3E101D7B88DD0072C9E9 /* SampleHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		713F3E131D7B88DD0072C9E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		713F3E151D7B88DD0072C9E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		713F3E181D7B88DD0072C9E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		713F3E1B1D7B88DD0072C9E9 /* SampleHostApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SampleHostApp.xcdatamodel; sourceTree = "<group>"; };
+		713F3E1D1D7B88DD0072C9E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		713F3E201D7B88DD0072C9E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		713F3E221D7B88DD0072C9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		713F3E271D7B88DD0072C9E9 /* SampleHostAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleHostAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		713F3E2B1D7B88DD0072C9E9 /* SampleHostAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHostAppTests.swift; sourceTree = "<group>"; };
+		713F3E2D1D7B88DD0072C9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		713F3E321D7B88DD0072C9E9 /* SampleHostAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleHostAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		713F3E361D7B88DD0072C9E9 /* SampleHostAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHostAppUITests.swift; sourceTree = "<group>"; };
+		713F3E381D7B88DD0072C9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KiboEngageSDK.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		713F3E0D1D7B88DD0072C9E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				713F3E4F1D7BA0FA0072C9E9 /* KiboEngageSDK.framework in Frameworks */,
+				713F3E501D7BA11F0072C9E9 /* KiboEngageSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		713F3E241D7B88DD0072C9E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		713F3E2F1D7B88DD0072C9E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		713F3E071D7B88DD0072C9E9 = {
+			isa = PBXGroup;
+			children = (
+				713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */,
+				713F3E121D7B88DD0072C9E9 /* SampleHostApp */,
+				713F3E2A1D7B88DD0072C9E9 /* SampleHostAppTests */,
+				713F3E351D7B88DD0072C9E9 /* SampleHostAppUITests */,
+				713F3E111D7B88DD0072C9E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		713F3E111D7B88DD0072C9E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				713F3E101D7B88DD0072C9E9 /* SampleHostApp.app */,
+				713F3E271D7B88DD0072C9E9 /* SampleHostAppTests.xctest */,
+				713F3E321D7B88DD0072C9E9 /* SampleHostAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		713F3E121D7B88DD0072C9E9 /* SampleHostApp */ = {
+			isa = PBXGroup;
+			children = (
+				713F3E131D7B88DD0072C9E9 /* AppDelegate.swift */,
+				713F3E151D7B88DD0072C9E9 /* ViewController.swift */,
+				713F3E171D7B88DD0072C9E9 /* Main.storyboard */,
+				713F3E1D1D7B88DD0072C9E9 /* Assets.xcassets */,
+				713F3E1F1D7B88DD0072C9E9 /* LaunchScreen.storyboard */,
+				713F3E221D7B88DD0072C9E9 /* Info.plist */,
+				713F3E1A1D7B88DD0072C9E9 /* SampleHostApp.xcdatamodeld */,
+			);
+			path = SampleHostApp;
+			sourceTree = "<group>";
+		};
+		713F3E2A1D7B88DD0072C9E9 /* SampleHostAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				713F3E2B1D7B88DD0072C9E9 /* SampleHostAppTests.swift */,
+				713F3E2D1D7B88DD0072C9E9 /* Info.plist */,
+			);
+			path = SampleHostAppTests;
+			sourceTree = "<group>";
+		};
+		713F3E351D7B88DD0072C9E9 /* SampleHostAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				713F3E361D7B88DD0072C9E9 /* SampleHostAppUITests.swift */,
+				713F3E381D7B88DD0072C9E9 /* Info.plist */,
+			);
+			path = SampleHostAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		713F3E0F1D7B88DD0072C9E9 /* SampleHostApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 713F3E3B1D7B88DD0072C9E9 /* Build configuration list for PBXNativeTarget "SampleHostApp" */;
+			buildPhases = (
+				713F3E0C1D7B88DD0072C9E9 /* Sources */,
+				713F3E0D1D7B88DD0072C9E9 /* Frameworks */,
+				713F3E0E1D7B88DD0072C9E9 /* Resources */,
+				713F3E521D7BA11F0072C9E9 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SampleHostApp;
+			productName = SampleHostApp;
+			productReference = 713F3E101D7B88DD0072C9E9 /* SampleHostApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		713F3E261D7B88DD0072C9E9 /* SampleHostAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 713F3E3E1D7B88DD0072C9E9 /* Build configuration list for PBXNativeTarget "SampleHostAppTests" */;
+			buildPhases = (
+				713F3E231D7B88DD0072C9E9 /* Sources */,
+				713F3E241D7B88DD0072C9E9 /* Frameworks */,
+				713F3E251D7B88DD0072C9E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				713F3E291D7B88DD0072C9E9 /* PBXTargetDependency */,
+			);
+			name = SampleHostAppTests;
+			productName = SampleHostAppTests;
+			productReference = 713F3E271D7B88DD0072C9E9 /* SampleHostAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		713F3E311D7B88DD0072C9E9 /* SampleHostAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 713F3E411D7B88DD0072C9E9 /* Build configuration list for PBXNativeTarget "SampleHostAppUITests" */;
+			buildPhases = (
+				713F3E2E1D7B88DD0072C9E9 /* Sources */,
+				713F3E2F1D7B88DD0072C9E9 /* Frameworks */,
+				713F3E301D7B88DD0072C9E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				713F3E341D7B88DD0072C9E9 /* PBXTargetDependency */,
+			);
+			name = SampleHostAppUITests;
+			productName = SampleHostAppUITests;
+			productReference = 713F3E321D7B88DD0072C9E9 /* SampleHostAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		713F3E081D7B88DD0072C9E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = KiboEngage;
+				TargetAttributes = {
+					713F3E0F1D7B88DD0072C9E9 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					713F3E261D7B88DD0072C9E9 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 713F3E0F1D7B88DD0072C9E9;
+					};
+					713F3E311D7B88DD0072C9E9 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 713F3E0F1D7B88DD0072C9E9;
+					};
+				};
+			};
+			buildConfigurationList = 713F3E0B1D7B88DD0072C9E9 /* Build configuration list for PBXProject "SampleHostApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 713F3E071D7B88DD0072C9E9;
+			productRefGroup = 713F3E111D7B88DD0072C9E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				713F3E0F1D7B88DD0072C9E9 /* SampleHostApp */,
+				713F3E261D7B88DD0072C9E9 /* SampleHostAppTests */,
+				713F3E311D7B88DD0072C9E9 /* SampleHostAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		713F3E0E1D7B88DD0072C9E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				713F3E211D7B88DD0072C9E9 /* LaunchScreen.storyboard in Resources */,
+				713F3E1E1D7B88DD0072C9E9 /* Assets.xcassets in Resources */,
+				713F3E191D7B88DD0072C9E9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		713F3E251D7B88DD0072C9E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		713F3E301D7B88DD0072C9E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		713F3E0C1D7B88DD0072C9E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				713F3E161D7B88DD0072C9E9 /* ViewController.swift in Sources */,
+				713F3E1C1D7B88DD0072C9E9 /* SampleHostApp.xcdatamodeld in Sources */,
+				713F3E141D7B88DD0072C9E9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		713F3E231D7B88DD0072C9E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				713F3E2C1D7B88DD0072C9E9 /* SampleHostAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		713F3E2E1D7B88DD0072C9E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				713F3E371D7B88DD0072C9E9 /* SampleHostAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		713F3E291D7B88DD0072C9E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 713F3E0F1D7B88DD0072C9E9 /* SampleHostApp */;
+			targetProxy = 713F3E281D7B88DD0072C9E9 /* PBXContainerItemProxy */;
+		};
+		713F3E341D7B88DD0072C9E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 713F3E0F1D7B88DD0072C9E9 /* SampleHostApp */;
+			targetProxy = 713F3E331D7B88DD0072C9E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		713F3E171D7B88DD0072C9E9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				713F3E181D7B88DD0072C9E9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		713F3E1F1D7B88DD0072C9E9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				713F3E201D7B88DD0072C9E9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		713F3E391D7B88DD0072C9E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		713F3E3A1D7B88DD0072C9E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		713F3E3C1D7B88DD0072C9E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = SampleHostApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.SampleHostApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		713F3E3D1D7B88DD0072C9E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = SampleHostApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.SampleHostApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		713F3E3F1D7B88DD0072C9E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SampleHostAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.SampleHostAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SampleHostApp.app/SampleHostApp";
+			};
+			name = Debug;
+		};
+		713F3E401D7B88DD0072C9E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SampleHostAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.SampleHostAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SampleHostApp.app/SampleHostApp";
+			};
+			name = Release;
+		};
+		713F3E421D7B88DD0072C9E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SampleHostAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.SampleHostAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SampleHostApp;
+			};
+			name = Debug;
+		};
+		713F3E431D7B88DD0072C9E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SampleHostAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.SampleHostAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SampleHostApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		713F3E0B1D7B88DD0072C9E9 /* Build configuration list for PBXProject "SampleHostApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				713F3E391D7B88DD0072C9E9 /* Debug */,
+				713F3E3A1D7B88DD0072C9E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		713F3E3B1D7B88DD0072C9E9 /* Build configuration list for PBXNativeTarget "SampleHostApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				713F3E3C1D7B88DD0072C9E9 /* Debug */,
+				713F3E3D1D7B88DD0072C9E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		713F3E3E1D7B88DD0072C9E9 /* Build configuration list for PBXNativeTarget "SampleHostAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				713F3E3F1D7B88DD0072C9E9 /* Debug */,
+				713F3E401D7B88DD0072C9E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		713F3E411D7B88DD0072C9E9 /* Build configuration list for PBXNativeTarget "SampleHostAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				713F3E421D7B88DD0072C9E9 /* Debug */,
+				713F3E431D7B88DD0072C9E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		713F3E1A1D7B88DD0072C9E9 /* SampleHostApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				713F3E1B1D7B88DD0072C9E9 /* SampleHostApp.xcdatamodel */,
+			);
+			currentVersion = 713F3E1B1D7B88DD0072C9E9 /* SampleHostApp.xcdatamodel */;
+			path = SampleHostApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 713F3E081D7B88DD0072C9E9 /* Project object */;
+}
