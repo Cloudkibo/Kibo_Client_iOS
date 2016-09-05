@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "42BEEF86A0009166116694D2D60E617678A71788",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "42BEEF86A0009166116694D2D60E617678A71788" : 0,
+    "51D919B02F515DF511C628E9A9DE3260C99F16D5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "671744A1-A111-4480-A9D3-B98AE1D609D7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "42BEEF86A0009166116694D2D60E617678A71788" : "Kibo_Client_iOS\/",
+    "51D919B02F515DF511C628E9A9DE3260C99F16D5" : "kiboChatTry\/iOS\/iOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "KiboEngageSDK",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "KiboEngageSDK\/KiboEngageSDK.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Cloudkibo\/Kibo_Client_iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "42BEEF86A0009166116694D2D60E617678A71788"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Cloudkibo\/iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "51D919B02F515DF511C628E9A9DE3260C99F16D5"
+    }
+  ]
+}

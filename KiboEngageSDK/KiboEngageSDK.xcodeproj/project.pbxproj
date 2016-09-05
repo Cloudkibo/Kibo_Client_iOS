@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48B7CEB2FF0A105EE85B4789 /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */; };
 		713F3DEF1D7B85320072C9E9 /* KiboEngageSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		713F3DF61D7B85320072C9E9 /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3DEB1D7B85320072C9E9 /* KiboEngageSDK.framework */; };
 		713F3DFB1D7B85330072C9E9 /* KiboEngageSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3DFA1D7B85330072C9E9 /* KiboEngageSDKTests.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		712FE46A1D7E1B1A00E1AE69 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		713F3DEB1D7B85320072C9E9 /* KiboEngageSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KiboEngageSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KiboEngageSDK.h; sourceTree = "<group>"; };
 		713F3DF01D7B85320072C9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +33,9 @@
 		713F3DFA1D7B85330072C9E9 /* KiboEngageSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KiboEngageSDKTests.swift; sourceTree = "<group>"; };
 		713F3DFC1D7B85330072C9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		713F3E051D7B88110072C9E9 /* KiboSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KiboSDK.swift; sourceTree = "<group>"; };
+		74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KiboEngageSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8689B3A4D05D9F51447FECF3 /* Pods-KiboEngageSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiboEngageSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KiboEngageSDK/Pods-KiboEngageSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		C9E96A7952DD188493252872 /* Pods-KiboEngageSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KiboEngageSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-KiboEngageSDK/Pods-KiboEngageSDK.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48B7CEB2FF0A105EE85B4789 /* Pods_KiboEngageSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,12 +58,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AA339163387A654A9A43714 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8689B3A4D05D9F51447FECF3 /* Pods-KiboEngageSDK.debug.xcconfig */,
+				C9E96A7952DD188493252872 /* Pods-KiboEngageSDK.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		474D67A13C6D3635C33C65DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				712FE46A1D7E1B1A00E1AE69 /* libsqlite3.tbd */,
+				74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		713F3DE11D7B85320072C9E9 = {
 			isa = PBXGroup;
 			children = (
 				713F3DED1D7B85320072C9E9 /* KiboEngageSDK */,
 				713F3DF91D7B85320072C9E9 /* KiboEngageSDKTests */,
 				713F3DEC1D7B85320072C9E9 /* Products */,
+				0AA339163387A654A9A43714 /* Pods */,
+				474D67A13C6D3635C33C65DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,10 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 713F3DFF1D7B85330072C9E9 /* Build configuration list for PBXNativeTarget "KiboEngageSDK" */;
 			buildPhases = (
+				0E45506F83082E0EBE021A30 /* [CP] Check Pods Manifest.lock */,
 				713F3DE61D7B85320072C9E9 /* Sources */,
 				713F3DE71D7B85320072C9E9 /* Frameworks */,
 				713F3DE81D7B85320072C9E9 /* Headers */,
 				713F3DE91D7B85320072C9E9 /* Resources */,
+				891C0CE36E21F17C6835F1D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -191,6 +219,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E45506F83082E0EBE021A30 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		891C0CE36E21F17C6835F1D6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KiboEngageSDK/Pods-KiboEngageSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		713F3DE61D7B85320072C9E9 /* Sources */ = {
@@ -313,6 +374,7 @@
 		};
 		713F3E001D7B85330072C9E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8689B3A4D05D9F51447FECF3 /* Pods-KiboEngageSDK.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -322,6 +384,10 @@
 				INFOPLIST_FILE = KiboEngageSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SQLite",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.KiboEngageSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -331,6 +397,7 @@
 		};
 		713F3E011D7B85330072C9E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9E96A7952DD188493252872 /* Pods-KiboEngageSDK.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -340,6 +407,10 @@
 				INFOPLIST_FILE = KiboEngageSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SQLite",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.KiboEngageSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -385,6 +456,7 @@
 				713F3E011D7B85330072C9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		713F3E021D7B85330072C9E9 /* Build configuration list for PBXNativeTarget "KiboEngageSDKTests" */ = {
 			isa = XCConfigurationList;
@@ -393,6 +465,7 @@
 				713F3E041D7B85330072C9E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
