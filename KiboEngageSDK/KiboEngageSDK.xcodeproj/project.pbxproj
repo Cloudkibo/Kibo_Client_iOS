@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		48B7CEB2FF0A105EE85B4789 /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */; };
+		711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */; };
 		713F3DEF1D7B85320072C9E9 /* KiboEngageSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		713F3DF61D7B85320072C9E9 /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3DEB1D7B85320072C9E9 /* KiboEngageSDK.framework */; };
 		713F3DFB1D7B85330072C9E9 /* KiboEngageSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3DFA1D7B85330072C9E9 /* KiboEngageSDKTests.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
 		712FE46A1D7E1B1A00E1AE69 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		713F3DEB1D7B85320072C9E9 /* KiboEngageSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KiboEngageSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KiboEngageSDK.h; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */,
 				713F3DF01D7B85320072C9E9 /* Info.plist */,
 				713F3E051D7B88110072C9E9 /* KiboSDK.swift */,
+				711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */,
 			);
 			path = KiboEngageSDK;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				713F3E061D7B88110072C9E9 /* KiboSDK.swift in Sources */,
+				711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
