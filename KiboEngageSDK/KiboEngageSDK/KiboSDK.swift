@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-
+import SQLite
 
 public class KiboSDK{
     var kiboAppID=""
