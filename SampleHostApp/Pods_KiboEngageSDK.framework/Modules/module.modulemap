@@ -1,0 +1,6 @@
+framework module Pods_KiboEngageSDK {
+  umbrella header "Pods-KiboEngageSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

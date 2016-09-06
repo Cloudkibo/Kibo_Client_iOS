@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		711F7E561D7E3AD500A6FD97 /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */; };
+		711F7E571D7E3AD500A6FD97 /* KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7129AEFF1D7E44F700D891DF /* Pods_SampleHostApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA49B440A981CB7C3B940D1F /* Pods_SampleHostApp.framework */; };
+		7129AF001D7E44F700D891DF /* Pods_SampleHostApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA49B440A981CB7C3B940D1F /* Pods_SampleHostApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		713F3E141D7B88DD0072C9E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E131D7B88DD0072C9E9 /* AppDelegate.swift */; };
 		713F3E161D7B88DD0072C9E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E151D7B88DD0072C9E9 /* ViewController.swift */; };
 		713F3E191D7B88DD0072C9E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 713F3E171D7B88DD0072C9E9 /* Main.storyboard */; };
@@ -15,9 +19,12 @@
 		713F3E211D7B88DD0072C9E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 713F3E1F1D7B88DD0072C9E9 /* LaunchScreen.storyboard */; };
 		713F3E2C1D7B88DD0072C9E9 /* SampleHostAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E2B1D7B88DD0072C9E9 /* SampleHostAppTests.swift */; };
 		713F3E371D7B88DD0072C9E9 /* SampleHostAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E361D7B88DD0072C9E9 /* SampleHostAppUITests.swift */; };
-		713F3E4F1D7BA0FA0072C9E9 /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */; };
-		713F3E501D7BA11F0072C9E9 /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */; };
-		713F3E511D7BA11F0072C9E9 /* KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7199E6771D7E402C00ACA3EC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7199E6741D7E402C00ACA3EC /* Alamofire.framework */; };
+		7199E6781D7E402C00ACA3EC /* EPContactsPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7199E6751D7E402C00ACA3EC /* EPContactsPicker.framework */; };
+		7199E6791D7E402C00ACA3EC /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7199E6761D7E402C00ACA3EC /* SQLite.framework */; };
+		7199E67A1D7E405300ACA3EC /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7199E6741D7E402C00ACA3EC /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7199E67B1D7E405A00ACA3EC /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7199E6761D7E402C00ACA3EC /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7199E67C1D7E406000ACA3EC /* EPContactsPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7199E6751D7E402C00ACA3EC /* EPContactsPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +45,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		713F3E521D7BA11F0072C9E9 /* Embed Frameworks */ = {
+		711F7E581D7E3AD500A6FD97 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				713F3E511D7BA11F0072C9E9 /* KiboEngageSDK.framework in Embed Frameworks */,
+				7199E67C1D7E406000ACA3EC /* EPContactsPicker.framework in Embed Frameworks */,
+				7199E67B1D7E405A00ACA3EC /* SQLite.framework in Embed Frameworks */,
+				7199E67A1D7E405300ACA3EC /* Alamofire.framework in Embed Frameworks */,
+				711F7E571D7E3AD500A6FD97 /* KiboEngageSDK.framework in Embed Frameworks */,
+				7129AF001D7E44F700D891DF /* Pods_SampleHostApp.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,6 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		39758520006296E9F963CAEA /* Pods-SampleHostApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleHostApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SampleHostApp/Pods-SampleHostApp.debug.xcconfig"; sourceTree = "<group>"; };
 		713F3E101D7B88DD0072C9E9 /* SampleHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		713F3E131D7B88DD0072C9E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		713F3E151D7B88DD0072C9E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +79,11 @@
 		713F3E361D7B88DD0072C9E9 /* SampleHostAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHostAppUITests.swift; sourceTree = "<group>"; };
 		713F3E381D7B88DD0072C9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		713F3E4E1D7BA0FA0072C9E9 /* KiboEngageSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KiboEngageSDK.framework; sourceTree = "<group>"; };
+		7199E6741D7E402C00ACA3EC /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		7199E6751D7E402C00ACA3EC /* EPContactsPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EPContactsPicker.framework; path = "Pods/../build/Debug-iphoneos/EPContactsPicker/EPContactsPicker.framework"; sourceTree = "<group>"; };
+		7199E6761D7E402C00ACA3EC /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "Pods/../build/Debug-iphoneos/SQLite.swift/SQLite.framework"; sourceTree = "<group>"; };
+		CA49B440A981CB7C3B940D1F /* Pods_SampleHostApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleHostApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8230FBA9A37F8B6D1FEC441 /* Pods-SampleHostApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleHostApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SampleHostApp/Pods-SampleHostApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +91,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				713F3E4F1D7BA0FA0072C9E9 /* KiboEngageSDK.framework in Frameworks */,
-				713F3E501D7BA11F0072C9E9 /* KiboEngageSDK.framework in Frameworks */,
+				7199E6771D7E402C00ACA3EC /* Alamofire.framework in Frameworks */,
+				7199E6781D7E402C00ACA3EC /* EPContactsPicker.framework in Frameworks */,
+				7199E6791D7E402C00ACA3EC /* SQLite.framework in Frameworks */,
+				711F7E561D7E3AD500A6FD97 /* KiboEngageSDK.framework in Frameworks */,
+				7129AEFF1D7E44F700D891DF /* Pods_SampleHostApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +116,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		537334DC4107FD41BE3EA9B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				39758520006296E9F963CAEA /* Pods-SampleHostApp.debug.xcconfig */,
+				D8230FBA9A37F8B6D1FEC441 /* Pods-SampleHostApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		713F3E071D7B88DD0072C9E9 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +133,8 @@
 				713F3E2A1D7B88DD0072C9E9 /* SampleHostAppTests */,
 				713F3E351D7B88DD0072C9E9 /* SampleHostAppUITests */,
 				713F3E111D7B88DD0072C9E9 /* Products */,
+				537334DC4107FD41BE3EA9B6 /* Pods */,
+				8D326223AB9A6FFFC886464B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,9 +151,9 @@
 		713F3E121D7B88DD0072C9E9 /* SampleHostApp */ = {
 			isa = PBXGroup;
 			children = (
+				713F3E171D7B88DD0072C9E9 /* Main.storyboard */,
 				713F3E131D7B88DD0072C9E9 /* AppDelegate.swift */,
 				713F3E151D7B88DD0072C9E9 /* ViewController.swift */,
-				713F3E171D7B88DD0072C9E9 /* Main.storyboard */,
 				713F3E1D1D7B88DD0072C9E9 /* Assets.xcassets */,
 				713F3E1F1D7B88DD0072C9E9 /* LaunchScreen.storyboard */,
 				713F3E221D7B88DD0072C9E9 /* Info.plist */,
@@ -149,6 +180,17 @@
 			path = SampleHostAppUITests;
 			sourceTree = "<group>";
 		};
+		8D326223AB9A6FFFC886464B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7199E6741D7E402C00ACA3EC /* Alamofire.framework */,
+				7199E6751D7E402C00ACA3EC /* EPContactsPicker.framework */,
+				7199E6761D7E402C00ACA3EC /* SQLite.framework */,
+				CA49B440A981CB7C3B940D1F /* Pods_SampleHostApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,10 +198,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 713F3E3B1D7B88DD0072C9E9 /* Build configuration list for PBXNativeTarget "SampleHostApp" */;
 			buildPhases = (
+				788B7E31ECBA4E1104820FF4 /* [CP] Check Pods Manifest.lock */,
 				713F3E0C1D7B88DD0072C9E9 /* Sources */,
 				713F3E0D1D7B88DD0072C9E9 /* Frameworks */,
 				713F3E0E1D7B88DD0072C9E9 /* Resources */,
-				713F3E521D7BA11F0072C9E9 /* Embed Frameworks */,
+				711F7E581D7E3AD500A6FD97 /* Embed Frameworks */,
+				8716D5309CD56398E2415AB8 /* [CP] Embed Pods Frameworks */,
+				A6E1C8C6888515940DC267B1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -275,6 +320,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		788B7E31ECBA4E1104820FF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8716D5309CD56398E2415AB8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SampleHostApp/Pods-SampleHostApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6E1C8C6888515940DC267B1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SampleHostApp/Pods-SampleHostApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		713F3E0C1D7B88DD0072C9E9 /* Sources */ = {
@@ -423,11 +516,15 @@
 		};
 		713F3E3C1D7B88DD0072C9E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39758520006296E9F963CAEA /* Pods-SampleHostApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/EPContactsPicker",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SQLite.swift",
 				);
 				INFOPLIST_FILE = SampleHostApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -439,11 +536,15 @@
 		};
 		713F3E3D1D7B88DD0072C9E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8230FBA9A37F8B6D1FEC441 /* Pods-SampleHostApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/EPContactsPicker",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SQLite.swift",
 				);
 				INFOPLIST_FILE = SampleHostApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

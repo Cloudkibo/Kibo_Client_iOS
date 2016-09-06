@@ -10,7 +10,7 @@ import Foundation
 import SQLite
 
 
-class DatabaseHandler:NSObject
+internal class DatabaseHandler:NSObject
 {
     
     var db:Connection!
@@ -144,6 +144,27 @@ class DatabaseHandler:NSObject
             
         }
         
+        
+    }
+    
+    func storeCredentials(appID:String,appSecret:String,appClientID:String){
+      
+        let kiboAppID = Expression<String>("kiboAppID")
+        let kiboAppSecret = Expression<String>("kiboAppSecret")
+        let kiboClientID = Expression<String>("kiboClientID")
+
+        
+        do{
+        let rowid = try DatabaseObjectInitialiser.getInstance() .database.credentials.insert(kiboAppID<-appID,
+            kiboAppSecret<-appSecret,
+            kiboClientID<-appClientID
+        //lastname<-"",
+        //email<-json["email"].string!,
+        )
+        }
+        catch{
+            NSLog("error in saving credentials")
+        }
         
     }
 
