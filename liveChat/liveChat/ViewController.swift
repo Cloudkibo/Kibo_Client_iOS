@@ -13,6 +13,9 @@ class ViewController: UIViewController {
 
     @IBAction func showGroups(sender: AnyObject) {
    
+        
+        var groupsList=Groups.init()
+        groupsList.fetchGroups()
         let s = UIStoryboard (
             name: "SDKstoryboard", bundle: NSBundle(forClass: GroupsViewController.self)
         )

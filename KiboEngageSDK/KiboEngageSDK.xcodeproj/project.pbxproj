@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48B7CEB2FF0A105EE85B4789 /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		48B7CEB2FF0A105EE85B4789 /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */; };
 		711F7E531D7E2BD700A6FD97 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E521D7E2BD700A6FD97 /* Groups.swift */; };
 		711F7E551D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E541D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift */; };
@@ -20,12 +20,11 @@
 		7162D4771D7FE2E6001BF40D /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162D4761D7FE2E6001BF40D /* GroupsViewController.swift */; };
 		7162D4791D7FE549001BF40D /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71F43E721D7FD76E006BEEE2 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7162D47A1D7FE54F001BF40D /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71F43E741D7FD772006BEEE2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7162D47B1D7FE859001BF40D /* EPContactsPicker.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71F43E761D7FD775006BEEE2 /* EPContactsPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7162D47C1D7FE867001BF40D /* Pods_KiboEngageSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7162D47E1D800811001BF40D /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7162D47D1D800811001BF40D /* arrow.png */; };
 		718CE11C1D8014F700CA380C /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718CE11B1D8014F700CA380C /* GroupsCell.swift */; };
-		71F43E731D7FD76E006BEEE2 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43E721D7FD76E006BEEE2 /* SQLite.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		71F43E751D7FD772006BEEE2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43E741D7FD772006BEEE2 /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		71F1661A1D80CFE6008D8B6E /* EPContactsPicker.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71F43E761D7FD775006BEEE2 /* EPContactsPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71F43E731D7FD76E006BEEE2 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43E721D7FD76E006BEEE2 /* SQLite.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		71F43E751D7FD772006BEEE2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43E741D7FD772006BEEE2 /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		71F43E771D7FD775006BEEE2 /* EPContactsPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43E761D7FD775006BEEE2 /* EPContactsPicker.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -46,8 +45,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7162D47C1D7FE867001BF40D /* Pods_KiboEngageSDK.framework in CopyFiles */,
-				7162D47B1D7FE859001BF40D /* EPContactsPicker.framework in CopyFiles */,
+				71F1661A1D80CFE6008D8B6E /* EPContactsPicker.framework in CopyFiles */,
 				7162D47A1D7FE54F001BF40D /* Alamofire.framework in CopyFiles */,
 				7162D4791D7FE549001BF40D /* SQLite.framework in CopyFiles */,
 			);
@@ -236,6 +234,7 @@
 				TargetAttributes = {
 					713F3DEA1D7B85320072C9E9 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = LRN8T5S99N;
 					};
 					713F3DF41D7B85320072C9E9 = {
 						CreatedOnToolsVersion = 7.3;
@@ -384,7 +383,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -427,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -442,6 +441,7 @@
 			baseConfigurationReference = 8689B3A4D05D9F51447FECF3 /* Pods-KiboEngageSDK.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -452,6 +452,7 @@
 				);
 				INFOPLIST_FILE = KiboEngageSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -461,6 +462,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -469,6 +471,7 @@
 			baseConfigurationReference = C9E96A7952DD188493252872 /* Pods-KiboEngageSDK.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -479,6 +482,7 @@
 				);
 				INFOPLIST_FILE = KiboEngageSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -487,6 +491,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.KiboEngageSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

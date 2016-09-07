@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7162D4711D7FDD17001BF40D /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7162D4701D7FDD17001BF40D /* Pods_KiboEngageSDK.framework */; };
-		7162D4721D7FDD20001BF40D /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7162D4701D7FDD17001BF40D /* Pods_KiboEngageSDK.framework */; };
 		7162D4731D7FDD20001BF40D /* Pods_KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7162D4701D7FDD17001BF40D /* Pods_KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		718CE1171D80131000CA380C /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43EB51D7FD821006BEEE2 /* KiboEngageSDK.framework */; };
-		718CE1181D80131000CA380C /* KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43EB51D7FD821006BEEE2 /* KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71F166171D80CE42008D8B6E /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43EB51D7FD821006BEEE2 /* KiboEngageSDK.framework */; };
+		71F166181D80CE42008D8B6E /* KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43EB51D7FD821006BEEE2 /* KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71F43E851D7FD7D4006BEEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F43E841D7FD7D4006BEEE2 /* AppDelegate.swift */; };
 		71F43E871D7FD7D4006BEEE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F43E861D7FD7D4006BEEE2 /* ViewController.swift */; };
 		71F43E8A1D7FD7D4006BEEE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F43E881D7FD7D4006BEEE2 /* Main.storyboard */; };
@@ -47,7 +46,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7162D4731D7FDD20001BF40D /* Pods_KiboEngageSDK.framework in Embed Frameworks */,
-				718CE1181D80131000CA380C /* KiboEngageSDK.framework in Embed Frameworks */,
+				71F166181D80CE42008D8B6E /* KiboEngageSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,9 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				718CE1171D80131000CA380C /* KiboEngageSDK.framework in Frameworks */,
 				7162D4711D7FDD17001BF40D /* Pods_KiboEngageSDK.framework in Frameworks */,
-				7162D4721D7FDD20001BF40D /* Pods_KiboEngageSDK.framework in Frameworks */,
+				71F166171D80CE42008D8B6E /* KiboEngageSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +222,7 @@
 				TargetAttributes = {
 					71F43E801D7FD7D4006BEEE2 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = LRN8T5S99N;
 					};
 					71F43E971D7FD7D4006BEEE2 = {
 						CreatedOnToolsVersion = 7.3;
@@ -381,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
@@ -420,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -431,12 +430,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = liveChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.liveChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,12 +449,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = liveChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.client.liveChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";

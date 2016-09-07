@@ -45,7 +45,9 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     
     
    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-    return CGSize(width: screenSize.width/2,height: screenSize.height/3)
+    
+    //collectionViewGroups.frame.width/2-10
+    return CGSize(width: collectionViewGroups.bounds.width/2-0.5,height: collectionViewGroups.bounds.height/3)
         //return CGSize(width: 100,height: 100)
     }
  
@@ -66,7 +68,7 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
         if(indexPath.row==0)
         {print("cell for row \(indexPath)")
         var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells", forIndexPath: indexPath) as! GroupsCell
-             cell.label1.textColor=UIColor.whiteColor()
+           //  cell.label1.textColor=UIColor.whiteColor()
         return cell
         }
         if(indexPath.row==1)
@@ -75,8 +77,8 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
             var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells1", forIndexPath: indexPath) as! GroupsCell
             
             cell.label2.adjustsFontSizeToFitWidth=true
-            cell.label2.text="Order 1"
-            cell.label2.textColor=UIColor.whiteColor()
+           // cell.label2.text="Order 1"
+           // cell.label2.textColor=UIColor.whiteColor()
             return cell
         }
         if(indexPath.row==2)

@@ -35,6 +35,9 @@ public class KiboSDK{
         
         self.presentViewController(next, animated: true, completion: {
        */
+        DatabaseObjectInitialiser.getInstance().appid=appID
+        DatabaseObjectInitialiser.getInstance().secretid=appSecret
+        DatabaseObjectInitialiser.getInstance().clientid=clientID
             
         print(appID+" "+appSecret+" "+clientID)
         

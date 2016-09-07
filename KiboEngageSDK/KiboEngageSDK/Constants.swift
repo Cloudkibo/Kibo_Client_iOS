@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Constants
+internal class Constants
 {
     static var mainURL="https://api.kibosupport.com"
-    static var fetchGroups="/api/departments/"
+    static var fetchGroups="/api/departments"
 }

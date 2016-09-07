@@ -9,12 +9,19 @@
 import Foundation
 import Alamofire
 import SQLite
+import UIKit
 
 public class Groups
 {
-    func fetchGroups()
+    
+    public init()
     {
-        var tblGroups=DatabaseObjectInitialiser.getInstance().database.groups
+        
+    }
+    
+    public func fetchGroups()
+    {
+       /* var tblGroups=DatabaseObjectInitialiser.getInstance().database.groups
         do
         {for account in try DatabaseObjectInitialiser.getInstance().database.db.prepare(tblGroups) {
             //print("id: \(account[_id]),
@@ -24,20 +31,34 @@ public class Groups
         catch{
             print("error")
         }
+ 
+ */
         var url=Constants.mainURL+Constants.fetchGroups
-        var header:[String:String]=["id":""]
-        Alamofire.request(.POST,"\(url)",headers:header).response{
-            request, response_, data, error in
-            print(error)
+        
+        /*
+         'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
+         'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
+         'kibo-client-id': 'cd89f71715f2014725163952',
+ */
+        var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        
+        print(header.description)
+        Alamofire.request(.GET,"\(url)",headers:header).responseJSON{
+            response in
             
-            if response_?.statusCode==200
+            
+            /*if response.response!.statusCode==200
                 
             {
+                print(response.data!.description)
+                
+               // print("response: \(response_?.description)")
+               // print("data: \(data.debugDescription)")
             }
             else{
-                
+                print("error")
             
-            }
+            }*/
         }
     }
 }

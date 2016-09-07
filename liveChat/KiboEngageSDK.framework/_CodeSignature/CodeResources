@@ -6,107 +6,107 @@
 	<dict>
 		<key>Frameworks/Alamofire.framework/Alamofire</key>
 		<data>
-		VZAFk8SWMqGQAQV6iekOkYJXhog=
+		txrkMALEG2n3zptxYzXYG4RYwZU=
 		</data>
 		<key>Frameworks/Alamofire.framework/Info.plist</key>
 		<data>
-		V701yNkF0ugJYNgBWCelmgjig1M=
+		T0sXOeQ+XT5243Wn3IejkclhxG4=
 		</data>
 		<key>Frameworks/Alamofire.framework/_CodeSignature/CodeResources</key>
 		<data>
-		bBXhMebPSmNLyXsMf2skssD8HQ0=
+		vU/c4fSYUrCMXhlV/76MjgQDNnc=
 		</data>
 		<key>Frameworks/EPContactsPicker.framework/EPContactCell.nib</key>
 		<data>
-		ns/NU+M4zUjb6/Q9fqgV5Mzq76g=
+		f6ULiX5ficWdAzHnOzGui5q+OH4=
 		</data>
 		<key>Frameworks/EPContactsPicker.framework/EPContactsPicker</key>
 		<data>
-		dLI7ygWfUqpSJ3i/Mz7a5cbFI10=
+		iY1Fupo1c2BsCtLaCucT0Yd2N6A=
 		</data>
 		<key>Frameworks/EPContactsPicker.framework/Info.plist</key>
 		<data>
-		cQSpn7cQcLgiJowlPxGgXGmp0ts=
+		uo7MdoL0Uf+mX0Vd3+IgH5EoctU=
 		</data>
 		<key>Frameworks/EPContactsPicker.framework/_CodeSignature/CodeResources</key>
 		<data>
-		TBcaK1ZHMtn7zpTO1CN+IoVk6J8=
+		wEC+JMNFojfRwflF4y/WyqVejcc=
 		</data>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/Info.plist</key>
 		<data>
-		CrkzmMQrpi9pHoj0DK0yP8XKB6g=
+		BPhPEzpETxTj2CknumgRHWKfy2g=
 		</data>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/Pods_KiboEngageSDK</key>
 		<data>
-		KsqRQ3nQhEH03IsaNQrvnYZtSK4=
+		8Q5ymVp6DXxaTWTbyzMvcp/EGm8=
 		</data>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/_CodeSignature/CodeDirectory</key>
 		<data>
-		EmjpcjdZtTXFyoZfEMhzWrynlOQ=
+		2ju2K0ma5ePxIiM68+b64TGQGQM=
 		</data>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/_CodeSignature/CodeRequirements</key>
 		<data>
-		D93FCcO97Q1tT0LEoTMZLDci+ig=
+		592KDg2pfTQ0+2Ym8g5dI8vA6pY=
 		</data>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/_CodeSignature/CodeRequirements-1</key>
 		<data>
-		ddPnE2pBSJOOv3OOk21VraT5ALw=
+		g4ycUq4n6RdR2/zVKSM1VGSszAM=
 		</data>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/_CodeSignature/CodeResources</key>
 		<data>
-		XJTAcuh+bojYiaGWOwSmPR3MhqI=
+		1nHUyNDaL2hTieYWXoR0ZTPrYIs=
 		</data>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/_CodeSignature/CodeSignature</key>
 		<data>
-		l2vpowpZZ+MF1esLJ6Oiw7iiX70=
+		Qww9eF5pYpRVvnFm1b2ZBuqRfHs=
 		</data>
 		<key>Frameworks/SQLite.framework/Info.plist</key>
 		<data>
-		yK4uCxNJjViugSK4rGwBEsI7KTI=
+		/MvKvkNj5Pt82bmc+jQOCxeh6JY=
 		</data>
 		<key>Frameworks/SQLite.framework/SQLite</key>
 		<data>
-		zIClmCvhJxySuZZsw5X2bdkHbdk=
+		2hfakVkiiuBGPHRdHTxtVzqqNmI=
 		</data>
 		<key>Frameworks/SQLite.framework/_CodeSignature/CodeResources</key>
 		<data>
-		+LD/f2caHBYJ4XQFsvBevVHH4Ik=
+		XkChFZgIgglxVi/42EqyS4sO9/s=
 		</data>
 		<key>Frameworks/libswiftContacts.dylib</key>
 		<data>
-		EEtmjSrwLDmdXB/mS19Z242eTjY=
+		goSK7kD1bdMs7N7UAkbociZlYZ8=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
-		/T+34W4pqxMKSXmjAmmWJZx7kbY=
+		b5gzYJoPRVwUDnFYhNyT9y4obPU=
 		</data>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<data>
-		7jTGHnufovMB5IBhW36Kj8PIO9g=
+		ShNOl4BSUvSUmuhi9t6tPpUMGWk=
 		</data>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<data>
-		gxBdqnUaoiA5lUnkm0ryAtcEMIo=
+		TdompPc2Ck6Ameyw3NmWDRZgTC4=
 		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
-		AS4PlsEXfH3lee77gEh/rgHI2bk=
+		EG3WGSREfagGGHkprl1vH8AVsTo=
 		</data>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<data>
-		1sPfHJ2s7BkCrU1cQnWBkGwJXuA=
+		MWzlnWnEFdxlk8Kj7cK0bJ8J0NI=
 		</data>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<data>
-		Dn03PJQbMpDyLVl9QsuyptYNpOo=
+		oP3VaI6g4RJ90jMzb+3gByIeV6M=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
-		/0Vf1TrlZhprKX5ywKsKvH2Ot8Y=
+		w9ou48ZmGOLmAvHOAGNsCB8OUZQ=
 		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
-		p/zyMVtxJds7ttqFeMnucoj6q1s=
+		4DvUZawZ+7DJAqafZVZ1MuPlAqo=
 		</data>
 		<key>Headers/KiboEngageSDK-Swift.h</key>
 		<data>
@@ -118,23 +118,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		MAkWlixYmAoQICfSP6lmlJrOCCU=
-		</data>
-		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftdoc</key>
-		<data>
-		37pQnx7KFfVbEWI8KEwmO4gTJ2c=
-		</data>
-		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftmodule</key>
-		<data>
-		t+g65oP+02QmY3R7ofIgQQRJKog=
+		7Yf5QnmDZVSyUSNdvQt2nkQc0Ro=
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		pUV+59vdCjrcIFSauR0kmSfzN+M=
+		1uqUdtUxRJWwwsfNHTpJ3/GeqX0=
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		xe/cVsclIiRYWsJVuTQysO7+3HI=
+		7yRshipeL4YtVapuUtd3Bzl1jxw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -146,11 +138,11 @@
 		</data>
 		<key>SDKstoryboard.storyboardc/UIViewController-VXf-bw-0d6.nib</key>
 		<data>
-		2hV+EH9KREzP3xjZwWyqeti3z7o=
+		vToOFvmy0XkVFcknT2ZSKn9sWlg=
 		</data>
 		<key>SDKstoryboard.storyboardc/VXf-bw-0d6-view-LbK-wk-QVu.nib</key>
 		<data>
-		2zpigGH/KjTksIWmnfFu5Hpf8Y4=
+		srsao4zlMMPjLZ47yWfMjXYTd9w=
 		</data>
 		<key>arrow.png</key>
 		<data>
@@ -163,286 +155,286 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			VZAFk8SWMqGQAQV6iekOkYJXhog=
+			txrkMALEG2n3zptxYzXYG4RYwZU=
 			</data>
 			<key>hash2</key>
 			<data>
-			Xyql2UIOj1LgqO9Qm5OUBMy032rMaR4ta5ojLfuLkBA=
+			THh2tzgIqDmSHCgzYyZwK/rX90OmWfKX5ISG+qhm/gg=
 			</data>
 		</dict>
 		<key>Frameworks/Alamofire.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			V701yNkF0ugJYNgBWCelmgjig1M=
+			T0sXOeQ+XT5243Wn3IejkclhxG4=
 			</data>
 			<key>hash2</key>
 			<data>
-			QWpoum8enQFq1o4hSr8k0XRv+GwxxsgFanbXNTLRY5Q=
+			MvrwpGKDPk2JYwD4iuiNU94OwuFo4Pq/7KRt780+Ypg=
 			</data>
 		</dict>
 		<key>Frameworks/Alamofire.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bBXhMebPSmNLyXsMf2skssD8HQ0=
+			vU/c4fSYUrCMXhlV/76MjgQDNnc=
 			</data>
 			<key>hash2</key>
 			<data>
-			0Y8QnL/C/rrIfwMxb8UTcNyLj5CEc0R6wlhCGoOeX2M=
+			l1Pr7vVtNKvLcr4965OAkr41p0WQANgJtzanL5tzNE8=
 			</data>
 		</dict>
 		<key>Frameworks/EPContactsPicker.framework/EPContactCell.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ns/NU+M4zUjb6/Q9fqgV5Mzq76g=
+			f6ULiX5ficWdAzHnOzGui5q+OH4=
 			</data>
 			<key>hash2</key>
 			<data>
-			KwmlhITjwdOi7dA0dUtYFI/9XgpPfpOUeGSfuO42uXw=
+			X5hVNjOPl9mnwwn6l+tQZtL0usnLUc8PlTnVex+n9Gs=
 			</data>
 		</dict>
 		<key>Frameworks/EPContactsPicker.framework/EPContactsPicker</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dLI7ygWfUqpSJ3i/Mz7a5cbFI10=
+			iY1Fupo1c2BsCtLaCucT0Yd2N6A=
 			</data>
 			<key>hash2</key>
 			<data>
-			HXMdG9nn7068P78l2tpXZzS+dsKQu9fNqr1IOJMtdQ8=
+			QkU1E+5jEVUqJkQ3sWOpDAP2ubm2AIcIVu9fiqJgM80=
 			</data>
 		</dict>
 		<key>Frameworks/EPContactsPicker.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cQSpn7cQcLgiJowlPxGgXGmp0ts=
+			uo7MdoL0Uf+mX0Vd3+IgH5EoctU=
 			</data>
 			<key>hash2</key>
 			<data>
-			zCc3loa/ImdFi899YWNgBaY8j1TIBODbBlLHV6nBSzk=
+			ai/WfyYetMVqJOmIrAAFJN/Sy7s82PXFd5MNExr9STw=
 			</data>
 		</dict>
 		<key>Frameworks/EPContactsPicker.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TBcaK1ZHMtn7zpTO1CN+IoVk6J8=
+			wEC+JMNFojfRwflF4y/WyqVejcc=
 			</data>
 			<key>hash2</key>
 			<data>
-			A+ZhPLOOfXGiSC5urCjRLTtlN8lGQzbulsVJ2UI1ftk=
+			wDq/N5y+Szw29X2EEpojokfC4p5/H9oa1VhSb1uZF9A=
 			</data>
 		</dict>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			CrkzmMQrpi9pHoj0DK0yP8XKB6g=
+			BPhPEzpETxTj2CknumgRHWKfy2g=
 			</data>
 			<key>hash2</key>
 			<data>
-			jldmbXpkpdXc3abfi6ia4NnutROixM3QMbO0f8qdQC8=
+			Wv4lF/kUauI+N5PQUyzKrU6N7XzVPE9g32p1m18p7zY=
 			</data>
 		</dict>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/Pods_KiboEngageSDK</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			KsqRQ3nQhEH03IsaNQrvnYZtSK4=
+			8Q5ymVp6DXxaTWTbyzMvcp/EGm8=
 			</data>
 			<key>hash2</key>
 			<data>
-			KM6gU/Jfl+KtVW1BYNX8JabFWjYw1vdscsj/OH2YHV0=
+			itNtarbWOQF+95nltlB1LU++8CWHkGw7VGoTHrTabe4=
 			</data>
 		</dict>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/_CodeSignature/CodeDirectory</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			EmjpcjdZtTXFyoZfEMhzWrynlOQ=
+			2ju2K0ma5ePxIiM68+b64TGQGQM=
 			</data>
 			<key>hash2</key>
 			<data>
-			h73daP7dVn0EqcJj4KcV0dJNyQDxbVe7QBSVu10jXyk=
+			WTRGTkmZo3t7hz8PjxHn254pbrIZ82+lbFc6qdL8AJQ=
 			</data>
 		</dict>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/_CodeSignature/CodeRequirements</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			D93FCcO97Q1tT0LEoTMZLDci+ig=
+			592KDg2pfTQ0+2Ym8g5dI8vA6pY=
 			</data>
 			<key>hash2</key>
 			<data>
-			qNTMKb8Si31MGup5dLuO2S6yz6RxVXPrCZvM/E1/HSc=
+			vEfj22BkwWyAjeGjvJelZ6whdjQ6vEgnCeGSBRZYFM8=
 			</data>
 		</dict>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/_CodeSignature/CodeRequirements-1</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ddPnE2pBSJOOv3OOk21VraT5ALw=
+			g4ycUq4n6RdR2/zVKSM1VGSszAM=
 			</data>
 			<key>hash2</key>
 			<data>
-			6O5tN+upw9eFQKPCmclkMd5CdsBDLKHQc7mTq2+5jOM=
+			hUvWB7UPFMIETUI/OB8C/oBmoHjaxe2lrXhsZK9173M=
 			</data>
 		</dict>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XJTAcuh+bojYiaGWOwSmPR3MhqI=
+			1nHUyNDaL2hTieYWXoR0ZTPrYIs=
 			</data>
 			<key>hash2</key>
 			<data>
-			b5XuqjsfD1lGCLTJDYwwHLIBZ7E3NORRyeL5oL0kI+g=
+			zpEhgRTy6/lH4uEghNJuAdgH1Ft5zyN1rNJ6a5PtdbY=
 			</data>
 		</dict>
 		<key>Frameworks/Pods_KiboEngageSDK.framework/_CodeSignature/CodeSignature</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			l2vpowpZZ+MF1esLJ6Oiw7iiX70=
+			Qww9eF5pYpRVvnFm1b2ZBuqRfHs=
 			</data>
 			<key>hash2</key>
 			<data>
-			ndgGl65qaYsGxWLkKh8x5LJSdV6SQcxZjL6E1Meo2/Y=
+			Fk87U7BOAZ7KpYvCV5GCExvvDvnzXJQ1POXMRfFOjgc=
 			</data>
 		</dict>
 		<key>Frameworks/SQLite.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			yK4uCxNJjViugSK4rGwBEsI7KTI=
+			/MvKvkNj5Pt82bmc+jQOCxeh6JY=
 			</data>
 			<key>hash2</key>
 			<data>
-			rEL/04XOw63UhKC7qPFqW9fdiahahwAPW4Xz2Pc0KeM=
+			7PqoOXlV3mosTDcuxSzg2VNwNnk1RKXhGJd+BaY+Teg=
 			</data>
 		</dict>
 		<key>Frameworks/SQLite.framework/SQLite</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zIClmCvhJxySuZZsw5X2bdkHbdk=
+			2hfakVkiiuBGPHRdHTxtVzqqNmI=
 			</data>
 			<key>hash2</key>
 			<data>
-			h6Fd7x7aWaGj5y408AiNALn8PTXnnFihxLvkuyXt9is=
+			8yZE0/s0T1sgbMMIfOCYwEVE4SO88VtSSjF/NhT+UGg=
 			</data>
 		</dict>
 		<key>Frameworks/SQLite.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+LD/f2caHBYJ4XQFsvBevVHH4Ik=
+			XkChFZgIgglxVi/42EqyS4sO9/s=
 			</data>
 			<key>hash2</key>
 			<data>
-			OTaHQyZPnWbG1HRuUixPGsOLCZpuwjNbymZ/vR09o4o=
+			8bNyoYmi7+RapYeaiZgPIsnduiCloVmvxAz2PcuHq/E=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftContacts.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			EEtmjSrwLDmdXB/mS19Z242eTjY=
+			goSK7kD1bdMs7N7UAkbociZlYZ8=
 			</data>
 			<key>hash2</key>
 			<data>
-			N17xdhkkvaUmKqEUlIVqnMLHN6EQKp+XMUpP3nHyQq4=
+			ZBZCpBBwOwUkhV+LEM3mSg93XFv8WIQrwn80oX+AASI=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/T+34W4pqxMKSXmjAmmWJZx7kbY=
+			b5gzYJoPRVwUDnFYhNyT9y4obPU=
 			</data>
 			<key>hash2</key>
 			<data>
-			4wCLzhdzc4GXQ1AixRUO0Pe61RVvcDgCuPYVvZ8r/38=
+			ZmrX0p6wzYjqBOD8RvDfYrBxHY+9CRKhYMdO3DDHhbo=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7jTGHnufovMB5IBhW36Kj8PIO9g=
+			ShNOl4BSUvSUmuhi9t6tPpUMGWk=
 			</data>
 			<key>hash2</key>
 			<data>
-			dFouYyXUHwbMooFoKJiab0G4aWN4Qbjhw3WBgpcHW0o=
+			59v4tx7kathrr2mbIztqIrzP0SRcQ6DYwRIuWH1KGNo=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gxBdqnUaoiA5lUnkm0ryAtcEMIo=
+			TdompPc2Ck6Ameyw3NmWDRZgTC4=
 			</data>
 			<key>hash2</key>
 			<data>
-			EEbVceLhq4rDL/H4cHC0JmfRLZY3Jr7pAIUUVBwiY3c=
+			jkbcSKmdK0Pimw9A+T9O2rZxwgmojqTK+unmjcXc20s=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			AS4PlsEXfH3lee77gEh/rgHI2bk=
+			EG3WGSREfagGGHkprl1vH8AVsTo=
 			</data>
 			<key>hash2</key>
 			<data>
-			Fr+eNqz4mrvSQ5cN2FnFTDjNFevuI6syuQY99MwOkvo=
+			7J3s5Ho2ul4K6G4h5wW9pCwnjqF7RKS7AR5Z9NJihXI=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1sPfHJ2s7BkCrU1cQnWBkGwJXuA=
+			MWzlnWnEFdxlk8Kj7cK0bJ8J0NI=
 			</data>
 			<key>hash2</key>
 			<data>
-			9WPcWHludIPdi7t0TnVjkrqk7z4cBXIv7SsB+A0EwdQ=
+			0N3DKbUOqWLM59WQ42+X2t0d8njhkdAZmrCI3is99Tc=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Dn03PJQbMpDyLVl9QsuyptYNpOo=
+			oP3VaI6g4RJ90jMzb+3gByIeV6M=
 			</data>
 			<key>hash2</key>
 			<data>
-			tEjOH5Lm3GoRKU59PXDIRtEmYgpVksgQyzQUVyriZqg=
+			etmVTHCMwNoKtrI6JdrHaTFkdkuIwf68aUzbqXzApps=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/0Vf1TrlZhprKX5ywKsKvH2Ot8Y=
+			w9ou48ZmGOLmAvHOAGNsCB8OUZQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			M5Yfj2Rs3hw0KxebNjyLQnXBlnFucpHUW5qObYOb+pA=
+			GYiOOH1+Cj8DHAegFgD+ww/0QZ8t+3D68w3gHOVZ24Y=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			p/zyMVtxJds7ttqFeMnucoj6q1s=
+			4DvUZawZ+7DJAqafZVZ1MuPlAqo=
 			</data>
 			<key>hash2</key>
 			<data>
-			l0tc+vMXOsPs73Dp7CV8+MmoiWhf4J19IQK5abU0//c=
+			ueRluWmIcOqIKX5zwE740K7YCpWtwZXLROpHoqw/wvg=
 			</data>
 		</dict>
 		<key>Headers/KiboEngageSDK-Swift.h</key>
@@ -467,48 +459,26 @@
 			Zd/rOJiHoC/XLpp8xVBA8npvOCwakBTYzUP6PLvTl4U=
 			</data>
 		</dict>
-		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftdoc</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			37pQnx7KFfVbEWI8KEwmO4gTJ2c=
-			</data>
-			<key>hash2</key>
-			<data>
-			AHN/G0PImKeIdKwSvvzjSRmUlq5AzmlsTzgiAh/VoA0=
-			</data>
-		</dict>
-		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftmodule</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			t+g65oP+02QmY3R7ofIgQQRJKog=
-			</data>
-			<key>hash2</key>
-			<data>
-			ZJIJ7uE8hQzYHFImH+Bx8TwU6RP8qdsOszcp5XJ8W8w=
-			</data>
-		</dict>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			pUV+59vdCjrcIFSauR0kmSfzN+M=
+			1uqUdtUxRJWwwsfNHTpJ3/GeqX0=
 			</data>
 			<key>hash2</key>
 			<data>
-			XHsW7LwJM7VUkDqmS41bbgqugCpj+vNhcaZdu9sD758=
+			UGdtlDAcGUPklwreDCmofhNlSYjo/OuwF9UY148z6rY=
 			</data>
 		</dict>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xe/cVsclIiRYWsJVuTQysO7+3HI=
+			7yRshipeL4YtVapuUtd3Bzl1jxw=
 			</data>
 			<key>hash2</key>
 			<data>
-			Jfx5IoW7TBTltmpMX8fJ4aQ2cAFTv/gxNiaJbnk7ZjQ=
+			8C35JOtUhCjt1955lhMK+mEiInYeIzNTtiRZac4yuP0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -537,22 +507,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2hV+EH9KREzP3xjZwWyqeti3z7o=
+			vToOFvmy0XkVFcknT2ZSKn9sWlg=
 			</data>
 			<key>hash2</key>
 			<data>
-			WsFRJ0QGo1FoxImWXCrHSowLZ1nUGpKVZk1a1uLRwSk=
+			a3znGktFfeCO8dxVOUD9VEjIRertZ3hLqZZpD8p48tQ=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/VXf-bw-0d6-view-LbK-wk-QVu.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2zpigGH/KjTksIWmnfFu5Hpf8Y4=
+			srsao4zlMMPjLZ47yWfMjXYTd9w=
 			</data>
 			<key>hash2</key>
 			<data>
-			482zxVzYDO00dcPs7SYryckqID96UpkAC9NyiaNPHFc=
+			zhERFTjVRTjKPqg2hzsPh3jQ07xUTN5G02CYBg3Vusg=
 			</data>
 		</dict>
 		<key>arrow.png</key>

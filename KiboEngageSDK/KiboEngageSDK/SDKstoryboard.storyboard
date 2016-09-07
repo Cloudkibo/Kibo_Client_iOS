@@ -29,7 +29,7 @@
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1AR-hV-A7d">
                                 <rect key="frame" x="0.0" y="44" width="414" height="692"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kCy-1l-2FL">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="kCy-1l-2FL">
                                     <size key="itemSize" width="202" height="202"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -43,7 +43,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Orders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM8-zc-bGE">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM8-zc-bGE">
                                                     <rect key="frame" x="8" y="8" width="186" height="186"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,6 +53,12 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="YM8-zc-bGE" firstAttribute="top" secondItem="YHv-hU-fYA" secondAttribute="topMargin" id="0Bn-Ho-k4t"/>
+                                            <constraint firstItem="YM8-zc-bGE" firstAttribute="leading" secondItem="YHv-hU-fYA" secondAttribute="leadingMargin" id="5ye-E4-DfN"/>
+                                            <constraint firstItem="YM8-zc-bGE" firstAttribute="bottom" secondItem="YHv-hU-fYA" secondAttribute="bottomMargin" id="Agg-ct-wzM"/>
+                                            <constraint firstItem="YM8-zc-bGE" firstAttribute="trailing" secondItem="YHv-hU-fYA" secondAttribute="trailingMargin" id="pae-0G-5Ui"/>
+                                        </constraints>
                                         <size key="customSize" width="202" height="202"/>
                                         <connections>
                                             <outlet property="label1" destination="YM8-zc-bGE" id="Oes-Vi-wzP"/>
@@ -65,7 +71,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1p-Br-mZb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1p-Br-mZb">
                                                     <rect key="frame" x="8" y="8" width="186" height="186"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -75,19 +81,25 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="L1p-Br-mZb" firstAttribute="top" secondItem="EgC-LQ-TvS" secondAttribute="topMargin" id="B8g-Ot-us4"/>
+                                            <constraint firstItem="L1p-Br-mZb" firstAttribute="leading" secondItem="EgC-LQ-TvS" secondAttribute="leadingMargin" id="Olw-78-1KT"/>
+                                            <constraint firstItem="L1p-Br-mZb" firstAttribute="trailing" secondItem="EgC-LQ-TvS" secondAttribute="trailingMargin" id="Tzh-mE-GYu"/>
+                                            <constraint firstItem="L1p-Br-mZb" firstAttribute="bottom" secondItem="EgC-LQ-TvS" secondAttribute="bottomMargin" id="Y8F-1Y-AL7"/>
+                                        </constraints>
                                         <size key="customSize" width="202" height="202"/>
                                         <connections>
                                             <outlet property="label2" destination="L1p-Br-mZb" id="aA9-uh-5t6"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells2" id="0sV-9U-wbv" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="212" width="202" height="202"/>
+                                        <rect key="frame" x="0.0" y="203" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Voucher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9u-OM-cAj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voucher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9u-OM-cAj">
                                                     <rect key="frame" x="8" y="8" width="186" height="186"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -97,19 +109,25 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="h9u-OM-cAj" firstAttribute="trailing" secondItem="0sV-9U-wbv" secondAttribute="trailingMargin" id="PeZ-pV-Gnm"/>
+                                            <constraint firstItem="h9u-OM-cAj" firstAttribute="top" secondItem="0sV-9U-wbv" secondAttribute="topMargin" id="ZPU-jB-haA"/>
+                                            <constraint firstItem="h9u-OM-cAj" firstAttribute="bottom" secondItem="0sV-9U-wbv" secondAttribute="bottomMargin" id="fhe-TZ-NYR"/>
+                                            <constraint firstItem="h9u-OM-cAj" firstAttribute="leading" secondItem="0sV-9U-wbv" secondAttribute="leadingMargin" id="wcV-08-PmU"/>
+                                        </constraints>
                                         <size key="customSize" width="202" height="202"/>
                                         <connections>
                                             <outlet property="label3" destination="h9u-OM-cAj" id="UmP-nE-2Uc"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells3" id="erl-E5-5HC" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="212" y="212" width="202" height="202"/>
+                                        <rect key="frame" x="212" y="203" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shipping" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qr0-Su-ITp">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qr0-Su-ITp">
                                                     <rect key="frame" x="8" y="8" width="186" height="186"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -119,13 +137,19 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="qr0-Su-ITp" firstAttribute="leading" secondItem="erl-E5-5HC" secondAttribute="leadingMargin" id="KLL-1C-yqp"/>
+                                            <constraint firstItem="qr0-Su-ITp" firstAttribute="bottom" secondItem="erl-E5-5HC" secondAttribute="bottomMargin" id="Ybe-lP-kSh"/>
+                                            <constraint firstItem="qr0-Su-ITp" firstAttribute="top" secondItem="erl-E5-5HC" secondAttribute="topMargin" id="h0b-Kf-5cH"/>
+                                            <constraint firstItem="qr0-Su-ITp" firstAttribute="trailing" secondItem="erl-E5-5HC" secondAttribute="trailingMargin" id="iPu-vs-qOb"/>
+                                        </constraints>
                                         <size key="customSize" width="202" height="202"/>
                                         <connections>
                                             <outlet property="label4" destination="qr0-Su-ITp" id="eP8-L0-aam"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells4" id="xqi-5Z-bGU" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="424" width="202" height="202"/>
+                                        <rect key="frame" x="0.0" y="406" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
@@ -153,7 +177,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells5" id="Jaj-Mc-Nnt" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="212" y="424" width="202" height="202"/>
+                                        <rect key="frame" x="212" y="406" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
@@ -189,13 +213,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1AR-hV-A7d" firstAttribute="trailing" secondItem="eQ6-71-uYE" secondAttribute="trailing" id="0kn-fg-RwD"/>
                             <constraint firstAttribute="trailing" secondItem="eQ6-71-uYE" secondAttribute="trailing" id="8Za-uo-YPw"/>
-                            <constraint firstItem="1AR-hV-A7d" firstAttribute="leading" secondItem="eQ6-71-uYE" secondAttribute="leading" id="BYQ-3l-hrs"/>
                             <constraint firstItem="eQ6-71-uYE" firstAttribute="top" secondItem="LbK-wk-QVu" secondAttribute="top" id="E46-TE-NoJ"/>
-                            <constraint firstItem="1AR-hV-A7d" firstAttribute="bottom" secondItem="xe7-cl-X6w" secondAttribute="top" id="O5s-z6-Nl8"/>
                             <constraint firstItem="eQ6-71-uYE" firstAttribute="leading" secondItem="LbK-wk-QVu" secondAttribute="leading" id="T5h-az-gg1"/>
-                            <constraint firstItem="1AR-hV-A7d" firstAttribute="top" secondItem="eQ6-71-uYE" secondAttribute="bottom" id="W2a-h2-vQo"/>
+                            <constraint firstItem="1AR-hV-A7d" firstAttribute="trailing" secondItem="eQ6-71-uYE" secondAttribute="trailing" id="bzU-zV-sJO"/>
+                            <constraint firstItem="1AR-hV-A7d" firstAttribute="leading" secondItem="eQ6-71-uYE" secondAttribute="leading" id="gow-E6-btk"/>
+                            <constraint firstItem="1AR-hV-A7d" firstAttribute="bottom" secondItem="xe7-cl-X6w" secondAttribute="top" id="grz-2U-lvZ"/>
+                            <constraint firstItem="1AR-hV-A7d" firstAttribute="top" secondItem="eQ6-71-uYE" secondAttribute="bottom" id="hXH-0P-Jpy"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
