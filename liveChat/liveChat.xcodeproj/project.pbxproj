@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7162D46D1D7FDCE5001BF40D /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43EB51D7FD821006BEEE2 /* KiboEngageSDK.framework */; };
-		7162D46E1D7FDCE5001BF40D /* KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43EB51D7FD821006BEEE2 /* KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7162D4711D7FDD17001BF40D /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7162D4701D7FDD17001BF40D /* Pods_KiboEngageSDK.framework */; };
 		7162D4721D7FDD20001BF40D /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7162D4701D7FDD17001BF40D /* Pods_KiboEngageSDK.framework */; };
 		7162D4731D7FDD20001BF40D /* Pods_KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7162D4701D7FDD17001BF40D /* Pods_KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		718CE1171D80131000CA380C /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43EB51D7FD821006BEEE2 /* KiboEngageSDK.framework */; };
+		718CE1181D80131000CA380C /* KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43EB51D7FD821006BEEE2 /* KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71F43E851D7FD7D4006BEEE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F43E841D7FD7D4006BEEE2 /* AppDelegate.swift */; };
 		71F43E871D7FD7D4006BEEE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F43E861D7FD7D4006BEEE2 /* ViewController.swift */; };
 		71F43E8A1D7FD7D4006BEEE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F43E881D7FD7D4006BEEE2 /* Main.storyboard */; };
@@ -46,8 +46,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7162D46E1D7FDCE5001BF40D /* KiboEngageSDK.framework in Embed Frameworks */,
 				7162D4731D7FDD20001BF40D /* Pods_KiboEngageSDK.framework in Embed Frameworks */,
+				718CE1181D80131000CA380C /* KiboEngageSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7162D46D1D7FDCE5001BF40D /* KiboEngageSDK.framework in Frameworks */,
+				718CE1171D80131000CA380C /* KiboEngageSDK.framework in Frameworks */,
 				7162D4711D7FDD17001BF40D /* Pods_KiboEngageSDK.framework in Frameworks */,
 				7162D4721D7FDD20001BF40D /* Pods_KiboEngageSDK.framework in Frameworks */,
 			);

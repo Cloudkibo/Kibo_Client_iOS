@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SQLite
+import UIKit
 
 public class KiboSDK{
     
@@ -28,9 +29,16 @@ public class KiboSDK{
         //self.kiboAppID=appID
         //self.kiboAppSecret=appSecret
         //self.kiboClientID=clientID
-        DatabaseObjectInitialiser.getInstance()
-        DatabaseObjectInitialiser.getInstance().database.storeCredentials(appID, appSecret: appSecret, appClientID: clientID)
+       // DatabaseObjectInitialiser.getInstance()
+       // DatabaseObjectInitialiser.getInstance().database.storeCredentials(appID, appSecret: appSecret, appClientID: clientID)
+      /*  let next = self.storyboard?.instantiateViewControllerWithIdentifier("MainV2") as! GroupsViewController
+        
+        self.presentViewController(next, animated: true, completion: {
+       */
+            
         print(appID+" "+appSecret+" "+clientID)
+        
+        
         ////sqliteDB=DatabaseHandler(dbName:"kiboEngageDB.sqlite3")
         
     }

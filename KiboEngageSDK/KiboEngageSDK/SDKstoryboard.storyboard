@@ -3,44 +3,48 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Groups View Controller-->
         <scene sceneID="nRO-Gm-Qcj">
             <objects>
-                <viewController id="VXf-bw-0d6" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="VXf-bw-0d6" customClass="GroupsViewController" customModule="KiboEngageSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JpW-8x-IHQ"/>
                         <viewControllerLayoutGuide type="bottom" id="xe7-cl-X6w"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LbK-wk-QVu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQ6-71-uYE">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQ6-71-uYE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <navigationItem title="FAQs" id="HnK-er-sck"/>
+                                    <navigationItem title="FAQs" id="HnK-er-sck">
+                                        <barButtonItem key="leftBarButtonItem" image="arrow.png" id="QD3-TQ-OR6"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1AR-hV-A7d">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1AR-hV-A7d">
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kCy-1l-2FL">
-                                    <size key="itemSize" width="140" height="140"/>
+                                    <size key="itemSize" width="202" height="202"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YHv-hU-fYA">
-                                        <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells" id="YHv-hU-fYA" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Orders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzn-aC-l0J">
-                                                    <rect key="frame" x="8" y="59" width="124" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Orders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM8-zc-bGE">
+                                                    <rect key="frame" x="8" y="8" width="186" height="186"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -48,16 +52,146 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <size key="customSize" width="202" height="202"/>
+                                        <connections>
+                                            <outlet property="label1" destination="YM8-zc-bGE" id="Oes-Vi-wzP"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells1" id="EgC-LQ-TvS" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                        <rect key="frame" x="212" y="0.0" width="202" height="202"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1p-Br-mZb">
+                                                    <rect key="frame" x="8" y="8" width="186" height="186"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="202" height="202"/>
+                                        <connections>
+                                            <outlet property="label2" destination="L1p-Br-mZb" id="aA9-uh-5t6"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells2" id="0sV-9U-wbv" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="212" width="202" height="202"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Voucher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9u-OM-cAj">
+                                                    <rect key="frame" x="8" y="8" width="186" height="186"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="202" height="202"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells3" id="erl-E5-5HC" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                        <rect key="frame" x="212" y="212" width="202" height="202"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shipping" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qr0-Su-ITp">
+                                                    <rect key="frame" x="8" y="8" width="186" height="186"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="202" height="202"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells4" id="xqi-5Z-bGU" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="424" width="202" height="202"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Returns &amp; Refund" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7u-Bx-SZs">
+                                                    <rect key="frame" x="8" y="8" width="186" height="186"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="h7u-Bx-SZs" firstAttribute="leading" secondItem="xqi-5Z-bGU" secondAttribute="leadingMargin" id="CKx-ZW-gLI"/>
+                                            <constraint firstItem="h7u-Bx-SZs" firstAttribute="trailing" secondItem="xqi-5Z-bGU" secondAttribute="trailingMargin" id="O9f-6j-y8M"/>
+                                            <constraint firstItem="h7u-Bx-SZs" firstAttribute="bottom" secondItem="xqi-5Z-bGU" secondAttribute="bottomMargin" id="iY2-ZX-PrA"/>
+                                            <constraint firstItem="h7u-Bx-SZs" firstAttribute="top" secondItem="xqi-5Z-bGU" secondAttribute="topMargin" id="uPq-nt-fmp"/>
+                                        </constraints>
+                                        <size key="customSize" width="202" height="202"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells5" id="Jaj-Mc-Nnt" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                        <rect key="frame" x="212" y="424" width="202" height="202"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t5-ih-zKM">
+                                                    <rect key="frame" x="8" y="8" width="186" height="186"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="1t5-ih-zKM" firstAttribute="trailing" secondItem="Jaj-Mc-Nnt" secondAttribute="trailingMargin" id="8cH-bX-Ycv"/>
+                                            <constraint firstItem="1t5-ih-zKM" firstAttribute="bottom" secondItem="Jaj-Mc-Nnt" secondAttribute="bottomMargin" id="BjJ-wi-6Ap"/>
+                                            <constraint firstItem="1t5-ih-zKM" firstAttribute="leading" secondItem="Jaj-Mc-Nnt" secondAttribute="leadingMargin" id="I6y-6w-xRW"/>
+                                            <constraint firstItem="1t5-ih-zKM" firstAttribute="top" secondItem="Jaj-Mc-Nnt" secondAttribute="topMargin" id="IRN-p7-1gh"/>
+                                        </constraints>
+                                        <size key="customSize" width="202" height="202"/>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="VXf-bw-0d6" id="Cf9-yL-13r"/>
+                                    <outlet property="delegate" destination="VXf-bw-0d6" id="ccB-F7-OED"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1AR-hV-A7d" firstAttribute="trailing" secondItem="eQ6-71-uYE" secondAttribute="trailing" id="0kn-fg-RwD"/>
+                            <constraint firstAttribute="trailing" secondItem="eQ6-71-uYE" secondAttribute="trailing" id="8Za-uo-YPw"/>
+                            <constraint firstItem="1AR-hV-A7d" firstAttribute="leading" secondItem="eQ6-71-uYE" secondAttribute="leading" id="BYQ-3l-hrs"/>
+                            <constraint firstItem="eQ6-71-uYE" firstAttribute="top" secondItem="LbK-wk-QVu" secondAttribute="top" id="E46-TE-NoJ"/>
+                            <constraint firstItem="1AR-hV-A7d" firstAttribute="bottom" secondItem="xe7-cl-X6w" secondAttribute="top" id="O5s-z6-Nl8"/>
+                            <constraint firstItem="eQ6-71-uYE" firstAttribute="leading" secondItem="LbK-wk-QVu" secondAttribute="leading" id="T5h-az-gg1"/>
+                            <constraint firstItem="1AR-hV-A7d" firstAttribute="top" secondItem="eQ6-71-uYE" secondAttribute="bottom" id="W2a-h2-vQo"/>
+                        </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="736"/>
+                    <connections>
+                        <outlet property="collectionViewGroups" destination="1AR-hV-A7d" id="W5Y-o9-mgs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXw-2b-oTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="597" y="334"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.png" width="30" height="30"/>
+    </resources>
 </document>

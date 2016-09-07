@@ -8,7 +8,7 @@
 
 import Foundation
 import SQLite
-
+import UIKit
 
 internal class DatabaseHandler:NSObject
 {
@@ -27,7 +27,9 @@ internal class DatabaseHandler:NSObject
     init(dbName:String)
     {print("inside database handler class")
         
-        let fileManager = NSFileManager.defaultManager()
+        
+        
+               let fileManager = NSFileManager.defaultManager()
         let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let docsDir1 = dirPaths[0]
         self.dbPath = (docsDir1 as NSString).stringByAppendingPathComponent("kiboEngageDB.sqlite3")
@@ -167,6 +169,5 @@ internal class DatabaseHandler:NSObject
         }
         
     }
+    }
 
-
-}
