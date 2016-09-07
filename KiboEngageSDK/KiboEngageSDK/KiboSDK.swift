@@ -30,7 +30,7 @@ public class KiboSDK{
         //self.kiboClientID=clientID
         DatabaseObjectInitialiser.getInstance()
         DatabaseObjectInitialiser.getInstance().database.storeCredentials(appID, appSecret: appSecret, appClientID: clientID)
-        
+        print(appID+" "+appSecret+" "+clientID)
         ////sqliteDB=DatabaseHandler(dbName:"kiboEngageDB.sqlite3")
         
     }
@@ -38,7 +38,7 @@ public class KiboSDK{
     public func doSomething()
     {
         print("Yeah, it works. Welcome to Live Chat!")
-        let kiboAppID = Expression<String>("kiboAppID")
+       /* let kiboAppID = Expression<String>("kiboAppID")
         let kiboAppSecret = Expression<String>("kiboAppSecret")
         let kiboClientID = Expression<String>("kiboClientID")
         
@@ -46,7 +46,7 @@ public class KiboSDK{
         print(DatabaseObjectInitialiser.getInstance().database.credentials.select([kiboAppID,kiboAppSecret,kiboClientID]))
        // print(self.kiboAppSecret)
         //print(self.kiboClientID)
-    
+    */
     }
     
     
