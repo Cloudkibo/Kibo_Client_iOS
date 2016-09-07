@@ -13,7 +13,7 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     
-    @IBOutlet weak var collectionViewGroups: UICollectionView!
+     @IBOutlet public var collectionViewGroups: UICollectionView!
     
     
     
@@ -44,11 +44,11 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     }
     
     
-  /* public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-    
-        return CGSize(width: screenSize.width/3, height: screenSize.height/3);
+   public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    return CGSize(width: screenSize.width/2,height: screenSize.height/3)
+        //return CGSize(width: 100,height: 100)
     }
-    */
+ 
     
     
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,32 +63,42 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         print("cell for row")
-        if(indexPath==0)
-        {
+        if(indexPath.row==0)
+        {print("cell for row \(indexPath)")
         var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells", forIndexPath: indexPath) as! GroupsCell
+             cell.label1.textColor=UIColor.whiteColor()
         return cell
         }
-        if(indexPath==1)
+        if(indexPath.row==1)
         {
+            print("cell for row \(indexPath)")
             var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells1", forIndexPath: indexPath) as! GroupsCell
+            
+            cell.label2.adjustsFontSizeToFitWidth=true
+            cell.label2.text="Order 1"
+            cell.label2.textColor=UIColor.whiteColor()
             return cell
         }
-        if(indexPath==2)
+        if(indexPath.row==2)
         {
+            print("cell for row \(indexPath)")
             var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells2", forIndexPath: indexPath) as! GroupsCell
             return cell
         }
-        if(indexPath==3)
+        if(indexPath.row==3)
         {
+            print("cell for row \(indexPath)")
             var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells3", forIndexPath: indexPath) as! GroupsCell
             return cell
         }
-        if(indexPath==4)
+        if(indexPath.row==4)
         {
+          print("cell for row \(indexPath)")
             var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells4", forIndexPath: indexPath) as! GroupsCell
             return cell
         }
         else{
+            print("cell for row \(indexPath)")
             var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells5", forIndexPath: indexPath) as! GroupsCell
             return cell
         }

@@ -98,15 +98,16 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
+@class UICollectionView;
 @class NSBundle;
 @class NSCoder;
-@class UICollectionView;
 @class UICollectionViewLayout;
 @class NSIndexPath;
 @class UICollectionViewCell;
 
 SWIFT_CLASS("_TtC13KiboEngageSDK20GroupsViewController")
 @interface GroupsViewController : UIViewController <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@property (nonatomic, strong) IBOutlet UICollectionView * _Null_unspecified collectionViewGroups;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)viewDidLoad;

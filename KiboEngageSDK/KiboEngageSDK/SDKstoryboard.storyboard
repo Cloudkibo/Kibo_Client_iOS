@@ -52,6 +52,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="customSize" width="202" height="202"/>
                                         <connections>
                                             <outlet property="label1" destination="YM8-zc-bGE" id="Oes-Vi-wzP"/>
@@ -73,6 +74,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="customSize" width="202" height="202"/>
                                         <connections>
                                             <outlet property="label2" destination="L1p-Br-mZb" id="aA9-uh-5t6"/>
@@ -94,7 +96,11 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="customSize" width="202" height="202"/>
+                                        <connections>
+                                            <outlet property="label3" destination="h9u-OM-cAj" id="UmP-nE-2Uc"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells3" id="erl-E5-5HC" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
                                         <rect key="frame" x="212" y="212" width="202" height="202"/>
@@ -112,7 +118,11 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="customSize" width="202" height="202"/>
+                                        <connections>
+                                            <outlet property="label4" destination="qr0-Su-ITp" id="eP8-L0-aam"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells4" id="xqi-5Z-bGU" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="424" width="202" height="202"/>
@@ -130,6 +140,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="h7u-Bx-SZs" firstAttribute="leading" secondItem="xqi-5Z-bGU" secondAttribute="leadingMargin" id="CKx-ZW-gLI"/>
                                             <constraint firstItem="h7u-Bx-SZs" firstAttribute="trailing" secondItem="xqi-5Z-bGU" secondAttribute="trailingMargin" id="O9f-6j-y8M"/>
@@ -137,6 +148,9 @@
                                             <constraint firstItem="h7u-Bx-SZs" firstAttribute="top" secondItem="xqi-5Z-bGU" secondAttribute="topMargin" id="uPq-nt-fmp"/>
                                         </constraints>
                                         <size key="customSize" width="202" height="202"/>
+                                        <connections>
+                                            <outlet property="label5" destination="h7u-Bx-SZs" id="FVa-2J-QcA"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells5" id="Jaj-Mc-Nnt" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
                                         <rect key="frame" x="212" y="424" width="202" height="202"/>
@@ -154,6 +168,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="1t5-ih-zKM" firstAttribute="trailing" secondItem="Jaj-Mc-Nnt" secondAttribute="trailingMargin" id="8cH-bX-Ycv"/>
                                             <constraint firstItem="1t5-ih-zKM" firstAttribute="bottom" secondItem="Jaj-Mc-Nnt" secondAttribute="bottomMargin" id="BjJ-wi-6Ap"/>
@@ -161,6 +176,9 @@
                                             <constraint firstItem="1t5-ih-zKM" firstAttribute="top" secondItem="Jaj-Mc-Nnt" secondAttribute="topMargin" id="IRN-p7-1gh"/>
                                         </constraints>
                                         <size key="customSize" width="202" height="202"/>
+                                        <connections>
+                                            <outlet property="label6" destination="1t5-ih-zKM" id="wXb-zM-dry"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
