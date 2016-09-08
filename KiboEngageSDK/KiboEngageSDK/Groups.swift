@@ -34,31 +34,21 @@ public class Groups
  
  */
         var url=Constants.mainURL+Constants.fetchGroups
-        
+        print(url.debugDescription)
         /*
          'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
          'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
          'kibo-client-id': 'cd89f71715f2014725163952',
  */
         var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
-        
+        var hhh=["authorization":"\(header)"]
         print(header.description)
-        Alamofire.request(.GET,"\(url)",headers:header).responseJSON{
-            response in
-            
-            
-            /*if response.response!.statusCode==200
-                
-            {
-                print(response.data!.description)
-                
-               // print("response: \(response_?.description)")
-               // print("data: \(data.debugDescription)")
-            }
-            else{
-                print("error")
-            
-            }*/
-        }
+        Alamofire.request(.GET,"http://google.com") .validate()
+            .response { request, response, data, error in
+                print(request)
+                print(response)
+                print(data)
+                print(error)
+                }
     }
 }

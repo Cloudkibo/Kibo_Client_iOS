@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48B7CEB2FF0A105EE85B4789 /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */; };
 		711F7E531D7E2BD700A6FD97 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E521D7E2BD700A6FD97 /* Groups.swift */; };
 		711F7E551D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E541D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift */; };
+		7132E0AE1D80EBE600B8AD4C /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132E0AD1D80EBE600B8AD4C /* SQLite.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7132E0B01D80EC0A00B8AD4C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132E0AF1D80EC0A00B8AD4C /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7132E0B21D80EC0F00B8AD4C /* EPContactsPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132E0B11D80EC0F00B8AD4C /* EPContactsPicker.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		713486441D7FBF8B005E632F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713486431D7FBF8B005E632F /* Constants.swift */; };
 		713486461D7FC04E005E632F /* SDKstoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 713486451D7FC04E005E632F /* SDKstoryboard.storyboard */; };
 		713F3DEF1D7B85320072C9E9 /* KiboEngageSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -18,14 +20,8 @@
 		713F3DFB1D7B85330072C9E9 /* KiboEngageSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3DFA1D7B85330072C9E9 /* KiboEngageSDKTests.swift */; };
 		713F3E061D7B88110072C9E9 /* KiboSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E051D7B88110072C9E9 /* KiboSDK.swift */; };
 		7162D4771D7FE2E6001BF40D /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162D4761D7FE2E6001BF40D /* GroupsViewController.swift */; };
-		7162D4791D7FE549001BF40D /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71F43E721D7FD76E006BEEE2 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7162D47A1D7FE54F001BF40D /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71F43E741D7FD772006BEEE2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7162D47E1D800811001BF40D /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7162D47D1D800811001BF40D /* arrow.png */; };
 		718CE11C1D8014F700CA380C /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718CE11B1D8014F700CA380C /* GroupsCell.swift */; };
-		71F1661A1D80CFE6008D8B6E /* EPContactsPicker.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71F43E761D7FD775006BEEE2 /* EPContactsPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71F43E731D7FD76E006BEEE2 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43E721D7FD76E006BEEE2 /* SQLite.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		71F43E751D7FD772006BEEE2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43E741D7FD772006BEEE2 /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		71F43E771D7FD775006BEEE2 /* EPContactsPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F43E761D7FD775006BEEE2 /* EPContactsPicker.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,26 +34,14 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		7162D4781D7FE52B001BF40D /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				71F1661A1D80CFE6008D8B6E /* EPContactsPicker.framework in CopyFiles */,
-				7162D47A1D7FE54F001BF40D /* Alamofire.framework in CopyFiles */,
-				7162D4791D7FE549001BF40D /* SQLite.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
 		711F7E521D7E2BD700A6FD97 /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		711F7E541D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseObjectInitialiser.swift; sourceTree = "<group>"; };
 		712FE46A1D7E1B1A00E1AE69 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		7132E0AD1D80EBE600B8AD4C /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "Pods/../build/Debug-iphoneos/SQLite.swift/SQLite.framework"; sourceTree = "<group>"; };
+		7132E0AF1D80EC0A00B8AD4C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		7132E0B11D80EC0F00B8AD4C /* EPContactsPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EPContactsPicker.framework; path = "Pods/../build/Debug-iphoneos/EPContactsPicker/EPContactsPicker.framework"; sourceTree = "<group>"; };
 		713486431D7FBF8B005E632F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		713486451D7FC04E005E632F /* SDKstoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SDKstoryboard.storyboard; sourceTree = "<group>"; };
 		713F3DEB1D7B85320072C9E9 /* KiboEngageSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KiboEngageSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +54,7 @@
 		7162D4761D7FE2E6001BF40D /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		7162D47D1D800811001BF40D /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		718CE11B1D8014F700CA380C /* GroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
+		71B966911D80DD310046CE1D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		71F43E721D7FD76E006BEEE2 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "../../../Library/Developer/Xcode/DerivedData/KiboEngageSDK-cpznbyfeywhppjccyjscaezptqdk/Build/Products/Debug-iphoneos/SQLite.swift/SQLite.framework"; sourceTree = "<group>"; };
 		71F43E741D7FD772006BEEE2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/KiboEngageSDK-cpznbyfeywhppjccyjscaezptqdk/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		71F43E761D7FD775006BEEE2 /* EPContactsPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EPContactsPicker.framework; path = "../../../Library/Developer/Xcode/DerivedData/KiboEngageSDK-cpznbyfeywhppjccyjscaezptqdk/Build/Products/Debug-iphoneos/EPContactsPicker/EPContactsPicker.framework"; sourceTree = "<group>"; };
@@ -83,10 +68,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71F43E771D7FD775006BEEE2 /* EPContactsPicker.framework in Frameworks */,
-				71F43E751D7FD772006BEEE2 /* Alamofire.framework in Frameworks */,
-				71F43E731D7FD76E006BEEE2 /* SQLite.framework in Frameworks */,
-				48B7CEB2FF0A105EE85B4789 /* Pods_KiboEngageSDK.framework in Frameworks */,
+				7132E0B21D80EC0F00B8AD4C /* EPContactsPicker.framework in Frameworks */,
+				7132E0B01D80EC0A00B8AD4C /* Alamofire.framework in Frameworks */,
+				7132E0AE1D80EBE600B8AD4C /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +97,10 @@
 		474D67A13C6D3635C33C65DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7132E0B11D80EC0F00B8AD4C /* EPContactsPicker.framework */,
+				7132E0AF1D80EC0A00B8AD4C /* Alamofire.framework */,
+				7132E0AD1D80EBE600B8AD4C /* SQLite.framework */,
+				71B966911D80DD310046CE1D /* libsqlite3.0.tbd */,
 				71F43E761D7FD775006BEEE2 /* EPContactsPicker.framework */,
 				71F43E741D7FD772006BEEE2 /* Alamofire.framework */,
 				71F43E721D7FD76E006BEEE2 /* SQLite.framework */,
@@ -193,7 +181,6 @@
 				713F3DE81D7B85320072C9E9 /* Headers */,
 				713F3DE91D7B85320072C9E9 /* Resources */,
 				891C0CE36E21F17C6835F1D6 /* [CP] Copy Pods Resources */,
-				7162D4781D7FE52B001BF40D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -446,9 +433,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SQLite.swift",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/EPContactsPicker",
 				);
 				INFOPLIST_FILE = KiboEngageSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -476,9 +467,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SQLite.swift",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/EPContactsPicker",
 				);
 				INFOPLIST_FILE = KiboEngageSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
