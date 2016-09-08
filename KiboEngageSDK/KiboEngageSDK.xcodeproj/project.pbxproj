@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71117CB61D8117AD00868E36 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71117CB51D8117AD00868E36 /* ChannelsViewController.swift */; };
+		71117CB81D81186500868E36 /* ChannelsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71117CB71D81186500868E36 /* ChannelsCell.swift */; };
 		711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */; };
 		711F7E531D7E2BD700A6FD97 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E521D7E2BD700A6FD97 /* Groups.swift */; };
 		711F7E551D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E541D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		71117CB51D8117AD00868E36 /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
+		71117CB71D81186500868E36 /* ChannelsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsCell.swift; sourceTree = "<group>"; };
 		711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
 		711F7E521D7E2BD700A6FD97 /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		711F7E541D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseObjectInitialiser.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 				713486451D7FC04E005E632F /* SDKstoryboard.storyboard */,
 				7162D4761D7FE2E6001BF40D /* GroupsViewController.swift */,
 				718CE11B1D8014F700CA380C /* GroupsCell.swift */,
+				71117CB51D8117AD00868E36 /* ChannelsViewController.swift */,
+				71117CB71D81186500868E36 /* ChannelsCell.swift */,
 			);
 			path = KiboEngageSDK;
 			sourceTree = "<group>";
@@ -304,7 +310,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				713486441D7FBF8B005E632F /* Constants.swift in Sources */,
+				71117CB81D81186500868E36 /* ChannelsCell.swift in Sources */,
 				713F3E061D7B88110072C9E9 /* KiboSDK.swift in Sources */,
+				71117CB61D8117AD00868E36 /* ChannelsViewController.swift in Sources */,
 				7162D4771D7FE2E6001BF40D /* GroupsViewController.swift in Sources */,
 				711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */,
 				711F7E531D7E2BD700A6FD97 /* Groups.swift in Sources */,
