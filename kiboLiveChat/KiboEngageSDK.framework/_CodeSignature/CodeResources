@@ -58,7 +58,7 @@
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		qp5g5BhC27B8WN3lclRQXwW/UFw=
+		qe4Gpa+dZ7IFl/v+bnZHbufsz1U=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -66,15 +66,23 @@
 		</data>
 		<key>SDKstoryboard.storyboardc/Info.plist</key>
 		<data>
-		XP1yQLPNM3Dgy6eMHJufPYkmakY=
+		eYmf8rdFkHjN6Zh2AOxwVnWodJE=
 		</data>
 		<key>SDKstoryboard.storyboardc/UIViewController-VXf-bw-0d6.nib</key>
 		<data>
-		A66k+oJ73QV3/vamUYc5wCyCMIQ=
+		B7d7bV5hcKQUQRMkiVSV/kjxi+k=
+		</data>
+		<key>SDKstoryboard.storyboardc/UIViewController-lj1-u7-FhL.nib</key>
+		<data>
+		7U/5oYfLOnH1jNwnNqqINZ/PLBs=
 		</data>
 		<key>SDKstoryboard.storyboardc/VXf-bw-0d6-view-LbK-wk-QVu.nib</key>
 		<data>
-		fuwkbUmgG5MYheBQVfcQTeCcFpo=
+		pk/X6Z7QuAxzGoO3NQkfx/Bka4A=
+		</data>
+		<key>SDKstoryboard.storyboardc/lj1-u7-FhL-view-q85-uQ-4Mc.nib</key>
+		<data>
+		+gNC6TDkNsQojEXWmpZNRdSWkYQ=
 		</data>
 		<key>arrow.png</key>
 		<data>
@@ -219,11 +227,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qp5g5BhC27B8WN3lclRQXwW/UFw=
+			qe4Gpa+dZ7IFl/v+bnZHbufsz1U=
 			</data>
 			<key>hash2</key>
 			<data>
-			/JX1GzckwFk8CE2+3H1xqCzc9DQEme6ZtgXBbYgBs4s=
+			bkOcqxJjNqC7kUkEx8uJRg4K7CGX+6bhCQ/GHAyt8SU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -241,33 +249,55 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XP1yQLPNM3Dgy6eMHJufPYkmakY=
+			eYmf8rdFkHjN6Zh2AOxwVnWodJE=
 			</data>
 			<key>hash2</key>
 			<data>
-			1DZdq2xkZNspBQCpb5RlZS/B9jwEXI1AqPBmQv/PyWc=
+			ommwkDfPS3IIF0wXcvoOHoygyFGZIcvFIY0xpT4LyFs=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/UIViewController-VXf-bw-0d6.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			A66k+oJ73QV3/vamUYc5wCyCMIQ=
+			B7d7bV5hcKQUQRMkiVSV/kjxi+k=
 			</data>
 			<key>hash2</key>
 			<data>
-			LC2tnnvT99Tkiu6oUdpnLVLE9MU38vIBZpr4aRKzjAY=
+			BlQM4KCs+nMWTmvxKvXAVEfDRgiWusqIbHRabXQBwCI=
+			</data>
+		</dict>
+		<key>SDKstoryboard.storyboardc/UIViewController-lj1-u7-FhL.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7U/5oYfLOnH1jNwnNqqINZ/PLBs=
+			</data>
+			<key>hash2</key>
+			<data>
+			8PiJYff2v5UaDydl/xcPbgEtH+4Koqry2m0/whfAaDk=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/VXf-bw-0d6-view-LbK-wk-QVu.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fuwkbUmgG5MYheBQVfcQTeCcFpo=
+			pk/X6Z7QuAxzGoO3NQkfx/Bka4A=
 			</data>
 			<key>hash2</key>
 			<data>
-			cWbSY9iwrXzJ9/F9VDCYP0h1y5QEHDcgC8NsHH/yh10=
+			lxq69vKGmP/CVJRaAYDqng8uoynzzaCAfFRLTdeNfTM=
+			</data>
+		</dict>
+		<key>SDKstoryboard.storyboardc/lj1-u7-FhL-view-q85-uQ-4Mc.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+gNC6TDkNsQojEXWmpZNRdSWkYQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZHkdhCCxdPZ+D87adtgbyeOiVaZaGHwKwGZwro5dNnY=
 			</data>
 		</dict>
 		<key>arrow.png</key>

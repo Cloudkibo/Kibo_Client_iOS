@@ -10,6 +10,8 @@ import UIKit
 
 class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var btnback: UIBarButtonItem!
+    @IBOutlet weak var tbl_channels: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +23,10 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 66
+    }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -33,7 +39,7 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         if(indexPath.row==0)
         {
-        let cell=tableView.dequeueReusableCellWithIdentifier("channelsCell") as! ChannelsCell
+        let cell=tbl_channels.dequeueReusableCellWithIdentifier("channelsCell") as! ChannelsCell
             cell.lblChannelName.text="Ordering"
             cell.lbl_description.text="Your order is ready for pickup"
         
@@ -41,31 +47,31 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
         if(indexPath.row==1)
         {
-            let cell=tableView.dequeueReusableCellWithIdentifier("channelsCell1") as! ChannelsCell
+            let cell=tbl_channels.dequeueReusableCellWithIdentifier("channelsCell1") as! ChannelsCell
             
             return cell
         }
         if(indexPath.row==2)
         {
-            let cell=tableView.dequeueReusableCellWithIdentifier("channelsCell2") as! ChannelsCell
+            let cell=tbl_channels.dequeueReusableCellWithIdentifier("channelsCell2") as! ChannelsCell
             
             return cell
         }
         if(indexPath.row==3)
         {
-            let cell=tableView.dequeueReusableCellWithIdentifier("channelsCell3") as! ChannelsCell
+            let cell=tbl_channels.dequeueReusableCellWithIdentifier("channelsCell3") as! ChannelsCell
             
             return cell
         }
         if(indexPath.row==4)
         {
-            let cell=tableView.dequeueReusableCellWithIdentifier("channelsCell4") as! ChannelsCell
+            let cell=tbl_channels.dequeueReusableCellWithIdentifier("channelsCell4") as! ChannelsCell
             
             return cell
         }
         else
         {
-            let cell=tableView.dequeueReusableCellWithIdentifier("channelsCell5") as! ChannelsCell
+            let cell=tbl_channels.dequeueReusableCellWithIdentifier("channelsCell5") as! ChannelsCell
             
             return cell
         }
