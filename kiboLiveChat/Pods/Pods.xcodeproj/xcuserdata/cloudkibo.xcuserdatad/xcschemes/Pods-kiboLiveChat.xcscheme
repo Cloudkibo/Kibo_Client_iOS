@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AE4F0AF0934056BDE5F7B0CF003B2AE7"
+               BlueprintIdentifier = "CFF940AA664AC36C7D7F1F44553EF656"
                BuildableName = "Pods_kiboLiveChat.framework"
                BlueprintName = "Pods-kiboLiveChat"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AE4F0AF0934056BDE5F7B0CF003B2AE7"
+            BlueprintIdentifier = "CFF940AA664AC36C7D7F1F44553EF656"
             BuildableName = "Pods_kiboLiveChat.framework"
             BlueprintName = "Pods-kiboLiveChat"
             ReferencedContainer = "container:Pods.xcodeproj">

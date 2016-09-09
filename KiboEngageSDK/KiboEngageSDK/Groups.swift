@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SQLite
 import UIKit
+import SwiftyJSON
 
 public class Groups
 {
@@ -45,11 +46,14 @@ public class Groups
         print(header.description)
 
         Alamofire.request(.GET,"\(url)",headers:header) .validate()
-            .response { request, response, data, error in
+            .responseJSON { request in
+                //print(request)
+               // print(response)
+                //print(data)
+               // print(error)
                 print(request)
-                print(response)
-                print(data)
-                print(error)
+                print(JSON(request.data!))
+                
                 }
     }
 }
