@@ -14,9 +14,10 @@ class ViewController: UIViewController {
     @IBAction func showGroups(sender: AnyObject) {
    
         var groupsList=Groups.init()
-        groupsList.fetchGroups()
-      /* let s = UIStoryboard (
-            name: "SDKstoryboard", bundle: NSBundle(forClass: GroupsViewController.self)
+    groupsList.fetchGroups()
+
+       /*let s = UIStoryboard (
+name: "SDKstoryboard", bundle: NSBundle(forClass: GroupsViewController.self)
         )
         
         let vc = s.instantiateInitialViewController()! as! GroupsViewController
@@ -25,6 +26,8 @@ class ViewController: UIViewController {
  */
         
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
