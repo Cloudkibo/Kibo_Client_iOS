@@ -10,18 +10,12 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
-		<key>48562B48F1C55EC2EA61AC2E</key>
+		<key>49E230E194ACD82B8160AB65</key>
 		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
+			<key>fileRef</key>
+			<string>575BA4C784BDDDD170FA2D76</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-kiboLiveChat.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>56D8DC38F82476D060F8DB12</key>
 		<dict>
@@ -52,6 +46,19 @@ fi
 </string>
 			<key>showEnvVarsInLog</key>
 			<string>0</string>
+		</dict>
+		<key>575BA4C784BDDDD170FA2D76</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods_kiboLiveChat.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
 		<key>7132E0B31D80EC8800B8AD4C</key>
 		<dict>
@@ -212,7 +219,7 @@ fi
 			<key>files</key>
 			<array>
 				<string>7132E0B31D80EC8800B8AD4C</string>
-				<string>C6FC8C5884C1E01F57B4E717</string>
+				<string>49E230E194ACD82B8160AB65</string>
 			</array>
 			<key>isa</key>
 			<string>PBXFrameworksBuildPhase</string>
@@ -1114,7 +1121,7 @@ fi
 		<dict>
 			<key>children</key>
 			<array>
-				<string>48562B48F1C55EC2EA61AC2E</string>
+				<string>575BA4C784BDDDD170FA2D76</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1175,13 +1182,6 @@ fi
 			<string>Pods/Target Support Files/Pods-kiboLiveChat/Pods-kiboLiveChat.release.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C6FC8C5884C1E01F57B4E717</key>
-		<dict>
-			<key>fileRef</key>
-			<string>48562B48F1C55EC2EA61AC2E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
 		</dict>
 		<key>E655E0A0AF7433E504435F25</key>
 		<dict>

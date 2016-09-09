@@ -41,10 +41,9 @@ public class Groups
          'kibo-client-id': 'cd89f71715f2014725163952',
  */
         var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
-        var hhh=["authorization":"\(header)"]
+        var hhh=["headers":"\(header)"]
         print(header.description)
-        Alamofire.request(.GET,"http://google.com") .validate()
-            .response { request, response, data, error in
+        Alamofire.request(.GET,"\(url)",headers:header).validate().response { request, response, data, error in
                 print(request)
                 print(response)
                 print(data)

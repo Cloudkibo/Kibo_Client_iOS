@@ -1,0 +1,6 @@
+framework module Pods_kiboLiveChat {
+  umbrella header "Pods-kiboLiveChat-umbrella.h"
+
+  export *
+  module * { export * }
+}

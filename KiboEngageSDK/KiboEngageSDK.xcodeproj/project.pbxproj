@@ -21,6 +21,7 @@
 		713F3DF61D7B85320072C9E9 /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3DEB1D7B85320072C9E9 /* KiboEngageSDK.framework */; };
 		713F3DFB1D7B85330072C9E9 /* KiboEngageSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3DFA1D7B85330072C9E9 /* KiboEngageSDKTests.swift */; };
 		713F3E061D7B88110072C9E9 /* KiboSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E051D7B88110072C9E9 /* KiboSDK.swift */; };
+		7146F5311D82DB3F00CDF370 /* Pods_KiboEngageSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7162D4771D7FE2E6001BF40D /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162D4761D7FE2E6001BF40D /* GroupsViewController.swift */; };
 		7162D47E1D800811001BF40D /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7162D47D1D800811001BF40D /* arrow.png */; };
 		718CE11C1D8014F700CA380C /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718CE11B1D8014F700CA380C /* GroupsCell.swift */; };
@@ -35,6 +36,19 @@
 			remoteInfo = KiboEngageSDK;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7146F5301D82DB3300CDF370 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7146F5311D82DB3F00CDF370 /* Pods_KiboEngageSDK.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		71117CB51D8117AD00868E36 /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +201,7 @@
 				713F3DE81D7B85320072C9E9 /* Headers */,
 				713F3DE91D7B85320072C9E9 /* Resources */,
 				891C0CE36E21F17C6835F1D6 /* [CP] Copy Pods Resources */,
+				7146F5301D82DB3300CDF370 /* CopyFiles */,
 			);
 			buildRules = (
 			);
