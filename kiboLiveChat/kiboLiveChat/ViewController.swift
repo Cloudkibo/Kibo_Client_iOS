@@ -14,17 +14,21 @@ class ViewController: UIViewController {
     @IBAction func showGroups(sender: AnyObject) {
    
         var groupsList=Groups.init()
-       // groupsList.fetchGroups()
-       let s = UIStoryboard (
+       groupsList.fetchGroups()
+        var messageChann=messageChannels.init()
+        groupsList.fetchmessageChannels()
+       /*let s = UIStoryboard (
             name: "SDKstoryboard", bundle: NSBundle(forClass: GroupsViewController.self)
         )
         
         let vc = s.instantiateInitialViewController()! as! GroupsViewController
         
         self.presentViewController(vc, animated: true, completion: nil)
- 
+ */
         
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
