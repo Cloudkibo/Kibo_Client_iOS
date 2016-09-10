@@ -26,6 +26,23 @@ public class KiboSDK{
     
     public init (appID:String,appSecret:String,clientID:String){
         print("Kibo Engage SDK has been initialised")
+        
+        if(DatabaseObjectInitialiser.getInstance().socketObj == nil)
+        {
+            print("socket is nillll", terminator: "")
+            //dispatch_async(dispatch_get_main_queue())
+            //{
+            DatabaseObjectInitialiser.getInstance().socketObj=SocketService(url:"\(Constants.socketurl)")
+            ///socketObj.connect()
+            //            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,0))
+            //{
+            DatabaseObjectInitialiser.getInstance().socketObj.addHandlers()
+            //socketObj.addWebRTCHandlers()
+            //}
+            //}
+        }
+        
+        
         //self.kiboAppID=appID
         //self.kiboAppSecret=appSecret
         //self.kiboClientID=clientID

@@ -94,6 +94,9 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
 @import CoreGraphics;
+@import Foundation;
+@import ObjectiveC;
+@import Dispatch;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -129,6 +132,254 @@ SWIFT_CLASS("_TtC13KiboEngageSDK20GroupsViewController")
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section;
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface NSDictionary (SWIFT_EXTENSION(KiboEngageSDK))
+@end
+
+
+SWIFT_CLASS("_TtC13KiboEngageSDK16SocketAckEmitter")
+@interface SocketAckEmitter : NSObject
+- (void)with:(NSArray * _Nonnull)items;
+@end
+
+@class NSArray;
+
+SWIFT_CLASS("_TtC13KiboEngageSDK14SocketAnyEvent")
+@interface SocketAnyEvent : NSObject
+@property (nonatomic, readonly, copy) NSString * _Null_unspecified event;
+@property (nonatomic, readonly, strong) NSArray * _Nullable items;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+@end
+
+@protocol SocketEngineClient;
+@class NSHTTPCookie;
+@class NSTimer;
+@class NSData;
+enum SocketEnginePacketType : NSInteger;
+
+SWIFT_PROTOCOL("_TtP13KiboEngageSDK16SocketEngineSpec_")
+@protocol SocketEngineSpec
+@property (nonatomic, weak) id <SocketEngineClient> _Nullable client;
+@property (nonatomic, readonly) BOOL closed;
+@property (nonatomic, readonly) BOOL connected;
+@property (nonatomic, readonly, copy) NSArray<NSHTTPCookie *> * _Nullable cookies;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nullable extraHeaders;
+@property (nonatomic, readonly) BOOL fastUpgrade;
+@property (nonatomic, readonly) BOOL forcePolling;
+@property (nonatomic, readonly) BOOL forceWebsockets;
+@property (nonatomic, readonly, strong) dispatch_queue_t _Null_unspecified parseQueue;
+@property (nonatomic, readonly, strong) NSTimer * _Nullable pingTimer;
+@property (nonatomic, readonly) BOOL polling;
+@property (nonatomic, readonly) BOOL probing;
+@property (nonatomic, readonly, strong) dispatch_queue_t _Null_unspecified emitQueue;
+@property (nonatomic, readonly, strong) dispatch_queue_t _Null_unspecified handleQueue;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sid;
+@property (nonatomic, readonly, copy) NSString * _Nonnull socketPath;
+@property (nonatomic, readonly, copy) NSString * _Nonnull urlPolling;
+@property (nonatomic, readonly, copy) NSString * _Nonnull urlWebSocket;
+@property (nonatomic, readonly) BOOL websocket;
+- (nonnull instancetype)initWithClient:(id <SocketEngineClient> _Nonnull)client url:(NSString * _Nonnull)url options:(NSDictionary * _Nullable)options;
+- (void)close:(NSString * _Nonnull)reason;
+- (void)didError:(NSString * _Nonnull)error;
+- (void)doFastUpgrade;
+- (void)flushWaitingForPostToWebSocket;
+- (void)open:(NSDictionary<NSString *, id> * _Nullable)opts;
+- (void)parseEngineData:(NSData * _Nonnull)data;
+- (void)parseEngineMessage:(NSString * _Nonnull)message fromPolling:(BOOL)fromPolling;
+- (void)send:(NSString * _Nonnull)msg withData:(NSArray<NSData *> * _Nonnull)datas;
+- (void)write:(NSString * _Nonnull)msg withType:(enum SocketEnginePacketType)type withData:(NSArray<NSData *> * _Nonnull)data;
+@end
+
+@class NSURLSession;
+@class WebSocket;
+@class NSError;
+
+SWIFT_CLASS("_TtC13KiboEngageSDK12SocketEngine")
+@interface SocketEngine : NSObject <SocketEngineSpec>
+@property (nonatomic, readonly, strong) dispatch_queue_t _Null_unspecified emitQueue;
+@property (nonatomic, readonly, strong) dispatch_queue_t _Null_unspecified handleQueue;
+@property (nonatomic, readonly, strong) dispatch_queue_t _Null_unspecified parseQueue;
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull postWait;
+@property (nonatomic) BOOL waitingForPoll;
+@property (nonatomic) BOOL waitingForPost;
+@property (nonatomic, readonly) BOOL closed;
+@property (nonatomic, readonly) BOOL connected;
+@property (nonatomic, readonly, copy) NSArray<NSHTTPCookie *> * _Nullable cookies;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nullable extraHeaders;
+@property (nonatomic, readonly) BOOL fastUpgrade;
+@property (nonatomic, readonly) BOOL forcePolling;
+@property (nonatomic, readonly) BOOL forceWebsockets;
+@property (nonatomic, readonly) BOOL invalidated;
+@property (nonatomic, readonly, strong) NSTimer * _Nullable pingTimer;
+@property (nonatomic, readonly) BOOL polling;
+@property (nonatomic, readonly) BOOL probing;
+@property (nonatomic, readonly, strong) NSURLSession * _Nullable session;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sid;
+@property (nonatomic, readonly, copy) NSString * _Nonnull socketPath;
+@property (nonatomic, readonly, copy) NSString * _Nonnull urlPolling;
+@property (nonatomic, readonly, copy) NSString * _Nonnull urlWebSocket;
+@property (nonatomic, readonly) BOOL websocket;
+@property (nonatomic, readonly, strong) WebSocket * _Nullable ws;
+@property (nonatomic, weak) id <SocketEngineClient> _Nullable client;
+- (nonnull instancetype)initWithClient:(id <SocketEngineClient> _Nonnull)client url:(NSString * _Nonnull)url options:(NSDictionary * _Nullable)options;
+- (void)close:(NSString * _Nonnull)reason;
+- (void)didError:(NSString * _Nonnull)error;
+- (void)doFastUpgrade;
+- (void)flushWaitingForPostToWebSocket;
+- (void)open:(NSDictionary<NSString *, id> * _Nullable)opts;
+- (void)parseEngineData:(NSData * _Nonnull)data;
+- (void)parseEngineMessage:(NSString * _Nonnull)message fromPolling:(BOOL)fromPolling;
+
+/// Send an engine message (4)
+- (void)send:(NSString * _Nonnull)msg withData:(NSArray<NSData *> * _Nonnull)datas;
+
+/// Write a message, independent of transport.
+- (void)write:(NSString * _Nonnull)msg withType:(enum SocketEnginePacketType)type withData:(NSArray<NSData *> * _Nonnull)data;
+- (void)websocketDidConnect:(WebSocket * _Nonnull)socket;
+- (void)websocketDidDisconnect:(WebSocket * _Nonnull)socket error:(NSError * _Nullable)error;
+@end
+
+
+SWIFT_PROTOCOL("_TtP13KiboEngageSDK18SocketEngineClient_")
+@protocol SocketEngineClient
+- (void)engineDidError:(NSString * _Nonnull)reason;
+- (void)engineDidClose:(NSString * _Nonnull)reason;
+@optional
+- (void)engineDidOpen:(NSString * _Nonnull)reason;
+@required
+- (void)parseEngineMessage:(NSString * _Nonnull)msg;
+- (void)parseEngineBinaryData:(NSData * _Nonnull)data;
+@end
+
+typedef SWIFT_ENUM(NSInteger, SocketEnginePacketType) {
+  SocketEnginePacketTypeOpen = 0,
+  SocketEnginePacketTypeClose = 1,
+  SocketEnginePacketTypePing = 2,
+  SocketEnginePacketTypePong = 3,
+  SocketEnginePacketTypeMessage = 4,
+  SocketEnginePacketTypeUpgrade = 5,
+  SocketEnginePacketTypeNoop = 6,
+};
+
+
+enum SocketIOClientStatus : NSInteger;
+@class NSUUID;
+
+SWIFT_CLASS("_TtC13KiboEngageSDK14SocketIOClient")
+@interface SocketIOClient : NSObject <SocketEngineClient>
+@property (nonatomic, readonly, copy) NSString * _Nonnull socketURL;
+@property (nonatomic, readonly, strong) id <SocketEngineSpec> _Nullable engine;
+@property (nonatomic, readonly) enum SocketIOClientStatus status;
+@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable connectParams;
+@property (nonatomic) BOOL forceNew;
+@property (nonatomic, copy) NSString * _Nonnull nsp;
+@property (nonatomic) BOOL reconnects;
+@property (nonatomic) NSInteger reconnectWait;
+@property (nonatomic, readonly, copy) NSString * _Nullable sid;
+
+/// Not so type safe way to create a SocketIOClient, meant for Objective-C compatiblity. If using Swift it's recommended to use init(var socketURL: String, options: Set<SocketIOClientOption>)
+- (nonnull instancetype)initWithSocketURL:(NSString * _Nonnull)socketURL options:(NSDictionary * _Nullable)options;
+- (void)close;
+
+/// Connect to the server.
+- (void)connect;
+
+/// Connect to the server. If we aren't connected after timeoutAfter, call handler
+- (void)connectWithTimeoutAfter:(NSInteger)timeoutAfter withTimeoutHandler:(void (^ _Nullable)(void))handler;
+
+/// Disconnects the socket. Only reconnect the same socket if you know what you're doing. Will turn off automatic reconnects.
+- (void)disconnect;
+
+/// Same as emit, but meant for Objective-C
+- (void)emit:(NSString * _Nonnull)event withItems:(NSArray * _Nonnull)items;
+
+/// Same as emitWithAck, but for Objective-C
+- (void (^ _Nonnull)(uint64_t, void (^ _Nonnull)(NSArray * _Nonnull)))emitWithAck:(NSString * _Nonnull)event withItems:(NSArray * _Nonnull)items;
+- (void)engineDidClose:(NSString * _Nonnull)reason;
+
+/// error
+- (void)engineDidError:(NSString * _Nonnull)reason;
+
+/// Causes an event to be handled. Only use if you know what you're doing.
+- (void)handleEvent:(NSString * _Nonnull)event data:(NSArray * _Nonnull)data isInternalMessage:(BOOL)isInternalMessage withAck:(NSInteger)ack;
+
+/// Leaves nsp and goes back to /
+- (void)leaveNamespace;
+
+/// Joins namespace
+- (void)joinNamespace:(NSString * _Nonnull)namespace_;
+
+/// Removes handler(s)
+- (void)off:(NSString * _Nonnull)event;
+
+/// Removes a handler with the specified UUID gotten from an on or once
+- (void)offWithId:(NSUUID * _Nonnull)id;
+
+/// Adds a handler for an event. Returns: A unique id for the handler
+- (NSUUID * _Nonnull)on:(NSString * _Nonnull)event callback:(void (^ _Nonnull)(NSArray * _Nonnull, SocketAckEmitter * _Nonnull))callback;
+
+/// Adds a single-use handler for an event. Returns: A unique id for the handler
+- (NSUUID * _Nonnull)once:(NSString * _Nonnull)event callback:(void (^ _Nonnull)(NSArray * _Nonnull, SocketAckEmitter * _Nonnull))callback;
+
+/// Adds a handler that will be called on every event.
+- (void)onAny:(void (^ _Nonnull)(SocketAnyEvent * _Nonnull))handler;
+
+/// Same as connect
+- (void)open;
+- (void)parseEngineMessage:(NSString * _Nonnull)msg;
+- (void)parseEngineBinaryData:(NSData * _Nonnull)data;
+
+/// Tries to reconnect to the server.
+- (void)reconnect;
+
+/// Removes all handlers. Can be used after disconnecting to break any potential remaining retain cycles.
+- (void)removeAllHandlers;
+@end
+
+
+@interface SocketIOClient (SWIFT_EXTENSION(KiboEngageSDK))
+@end
+
+typedef SWIFT_ENUM(NSInteger, SocketIOClientStatus) {
+  SocketIOClientStatusNotConnected = 0,
+  SocketIOClientStatusClosed = 1,
+  SocketIOClientStatusConnecting = 2,
+  SocketIOClientStatusConnected = 3,
+  SocketIOClientStatusReconnecting = 4,
+};
+
+@class NSURL;
+@class NSStream;
+
+SWIFT_CLASS("_TtC13KiboEngageSDK9WebSocket")
+@interface WebSocket : NSObject <NSStreamDelegate>
++ (NSString * _Nonnull)ErrorDomain;
+@property (nonatomic, strong) dispatch_queue_t _Null_unspecified queue;
+@property (nonatomic, copy) void (^ _Nullable onConnect)(void);
+@property (nonatomic, copy) void (^ _Nullable onDisconnect)(NSError * _Nullable);
+@property (nonatomic, copy) void (^ _Nullable onText)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable onData)(NSData * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable onPong)(void);
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull headers;
+@property (nonatomic) BOOL voipEnabled;
+@property (nonatomic) BOOL selfSignedSSL;
+@property (nonatomic, copy) NSString * _Nullable origin;
+@property (nonatomic, readonly) BOOL isConnected;
+@property (nonatomic, readonly, strong) NSURL * _Nonnull currentURL;
+- (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url protocols:(NSArray<NSString *> * _Nullable)protocols OBJC_DESIGNATED_INITIALIZER;
+
+/// Connect to the websocket server on a background thread
+- (void)connect;
+
+/// write a string to the websocket. This sends it as a text frame.
+- (void)writeString:(NSString * _Nonnull)str;
+
+/// write binary data to the websocket. This sends it as a binary frame.
+- (void)writeData:(NSData * _Nonnull)data;
+- (void)writePing:(NSData * _Nonnull)data;
+- (void)stream:(NSStream * _Nonnull)aStream handleEvent:(NSStreamEvent)eventCode;
 @end
 
 #pragma clang diagnostic pop

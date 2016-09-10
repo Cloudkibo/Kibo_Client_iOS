@@ -13,7 +13,7 @@ internal class DatabaseObjectInitialiser
     var appid=""
     var clientid=""
     var secretid=""
-    
+    var socketObj:SocketService!=nil
     var database:DatabaseHandler!
     static let sharedInstance = DatabaseObjectInitialiser()
     class func getInstance() -> DatabaseObjectInitialiser
