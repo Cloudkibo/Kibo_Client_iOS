@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "544D7853168E6A9811F6BF2D59BC5BFE"
-               BuildableName = "Pods_kiboLiveChat.framework"
-               BlueprintName = "Pods-kiboLiveChat"
+               BlueprintIdentifier = "2E7981FD2A319450D301B49D740FC414"
+               BuildableName = "SQLite.framework"
+               BlueprintName = "SQLite.swift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "544D7853168E6A9811F6BF2D59BC5BFE"
-            BuildableName = "Pods_kiboLiveChat.framework"
-            BlueprintName = "Pods-kiboLiveChat"
+            BlueprintIdentifier = "2E7981FD2A319450D301B49D740FC414"
+            BuildableName = "SQLite.framework"
+            BlueprintName = "SQLite.swift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

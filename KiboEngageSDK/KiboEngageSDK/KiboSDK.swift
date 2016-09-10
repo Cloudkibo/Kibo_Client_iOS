@@ -29,7 +29,7 @@ public class KiboSDK{
         //self.kiboAppID=appID
         //self.kiboAppSecret=appSecret
         //self.kiboClientID=clientID
-       // DatabaseObjectInitialiser.getInstance()
+        DatabaseObjectInitialiser.getDB()
        // DatabaseObjectInitialiser.getInstance().database.storeCredentials(appID, appSecret: appSecret, appClientID: clientID)
       /*  let next = self.storyboard?.instantiateViewControllerWithIdentifier("MainV2") as! GroupsViewController
         
