@@ -14,16 +14,16 @@ class ViewController: UIViewController {
     @IBAction func showGroups(sender: AnyObject) {
    
         var groupsList=Groups.init()
-    groupsList.fetchGroups()
+   // groupsList.fetchGroups()
 
-       /*let s = UIStoryboard (
+       let s = UIStoryboard (
 name: "SDKstoryboard", bundle: NSBundle(forClass: GroupsViewController.self)
         )
         
         let vc = s.instantiateInitialViewController()! as! GroupsViewController
         
         self.presentViewController(vc, animated: true, completion: nil)
- */
+ 
         
     }
     

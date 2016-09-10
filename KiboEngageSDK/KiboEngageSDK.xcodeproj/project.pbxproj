@@ -26,6 +26,8 @@
 		7146F5311D82DB3F00CDF370 /* Pods_KiboEngageSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7162D4771D7FE2E6001BF40D /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162D4761D7FE2E6001BF40D /* GroupsViewController.swift */; };
 		7162D47E1D800811001BF40D /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7162D47D1D800811001BF40D /* arrow.png */; };
+		7181CD9A1D83C58F002A0D05 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7181CD991D83C58F002A0D05 /* Images.xcassets */; };
+		7181CD9C1D83C710002A0D05 /* ChatsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7181CD9B1D83C710002A0D05 /* ChatsDetailViewController.swift */; };
 		718CE11C1D8014F700CA380C /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718CE11B1D8014F700CA380C /* GroupsCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		713F3E051D7B88110072C9E9 /* KiboSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KiboSDK.swift; sourceTree = "<group>"; };
 		7162D4761D7FE2E6001BF40D /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		7162D47D1D800811001BF40D /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		7181CD991D83C58F002A0D05 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7181CD9B1D83C710002A0D05 /* ChatsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsDetailViewController.swift; sourceTree = "<group>"; };
 		718CE11B1D8014F700CA380C /* GroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
 		71B966911D80DD310046CE1D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		71F43E721D7FD76E006BEEE2 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "../../../Library/Developer/Xcode/DerivedData/KiboEngageSDK-cpznbyfeywhppjccyjscaezptqdk/Build/Products/Debug-iphoneos/SQLite.swift/SQLite.framework"; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 		713F3DED1D7B85320072C9E9 /* KiboEngageSDK */ = {
 			isa = PBXGroup;
 			children = (
+				7181CD991D83C58F002A0D05 /* Images.xcassets */,
+				7181CD981D83C4D6002A0D05 /* Resources */,
 				7162D47D1D800811001BF40D /* arrow.png */,
 				713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */,
 				713F3DF01D7B85320072C9E9 /* Info.plist */,
@@ -169,6 +175,7 @@
 				718CE11B1D8014F700CA380C /* GroupsCell.swift */,
 				71117CB51D8117AD00868E36 /* ChannelsViewController.swift */,
 				71117CB71D81186500868E36 /* ChannelsCell.swift */,
+				7181CD9B1D83C710002A0D05 /* ChatsDetailViewController.swift */,
 			);
 			path = KiboEngageSDK;
 			sourceTree = "<group>";
@@ -180,6 +187,13 @@
 				713F3DFC1D7B85330072C9E9 /* Info.plist */,
 			);
 			path = KiboEngageSDKTests;
+			sourceTree = "<group>";
+		};
+		7181CD981D83C4D6002A0D05 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7181CD9A1D83C58F002A0D05 /* Images.xcassets in Resources */,
 				713486461D7FC04E005E632F /* SDKstoryboard.storyboard in Resources */,
 				7162D47E1D800811001BF40D /* arrow.png in Resources */,
 			);
@@ -330,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				713486441D7FBF8B005E632F /* Constants.swift in Sources */,
+				7181CD9C1D83C710002A0D05 /* ChatsDetailViewController.swift in Sources */,
 				71117CB81D81186500868E36 /* ChannelsCell.swift in Sources */,
 				713F3E061D7B88110072C9E9 /* KiboSDK.swift in Sources */,
 				71117CB61D8117AD00868E36 /* ChannelsViewController.swift in Sources */,
