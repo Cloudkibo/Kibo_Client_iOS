@@ -25,12 +25,12 @@ class SocketService{
     
     
     init(url:String){
-        socket=SocketIOClient(socketURL: "\(url)"/*, options: [.Log(true)]*/)
+        socket=SocketIOClient(socketURL: "\(url)", options: [.Log(true)])
         //areYouFreeForCall=true
        // isBusy=false
        self.socket.on("connect") {data, ack in
             //isSocketConnected=true
-            NSLog("connected to socket")
+            print("connected to socket")
             
             //if(globalChatRoomJoined==false)
             //{
@@ -142,6 +142,11 @@ class SocketService{
             // self.socket.connect()
             //self.socket.emit("message", ["msg":"hangup"])
             
+        }
+        //joined
+        self.socket.on("joined") {data, ack in
+            //NSLog("disconnected from socket")
+            print("joined room")
         }
     }
 }

@@ -24,7 +24,7 @@ public class KiboSDK{
         
     ]*/
     
-    public init (appID:String,appSecret:String,clientID:String){
+    public init (appID:String,appSecret:String,clientID:String,companyname:String,companyemail:String){
         print("Kibo Engage SDK has been initialised")
         
         if(DatabaseObjectInitialiser.getInstance().socketObj == nil)

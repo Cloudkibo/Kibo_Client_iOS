@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         application.statusBarHidden = true
-        KiboSDK.init(appID: "5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59", appSecret: "jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx", clientID: "cd89f71715f2014725163952")
+        KiboSDK.init(appID: "5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59", appSecret: "jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx", clientID: "cd89f71715f2014725163952",companyname: "",companyemail: "")
         return true
     }
 

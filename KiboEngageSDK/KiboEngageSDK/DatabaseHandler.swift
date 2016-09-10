@@ -62,7 +62,7 @@ internal class DatabaseHandler:NSObject
     
     func createCredentialsTable()
     {
-       
+       print("creating credentials table")
         let kiboAppID = Expression<String>("kiboAppID")
         let kiboAppSecret = Expression<String>("kiboAppSecret")
         let kiboClientID = Expression<String>("kiboClientID")
@@ -81,7 +81,7 @@ internal class DatabaseHandler:NSObject
         }
         catch
         {
-            NSLog("error in creating credentials table")
+            print("error in creating credentials table")
             
         }
         
@@ -142,24 +142,28 @@ internal class DatabaseHandler:NSObject
         }
         catch
         {
-            NSLog("error in creating credentials table")
+            print("error in creating credentials table")
             
         }
         
         
     }
     
-    func storeCredentials(appID:String,appSecret:String,appClientID:String){
+    func storeCredentials(appID:String,appSecret:String,appClientID:String,companyname:String,companyemail:String){
       
         let kiboAppID = Expression<String>("kiboAppID")
         let kiboAppSecret = Expression<String>("kiboAppSecret")
         let kiboClientID = Expression<String>("kiboClientID")
-
+        let companyName = Expression<String>("companyName")
+        let companyEmail = Expression<String>("companyEmail")
         
         do{
         let rowid = try DatabaseObjectInitialiser.getInstance() .database.credentials.insert(kiboAppID<-appID,
             kiboAppSecret<-appSecret,
-            kiboClientID<-appClientID
+            kiboClientID<-appClientID,
+            companyName<-companyname,
+            companyEmail<-companyemail
+            
         //lastname<-"",
         //email<-json["email"].string!,
         )
@@ -169,5 +173,32 @@ internal class DatabaseHandler:NSObject
         }
         
     }
+    
+    
+    func storeGroups(deptid:String,deptname:String,deptDesc:String,compID:String,creeateby:String,datecreation:NSDate,delStatus:Bool){
+        let _id = Expression<String>("_id")
+        let deptname = Expression<String>("deptname")
+        let deptdescription = Expression<String>("deptdescription")
+        let companyid = Expression<String>("companyid")
+        let createdby = Expression<String>("createdby")
+        let creationdate = Expression<NSDate>("creationdate")
+        let deleteStatus = Expression<Bool>("deleteStatus")
+        do{
+            let rowid = try DatabaseObjectInitialiser.getInstance().database.groups.insert(_id<-deptid,
+                deptname<-deptname,
+                deptdescription<-deptDesc,
+                companyid<-compID,
+                createdby<-creeateby,
+                creationdate<-datecreation,
+                deleteStatus<-delStatus
+                
+            )
+        }
+        catch{
+            NSLog("error in saving groups data")
+        }
+        
+    }
+    
     }
 
