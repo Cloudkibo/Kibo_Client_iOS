@@ -13,9 +13,7 @@ class ViewController: UIViewController {
 
     @IBAction func showGroups(sender: AnyObject) {
    
-        var groupsList=Groups.init()
-   // groupsList.fetchGroups()
-
+       
        let s = UIStoryboard (
 name: "SDKstoryboard", bundle: NSBundle(forClass: GroupsViewController.self)
         )
@@ -32,7 +30,11 @@ name: "SDKstoryboard", bundle: NSBundle(forClass: GroupsViewController.self)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        var groupsList=Groups.init()
+        groupsList.fetchGroups()
+        var messgeChannelsList=MessageChannels.init()
+        messgeChannelsList.fetchMessageChannels()
+
     }
   
 

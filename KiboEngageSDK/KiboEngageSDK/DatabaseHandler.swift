@@ -18,6 +18,7 @@ internal class DatabaseHandler:NSObject
     var dbPath:String
     var credentials:Table!
     var groups:Table!
+    var messageChannels:Table!
     var userschats:Table!
     var allcontacts:Table!
     var callHistory:Table!
@@ -50,14 +51,7 @@ internal class DatabaseHandler:NSObject
         
         createCredentialsTable()
         createGroupsTable()
-        /*createAllContactsTable()
-        createContactListsTable()
-        createUserChatTable()
-        createMessageSeenStatusTable()
-        createCallHistoryTable()
-        createFileTable()
-        //createAllContactsTable()
-        */
+        createMessageChannelsTable()
     }
     
     func createCredentialsTable()
@@ -121,10 +115,10 @@ internal class DatabaseHandler:NSObject
         let deptdescription = Expression<String>("deptdescription")
         let companyid = Expression<String>("companyid")
         let createdby = Expression<String>("createdby")
-        let creationdate = Expression<NSDate>("creationdate")
-        let deleteStatus = Expression<Bool>("deleteStatus")
+        let creationdate = Expression<String>("creationdate")
+        let deleteStatus = Expression<String>("deleteStatus")
         
-        self.groups = Table("credentials")
+        self.groups = Table("groups")
         
         do{
             try db.run(groups.create(ifNotExists: true) { t in
@@ -149,6 +143,43 @@ internal class DatabaseHandler:NSObject
         
     }
     
+    func createMessageChannelsTable()
+    {
+        let _id = Expression<String>("_id")
+        let msg_channel_name = Expression<String>("msg_channel_name")
+        let msg_channel_description = Expression<String>("msg_channel_description")
+        let companyid = Expression<String>("companyid")
+        let groupid = Expression<String>("groupid")
+        let createdby = Expression<String>("createdby")
+        let creationdate = Expression<String>("creationdate")
+        let deleteStatus = Expression<String>("deleteStatus")
+        
+        self.messageChannels = Table("messageChannels")
+        
+        do{
+            try db.run(messageChannels.create(ifNotExists: true) { t in
+                
+                t.column(_id, unique: true)
+                t.column(msg_channel_name)
+                t.column(msg_channel_description)
+                t.column(companyid)
+                t.column(groupid)
+                t.column(createdby)
+                t.column(creationdate)
+                t.column(deleteStatus)
+                
+                })
+            
+        }
+        catch
+        {
+            print("error in creating credentials table")
+            
+        }
+  
+    }
+    
+    
     func storeCredentials(appID:String,appSecret:String,appClientID:String,companyname:String,companyemail:String){
       
         let kiboAppID = Expression<String>("kiboAppID")
@@ -158,7 +189,7 @@ internal class DatabaseHandler:NSObject
         let companyEmail = Expression<String>("companyEmail")
         
         do{
-        let rowid = try DatabaseObjectInitialiser.getInstance() .database.credentials.insert(kiboAppID<-appID,
+             let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(groups.insert(kiboAppID<-appID,
             kiboAppSecret<-appSecret,
             kiboClientID<-appClientID,
             companyName<-companyname,
@@ -166,7 +197,7 @@ internal class DatabaseHandler:NSObject
             
         //lastname<-"",
         //email<-json["email"].string!,
-        )
+        ))
         }
         catch{
             NSLog("error in saving credentials")
@@ -175,30 +206,183 @@ internal class DatabaseHandler:NSObject
     }
     
     
-    func storeGroups(deptid:String,deptname:String,deptDesc:String,compID:String,creeateby:String,datecreation:NSDate,delStatus:Bool){
+    func storeGroups(deptid:String,deptname1:String,deptDesc:String,compID:String,creeateby:String,datecreation:String,delStatus:String){
         let _id = Expression<String>("_id")
         let deptname = Expression<String>("deptname")
         let deptdescription = Expression<String>("deptdescription")
         let companyid = Expression<String>("companyid")
         let createdby = Expression<String>("createdby")
-        let creationdate = Expression<NSDate>("creationdate")
-        let deleteStatus = Expression<Bool>("deleteStatus")
+        let creationdate = Expression<String>("creationdate")
+        let deleteStatus = Expression<String>("deleteStatus")
+        
         do{
-            let rowid = try DatabaseObjectInitialiser.getInstance().database.groups.insert(_id<-deptid,
-                deptname<-deptname,
+            let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(groups.insert(_id<-deptid,
+                deptname<-deptname1,
                 deptdescription<-deptDesc,
                 companyid<-compID,
                 createdby<-creeateby,
                 creationdate<-datecreation,
                 deleteStatus<-delStatus
                 
-            )
+            ))
         }
         catch{
-            NSLog("error in saving groups data")
+            NSLog("error in saving groups data \(error)")
         }
         
     }
+
+    func storeMessageChannel(channelid:String,channelname:String,channelDesc:String,compID:String,groupID:String,creeateby:String,datecreation:String,delStatus:String){
+     
+        
+        let _id = Expression<String>("_id")
+        let msg_channel_name = Expression<String>("msg_channel_name")
+        let msg_channel_description = Expression<String>("msg_channel_description")
+        let companyid = Expression<String>("companyid")
+        let groupid = Expression<String>("groupid")
+        let createdby = Expression<String>("createdby")
+        let creationdate = Expression<String>("creationdate")
+        let deleteStatus = Expression<String>("deleteStatus")
+        do{
+            //sqliteDB.db.run(tbl_accounts.insert(
+            let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(messageChannels.insert(_id<-channelid,
+                msg_channel_name<-channelname,
+                msg_channel_description<-channelDesc,
+                companyid<-compID,
+                groupid<-groupID,
+                createdby<-creeateby,
+                creationdate<-datecreation,
+                deleteStatus<-delStatus
+                
+            ))
+        }
+        catch{
+            NSLog("error in saving message channels data \(error)")
+        }
+        
+    }
+    
+    func getGroupsObjectList()->[[String:AnyObject]]
+    {
+    
+        var groupsList=[[String:AnyObject]]()
+    
+        let _id = Expression<String>("_id")
+        let deptname = Expression<String>("deptname")
+        let deptdescription = Expression<String>("deptdescription")
+        let companyid = Expression<String>("companyid")
+        let createdby = Expression<String>("createdby")
+        let creationdate = Expression<String>("creationdate")
+        let deleteStatus = Expression<String>("deleteStatus")
+        
+        self.groups = Table("groups")
+        do
+        {for groupsnames in try self.db.prepare(self.groups){
+            var newEntry: [String: AnyObject] = [:]
+            newEntry["_id"]=groupsnames.get(_id)
+            newEntry["deptname"]=groupsnames.get(deptname)
+            newEntry["deptdescription"]=groupsnames.get(deptdescription)
+            newEntry["companyid"]=groupsnames.get(companyid)
+            newEntry["createdby"]=groupsnames.get(createdby)
+            newEntry["creationdate"]=groupsnames.get(creationdate)
+            newEntry["deleteStatus"]=groupsnames.get(deleteStatus)
+            groupsList.append(newEntry)
+        
+        
+        }
+        }
+        catch{
+            print("failed to get groups data")
+        }
+    print("groupsList count is \(groupsList.count)")
+    return groupsList
+        /*do{
+            try db.run(groups.create(ifNotExists: true) { t in
+                
+                t.column(_id, unique: true)
+                t.column(deptname)
+                t.column(deptdescription)
+                t.column(companyid)
+                t.column(createdby)
+                t.column(creationdate)
+                t.column(deleteStatus)
+                
+                })
+            
+        }
+        catch
+        {
+            print("error in creating credentials table")
+            
+        }*/
+    }
+    
+    func getMessageChannelsObjectList()->[[String:AnyObject]]
+    {
+        
+ let _id = Expression<String>("_id")
+ let msg_channel_name = Expression<String>("msg_channel_name")
+ let msg_channel_description = Expression<String>("msg_channel_description")
+ let companyid = Expression<String>("companyid")
+ let groupid = Expression<String>("groupid")
+ let createdby = Expression<String>("createdby")
+ let creationdate = Expression<String>("creationdate")
+ let deleteStatus = Expression<String>("deleteStatus")
+ 
+        var channelsList=[[String:AnyObject]]()
+        
+       /* let _id = Expression<String>("_id")
+        let deptname = Expression<String>("deptname")
+        let deptdescription = Expression<String>("deptdescription")
+        let companyid = Expression<String>("companyid")
+        let createdby = Expression<String>("createdby")
+        let creationdate = Expression<String>("creationdate")
+        let deleteStatus = Expression<String>("deleteStatus")
+ */
+        
+        
+        do
+        {for channelNames in try self.db.prepare(self.messageChannels){
+            var newEntry: [String: AnyObject] = [:]
+            newEntry["_id"]=channelNames.get(_id)
+            newEntry["msg_channel_name"]=channelNames.get(msg_channel_name)
+            newEntry["msg_channel_description"]=channelNames.get(msg_channel_description)
+            newEntry["companyid"]=channelNames.get(companyid)
+            newEntry["groupid"]=channelNames.get(groupid)
+            newEntry["createdby"]=channelNames.get(createdby)
+            newEntry["creationdate"]=channelNames.get(creationdate)
+            newEntry["deleteStatus"]=channelNames.get(deleteStatus)
+            channelsList.append(newEntry)
+            
+            
+            }
+        }
+        catch{
+            print("failed to get channelsList")
+        }
+        print("channelsList count is \(channelsList.count)")
+        return channelsList
+        /*do{
+         try db.run(groups.create(ifNotExists: true) { t in
+         
+         t.column(_id, unique: true)
+         t.column(deptname)
+         t.column(deptdescription)
+         t.column(companyid)
+         t.column(createdby)
+         t.column(creationdate)
+         t.column(deleteStatus)
+         
+         })
+         
+         }
+         catch
+         {
+         print("error in creating credentials table")
+         
+         }*/
+    }
+
     
     }
 

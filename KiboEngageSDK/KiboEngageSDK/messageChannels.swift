@@ -6,10 +6,11 @@
 //  Copyright © 2016 KiboEngage. All rights reserved.
 //
 
-/*import Foundation
+import Foundation
 import Alamofire
 import SQLite
 import UIKit
+import SwiftyJSON
 
 public class MessageChannels
 {
@@ -33,7 +34,7 @@ public class MessageChannels
          }
          
          */
-        var url=Constants.mainURL+Constants.MessageChannels
+        var url=Constants.mainURL+Constants.fetchMessageChannels
         print(url.debugDescription)
         /*
          'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
@@ -43,12 +44,41 @@ public class MessageChannels
         var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
         var hhh=["headers":"\(header)"]
         print(header.description)
-        Alamofire.request(.GET,"\(url)",headers:header) .validate()
-            .response { request, response, data, error in
-                print(request)
-                print(response)
-                print(data)
-                print(error)
+        Alamofire.request(.GET,"\(url)",headers:header).validate().responseJSON { response in
+            
+            print(response)
+            print(".......")
+             print(response.data!)
+            print(".......")
+            print(response.result.value!)
+            
+            /*
+ 
+ "__v" = 0;
+ "_id" = 57c69e61dfff9e5223a8fcb2;
+ activeStatus = Yes;
+ companyid = cd89f71715f2014725163952;
+ createdby = 554896ca78aed92f4e6db296;
+ creationdate = "2016-08-31T09:07:45.236Z";
+ groupid = 57c69e61dfff9e5223a8fcb1;
+ "msg_channel_description" = "This channel is for general discussions";
+ "msg_channel_name" = General;
+ 
+ 
+ */
+            var channelsData=JSON(response.result.value!)
+ 
+            for(var i=0;i<channelsData.count;i++)
+            {
+                print("got messagechannels")
+                DatabaseObjectInitialiser.getDB().storeMessageChannel(channelsData[i]["_id"].string!, channelname: channelsData[i]["msg_channel_name"].string!, channelDesc: channelsData[i]["msg_channel_description"].string!, compID: channelsData[i]["companyid"].string!, groupID: channelsData[i]["groupid"].string!, creeateby: channelsData[i]["createdby"].string!, datecreation: channelsData[i]["creationdate"].string!, delStatus: channelsData[i]["activeStatus"].string!)
+                
+                //(groupsData[i]["_id"].string!, deptname1: groupsData[i]["deptname"].string!, deptDesc: groupsData[i]["deptdescription"].string!, compID: groupsData[i]["companyid"].string!, creeateby: "", datecreation: groupsData[i]["creationdate"].string!, delStatus: groupsData[i]["deleteStatus"].string!)
+                
+                ////  DatabaseObjectInitialiser.getDB().storeGroups("sfsfd", deptname1: "Sdfasdf", deptDesc: "sadfsadf", compID: "Sdfsafd", creeateby: "sdfsaf", datecreation: NSDate().description, delStatus: false)
+                
+            }
+            
         }
     }
-}*/
+}

@@ -7,9 +7,22 @@
 //
 
 import UIKit
-
+import SQLite
 public class GroupsViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource {
 
+    
+    var GroupsObjectList=[[String:AnyObject]]()
+    //var GroupNamesList=[String]()
+    
+    let _id = Expression<String>("_id")
+    let deptname = Expression<String>("deptname")
+    let deptdescription = Expression<String>("deptdescription")
+    let companyid = Expression<String>("companyid")
+    let createdby = Expression<String>("createdby")
+    let creationdate = Expression<String>("creationdate")
+    let deleteStatus = Expression<String>("deleteStatus")
+    
+    
     
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     
@@ -34,6 +47,8 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
         
         collectionViewGroups.dataSource=self
         collectionViewGroups.delegate=self
+        
+        GroupsObjectList=DatabaseObjectInitialiser.getDB().getGroupsObjectList()
 
         // Do any additional setup after loading the view.
     }
@@ -54,8 +69,9 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     
     
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("items 6")
-        return 6
+        //print("items 6")
+        print("cccccc \(GroupsObjectList.count)")
+        return GroupsObjectList.count
     }
     
     public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -65,7 +81,11 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         print("cell for row")
-        if(indexPath.row==0)
+        var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells", forIndexPath: indexPath) as! GroupsCell
+        cell.label1.text=GroupsObjectList[indexPath.row]["deptname"] as! String
+        
+        
+       /* if(indexPath.row==0)
         {print("cell for row \(indexPath)")
         var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells", forIndexPath: indexPath) as! GroupsCell
            //  cell.label1.textColor=UIColor.whiteColor()
@@ -103,7 +123,9 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
             print("cell for row \(indexPath)")
             var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells5", forIndexPath: indexPath) as! GroupsCell
             return cell
-        }
+        }*/
+        
+        return cell
     }
 
     

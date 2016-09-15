@@ -27,6 +27,9 @@ public class KiboSDK{
     public init (appID:String,appSecret:String,clientID:String,companyname:String,companyemail:String){
         print("Kibo Engage SDK has been initialised")
         
+        
+        DatabaseObjectInitialiser.getDB()
+        
         if(DatabaseObjectInitialiser.getInstance().socketObj == nil)
         {
             print("socket is nillll", terminator: "")
@@ -46,12 +49,12 @@ public class KiboSDK{
         //self.kiboAppID=appID
         //self.kiboAppSecret=appSecret
         //self.kiboClientID=clientID
-        DatabaseObjectInitialiser.getDB()
        // DatabaseObjectInitialiser.getInstance().database.storeCredentials(appID, appSecret: appSecret, appClientID: clientID)
       /*  let next = self.storyboard?.instantiateViewControllerWithIdentifier("MainV2") as! GroupsViewController
         
         self.presentViewController(next, animated: true, completion: {
        */
+        DatabaseObjectInitialiser.getInstance().database.storeCredentials(appID, appSecret: appSecret, appClientID: clientID, companyname: "test company", companyemail: "")
         DatabaseObjectInitialiser.getInstance().appid=appID
         DatabaseObjectInitialiser.getInstance().secretid=appSecret
         DatabaseObjectInitialiser.getInstance().clientid=clientID

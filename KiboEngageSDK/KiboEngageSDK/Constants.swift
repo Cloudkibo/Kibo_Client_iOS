@@ -12,6 +12,6 @@ internal class Constants
 {
     static var mainURL="https://api.kibosupport.com"
     static var fetchGroups="/api/departments"
-    static var fetchMessageChannels="api/messagechannels/"
+    static var fetchMessageChannels="/api/messagechannels"
     static var socketurl="http://kiboengage.cloudapp.net"
 }
