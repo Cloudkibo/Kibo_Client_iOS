@@ -10,6 +10,8 @@
 		49E230E194ACD82B8160AB65 /* Pods_kiboLiveChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 575BA4C784BDDDD170FA2D76 /* Pods_kiboLiveChat.framework */; };
 		7132E0B31D80EC8800B8AD4C /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718F59711D80EA57000007D8 /* KiboEngageSDK.framework */; };
 		7132E0B41D80EC8800B8AD4C /* KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 718F59711D80EA57000007D8 /* KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		713A6EFC1D95CDD60084A816 /* temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 713A6EFB1D95CDD60084A816 /* temp.m */; };
+		713A6EFE1D95CE0B0084A816 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713A6EFD1D95CE0B0084A816 /* WindowsAzureMessaging.framework */; };
 		718F59411D80EA0D000007D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F59401D80EA0D000007D8 /* AppDelegate.swift */; };
 		718F59431D80EA0D000007D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F59421D80EA0D000007D8 /* ViewController.swift */; };
 		718F59461D80EA0D000007D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718F59441D80EA0D000007D8 /* Main.storyboard */; };
@@ -18,17 +20,6 @@
 		718F594E1D80EA0D000007D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718F594C1D80EA0D000007D8 /* LaunchScreen.storyboard */; };
 		718F59591D80EA0D000007D8 /* kiboLiveChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F59581D80EA0D000007D8 /* kiboLiveChatTests.swift */; };
 		718F59641D80EA0E000007D8 /* kiboLiveChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F59631D80EA0E000007D8 /* kiboLiveChatUITests.swift */; };
-		71CE33BC1D94F58800E8968E /* SBLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33A21D94F58800E8968E /* SBLocalStorage.m */; };
-		71CE33BD1D94F58800E8968E /* SBNotificationHubHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33A41D94F58800E8968E /* SBNotificationHubHelper.m */; };
-		71CE33BE1D94F58800E8968E /* SBRegistrationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33A61D94F58800E8968E /* SBRegistrationParser.m */; };
-		71CE33BF1D94F58800E8968E /* SBStaticHandlerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33A81D94F58800E8968E /* SBStaticHandlerResponse.m */; };
-		71CE33C01D94F58800E8968E /* SBStoredRegistrationEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33AA1D94F58800E8968E /* SBStoredRegistrationEntry.m */; };
-		71CE33C11D94F58800E8968E /* SBTokenProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33AC1D94F58800E8968E /* SBTokenProvider.m */; };
-		71CE33C21D94F58800E8968E /* SBURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33AE1D94F58800E8968E /* SBURLConnection.m */; };
-		71CE33C31D94F58800E8968E /* SBConnectionString.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33B01D94F58800E8968E /* SBConnectionString.m */; };
-		71CE33C41D94F58800E8968E /* SBNotificationHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33B21D94F58800E8968E /* SBNotificationHub.m */; };
-		71CE33C51D94F58800E8968E /* SBRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33B41D94F58800E8968E /* SBRegistration.m */; };
-		71CE33C61D94F58800E8968E /* SBTemplateRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE33B61D94F58800E8968E /* SBTemplateRegistration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,13 +36,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 718F593C1D80EA0D000007D8;
 			remoteInfo = kiboLiveChat;
-		};
-		71CE33C91D94F58800E8968E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 71CE33B91D94F58800E8968E /* WindowsAzureMessaging.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 906E403816A86A3200817A11;
-			remoteInfo = WindowsAzureMessaging;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -71,6 +55,10 @@
 
 /* Begin PBXFileReference section */
 		575BA4C784BDDDD170FA2D76 /* Pods_kiboLiveChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kiboLiveChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		713A6EF91D95CDD50084A816 /* kiboLiveChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kiboLiveChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		713A6EFA1D95CDD60084A816 /* temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = temp.h; sourceTree = "<group>"; };
+		713A6EFB1D95CDD60084A816 /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
+		713A6EFD1D95CE0B0084A816 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = "<group>"; };
 		718F593D1D80EA0D000007D8 /* kiboLiveChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kiboLiveChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		718F59401D80EA0D000007D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		718F59421D80EA0D000007D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,32 +74,6 @@
 		718F59631D80EA0E000007D8 /* kiboLiveChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kiboLiveChatUITests.swift; sourceTree = "<group>"; };
 		718F59651D80EA0E000007D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		718F59711D80EA57000007D8 /* KiboEngageSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KiboEngageSDK.framework; sourceTree = "<group>"; };
-		71CE33A11D94F58800E8968E /* SBLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLocalStorage.h; sourceTree = "<group>"; };
-		71CE33A21D94F58800E8968E /* SBLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLocalStorage.m; sourceTree = "<group>"; };
-		71CE33A31D94F58800E8968E /* SBNotificationHubHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNotificationHubHelper.h; sourceTree = "<group>"; };
-		71CE33A41D94F58800E8968E /* SBNotificationHubHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNotificationHubHelper.m; sourceTree = "<group>"; };
-		71CE33A51D94F58800E8968E /* SBRegistrationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRegistrationParser.h; sourceTree = "<group>"; };
-		71CE33A61D94F58800E8968E /* SBRegistrationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRegistrationParser.m; sourceTree = "<group>"; };
-		71CE33A71D94F58800E8968E /* SBStaticHandlerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStaticHandlerResponse.h; sourceTree = "<group>"; };
-		71CE33A81D94F58800E8968E /* SBStaticHandlerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStaticHandlerResponse.m; sourceTree = "<group>"; };
-		71CE33A91D94F58800E8968E /* SBStoredRegistrationEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBStoredRegistrationEntry.h; sourceTree = "<group>"; };
-		71CE33AA1D94F58800E8968E /* SBStoredRegistrationEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBStoredRegistrationEntry.m; sourceTree = "<group>"; };
-		71CE33AB1D94F58800E8968E /* SBTokenProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTokenProvider.h; sourceTree = "<group>"; };
-		71CE33AC1D94F58800E8968E /* SBTokenProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTokenProvider.m; sourceTree = "<group>"; };
-		71CE33AD1D94F58800E8968E /* SBURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBURLConnection.h; sourceTree = "<group>"; };
-		71CE33AE1D94F58800E8968E /* SBURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBURLConnection.m; sourceTree = "<group>"; };
-		71CE33AF1D94F58800E8968E /* SBConnectionString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBConnectionString.h; sourceTree = "<group>"; };
-		71CE33B01D94F58800E8968E /* SBConnectionString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBConnectionString.m; sourceTree = "<group>"; };
-		71CE33B11D94F58800E8968E /* SBNotificationHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNotificationHub.h; sourceTree = "<group>"; };
-		71CE33B21D94F58800E8968E /* SBNotificationHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNotificationHub.m; sourceTree = "<group>"; };
-		71CE33B31D94F58800E8968E /* SBRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRegistration.h; sourceTree = "<group>"; };
-		71CE33B41D94F58800E8968E /* SBRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRegistration.m; sourceTree = "<group>"; };
-		71CE33B51D94F58800E8968E /* SBTemplateRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBTemplateRegistration.h; sourceTree = "<group>"; };
-		71CE33B61D94F58800E8968E /* SBTemplateRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBTemplateRegistration.m; sourceTree = "<group>"; };
-		71CE33B71D94F58800E8968E /* WindowsAzureMessaging-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WindowsAzureMessaging-prefix.pch"; sourceTree = "<group>"; };
-		71CE33B81D94F58800E8968E /* WindowsAzureMessaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowsAzureMessaging.h; sourceTree = "<group>"; };
-		71CE33B91D94F58800E8968E /* WindowsAzureMessaging.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = WindowsAzureMessaging.xcodeproj; sourceTree = "<group>"; };
-		71EF8C9E1D8BD8AF006E2B49 /* kiboLiveChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kiboLiveChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		B0DE7B0FB02204E83CBA8216 /* Pods-kiboLiveChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiboLiveChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-kiboLiveChat/Pods-kiboLiveChat.release.xcconfig"; sourceTree = "<group>"; };
 		EA369E3395DFD00FB3C04C58 /* Pods-kiboLiveChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiboLiveChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-kiboLiveChat/Pods-kiboLiveChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +85,7 @@
 			files = (
 				7132E0B31D80EC8800B8AD4C /* KiboEngageSDK.framework in Frameworks */,
 				49E230E194ACD82B8160AB65 /* Pods_kiboLiveChat.framework in Frameworks */,
+				713A6EFE1D95CE0B0084A816 /* WindowsAzureMessaging.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +109,9 @@
 		718F59341D80EA0D000007D8 = {
 			isa = PBXGroup;
 			children = (
-				71CE339E1D94F58800E8968E /* WindowsAzureMessaging */,
+				713A6EFD1D95CE0B0084A816 /* WindowsAzureMessaging.framework */,
+				713A6EFA1D95CDD60084A816 /* temp.h */,
+				713A6EFB1D95CDD60084A816 /* temp.m */,
 				718F59711D80EA57000007D8 /* KiboEngageSDK.framework */,
 				718F593F1D80EA0D000007D8 /* kiboLiveChat */,
 				718F59571D80EA0D000007D8 /* kiboLiveChatTests */,
@@ -154,6 +119,7 @@
 				718F593E1D80EA0D000007D8 /* Products */,
 				A98B87D9AF098863B95C54B2 /* Pods */,
 				A686204D5489C97862B6A090 /* Frameworks */,
+				713A6EF91D95CDD50084A816 /* kiboLiveChat-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,7 +143,6 @@
 				718F594C1D80EA0D000007D8 /* LaunchScreen.storyboard */,
 				718F594F1D80EA0D000007D8 /* Info.plist */,
 				718F59471D80EA0D000007D8 /* kiboLiveChat.xcdatamodeld */,
-				71EF8C9E1D8BD8AF006E2B49 /* kiboLiveChat-Bridging-Header.h */,
 			);
 			path = kiboLiveChat;
 			sourceTree = "<group>";
@@ -198,63 +163,6 @@
 				718F59651D80EA0E000007D8 /* Info.plist */,
 			);
 			path = kiboLiveChatUITests;
-			sourceTree = "<group>";
-		};
-		71CE339E1D94F58800E8968E /* WindowsAzureMessaging */ = {
-			isa = PBXGroup;
-			children = (
-				71CE339F1D94F58800E8968E /* WindowsAzureMessaging */,
-				71CE33B91D94F58800E8968E /* WindowsAzureMessaging.xcodeproj */,
-			);
-			name = WindowsAzureMessaging;
-			path = "azure-notificationhubs/iOS/WindowsAzureMessaging";
-			sourceTree = "<group>";
-		};
-		71CE339F1D94F58800E8968E /* WindowsAzureMessaging */ = {
-			isa = PBXGroup;
-			children = (
-				71CE33A01D94F58800E8968E /* Helpers */,
-				71CE33AF1D94F58800E8968E /* SBConnectionString.h */,
-				71CE33B01D94F58800E8968E /* SBConnectionString.m */,
-				71CE33B11D94F58800E8968E /* SBNotificationHub.h */,
-				71CE33B21D94F58800E8968E /* SBNotificationHub.m */,
-				71CE33B31D94F58800E8968E /* SBRegistration.h */,
-				71CE33B41D94F58800E8968E /* SBRegistration.m */,
-				71CE33B51D94F58800E8968E /* SBTemplateRegistration.h */,
-				71CE33B61D94F58800E8968E /* SBTemplateRegistration.m */,
-				71CE33B71D94F58800E8968E /* WindowsAzureMessaging-prefix.pch */,
-				71CE33B81D94F58800E8968E /* WindowsAzureMessaging.h */,
-			);
-			path = WindowsAzureMessaging;
-			sourceTree = "<group>";
-		};
-		71CE33A01D94F58800E8968E /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				71CE33A11D94F58800E8968E /* SBLocalStorage.h */,
-				71CE33A21D94F58800E8968E /* SBLocalStorage.m */,
-				71CE33A31D94F58800E8968E /* SBNotificationHubHelper.h */,
-				71CE33A41D94F58800E8968E /* SBNotificationHubHelper.m */,
-				71CE33A51D94F58800E8968E /* SBRegistrationParser.h */,
-				71CE33A61D94F58800E8968E /* SBRegistrationParser.m */,
-				71CE33A71D94F58800E8968E /* SBStaticHandlerResponse.h */,
-				71CE33A81D94F58800E8968E /* SBStaticHandlerResponse.m */,
-				71CE33A91D94F58800E8968E /* SBStoredRegistrationEntry.h */,
-				71CE33AA1D94F58800E8968E /* SBStoredRegistrationEntry.m */,
-				71CE33AB1D94F58800E8968E /* SBTokenProvider.h */,
-				71CE33AC1D94F58800E8968E /* SBTokenProvider.m */,
-				71CE33AD1D94F58800E8968E /* SBURLConnection.h */,
-				71CE33AE1D94F58800E8968E /* SBURLConnection.m */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		71CE33BA1D94F58800E8968E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				71CE33CA1D94F58800E8968E /* libWindowsAzureMessaging.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		A686204D5489C97862B6A090 /* Frameworks */ = {
@@ -374,12 +282,6 @@
 			mainGroup = 718F59341D80EA0D000007D8;
 			productRefGroup = 718F593E1D80EA0D000007D8 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 71CE33BA1D94F58800E8968E /* Products */;
-					ProjectRef = 71CE33B91D94F58800E8968E /* WindowsAzureMessaging.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				718F593C1D80EA0D000007D8 /* kiboLiveChat */,
@@ -388,16 +290,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		71CE33CA1D94F58800E8968E /* libWindowsAzureMessaging.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libWindowsAzureMessaging.a;
-			remoteRef = 71CE33C91D94F58800E8968E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		718F593B1D80EA0D000007D8 /* Resources */ = {
@@ -479,20 +371,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71CE33C31D94F58800E8968E /* SBConnectionString.m in Sources */,
-				71CE33C41D94F58800E8968E /* SBNotificationHub.m in Sources */,
-				71CE33BF1D94F58800E8968E /* SBStaticHandlerResponse.m in Sources */,
-				71CE33C01D94F58800E8968E /* SBStoredRegistrationEntry.m in Sources */,
-				71CE33C21D94F58800E8968E /* SBURLConnection.m in Sources */,
-				71CE33BC1D94F58800E8968E /* SBLocalStorage.m in Sources */,
 				718F59431D80EA0D000007D8 /* ViewController.swift in Sources */,
-				71CE33BE1D94F58800E8968E /* SBRegistrationParser.m in Sources */,
 				718F59411D80EA0D000007D8 /* AppDelegate.swift in Sources */,
-				71CE33BD1D94F58800E8968E /* SBNotificationHubHelper.m in Sources */,
-				71CE33C11D94F58800E8968E /* SBTokenProvider.m in Sources */,
-				71CE33C61D94F58800E8968E /* SBTemplateRegistration.m in Sources */,
-				71CE33C51D94F58800E8968E /* SBRegistration.m in Sources */,
 				718F59491D80EA0D000007D8 /* kiboLiveChat.xcdatamodeld in Sources */,
+				713A6EFC1D95CDD60084A816 /* temp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +517,7 @@
 			baseConfigurationReference = EA369E3395DFD00FB3C04C58 /* Pods-kiboLiveChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -648,6 +531,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = iCloud.MyAppTemplates.cloudkibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "kiboLiveChat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -656,6 +541,7 @@
 			baseConfigurationReference = B0DE7B0FB02204E83CBA8216 /* Pods-kiboLiveChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -669,6 +555,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = iCloud.MyAppTemplates.cloudkibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "kiboLiveChat-Bridging-Header.h";
 			};
 			name = Release;
 		};

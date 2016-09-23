@@ -19,6 +19,8 @@
 		7132E0B21D80EC0F00B8AD4C /* EPContactsPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132E0B11D80EC0F00B8AD4C /* EPContactsPicker.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		713486441D7FBF8B005E632F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713486431D7FBF8B005E632F /* Constants.swift */; };
 		713486461D7FC04E005E632F /* SDKstoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 713486451D7FC04E005E632F /* SDKstoryboard.storyboard */; };
+		713A6EF61D95BDF50084A816 /* temp.h in Headers */ = {isa = PBXBuildFile; fileRef = 713A6EF41D95BDF50084A816 /* temp.h */; };
+		713A6EF71D95BDF50084A816 /* temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 713A6EF51D95BDF50084A816 /* temp.m */; };
 		713F3DEF1D7B85320072C9E9 /* KiboEngageSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		713F3DF61D7B85320072C9E9 /* KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713F3DEB1D7B85320072C9E9 /* KiboEngageSDK.framework */; };
 		713F3DFB1D7B85330072C9E9 /* KiboEngageSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3DFA1D7B85330072C9E9 /* KiboEngageSDKTests.swift */; };
@@ -52,7 +54,6 @@
 		7181CDCB1D83CF16002A0D05 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7181CDB51D83CF16002A0D05 /* WebSocket.swift */; };
 		7181CDCD1D83CF4A002A0D05 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7181CDCC1D83CF4A002A0D05 /* SocketService.swift */; };
 		718CE11C1D8014F700CA380C /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718CE11B1D8014F700CA380C /* GroupsCell.swift */; };
-		71FBD1601D94DF3D0082D747 /* KiboEngageSDK-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 71EF8C9C1D8BD712006E2B49 /* KiboEngageSDK-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		7132E0B11D80EC0F00B8AD4C /* EPContactsPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EPContactsPicker.framework; path = "Pods/../build/Debug-iphoneos/EPContactsPicker/EPContactsPicker.framework"; sourceTree = "<group>"; };
 		713486431D7FBF8B005E632F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		713486451D7FC04E005E632F /* SDKstoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SDKstoryboard.storyboard; sourceTree = "<group>"; };
+		713A6EF41D95BDF50084A816 /* temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = temp.h; sourceTree = "<group>"; };
+		713A6EF51D95BDF50084A816 /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
 		713F3DEB1D7B85320072C9E9 /* KiboEngageSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KiboEngageSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KiboEngageSDK.h; sourceTree = "<group>"; };
 		713F3DF01D7B85320072C9E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,7 +130,6 @@
 		7181CDCC1D83CF4A002A0D05 /* SocketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		718CE11B1D8014F700CA380C /* GroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
 		71B966911D80DD310046CE1D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		71EF8C9C1D8BD712006E2B49 /* KiboEngageSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KiboEngageSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		71F43E721D7FD76E006BEEE2 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "../../../Library/Developer/Xcode/DerivedData/KiboEngageSDK-cpznbyfeywhppjccyjscaezptqdk/Build/Products/Debug-iphoneos/SQLite.swift/SQLite.framework"; sourceTree = "<group>"; };
 		71F43E741D7FD772006BEEE2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/KiboEngageSDK-cpznbyfeywhppjccyjscaezptqdk/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		71F43E761D7FD775006BEEE2 /* EPContactsPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EPContactsPicker.framework; path = "../../../Library/Developer/Xcode/DerivedData/KiboEngageSDK-cpznbyfeywhppjccyjscaezptqdk/Build/Products/Debug-iphoneos/EPContactsPicker/EPContactsPicker.framework"; sourceTree = "<group>"; };
@@ -226,7 +228,8 @@
 				71117CB71D81186500868E36 /* ChannelsCell.swift */,
 				7181CD9B1D83C710002A0D05 /* ChatsDetailViewController.swift */,
 				7181CDCC1D83CF4A002A0D05 /* SocketService.swift */,
-				71EF8C9C1D8BD712006E2B49 /* KiboEngageSDK-Bridging-Header.h */,
+				713A6EF41D95BDF50084A816 /* temp.h */,
+				713A6EF51D95BDF50084A816 /* temp.m */,
 			);
 			path = KiboEngageSDK;
 			sourceTree = "<group>";
@@ -283,8 +286,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				713A6EF61D95BDF50084A816 /* temp.h in Headers */,
 				713F3DEF1D7B85320072C9E9 /* KiboEngageSDK.h in Headers */,
-				71FBD1601D94DF3D0082D747 /* KiboEngageSDK-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +443,7 @@
 				7181CDC61D83CF16002A0D05 /* SocketPacket.swift in Sources */,
 				711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */,
 				7181CDB91D83CF16002A0D05 /* SocketClientSpec.swift in Sources */,
+				713A6EF71D95BDF50084A816 /* temp.m in Sources */,
 				7181CDBB1D83CF16002A0D05 /* SocketEngineClient.swift in Sources */,
 				7181CDBD1D83CF16002A0D05 /* SocketEnginePollable.swift in Sources */,
 				7181CDC51D83CF16002A0D05 /* SocketLogger.swift in Sources */,
