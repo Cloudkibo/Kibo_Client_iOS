@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            ///// tagarray.append(username!.substringFromIndex(username!.startIndex.successor()))
            // print(username!.substringFromIndex(username!.startIndex.successor()))
             // var tagname=NSSet(object: username!.substringFromIndex(username!.startIndex))
-            tagarray.append("sumaira")
+            tagarray.append("sojharo")
             var tagname=NSSet(array: tagarray)
             // hub.registerNativeWithDeviceToken(deviceToken, tags: tagname as Set<NSObject>) { (error) in
             hub.registerNativeWithDeviceToken(deviceToken, tags: tagname as! Set<NSObject>) { (error) in

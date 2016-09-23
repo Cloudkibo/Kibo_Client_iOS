@@ -259,6 +259,9 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = LRN8T5S99N;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -532,7 +535,7 @@
 				INFOPLIST_FILE = kiboLiveChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = iCloud.MyAppTemplates.cloudkibo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.kiboLiveChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "kiboLiveChat-Bridging-Header.h";
@@ -556,7 +559,7 @@
 				INFOPLIST_FILE = kiboLiveChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = iCloud.MyAppTemplates.cloudkibo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kiboEngage.kiboLiveChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "kiboLiveChat-Bridging-Header.h";
