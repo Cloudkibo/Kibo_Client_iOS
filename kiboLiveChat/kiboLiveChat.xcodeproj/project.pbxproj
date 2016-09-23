@@ -12,6 +12,7 @@
 		7132E0B41D80EC8800B8AD4C /* KiboEngageSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 718F59711D80EA57000007D8 /* KiboEngageSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		713A6EFC1D95CDD60084A816 /* temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 713A6EFB1D95CDD60084A816 /* temp.m */; };
 		713A6EFE1D95CE0B0084A816 /* WindowsAzureMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713A6EFD1D95CE0B0084A816 /* WindowsAzureMessaging.framework */; };
+		7155355C1D95D2900081AB9C /* ConstantsString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7155355B1D95D2900081AB9C /* ConstantsString.swift */; };
 		718F59411D80EA0D000007D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F59401D80EA0D000007D8 /* AppDelegate.swift */; };
 		718F59431D80EA0D000007D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F59421D80EA0D000007D8 /* ViewController.swift */; };
 		718F59461D80EA0D000007D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718F59441D80EA0D000007D8 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		713A6EFA1D95CDD60084A816 /* temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = temp.h; sourceTree = "<group>"; };
 		713A6EFB1D95CDD60084A816 /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
 		713A6EFD1D95CE0B0084A816 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = "<group>"; };
+		7155355B1D95D2900081AB9C /* ConstantsString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsString.swift; sourceTree = "<group>"; };
 		718F593D1D80EA0D000007D8 /* kiboLiveChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kiboLiveChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		718F59401D80EA0D000007D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		718F59421D80EA0D000007D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				718F594C1D80EA0D000007D8 /* LaunchScreen.storyboard */,
 				718F594F1D80EA0D000007D8 /* Info.plist */,
 				718F59471D80EA0D000007D8 /* kiboLiveChat.xcdatamodeld */,
+				7155355B1D95D2900081AB9C /* ConstantsString.swift */,
 			);
 			path = kiboLiveChat;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7155355C1D95D2900081AB9C /* ConstantsString.swift in Sources */,
 				718F59431D80EA0D000007D8 /* ViewController.swift in Sources */,
 				718F59411D80EA0D000007D8 /* AppDelegate.swift in Sources */,
 				718F59491D80EA0D000007D8 /* kiboLiveChat.xcdatamodeld in Sources */,

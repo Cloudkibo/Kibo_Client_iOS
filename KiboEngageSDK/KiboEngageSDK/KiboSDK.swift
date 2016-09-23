@@ -66,12 +66,12 @@ public class KiboSDK{
         
         ////sqliteDB=DatabaseHandler(dbName:"kiboEngageDB.sqlite3")
         
-        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+      //////  let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
         
         //let notificationTypes: UIUserNotificationType = [UIUserNotificationType.None]
         
         
-        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+       ////// let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
         
         
         
@@ -85,7 +85,7 @@ public class KiboSDK{
         //  print("username is \(username!)")
         //if(username != nil && username != "")
         //{
-            UIApplication.sharedApplication().registerUserNotificationSettings(pushNotificationSettings)
+           ////// UIApplication.sharedApplication().registerUserNotificationSettings(pushNotificationSettings)
         //}
         
         
@@ -93,7 +93,7 @@ public class KiboSDK{
         
     }
     
-    
+  /*
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         print("didRegisterUserNotificationSettings")
         //if(!UIApplication.sharedApplication().isRegisteredForRemoteNotifications())
@@ -107,7 +107,7 @@ public class KiboSDK{
         
         // }
         
-    }
+    }*/
     
    /* func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("trying to register device token")
@@ -150,7 +150,7 @@ public class KiboSDK{
     
     
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+   /* func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         // NSLog("received remote notification \(userInfo)")
         /*if(socketObj != nil)
         {
@@ -186,7 +186,7 @@ public class KiboSDK{
          */
         // print("json received is is \(notificationJSON["aps"])")
     }
-    
+    */
     
     /*
      func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -199,12 +199,12 @@ public class KiboSDK{
      }
      */
     
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+   /* func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         
         print("registered for notification error", terminator: "")
         NSLog("Error in registration. Error: \(error)")
     }
-    
+    */
     
     public func doSomething()
     {
@@ -220,5 +220,9 @@ public class KiboSDK{
     */
     }
     
+    public func handleRemoteNotifications(userInfo:[NSObject : AnyObject],withController:UIViewController)
+    {
+        print("inside kibo app received notification \(userInfo)")
+    }
     
 }

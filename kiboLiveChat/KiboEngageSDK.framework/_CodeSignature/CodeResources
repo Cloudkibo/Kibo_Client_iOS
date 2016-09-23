@@ -72,10 +72,6 @@
 		<data>
 		kYABo6TcZyfbcPn9j4R8trhIEk8=
 		</data>
-		<key>Headers/KiboEngageSDK-Bridging-Header.h</key>
-		<data>
-		Y3zZuD1b4C48exhc2VSPrfModfM=
-		</data>
 		<key>Headers/KiboEngageSDK-Swift.h</key>
 		<data>
 		sJLGUvkrLJxby4Q1E6v5fecypY0=
@@ -94,7 +90,7 @@
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		M0Lr4eYDV1R0xcmk6E2wO9N77WA=
+		RyOyoiFQ5iJuhCEW9leZI+P5uZ4=
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -102,7 +98,7 @@
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		6+DbeEd32d4R8ZO6mFYpibeVcn0=
+		KfHfpKb0SUZEl+I8osmM1pIaEtE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -330,17 +326,6 @@
 			ZQhR44xcd/s8CmffSNYdRyfAgHyk715yDsW2S69VjSo=
 			</data>
 		</dict>
-		<key>Headers/KiboEngageSDK-Bridging-Header.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Y3zZuD1b4C48exhc2VSPrfModfM=
-			</data>
-			<key>hash2</key>
-			<data>
-			JjCTqz5HQfRZfHyyWnV68gv3f48lSBWeQi2PnHGIrrg=
-			</data>
-		</dict>
 		<key>Headers/KiboEngageSDK-Swift.h</key>
 		<dict>
 			<key>hash</key>
@@ -378,11 +363,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			M0Lr4eYDV1R0xcmk6E2wO9N77WA=
+			RyOyoiFQ5iJuhCEW9leZI+P5uZ4=
 			</data>
 			<key>hash2</key>
 			<data>
-			sjRle037Am7W5f2JOhKLPQaT0OgzlERjrSa9UUVhCkU=
+			OwPlH/EGCtKlp3dZC0qyF1+bZ2W236lZFr23rqsy2Q4=
 			</data>
 		</dict>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftdoc</key>
@@ -400,11 +385,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6+DbeEd32d4R8ZO6mFYpibeVcn0=
+			KfHfpKb0SUZEl+I8osmM1pIaEtE=
 			</data>
 			<key>hash2</key>
 			<data>
-			2rhiGcPGHfbZ1ijJ9QSN8pneHpL6SI0DclyClUYqNLU=
+			p9yJjVT8HRbd5HIJ217Ioe7X9C2CR0QcesisdelhHHI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

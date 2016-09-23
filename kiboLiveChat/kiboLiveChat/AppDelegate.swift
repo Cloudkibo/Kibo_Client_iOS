@@ -16,6 +16,10 @@ import SystemConfiguration
 import AVFoundation
 //iCloud.MyAppTemplates.cloudkibo
 //com.kiboEngage.kiboLiveChat
+
+
+var kiboLiveChat:KiboSDK!
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -26,10 +30,162 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         application.statusBarHidden = true
-        KiboSDK.init(appID: "5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59", appSecret: "jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx", clientID: "cd89f71715f2014725163952",companyname: "",companyemail: "")
+        kiboLiveChat=KiboSDK.init(appID: "5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59", appSecret: "jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx", clientID: "cd89f71715f2014725163952",companyname: "",companyemail: "")
+        
+        
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+        
+        //let notificationTypes: UIUserNotificationType = [UIUserNotificationType.None]
+        
+        
+        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        
+        
+        
+        /////-------will be commented----
+        //application.registerUserNotificationSettings(pushNotificationSettings)
+        //application.registerForRemoteNotifications()
+        
+        
+        //^^^^^^^^^^^^^^^^^^^
+        
+        //  print("username is \(username!)")
+        //if(username != nil && username != "")
+        //{
+            UIApplication.sharedApplication().registerUserNotificationSettings(pushNotificationSettings)
+        //}
+        
+        
         return true
     }
 
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        print("didRegisterUserNotificationSettings")
+        //if(!UIApplication.sharedApplication().isRegisteredForRemoteNotifications())
+        // {
+       // if(username != nil && username != "")
+       // {
+            print("didRegisterUserNotificationSettings... inside...")
+            
+            UIApplication.sharedApplication().registerForRemoteNotifications()
+       // }
+        
+        // }
+        
+    }
+    
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print("trying to register device token")
+      //  if(username != nil && username != ""){
+            print("inside didRegisterForRemoteNotificationsWithDeviceToken")
+            var hub=SBNotificationHub(connectionString: ConstantsString.connectionstring, notificationHubPath: ConstantsString.hubname) //from constants file
+            var tagarray=[String]()
+           ///// tagarray.append(username!.substringFromIndex(username!.startIndex.successor()))
+           // print(username!.substringFromIndex(username!.startIndex.successor()))
+            // var tagname=NSSet(object: username!.substringFromIndex(username!.startIndex))
+            tagarray.append("sumaira")
+            var tagname=NSSet(array: tagarray)
+            // hub.registerNativeWithDeviceToken(deviceToken, tags: tagname as Set<NSObject>) { (error) in
+            hub.registerNativeWithDeviceToken(deviceToken, tags: tagname as! Set<NSObject>) { (error) in
+                //hub.registerNativeWithDeviceToken(deviceToken, tags: nil) { (error) in
+                
+                if(error != nil)
+                {
+                    print("Registering for notifications \(error)")
+                }
+                else
+                {
+                    print("Successfully registered for notifications")
+                    
+                }
+                
+            }
+     //   }
+    }
+    
+    
+    /*
+     received while the app is active:
+     
+     Copy
+     - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
+     NSLog(@"%@", userInfo);
+     [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
+     }
+     */
+    
+    
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+        print("receivednotification method called \(userInfo.description)")
+        let navigationController = UIApplication.sharedApplication().windows[0].rootViewController as! UINavigationController
+        
+        let activeViewCont = navigationController.visibleViewController
+        
+        kiboLiveChat.handleRemoteNotifications(userInfo, withController: activeViewCont!)
+        
+        print("app state application is \(UIApplication.sharedApplication().applicationState.rawValue)")
+        print("app state is \(application.applicationState.rawValue)")
+        print("app state value background is \(UIApplicationState.Background.rawValue)")
+        print("app state value inactive is \(UIApplicationState.Inactive.rawValue)")
+        print("app state value active is \(UIApplicationState.Active.rawValue)")
+       
+        
+        if (application.applicationState != UIApplicationState.Background) {
+            // NSLog("received remote notification \(userInfo)")
+           
+            
+            /*if(socketObj != nil)
+            {
+                socketObj.socket.emit("logClient","\(username) didReceiveRemoteNotification: ..... \(userInfo["userInfo"]).....\(userInfo.description)")
+                print(userInfo["userInfo"])
+                
+            }
+            
+            
+            if  let singleuniqueid = userInfo["uniqueId"] as? String {
+                // Printout of (userInfo["aps"])["type"]
+                print("\nFrom APS-dictionary with key \"singleuniqueid\":  \( singleuniqueid)")
+                if  let notifType = userInfo["type"] as? String {
+                    print("payload of satus or iOS chat")
+                    if(notifType=="status")
+                    {
+                        updateMessageStatus(singleuniqueid, status: (userInfo["status"] as? String)!)
+                    }
+                    else
+                    {
+                        
+                        fetchSingleChatMessage(singleuniqueid)
+                        
+                    }
+                }
+                */
+                
+                // Do your stuff?
+            }
+            
+            
+            print("remote notification received is \(userInfo)")
+            /*var notificationJSON=JSON(userInfo)
+             print("json converted is \(notificationJSON)")
+             print("json received is is \(notificationJSON["aps"])")
+             */
+            completionHandler(UIBackgroundFetchResult.NewData)
+            NSNotificationCenter.defaultCenter().postNotificationName("ReceivedNotification", object:userInfo)
+           
+        }
+    
+    
+ 
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        
+        print("registered for notification error", terminator: "")
+        NSLog("Error in registration. Error: \(error)")
+    }
+   
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -46,6 +202,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    
+        //Add a check if notification origin is "kibo"
+        
+        UIApplication.sharedApplication().applicationIconBadgeNumber=1;
+        UIApplication.sharedApplication().applicationIconBadgeNumber=0;
     }
 
     func applicationWillTerminate(application: UIApplication) {
