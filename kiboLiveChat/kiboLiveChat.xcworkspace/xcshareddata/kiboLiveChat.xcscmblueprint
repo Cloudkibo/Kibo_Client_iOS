@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "42BEEF86A0009166116694D2D60E617678A71788",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "42BEEF86A0009166116694D2D60E617678A71788" : 0,
+    "E36F3BEF97F00F837CAEB7CC7A95F2372CAFED19" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B826444C-74D0-45A4-886D-BAA9DC089AAD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "42BEEF86A0009166116694D2D60E617678A71788" : "Kibo_Client_iOS\/",
+    "E36F3BEF97F00F837CAEB7CC7A95F2372CAFED19" : "Kibo_Client_iOS\/kiboLiveChat\/azure-notificationhubs\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "kiboLiveChat",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "kiboLiveChat\/kiboLiveChat.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Cloudkibo\/Kibo_Client_iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "42BEEF86A0009166116694D2D60E617678A71788"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Azure\/azure-notificationhubs.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E36F3BEF97F00F837CAEB7CC7A95F2372CAFED19"
+    }
+  ]
+}

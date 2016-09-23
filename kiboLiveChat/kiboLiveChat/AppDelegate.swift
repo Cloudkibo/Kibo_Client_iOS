@@ -9,12 +9,18 @@
 import UIKit
 import CoreData
 import KiboEngageSDK
+import Foundation
+//import WindowsAzureMessaging
 
+import SystemConfiguration
+import AVFoundation
+//iCloud.MyAppTemplates.cloudkibo
+//com.kiboEngage.kiboLiveChat
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+   // var aaa:SBNotificationHub!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

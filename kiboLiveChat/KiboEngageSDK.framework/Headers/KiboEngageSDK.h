@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 //! Project version number for KiboEngageSDK.
 FOUNDATION_EXPORT double KiboEngageSDKVersionNumber;
 
@@ -15,5 +14,3 @@ FOUNDATION_EXPORT double KiboEngageSDKVersionNumber;
 FOUNDATION_EXPORT const unsigned char KiboEngageSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <KiboEngageSDK/PublicHeader.h>
-
-

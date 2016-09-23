@@ -10,11 +10,11 @@ import Foundation
 //import Alamofire
 import SQLite
 import UIKit
-
+//import WindowsAzureMessaging
 public class KiboSDK{
     
     
-    var aaa:SBNotificationHub!
+    
   //  var kiboAppID=""
    // var kiboAppSecret=""
    // var kiboClientID=""
@@ -29,7 +29,7 @@ public class KiboSDK{
     public init (appID:String,appSecret:String,clientID:String,companyname:String,companyemail:String){
         print("Kibo Engage SDK has been initialised")
         
-        
+     //   var aaa:SBNotificationHub!
         DatabaseObjectInitialiser.getDB()
         
         if(DatabaseObjectInitialiser.getInstance().socketObj == nil)
@@ -109,11 +109,11 @@ public class KiboSDK{
         
     }
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+   /* func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         print("trying to register device token")
        // if(username != nil && username != ""){
             print("inside didRegisterForRemoteNotificationsWithDeviceToken ")
-          ////////////  var hub=SBNotificationHub(connectionString: Constants.connectionstring, notificationHubPath: Constants.hubname) //from constants file
+            var hub=SBNotificationHub(connectionString: Constants.connectionstring, notificationHubPath: Constants.hubname) //from constants file
             var tagarray=[String]()
             tagarray.append("+923201211991")
           //  print(username!.substringFromIndex(username!.startIndex.successor()))
@@ -135,7 +135,7 @@ public class KiboSDK{
                 
            // }
         }
-    }
+    }*/
     
     
     /*

@@ -11,10 +11,11 @@ import Alamofire
 import SQLite
 import UIKit
 import SwiftyJSON
+//import WindowsAzureMessaging
 
 public class MessageChannels
 {
-    
+   // var hub:SBNotificationHub!
     public init()
     {
         
