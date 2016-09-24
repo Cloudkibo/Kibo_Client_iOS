@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         application.statusBarHidden = true
-        kiboLiveChat=KiboSDK.init(appID:"5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59", appSecret: "jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx", clientID: "cd89f71715f2014725163952",customerid: "03201211991", companyname: "my app", companyemail: "", phone: nil, account_number: nil)
+        kiboLiveChat=KiboSDK.init(appID:"5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59", appSecret: "jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx", clientID: "cd89f71715f2014725163952",customerid: "testID12323234", companyname: nil, companyemail: "testemail@cloudkibo.com", phone: "03201211991", account_number: nil)
         
         
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]

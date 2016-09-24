@@ -55,8 +55,8 @@ public class ChatSessions
             
          // var sessiondata=
             
-            
-            for(var j=0;j<channelsList.count;j++)
+            var j=0
+            for(j=0;j<channelsList.count;j++)
             {
                 
                 var randomRequestID=(DatabaseObjectInitialiser.randomStringWithLength(5) as String)+"\(GroupsObjectList[i]["_id"] as! String)"+"\(channelsList[j]["_id"] as! String)"

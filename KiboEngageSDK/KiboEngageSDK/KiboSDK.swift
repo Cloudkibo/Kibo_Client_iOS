@@ -61,15 +61,23 @@ public class KiboSDK{
         DatabaseObjectInitialiser.getInstance().secretid=appSecret
         DatabaseObjectInitialiser.getInstance().clientid=clientID
         DatabaseObjectInitialiser.getInstance().customerid=customerid
+        /*  'name' : name.value //optional : remove key if not available,
+        'email' : email.value //optional,
+        'country' : country.value //optional,
+        'phone' :   phone.value //optional,
+        'companyid' : companyid,
+        'isMobileClient':"false"}
+    */
+        DatabaseObjectInitialiser.getInstance().optionalDataList["companyid"]=clientID
         if(companyname != nil && companyname != "")
         {
             print("comapnyname received is \(companyname)")
-        DatabaseObjectInitialiser.getInstance().optionalDataList["companyname"]=companyname
+        DatabaseObjectInitialiser.getInstance().optionalDataList["name"]=companyname
         }
         if(companyemail != nil && companyemail != "")
         {
             print("companyemail received is \(companyemail)")
-        DatabaseObjectInitialiser.getInstance().optionalDataList["companyemail"]=companyemail
+        DatabaseObjectInitialiser.getInstance().optionalDataList["email"]=companyemail
         }
         if(phone != nil && phone != "")
         {

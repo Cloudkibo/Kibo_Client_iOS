@@ -379,6 +379,7 @@ internal class DatabaseHandler:NSObject
         
         do
         {for channelNames in try self.db.prepare(self.messageChannels.filter(groupid == deptid)){
+            print("channel name for deptid \(deptid) is \(channelNames.get(msg_channel_name))")
             var newEntry: [String: AnyObject] = [:]
             newEntry["_id"]=channelNames.get(_id)
             newEntry["msg_channel_name"]=channelNames.get(msg_channel_name)
