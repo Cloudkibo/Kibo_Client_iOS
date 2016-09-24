@@ -62,7 +62,7 @@
                                         <size key="customSize" width="202" height="202"/>
                                         <connections>
                                             <outlet property="label1" destination="YM8-zc-bGE" id="Oes-Vi-wzP"/>
-                                            <segue destination="lj1-u7-FhL" kind="showDetail" id="E2g-bk-1s6"/>
+                                            <segue destination="lj1-u7-FhL" kind="showDetail" identifier="showChannelsSegue" id="E2g-bk-1s6"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells1" id="EgC-LQ-TvS" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
@@ -453,7 +453,7 @@
                                     <navigationItem title="Orders" id="jON-j9-Xwm">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="UOl-nV-aAE">
                                             <connections>
-                                                <segue destination="TYd-2N-MDV" kind="show" id="W0W-sU-EhL"/>
+                                                <action selector="backbtnPressed:" destination="lj1-u7-FhL" id="FaU-l1-aTQ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

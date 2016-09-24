@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("trying to register device token")
       //  if(username != nil && username != ""){
             print("inside didRegisterForRemoteNotificationsWithDeviceToken")
-            var hub=SBNotificationHub(connectionString: ConstantsString.connectionstring, notificationHubPath: ConstantsString.hubname) //from constants file
+            aaa=SBNotificationHub(connectionString: ConstantsString.connectionstring, notificationHubPath: ConstantsString.hubname) //from constants file
             var tagarray=[String]()
            ///// tagarray.append(username!.substringFromIndex(username!.startIndex.successor()))
            // print(username!.substringFromIndex(username!.startIndex.successor()))
@@ -87,6 +87,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tagarray.append("sojharo")
             var tagname=NSSet(array: tagarray)
             // hub.registerNativeWithDeviceToken(deviceToken, tags: tagname as Set<NSObject>) { (error) in
+        if(aaa != nil)
+        {
+            aaa.registerNativeWithDeviceToken(deviceToken, tags: tagname as! Set<NSObject>) { (error) in
+                //hub.registerNativeWithDeviceToken(deviceToken, tags: nil) { (error) in
+                
+                if(error != nil)
+                {
+                    print("Registering for notifications \(error)")
+                }
+                else
+                {
+                    print("Successfully registered for notifications")
+                    
+                }
+                
+            }
+    }
+        
+        
+        //====
+        /*
+        var hub=SBNotificationHub(connectionString: "nn", notificationHubPath: ConstantsString.hubname) //from constants file
+        var tagarray2=[String]()
+        ///// tagarray.append(username!.substringFromIndex(username!.startIndex.successor()))
+        // print(username!.substringFromIndex(username!.startIndex.successor()))
+        // var tagname=NSSet(object: username!.substringFromIndex(username!.startIndex))
+        tagarray2.append("sojharo")
+        var tagname2=NSSet(array: tagarray2)
+        // hub.registerNativeWithDeviceToken(deviceToken, tags: tagname as Set<NSObject>) { (error) in
+        if(hub != nil)
+        {
             hub.registerNativeWithDeviceToken(deviceToken, tags: tagname as! Set<NSObject>) { (error) in
                 //hub.registerNativeWithDeviceToken(deviceToken, tags: nil) { (error) in
                 
@@ -101,6 +132,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
             }
+        }*/
+
      //   }
     }
     

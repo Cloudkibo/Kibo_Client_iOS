@@ -14,19 +14,24 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
 
     
     
-    
+    var deptid:String!
     var channelsList=[[String:AnyObject]]()
     @IBOutlet weak var btnback: UIBarButtonItem!
     @IBOutlet weak var tbl_channels: UITableView!
+    
+    
+    @IBAction func backbtnPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList()
+        channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(deptid)
         //cell.label1.text=GroupsObjectList[indexPath.row]["deptname"] as! String
         
-        
+        /*
          let _id = Expression<String>("_id")
          let msg_channel_name = Expression<String>("msg_channel_name")
          let msg_channel_description = Expression<String>("msg_channel_description")
@@ -46,7 +51,12 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         chArray.append(channelsList[0]["_id"] as! String)
         //channel_ID
          var customeridjson = JSON(["name" : "sumaira saeed","email" : "aaaaa@cloudkibo.com","country" : "Pakistan","phone" :   "1234567899","companyid'" : channelsList[0]["companyid"] as! String,"isMobileClient":false])
-        
+        /*{‘customerID’ : //mandatory,
+        'name' : name.value //optional : remove key if not available,
+        'email' : email.value //optional,
+        'country' : country.value //optional,
+        'phone' :   phone.value //optional,
+        */
         DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("join meeting",
         ["customerid" : customeridjson.object,
          "departmentid" : channelsList[0]["groupid"] as! String, //groupID
@@ -72,7 +82,7 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
          "msg" : "User joined session"]
          )
 
- 
+ */
         
     }
 
@@ -90,12 +100,23 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 6
+        return channelsList.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if(indexPath.row==0)
+        
+        let cell=tbl_channels.dequeueReusableCellWithIdentifier("channelsCell") as! ChannelsCell
+        
+        //GroupsObjectList[indexPath.row]["deptname"] as! String
+        
+        cell.lblChannelName.text=channelsList[indexPath.row]["msg_channel_name"] as! String
+        cell.lbl_description.text="Last message will be shown here"
+        
+        return cell
+
+        
+       /* if(indexPath.row==0)
         {
         let cell=tbl_channels.dequeueReusableCellWithIdentifier("channelsCell") as! ChannelsCell
             cell.lblChannelName.text="Ordering"
@@ -132,7 +153,7 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
             let cell=tbl_channels.dequeueReusableCellWithIdentifier("channelsCell5") as! ChannelsCell
             
             return cell
-        }
+        }*/
     }
     /*
     // MARK: - Navigation

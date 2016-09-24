@@ -54,6 +54,7 @@
 		7181CDCB1D83CF16002A0D05 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7181CDB51D83CF16002A0D05 /* WebSocket.swift */; };
 		7181CDCD1D83CF4A002A0D05 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7181CDCC1D83CF4A002A0D05 /* SocketService.swift */; };
 		718CE11C1D8014F700CA380C /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718CE11B1D8014F700CA380C /* GroupsCell.swift */; };
+		71A1EB401D965D8600DAAF40 /* ChatSessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A1EB3F1D965D8600DAAF40 /* ChatSessions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		7181CDB51D83CF16002A0D05 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		7181CDCC1D83CF4A002A0D05 /* SocketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		718CE11B1D8014F700CA380C /* GroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
+		71A1EB3F1D965D8600DAAF40 /* ChatSessions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSessions.swift; sourceTree = "<group>"; };
 		71B966911D80DD310046CE1D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		71F43E721D7FD76E006BEEE2 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "../../../Library/Developer/Xcode/DerivedData/KiboEngageSDK-cpznbyfeywhppjccyjscaezptqdk/Build/Products/Debug-iphoneos/SQLite.swift/SQLite.framework"; sourceTree = "<group>"; };
 		71F43E741D7FD772006BEEE2 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/KiboEngageSDK-cpznbyfeywhppjccyjscaezptqdk/Build/Products/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				711F7E541D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift */,
 				711F7E521D7E2BD700A6FD97 /* Groups.swift */,
 				71126B831D82840100F23261 /* messageChannels.swift */,
+				71A1EB3F1D965D8600DAAF40 /* ChatSessions.swift */,
 				713486431D7FBF8B005E632F /* Constants.swift */,
 				711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */,
 				713486451D7FC04E005E632F /* SDKstoryboard.storyboard */,
@@ -428,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71A1EB401D965D8600DAAF40 /* ChatSessions.swift in Sources */,
 				713486441D7FBF8B005E632F /* Constants.swift in Sources */,
 				7181CDB71D83CF16002A0D05 /* SocketAckManager.swift in Sources */,
 				7181CD9C1D83C710002A0D05 /* ChatsDetailViewController.swift in Sources */,

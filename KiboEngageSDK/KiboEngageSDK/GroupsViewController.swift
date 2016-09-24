@@ -129,14 +129,26 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     }
 
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        //showChannelsSegue
+        
+        if segue.identifier == "showChannelsSegue" {
+            
+            if let destinationVC = segue.destinationViewController as? ChannelsViewController{
+                let selectedRow = collectionViewGroups.indexPathsForSelectedItems()?.first?.row
+                    //.indexPathForSelectedRow!.row
+                destinationVC.deptid=GroupsObjectList[selectedRow!]["_id"] as! String                //destinationVC.participants=self.participantsSelected
+                //  let selectedRow = tblForChat.indexPathForSelectedRow!.row
+                
+            }}
     }
-    */
+ 
 
 }

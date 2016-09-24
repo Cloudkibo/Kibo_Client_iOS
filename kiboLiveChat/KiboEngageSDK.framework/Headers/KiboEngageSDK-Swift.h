@@ -120,6 +120,7 @@ SWIFT_CLASS("_TtC13KiboEngageSDK25ChatsDetailViewController")
 @class UICollectionView;
 @class UICollectionViewLayout;
 @class UICollectionViewCell;
+@class UIStoryboardSegue;
 
 SWIFT_CLASS("_TtC13KiboEngageSDK20GroupsViewController")
 @interface GroupsViewController : UIViewController <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
@@ -132,6 +133,7 @@ SWIFT_CLASS("_TtC13KiboEngageSDK20GroupsViewController")
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section;
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 @end
 
 

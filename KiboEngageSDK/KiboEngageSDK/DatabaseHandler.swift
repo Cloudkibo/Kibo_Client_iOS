@@ -262,6 +262,42 @@ internal class DatabaseHandler:NSObject
         
     }
     
+    func getSingleGroupObject(groupid:String)->[String: AnyObject]
+    {
+       // var groupsList=[String:AnyObject]()
+        var newEntry: [String: AnyObject] = [:]
+       
+        let _id = Expression<String>("_id")
+        let deptname = Expression<String>("deptname")
+        let deptdescription = Expression<String>("deptdescription")
+        let companyid = Expression<String>("companyid")
+        let createdby = Expression<String>("createdby")
+        let creationdate = Expression<String>("creationdate")
+        let deleteStatus = Expression<String>("deleteStatus")
+        
+        self.groups = Table("groups")
+        do
+        {for groupsnames in try self.db.prepare(self.groups.filter(_id == groupid)){
+           
+            newEntry["_id"]=groupsnames.get(_id)
+            newEntry["deptname"]=groupsnames.get(deptname)
+            newEntry["deptdescription"]=groupsnames.get(deptdescription)
+            newEntry["companyid"]=groupsnames.get(companyid)
+            newEntry["createdby"]=groupsnames.get(createdby)
+            newEntry["creationdate"]=groupsnames.get(creationdate)
+            newEntry["deleteStatus"]=groupsnames.get(deleteStatus)
+            //groupsList.append(newEntry)
+            
+            
+            }
+        }
+        catch{
+            print("failed to get groups data")
+        }
+        return newEntry
+        
+    }
+    
     func getGroupsObjectList()->[[String:AnyObject]]
     {
     
@@ -317,7 +353,7 @@ internal class DatabaseHandler:NSObject
         }*/
     }
     
-    func getMessageChannelsObjectList()->[[String:AnyObject]]
+    func getMessageChannelsObjectList(deptid:String)->[[String:AnyObject]]
     {
         
  let _id = Expression<String>("_id")
@@ -342,7 +378,7 @@ internal class DatabaseHandler:NSObject
         
         
         do
-        {for channelNames in try self.db.prepare(self.messageChannels){
+        {for channelNames in try self.db.prepare(self.messageChannels.filter(groupid == deptid)){
             var newEntry: [String: AnyObject] = [:]
             newEntry["_id"]=channelNames.get(_id)
             newEntry["msg_channel_name"]=channelNames.get(msg_channel_name)
