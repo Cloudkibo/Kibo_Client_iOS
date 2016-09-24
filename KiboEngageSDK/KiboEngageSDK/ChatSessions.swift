@@ -7,10 +7,10 @@
 //
 
 import Foundation
-
+import SQLite
 class ChatSessions
 {
-    
+/*
     func createChatSessions(companyid:String,name:String,email:String,phone:String)
     {
         
@@ -66,5 +66,5 @@ class ChatSessions
          
  
     }
-    
+    */
 }
