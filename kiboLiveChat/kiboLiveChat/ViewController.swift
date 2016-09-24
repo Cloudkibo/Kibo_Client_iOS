@@ -34,8 +34,8 @@ name: "SDKstoryboard", bundle: NSBundle(forClass: GroupsViewController.self)
         groupsList.fetchGroups()
         var messgeChannelsList=MessageChannels.init()
         messgeChannelsList.fetchMessageChannels()
-        var chatsSessions=ChatSessions.init()
-        chatsSessions.createChatSessions()
+        //var chatsSessions=ChatSessions.init()
+        //chatsSessions.createChatSessions()
 
     }
   

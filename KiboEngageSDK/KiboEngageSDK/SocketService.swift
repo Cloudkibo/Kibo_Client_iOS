@@ -31,7 +31,8 @@ class SocketService{
        self.socket.on("connect") {data, ack in
             //isSocketConnected=true
             print("connected to socket")
-            
+            ChatSessions.init().createChatSessions()
+        
             //if(globalChatRoomJoined==false)
             //{
            /* let _id = Expression<String>("_id")
@@ -146,7 +147,7 @@ class SocketService{
         //joined
         self.socket.on("joined") {data, ack in
             //NSLog("disconnected from socket")
-            print("joined room")
+            print("joined room and got data as \(data.debugDescription)")
         }
     }
 }

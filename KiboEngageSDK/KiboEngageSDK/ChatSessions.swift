@@ -101,7 +101,7 @@ public class ChatSessions
                 socketDataList["msg"]="User joined session"
                
                 print("socket data is \(socketDataList.debugDescription)")
-                //////////====DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("join meeting",socketDataList)
+                DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("join meeting",socketDataList)
                 
                 
                 /*
