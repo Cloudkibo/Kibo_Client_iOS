@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		KqF04GUd5LbvZye914BSdjA7+5E=
+		OuL8BzDTIQxh91qoSK3V8eADxeA=
 		</data>
 		<key>Headers/KiboEngageSDK-Swift.h</key>
 		<data>
@@ -18,7 +18,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ebx3F61I75W+g+ub3yAuT5URA7E=
+		v5xuTPbvxV8hBMKCnBLHUOISA1w=
+		</data>
+		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftdoc</key>
+		<data>
+		vjyf1PwTMoeW4AG57leno5CKovw=
+		</data>
+		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftmodule</key>
+		<data>
+		q8CiEWnRNyfxyVQseQKEPcN5sIg=
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -26,7 +34,7 @@
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		7upH0jslbSg8/7sxKwsAjG3xARM=
+		pq8DZQhH1aaP6XK26BwIbL1j4wY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -63,11 +71,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			KqF04GUd5LbvZye914BSdjA7+5E=
+			OuL8BzDTIQxh91qoSK3V8eADxeA=
 			</data>
 			<key>hash2</key>
 			<data>
-			1yrI2tABw0m7xNMsyX1yLluXHyfbYZBkf5i4u4djeGU=
+			iTe5ssHYle4u7x85kBg/e5KuxpNFQYwhfhnUnXkXKrU=
 			</data>
 		</dict>
 		<key>Headers/KiboEngageSDK-Swift.h</key>
@@ -92,6 +100,28 @@
 			WltfFAK5+WI11kP/ch+oe7DcT0IRJcdONTKLQpWmc98=
 			</data>
 		</dict>
+		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vjyf1PwTMoeW4AG57leno5CKovw=
+			</data>
+			<key>hash2</key>
+			<data>
+			ljlixX/IIIPg5U/Qafp2Z1MdbUf1JO1EtvFpAL697L4=
+			</data>
+		</dict>
+		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			q8CiEWnRNyfxyVQseQKEPcN5sIg=
+			</data>
+			<key>hash2</key>
+			<data>
+			LC38pVh1aXTr5ABn+TWSFpOgtZQdn0+T8/fIPB4AlJY=
+			</data>
+		</dict>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
@@ -107,11 +137,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7upH0jslbSg8/7sxKwsAjG3xARM=
+			pq8DZQhH1aaP6XK26BwIbL1j4wY=
 			</data>
 			<key>hash2</key>
 			<data>
-			Sp9z5X3KnRCOeLvf8DFNTBmCPXIzdA7vBItJ0nUmTm4=
+			lR8RnOPJP5n287QQ3FxRNKrmZIJFGKoOisze6DqGGEU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

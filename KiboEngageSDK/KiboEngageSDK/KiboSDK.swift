@@ -26,7 +26,7 @@ public class KiboSDK{
         
     ]*/
     
-    public init (appID:String,appSecret:String,clientID:String,companyname:String,companyemail:String){
+    public init (appID:String,appSecret:String,clientID:String,customerid:String,companyname:String!,companyemail:String!,phone:String!,account_number:String!){
         print("Kibo Engage SDK has been initialised")
         
      //   var aaa:SBNotificationHub!
@@ -60,7 +60,29 @@ public class KiboSDK{
         DatabaseObjectInitialiser.getInstance().appid=appID
         DatabaseObjectInitialiser.getInstance().secretid=appSecret
         DatabaseObjectInitialiser.getInstance().clientid=clientID
-            
+        DatabaseObjectInitialiser.getInstance().customerid=customerid
+        if(companyname != nil && companyname != "")
+        {
+            print("comapnyname received is \(companyname)")
+        DatabaseObjectInitialiser.getInstance().optionalDataList["companyname"]=companyname
+        }
+        if(companyemail != nil && companyemail != "")
+        {
+            print("companyemail received is \(companyemail)")
+        DatabaseObjectInitialiser.getInstance().optionalDataList["companyemail"]=companyemail
+        }
+        if(phone != nil && phone != "")
+        {
+            print("phone received is \(phone)")
+            DatabaseObjectInitialiser.getInstance().optionalDataList["phone"]=phone
+        }
+        if(account_number != nil && account_number != "")
+        {
+            print("account_number received is \(account_number)")
+        DatabaseObjectInitialiser.getInstance().optionalDataList["account_number"]=account_number
+        }
+        
+        print("optionalDataList data is \(DatabaseObjectInitialiser.getInstance().optionalDataList.debugDescription)")
         print(appID+" "+appSecret+" "+clientID)
         
         

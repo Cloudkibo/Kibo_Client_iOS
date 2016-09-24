@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "init(appID:appSecret:clientID:companyname:companyemail:)"
+            landmarkName = "init(appID:appSecret:clientID:customerid:companyname:companyemail:phone:account_number:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

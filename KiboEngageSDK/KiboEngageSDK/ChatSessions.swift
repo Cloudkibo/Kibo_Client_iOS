@@ -18,7 +18,7 @@ public class ChatSessions
         
     }
     
-    public func createChatSessions(companyid:String,name:String,email:String,phone:String)
+    public func createChatSessions()
     {
         var GroupsObjectList:[[String:AnyObject]]
         GroupsObjectList = DatabaseObjectInitialiser.getDB().getGroupsObjectList()
@@ -38,8 +38,14 @@ public class ChatSessions
          let creationdate = Expression<String>("creationdate")
          let deleteStatus = Expression<String>("deleteStatus")
          
-         
+           /// DatabaseObjectInitialiser.getInstance().optionalDataList.ke
          //GroupsObjectList[indexPath.row]["deptname"] as! String
+            var customeridDataList=[String:AnyObject]()
+            customeridDataList["customerID"]=DatabaseObjectInitialiser.getInstance().customerid
+            for keyname in DatabaseObjectInitialiser.getInstance().optionalDataList.keys {
+                print("Key: \(keyname) value: \(DatabaseObjectInitialiser.getInstance().optionalDataList[keyname]!)")
+            customeridDataList["\(keyname)"]=DatabaseObjectInitialiser.getInstance().optionalDataList[keyname]!
+            }
          
          
          // var sessiondata=
@@ -50,17 +56,65 @@ public class ChatSessions
          var agIds = [String]()
          var chArray = [String]()
          chArray.append(channelsList[j]["_id"] as! String)
+                var customeridjson = JSON(customeridDataList)
+                print("customer id JSON object is \(customeridjson.debugDescription)")
          //channel_ID
-         var customeridjson = JSON(["name" : "sumaira guest","email" : "aaaaa@cloudkibo.com","country" : "Pakistan","phone" :   phone,"companyid" : channelsList[j]["companyid"] as! String,"isMobileClient":false])
+        // var customeridjson = JSON(["customerID" : DatabaseObjectInitialiser.getInstance().customerid,"email" : "aaaaa@cloudkibo.com","country" : "Pakistan","phone" :   "12323424","companyid" : channelsList[j]["companyid"] as! String,"isMobileClient":false])
                 
                 print("channel iteration is for \(channelsList[j]["msg_channel_name"] as! String)")
+                
+                
+                
+                
+                
+               /*  var customerid = {‘customerID’ : //mandatory,
+                 'name' : name.value //optional : remove key if not available,
+                 'email' : email.value //optional,
+                 'country' : country.value //optional,
+                 'phone' :   phone.value //optional,
+                 'companyid' : companyid,
+                 'isMobileClient':"false"}
+                 
+                 DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("join meeting",
+                 customerid : customerid,
+                 departmentid : String //groupIDdepartment id
+                 platform :String  // "web" or “mobile”
+                 agent_ids : agIds,  //initially empty
+                 group:this.refs.grouplist.options[this.refs.grouplist.selectedIndex].text, //groupname
+                 messagechannel : chArray, // array of channel ID’s
+                 channelname: String, //name of currnet channel choosen
+                 fullurl :  fullurl, //optional
+                 currentPage : pathname, //optional
+                 phone :  phone.value,
+                 requesttime:Date.now(),
+                 status : "new", //initial value “new”
+                 device : “iOS”, //android or iOS
+                 device_version:”9.3”
+                 ipAddress:'192.168.1.2', //optional
+                 Is_rescheduled:"false",  //initially false
+                 initiator : 'visitor',
+                 companyid : companyid, //get from host app
+                 room: companyid,
+                 request_id : unique_id, //generate urself unique id and save
+                 webrtc_browser :'true',//optional
+                 msg : 'User joined session',
+                 };
+*/
+ 
+                
+                //=====
+                
+                
          /*{‘customerID’ : //mandatory,
          'name' : name.value //optional : remove key if not available,
          'email' : email.value //optional,
          'country' : country.value //optional,
          'phone' :   phone.value //optional,
          */
-         /*DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("join meeting",
+         
+            
+            
+            /*DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("join meeting",
          ["customerid" : customeridjson.object,
          "departmentid" : channelsList[j]["groupid"] as! String, //groupID
          "platform" : "mobile",  // "web" or “mobile”
