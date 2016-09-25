@@ -8,10 +8,10 @@
 
 import UIKit
 import SQLite
-public class GroupsViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource {
+public class TeamsViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource {
 
     
-    var GroupsObjectList=[[String:AnyObject]]()
+    var TeamsObjectList=[[String:AnyObject]]()
     //var GroupNamesList=[String]()
     
     let _id = Expression<String>("_id")
@@ -26,7 +26,7 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     
-     @IBOutlet public var collectionViewGroups: UICollectionView!
+     @IBOutlet public var collectionViewTeams: UICollectionView!
     
     
     
@@ -45,10 +45,10 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionViewGroups.dataSource=self
-        collectionViewGroups.delegate=self
+        collectionViewTeams.dataSource=self
+        collectionViewTeams.delegate=self
         
-        GroupsObjectList=DatabaseObjectInitialiser.getDB().getGroupsObjectList()
+        TeamsObjectList=DatabaseObjectInitialiser.getDB().getTeamsObjectList()
 
         // Do any additional setup after loading the view.
     }
@@ -62,7 +62,7 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
     
     //collectionViewGroups.frame.width/2-10
-    return CGSize(width: collectionViewGroups.bounds.width/2-0.5,height: collectionViewGroups.bounds.height/3)
+    return CGSize(width: collectionViewTeams.bounds.width/2-0.5,height: collectionViewTeams.bounds.height/3)
         //return CGSize(width: 100,height: 100)
     }
  
@@ -70,8 +70,8 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //print("items 6")
-        print("cccccc \(GroupsObjectList.count)")
-        return GroupsObjectList.count
+        print("cccccc \(TeamsObjectList.count)")
+        return TeamsObjectList.count
     }
     
     public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -81,8 +81,8 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         print("cell for row")
-        var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells", forIndexPath: indexPath) as! GroupsCell
-        cell.label1.text=GroupsObjectList[indexPath.row]["deptname"] as! String
+        var cell=collectionView.dequeueReusableCellWithReuseIdentifier("FAQsCells", forIndexPath: indexPath) as! TeamsCell
+        cell.label1.text=TeamsObjectList[indexPath.row]["deptname"] as! String
         
         
        /* if(indexPath.row==0)
@@ -142,9 +142,12 @@ public class GroupsViewController: UIViewController,UICollectionViewDelegate, UI
         if segue.identifier == "showChannelsSegue" {
             
             if let destinationVC = segue.destinationViewController as? ChannelsViewController{
-                let selectedRow = collectionViewGroups.indexPathsForSelectedItems()?.first?.row
+                let selectedRow = collectionViewTeams.indexPathsForSelectedItems()?.first?.row
                     //.indexPathForSelectedRow!.row
-                destinationVC.deptid=GroupsObjectList[selectedRow!]["_id"] as! String                //destinationVC.participants=self.participantsSelected
+                destinationVC.deptid=TeamsObjectList[selectedRow!]["_id"] as! String
+                destinationVC.teamName=TeamsObjectList[selectedRow!]["deptname"] as! String
+                
+                //destinationVC.participants=self.participantsSelected
                 //  let selectedRow = tblForChat.indexPathForSelectedRow!.row
                 
             }}

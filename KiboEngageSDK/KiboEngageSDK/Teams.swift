@@ -12,7 +12,7 @@ import SQLite
 import UIKit
 import SwiftyJSON
 
-public class Groups
+public class Teams
 {
     
     public init()
@@ -20,7 +20,7 @@ public class Groups
         
     }
     
-    public func fetchGroups()
+    public func fetchTeams()
     {
        /* var tblGroups=DatabaseObjectInitialiser.getInstance().database.groups
         do
@@ -34,7 +34,7 @@ public class Groups
         }
  
  */
-        var url=Constants.mainURL+Constants.fetchGroups
+        var url=Constants.mainURL+Constants.fetchTeams
         print(url.debugDescription)
         /*
          'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
@@ -100,12 +100,12 @@ public class Groups
                 */
                 ///print(response)
                 print(response.result.value)
-                var groupsData=JSON(response.result.value!)
+                var teamsData=JSON(response.result.value!)
                 
-                for(var i=0;i<groupsData.count;i++)
+                for(var i=0;i<teamsData.count;i++)
                 {
-                    print("got groups")
-                    DatabaseObjectInitialiser.getDB().storeGroups(groupsData[i]["_id"].string!, deptname1: groupsData[i]["deptname"].string!, deptDesc: groupsData[i]["deptdescription"].string!, compID: groupsData[i]["companyid"].string!, creeateby: "", datecreation: groupsData[i]["creationdate"].string!, delStatus: groupsData[i]["deleteStatus"].string!)
+                    print("got teams")
+                    DatabaseObjectInitialiser.getDB().storeTeams(teamsData[i]["_id"].string!, deptname1: teamsData[i]["deptname"].string!, deptDesc: teamsData[i]["deptdescription"].string!, compID: teamsData[i]["companyid"].string!, creeateby: "", datecreation: teamsData[i]["creationdate"].string!, delStatus: teamsData[i]["deleteStatus"].string!)
                     
                   ////  DatabaseObjectInitialiser.getDB().storeGroups("sfsfd", deptname1: "Sdfasdf", deptDesc: "sadfsadf", compID: "Sdfsafd", creeateby: "sdfsaf", datecreation: NSDate().description, delStatus: false)
                     

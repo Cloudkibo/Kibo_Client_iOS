@@ -17,7 +17,7 @@ internal class DatabaseHandler:NSObject
     //var db:Database
     var dbPath:String
     var credentials:Table!
-    var groups:Table!
+    var teams:Table!
     var messageChannels:Table!
     var userschats:Table!
     var allcontacts:Table!
@@ -50,7 +50,7 @@ internal class DatabaseHandler:NSObject
       
         
         createCredentialsTable()
-        createGroupsTable()
+        createTeamsTable()
         createMessageChannelsTable()
     }
     
@@ -82,7 +82,7 @@ internal class DatabaseHandler:NSObject
 
     }
     
-    func createGroupsTable()
+    func createTeamsTable()
     {
         /*
          "deptname": "Sales",
@@ -118,10 +118,10 @@ internal class DatabaseHandler:NSObject
         let creationdate = Expression<String>("creationdate")
         let deleteStatus = Expression<String>("deleteStatus")
         
-        self.groups = Table("groups")
+        self.teams = Table("teams")
         
         do{
-            try db.run(groups.create(ifNotExists: true) { t in
+            try db.run(teams.create(ifNotExists: true) { t in
                 
                 t.column(_id, unique: true)
                 t.column(deptname)
@@ -189,7 +189,7 @@ internal class DatabaseHandler:NSObject
         let companyEmail = Expression<String>("companyEmail")
         
         do{
-             let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(groups.insert(kiboAppID<-appID,
+             let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(teams.insert(kiboAppID<-appID,
             kiboAppSecret<-appSecret,
             kiboClientID<-appClientID,
             companyName<-companyname,
@@ -206,7 +206,7 @@ internal class DatabaseHandler:NSObject
     }
     
     
-    func storeGroups(deptid:String,deptname1:String,deptDesc:String,compID:String,creeateby:String,datecreation:String,delStatus:String){
+    func storeTeams(deptid:String,deptname1:String,deptDesc:String,compID:String,creeateby:String,datecreation:String,delStatus:String){
         let _id = Expression<String>("_id")
         let deptname = Expression<String>("deptname")
         let deptdescription = Expression<String>("deptdescription")
@@ -216,7 +216,7 @@ internal class DatabaseHandler:NSObject
         let deleteStatus = Expression<String>("deleteStatus")
         
         do{
-            let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(groups.insert(_id<-deptid,
+            let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(teams.insert(_id<-deptid,
                 deptname<-deptname1,
                 deptdescription<-deptDesc,
                 companyid<-compID,
@@ -227,7 +227,7 @@ internal class DatabaseHandler:NSObject
             ))
         }
         catch{
-            NSLog("error in saving groups data \(error)")
+            NSLog("error in saving teams data \(error)")
         }
         
     }
@@ -262,7 +262,7 @@ internal class DatabaseHandler:NSObject
         
     }
     
-    func getSingleGroupObject(groupid:String)->[String: AnyObject]
+    func getSingleTeamObject(teamid:String)->[String: AnyObject]
     {
        // var groupsList=[String:AnyObject]()
         var newEntry: [String: AnyObject] = [:]
@@ -275,33 +275,33 @@ internal class DatabaseHandler:NSObject
         let creationdate = Expression<String>("creationdate")
         let deleteStatus = Expression<String>("deleteStatus")
         
-        self.groups = Table("groups")
+        self.teams = Table("teams")
         do
-        {for groupsnames in try self.db.prepare(self.groups.filter(_id == groupid)){
+        {for teamsnames in try self.db.prepare(self.teams.filter(_id == teamid)){
            
-            newEntry["_id"]=groupsnames.get(_id)
-            newEntry["deptname"]=groupsnames.get(deptname)
-            newEntry["deptdescription"]=groupsnames.get(deptdescription)
-            newEntry["companyid"]=groupsnames.get(companyid)
-            newEntry["createdby"]=groupsnames.get(createdby)
-            newEntry["creationdate"]=groupsnames.get(creationdate)
-            newEntry["deleteStatus"]=groupsnames.get(deleteStatus)
+            newEntry["_id"]=teamsnames.get(_id)
+            newEntry["deptname"]=teamsnames.get(deptname)
+            newEntry["deptdescription"]=teamsnames.get(deptdescription)
+            newEntry["companyid"]=teamsnames.get(companyid)
+            newEntry["createdby"]=teamsnames.get(createdby)
+            newEntry["creationdate"]=teamsnames.get(creationdate)
+            newEntry["deleteStatus"]=teamsnames.get(deleteStatus)
             //groupsList.append(newEntry)
             
             
             }
         }
         catch{
-            print("failed to get groups data")
+            print("failed to get teams single object data")
         }
         return newEntry
         
     }
     
-    func getGroupsObjectList()->[[String:AnyObject]]
+    func getTeamsObjectList()->[[String:AnyObject]]
     {
     
-        var groupsList=[[String:AnyObject]]()
+        var teamsList=[[String:AnyObject]]()
     
         let _id = Expression<String>("_id")
         let deptname = Expression<String>("deptname")
@@ -311,18 +311,18 @@ internal class DatabaseHandler:NSObject
         let creationdate = Expression<String>("creationdate")
         let deleteStatus = Expression<String>("deleteStatus")
         
-        self.groups = Table("groups")
+        self.teams = Table("teams")
         do
-        {for groupsnames in try self.db.prepare(self.groups){
+        {for teamsnames in try self.db.prepare(self.teams){
             var newEntry: [String: AnyObject] = [:]
-            newEntry["_id"]=groupsnames.get(_id)
-            newEntry["deptname"]=groupsnames.get(deptname)
-            newEntry["deptdescription"]=groupsnames.get(deptdescription)
-            newEntry["companyid"]=groupsnames.get(companyid)
-            newEntry["createdby"]=groupsnames.get(createdby)
-            newEntry["creationdate"]=groupsnames.get(creationdate)
-            newEntry["deleteStatus"]=groupsnames.get(deleteStatus)
-            groupsList.append(newEntry)
+            newEntry["_id"]=teamsnames.get(_id)
+            newEntry["deptname"]=teamsnames.get(deptname)
+            newEntry["deptdescription"]=teamsnames.get(deptdescription)
+            newEntry["companyid"]=teamsnames.get(companyid)
+            newEntry["createdby"]=teamsnames.get(createdby)
+            newEntry["creationdate"]=teamsnames.get(creationdate)
+            newEntry["deleteStatus"]=teamsnames.get(deleteStatus)
+            teamsList.append(newEntry)
         
         
         }
@@ -330,8 +330,8 @@ internal class DatabaseHandler:NSObject
         catch{
             print("failed to get groups data")
         }
-    print("groupsList count is \(groupsList.count)")
-    return groupsList
+    print("teamsList count is \(teamsList.count)")
+    return teamsList
         /*do{
             try db.run(groups.create(ifNotExists: true) { t in
                 

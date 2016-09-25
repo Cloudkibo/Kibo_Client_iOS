@@ -20,8 +20,8 @@ public class ChatSessions
     
     public func createChatSessions()
     {
-        var GroupsObjectList:[[String:AnyObject]]
-        GroupsObjectList = DatabaseObjectInitialiser.getDB().getGroupsObjectList()
+        var TeamsObjectList:[[String:AnyObject]]
+        TeamsObjectList = DatabaseObjectInitialiser.getDB().getTeamsObjectList()
         var customeridDataList=[String:AnyObject]()
         customeridDataList["customerID"]=DatabaseObjectInitialiser.getInstance().customerid
         for keyname in DatabaseObjectInitialiser.getInstance().optionalDataList.keys {
@@ -35,10 +35,10 @@ public class ChatSessions
 
         
         
-        for(var i=0;i<GroupsObjectList.count;i++)
+        for(var i=0;i<TeamsObjectList.count;i++)
         {
-            print("group iteration is for \(GroupsObjectList[i]["deptname"] as! String)")
-        var channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(GroupsObjectList[i]["_id"] as! String)
+            print("teams iteration is for \(TeamsObjectList[i]["deptname"] as! String)")
+        var channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(TeamsObjectList[i]["_id"] as! String)
         
         
          let _id = Expression<String>("_id")
@@ -59,9 +59,9 @@ public class ChatSessions
             for(j=0;j<channelsList.count;j++)
             {
                 
-                var randomRequestID=(DatabaseObjectInitialiser.randomStringWithLength(5) as String)+"\(GroupsObjectList[i]["_id"] as! String)"+"\(channelsList[j]["_id"] as! String)"
+                var randomRequestID=(DatabaseObjectInitialiser.randomStringWithLength(5) as String)+"\(TeamsObjectList[i]["_id"] as! String)"+"\(channelsList[j]["_id"] as! String)"
                 
-                print("request id for group \(i) and channel \(j) is \(randomRequestID) ")
+                print("request id for team \(i) and channel \(j) is \(randomRequestID) ")
          var agIds = [String]()
          var chArray = [String]()
          chArray.append(channelsList[j]["_id"] as! String)
@@ -74,10 +74,10 @@ public class ChatSessions
                 var socketDataList=[String:AnyObject]()
                 
                 socketDataList["customerid"]=customeridjson.object
-                socketDataList["departmentid"]=GroupsObjectList[i]["_id"] as! String //groupIDdepartment id
+                socketDataList["departmentid"]=TeamsObjectList[i]["_id"] as! String //groupIDdepartment id
                 socketDataList["platform"]="mobile"  // "web" or “mobile”
                 socketDataList["agent_ids"]=agIds  //initially empty
-                socketDataList["group"]=GroupsObjectList[i]["deptname"] as! String //groupname
+                socketDataList["group"]=TeamsObjectList[i]["deptname"] as! String //groupname
                 socketDataList["messagechannel"]=chArray // array of channel ID’s
                 socketDataList["channelname"]=channelsList[j]["msg_channel_name"] as! String //name of currnet channel choosen
                 //fullurl :  fullurl, //optional

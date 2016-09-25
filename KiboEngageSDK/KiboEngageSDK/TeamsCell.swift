@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal class GroupsCell:UICollectionViewCell
+internal class TeamsCell:UICollectionViewCell
 {
     
     @IBOutlet weak var label1: UILabel!

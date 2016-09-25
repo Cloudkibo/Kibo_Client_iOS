@@ -14,12 +14,21 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
 
     
     
+    var teamName:String!
+    @IBOutlet weak var channelsTitleNavItem: UINavigationItem!
+    
     var deptid:String!
     var channelsList=[[String:AnyObject]]()
     @IBOutlet weak var btnback: UIBarButtonItem!
     @IBOutlet weak var tbl_channels: UITableView!
     
     
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        channelsTitleNavItem.title=teamName
+    }
     @IBAction func backbtnPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil);
     }

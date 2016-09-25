@@ -11,14 +11,14 @@ import KiboEngageSDK
 
 class ViewController: UIViewController {
 
-    @IBAction func showGroups(sender: AnyObject) {
+    @IBAction func showTeams(sender: AnyObject) {
    
        
        let s = UIStoryboard (
-name: "SDKstoryboard", bundle: NSBundle(forClass: GroupsViewController.self)
+name: "SDKstoryboard", bundle: NSBundle(forClass: TeamsViewController.self)
         )
         
-        let vc = s.instantiateInitialViewController()! as! GroupsViewController
+        let vc = s.instantiateInitialViewController()! as! TeamsViewController
         
         self.presentViewController(vc, animated: true, completion: nil)
  
@@ -30,8 +30,8 @@ name: "SDKstoryboard", bundle: NSBundle(forClass: GroupsViewController.self)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        var groupsList=Groups.init()
-        groupsList.fetchGroups()
+        var teamsList=Teams.init()
+        teamsList.fetchTeams()
         var messgeChannelsList=MessageChannels.init()
         messgeChannelsList.fetchMessageChannels()
         //var chatsSessions=ChatSessions.init()

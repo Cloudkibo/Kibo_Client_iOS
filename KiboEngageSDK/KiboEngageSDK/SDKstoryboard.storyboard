@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Groups View Controller-->
+        <!--Teams View Controller-->
         <scene sceneID="nRO-Gm-Qcj">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="VXf-bw-0d6" customClass="GroupsViewController" customModule="KiboEngageSDK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="VXf-bw-0d6" customClass="TeamsViewController" customModule="KiboEngageSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JpW-8x-IHQ"/>
                         <viewControllerLayoutGuide type="bottom" id="xe7-cl-X6w"/>
@@ -36,7 +36,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells" id="YHv-hU-fYA" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells" id="YHv-hU-fYA" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -65,7 +65,7 @@
                                             <segue destination="lj1-u7-FhL" kind="showDetail" identifier="showChannelsSegue" id="E2g-bk-1s6"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells1" id="EgC-LQ-TvS" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells1" id="EgC-LQ-TvS" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
                                         <rect key="frame" x="212" y="0.0" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -93,7 +93,7 @@
                                             <outlet property="label2" destination="L1p-Br-mZb" id="aA9-uh-5t6"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells2" id="0sV-9U-wbv" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells2" id="0sV-9U-wbv" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="203" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -121,7 +121,7 @@
                                             <outlet property="label3" destination="h9u-OM-cAj" id="UmP-nE-2Uc"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells3" id="erl-E5-5HC" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells3" id="erl-E5-5HC" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
                                         <rect key="frame" x="212" y="203" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -149,7 +149,7 @@
                                             <outlet property="label4" destination="qr0-Su-ITp" id="eP8-L0-aam"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells4" id="xqi-5Z-bGU" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells4" id="xqi-5Z-bGU" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="406" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -177,7 +177,7 @@
                                             <outlet property="label5" destination="h7u-Bx-SZs" id="FVa-2J-QcA"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells5" id="Jaj-Mc-Nnt" customClass="GroupsCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells5" id="Jaj-Mc-Nnt" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
                                         <rect key="frame" x="212" y="406" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -226,7 +226,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
-                        <outlet property="collectionViewGroups" destination="1AR-hV-A7d" id="W5Y-o9-mgs"/>
+                        <outlet property="collectionViewTeams" destination="1AR-hV-A7d" id="kp1-hd-nsN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXw-2b-oTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,6 +473,7 @@
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="btnback" destination="UOl-nV-aAE" id="nQu-X6-VWi"/>
+                        <outlet property="channelsTitleNavItem" destination="jON-j9-Xwm" id="dqP-z0-wtk"/>
                         <outlet property="tbl_channels" destination="QwZ-aP-LBf" id="kBT-Fm-HfO"/>
                     </connections>
                 </viewController>

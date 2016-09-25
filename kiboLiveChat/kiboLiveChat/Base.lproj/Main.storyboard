@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zw7-Cw-4RR">
-                                <rect key="frame" x="20" y="20" width="75" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zw7-Cw-4RR">
+                                <rect key="frame" x="20" y="20" width="98" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="fGe-AF-gJM"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Live Help"/>
                                 <connections>
-                                    <action selector="showGroups:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bnR-7o-pA5"/>
+                                    <action selector="showTeams:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ib9-cO-8Fu"/>
                                 </connections>
                             </button>
                         </subviews>
