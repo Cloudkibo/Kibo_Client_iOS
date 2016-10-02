@@ -14,4 +14,5 @@ internal class Constants
     static var fetchTeams="/api/departments"
     static var fetchMessageChannels="/api/messagechannels"
     static var socketurl="http://kiboengage.cloudapp.net"
+    static var createBulksessions="/api/visitorcalls/createbulksession"
 }

@@ -20,10 +20,7 @@ internal class DatabaseHandler:NSObject
     var teams:Table!
     var messageChannels:Table!
     var userschats:Table!
-    var allcontacts:Table!
-    var callHistory:Table!
-    var statusUpdate:Table!
-    var files:Table!
+    var requestIDsTable:Table!
     
     init(dbName:String)
     {print("inside database handler class")
@@ -52,6 +49,24 @@ internal class DatabaseHandler:NSObject
         createCredentialsTable()
         createTeamsTable()
         createMessageChannelsTable()
+        createRequestIDsTable()
+    }
+    
+    
+    
+     func randomStringWithLength (len : Int) -> NSString {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        
+        let randomString : NSMutableString = NSMutableString(capacity: len)
+        
+        for (var i=0; i < len; i++){
+            let length = UInt32 (letters.length)
+            let rand = arc4random_uniform(length)
+            randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
+        return randomString
     }
     
     func createCredentialsTable()
@@ -180,20 +195,89 @@ internal class DatabaseHandler:NSObject
     }
     
     
-    func storeCredentials(appID:String,appSecret:String,appClientID:String,companyname:String,companyemail:String){
+    func createRequestIDsTable()
+    {
+        let primeID=Expression<String>("primeID")
+        let team_id = Expression<String>("team_id")
+        let msg_channel_id = Expression<String>("msg_channel_id")
+        let request_id = Expression<String>("request_id")
+        
+        self.requestIDsTable = Table("requestIDsTable")
+        
+        do{
+            try db.run(requestIDsTable.create(ifNotExists: true) { t in
+                t.column(primeID, unique:true)
+                t.column(team_id)
+                t.column(msg_channel_id)
+                t.column(request_id)
+                
+                })
+            
+        }
+        catch
+        {
+            print("error in creating requestIDsTable table")
+            
+        }
+        
+    }
+    
+    
+    func storeRequestIDs(teamid:String,msgchannelid:String){
+        
+        let primeID=Expression<String>("primeID")
+        let team_id = Expression<String>("team_id")
+        let msg_channel_id = Expression<String>("msg_channel_id")
+        let request_id = Expression<String>("request_id")
+        
+        //var requestid=""
+        
+        var uid=randomStringWithLength(7)
+        
+        var date=NSDate()
+        var calendar = NSCalendar.currentCalendar()
+        var year=calendar.components(NSCalendarUnit.Year,fromDate: date).year
+        var month=calendar.components(NSCalendarUnit.Month,fromDate: date).month
+        var day=calendar.components(.Day,fromDate: date).day
+        var hr=calendar.components(NSCalendarUnit.Hour,fromDate: date).hour
+        var min=calendar.components(NSCalendarUnit.Minute,fromDate: date).minute
+        var sec=calendar.components(NSCalendarUnit.Second,fromDate: date).second
+        print("\(year) \(month) \(day) \(hr) \(min) \(sec)")
+        var requestid="h \(uid) \(year) \(month) \(day) \(hr) \(min) \(sec)"
+        
+        var prime=teamid+msgchannelid
+        
+        do{
+            let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(requestIDsTable.insert(
+                primeID<-prime,
+                team_id<-teamid,
+                msg_channel_id<-msgchannelid,
+                request_id<-requestid
+                
+                
+                //lastname<-"",
+                //email<-json["email"].string!,
+                ))
+        }
+        catch{
+            NSLog("error in saving credentials")
+        }
+        
+    }
+    
+    func storeCredentials(appID:String,appSecret:String,appClientID:String,customerID:String){
       
         let kiboAppID = Expression<String>("kiboAppID")
         let kiboAppSecret = Expression<String>("kiboAppSecret")
-        let kiboClientID = Expression<String>("kiboClientID")
-        let companyName = Expression<String>("companyName")
-        let companyEmail = Expression<String>("companyEmail")
+        let kiboClientID = Expression<String>("kiboClientID") //companyid
+        //let customerName = Expression<String>("customerName")
+        let customerid = Expression<String>("customerid")
         
         do{
              let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(teams.insert(kiboAppID<-appID,
             kiboAppSecret<-appSecret,
             kiboClientID<-appClientID,
-            companyName<-companyname,
-            companyEmail<-companyemail
+            customerid<-customerID
             
         //lastname<-"",
         //email<-json["email"].string!,
@@ -298,6 +382,36 @@ internal class DatabaseHandler:NSObject
         
     }
     
+    
+    
+    
+    
+    func getRequestIDsObjectList()->[[String:AnyObject]]
+    {
+        
+        var requestIDsList=[[String:AnyObject]]()
+        
+        let team_id = Expression<String>("team_id")
+        let msg_channel_id = Expression<String>("msg_channel_id")
+        let request_id = Expression<String>("request_id")
+        
+        self.teams = Table("teams")
+        do
+        {for teamsnames in try self.db.prepare(self.requestIDsTable){
+            var newEntry: [String: AnyObject] = [:]
+            newEntry["team_id"]=teamsnames.get(team_id)
+            newEntry["msg_channel_id"]=teamsnames.get(msg_channel_id)
+            newEntry["request_id"]=teamsnames.get(request_id)
+            requestIDsList.append(newEntry)
+            }
+        }
+        catch{
+            print("failed to get requestIDsList data")
+        }
+        print("requestIDsList count is \(requestIDsList.count)")
+        return requestIDsList
+        
+    }
     func getTeamsObjectList()->[[String:AnyObject]]
     {
     

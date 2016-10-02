@@ -25,13 +25,13 @@ class SocketService{
     
     
     init(url:String){
-        socket=SocketIOClient(socketURL: "\(url)", options: [.Log(true)])
+        socket=SocketIOClient(socketURL: "\(url)", options: [.Log(false)])
         //areYouFreeForCall=true
        // isBusy=false
        self.socket.on("connect") {data, ack in
             //isSocketConnected=true
             print("connected to socket")
-            ChatSessions.init().createChatSessions()
+           //// ChatSessions.init().createChatSessions()
         
             //if(globalChatRoomJoined==false)
             //{
@@ -148,6 +148,11 @@ class SocketService{
         self.socket.on("joined") {data, ack in
             //NSLog("disconnected from socket")
             print("joined room and got data as \(data.debugDescription)")
+        }
+        
+        self.socket.on("empty") {data, ack in
+            //NSLog("disconnected from socket")
+            print("received empty \(data.debugDescription)")
         }
     }
 }

@@ -29,8 +29,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        
+        
+        let date = NSDate()
+        
+        // *** create calendar object ***
+        var calendar = NSCalendar.currentCalendar()
+        
+        // *** Get components using current Local & Timezone ***
+        print("datetime")
+        print(calendar.components(NSCalendarUnit.Year,fromDate: date))
+            //,NSCalendarUnit.Month,NSCalendarUnit.Day,NSCalendarUnit.Hour,NSCalendarUnit.Minute,NSCalendarUnit.Second]
+        var year=calendar.components(NSCalendarUnit.Year,fromDate: date).year
+        var month=calendar.components(NSCalendarUnit.Month,fromDate: date).month
+        var day=calendar.components(.Day,fromDate: date).day
+        var hr=calendar.components(NSCalendarUnit.Hour,fromDate: date).hour
+        var min=calendar.components(NSCalendarUnit.Minute,fromDate: date).minute
+        var sec=calendar.components(NSCalendarUnit.Second,fromDate: date).second
+        print("\(year) \(month) \(day) \(hr) \(min) \(sec)")
+    
         application.statusBarHidden = true
-        kiboLiveChat=KiboSDK.init(appID:"5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59", appSecret: "jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx", clientID: "cd89f71715f2014725163952",customerid: "testID12323234", companyname: nil, companyemail: "testemail@cloudkibo.com", phone: "03201211991", account_number: nil)
+        kiboLiveChat=KiboSDK.init(appID:"5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59", appSecret: "jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx", clientID: "cd89f71715f2014725163952",customerid: "testID12323234", customerName: nil, companyemail: "testemail@cloudkibo.com", phone: "03201211991", account_number: nil)
         
         
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]

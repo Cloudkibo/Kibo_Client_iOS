@@ -9,6 +9,7 @@
 import Foundation
 import SQLite
 import SwiftyJSON
+import Alamofire
 
 public class ChatSessions
 {
@@ -19,6 +20,157 @@ public class ChatSessions
     }
     
     public func createChatSessions()
+    {
+        //http://api.kibosupport.com/visitorcalls/createbulksession
+        
+        
+        
+        let team_id = Expression<String>("team_id")
+        let msg_channel_id = Expression<String>("msg_channel_id")
+        let request_id = Expression<String>("request_id")
+        
+        
+         var customerInfoList=[String:AnyObject]()
+         customerInfoList["customerID"]=DatabaseObjectInitialiser.getInstance().customerid
+         for keyname in DatabaseObjectInitialiser.getInstance().optionalDataList.keys {
+         print("Key: \(keyname) value: \(DatabaseObjectInitialiser.getInstance().optionalDataList[keyname]!)")
+         customerInfoList["\(keyname)"]=DatabaseObjectInitialiser.getInstance().optionalDataList[keyname]!
+         }
+         customerInfoList["isMobile"]=true
+         customerInfoList["companyid"]=DatabaseObjectInitialiser.getInstance().clientid //get from host app 'clientID'
+         customerInfoList["platform"]="mobile"
+         customerInfoList["status"]="new"
+        var TeamsObjectList=[[String:AnyObject]]()
+        TeamsObjectList = DatabaseObjectInitialiser.getDB().getTeamsObjectList()
+        
+        for(var i=0;i<TeamsObjectList.count;i++)
+        {
+        
+        var channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(TeamsObjectList[i]["_id"] as! String)
+            
+            var j=0
+            
+            for(j=0;j<channelsList.count;j++)
+            {
+                DatabaseObjectInitialiser.getDB().storeRequestIDs(TeamsObjectList[i]["_id"] as! String, msgchannelid: channelsList[j]["_id"] as! String)
+                
+            }
+            
+        }
+        var requestIDsList=DatabaseObjectInitialiser.getDB().getRequestIDsObjectList()
+        var sessionInfoList=[[String:AnyObject]]()
+      //  var sessionInfoList=[AnyObject]()
+                var k=0
+        for(k=0;k<requestIDsList.count;k++)
+        {
+           /* var sessionInfoItem=[String: AnyObject]()
+            sessionInfoItem["departmentid"]=requestIDsList[k]["team_id"] as! String
+             sessionInfoItem["messagechannel"]=requestIDsList[k]["msg_channel_id"] as! String
+             sessionInfoItem["request_id"]=requestIDsList[k]["request_id"] as! String*/
+             sessionInfoList.append(["departmentid":requestIDsList[k]["team_id"] as! String,"messagechannel":requestIDsList[k]["msg_channel_id"] as! String,"request_id":requestIDsList[k]["request_id"] as! String])
+           /* for keyname in sessionInfoItem.keys {
+                print("Key: \(keyname) value: \(sessionInfoItem[keyname]!)")
+                sessionInfoList.append["\(keyname)"]=sessionInfoItem[keyname]!
+            }*/
+            
+            //sessionInfoList.append(["departmentid":sessionInfoItem["departmentid"].debugDescription,"messagechannel":sessionInfoItem["messagechannel"].debugDescription,"request_id":sessionInfoItem["request_id"].debugDescription])
+        }
+        
+        
+        //customerInfoList["sessionInfo"]=JSON(sessionInfoItem).object
+
+        customerInfoList["sessionInfo"]=sessionInfoList
+        print("data sending to API is \(customerInfoList.debugDescription)")
+
+
+/*     let team_id = Expression<String>("team_id")
+ let msg_channel_id = Expression<String>("msg_channel_id")
+ let request_id = Expression<String>("request_id")*/
+ 
+ 
+ 
+ 
+        //'email' : email.value,
+        //'customerID' : email.value,
+        /*sessionInfo :[{
+        'departmentid': ,
+        'messagechannel' :,
+        'request_id' :
+        },...]
+ */
+        //'phone' :  phone.value,
+        //'country' : country.value,
+        //'companyid' : companyid,
+        //'platform': 'mobile',
+        //'customerName' : name.value,
+        //'isMobile' : "true",
+        //'status' : 'new',
+        
+        
+        
+        var params = "\"email\" : \"test@y.com\",\"customerID\" : \"testID12323234\",\"phone\" : \"03201211991\",\"platform\": \"mobile\",\"isMobile\" : \"true\",\"status\" : \"new\",\"sessionInfo\" : [{ \"departmentid\" :\"5745e4da7329b12e16b0e7b7\",\"messagechannel\":\"574db78d23785bca7c650a0f\",\"request_id\":\"hIDrKb4B2016929131317\"}]}\""
+        
+        
+        var params2:[String:AnyObject]=[:]
+        var params3:[Dictionary<String,AnyObject>]
+        params3=[["departmentid":"5745e4da7329b12e16b0e7b7","messagechannel":"574db78d23785bca7c650a0f","request_id":"hIDrKb4B2016929131317"]]
+        params2=["customerID":"testID12323234","platform":"mobile","isMobile":"true","status":"new","sessionInfo":params3]
+        var url=Constants.mainURL+Constants.createBulksessions
+        //print(url.debugDescription)
+        /*
+         'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
+         'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
+         'kibo-client-id': 'cd89f71715f2014725163952',
+         */
+        var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        var hhh=["headers":"\(header)"]
+        print("header is \(header.description)")
+        
+        
+        /*
+        var proxyConfiguration = [NSObject: AnyObject]()
+        proxyConfiguration[kCFNetworkProxiesHTTPProxy] = "10.2.20.18"
+        proxyConfiguration[kCFNetworkProxiesHTTPPort] = "9090"
+        proxyConfiguration[kCFNetworkProxiesHTTPEnable] = 1
+        let sessionConfiguration = Alamofire.Manager.sharedInstance.session.configuration
+        sessionConfiguration.connectionProxyDictionary = proxyConfiguration
+        var manager = Alamofire.Manager(configuration: sessionConfiguration)
+        */
+        
+        //print("url is \(url)")
+        //print("params are \(params2)")
+        Alamofire.request(.POST,"\(url)",parameters: customerInfoList,headers:header,encoding: .JSON).response{
+            request, response_, data, error in            /* print(response)
+             print(".......")
+             print(response.data!)
+             print(".......")
+             print(response.result.value!)*/
+            
+            /*
+             
+             "__v" = 0;
+             "_id" = 57c69e61dfff9e5223a8fcb2;
+             activeStatus = Yes;
+             companyid = cd89f71715f2014725163952;
+             createdby = 554896ca78aed92f4e6db296;
+             creationdate = "2016-08-31T09:07:45.236Z";
+             groupid = 57c69e61dfff9e5223a8fcb1;
+             "msg_channel_description" = "This channel is for general discussions";
+             "msg_channel_name" = General;
+             
+             
+             */
+            print(response_?.statusCode)
+           // print(request.debugDescription)
+            print(data.debugDescription)
+            print(JSON(data!).debugDescription)
+            print(error.debugDescription)
+            //print(JSON(response.result.value!))
+
+        }
+    }
+    
+    public func createChatSessionsOld()
     {
         var TeamsObjectList:[[String:AnyObject]]
         TeamsObjectList = DatabaseObjectInitialiser.getDB().getTeamsObjectList()
@@ -66,7 +218,7 @@ public class ChatSessions
          var chArray = [String]()
          chArray.append(channelsList[j]["_id"] as! String)
                 var customeridjson = JSON(customeridDataList)
-                print("customer id JSON object is \(customeridjson.debugDescription)")
+              //  print("customer id JSON object is \(customeridjson.debugDescription)")
          //channel_ID
         // var customeridjson = JSON(["customerID" : DatabaseObjectInitialiser.getInstance().customerid,"email" : "aaaaa@cloudkibo.com","country" : "Pakistan","phone" :   "12323424","companyid" : channelsList[j]["companyid"] as! String,"isMobileClient":false])
                 
@@ -100,7 +252,8 @@ public class ChatSessions
                 //webrtc_browser :'true',//optional
                 socketDataList["msg"]="User joined session"
                
-                print("socket data is \(socketDataList.debugDescription)")
+                //print("socket data is \(socketDataList.debugDescription)")
+                print("emitting join meeting \(socketDataList)")
                 DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("join meeting",socketDataList)
                 
                 

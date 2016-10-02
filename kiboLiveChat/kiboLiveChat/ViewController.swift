@@ -13,7 +13,8 @@ class ViewController: UIViewController {
 
     @IBAction func showTeams(sender: AnyObject) {
    
-       
+       //ChatSessions.init().createChatSessions()
+        
        let s = UIStoryboard (
 name: "SDKstoryboard", bundle: NSBundle(forClass: TeamsViewController.self)
         )
@@ -30,13 +31,16 @@ name: "SDKstoryboard", bundle: NSBundle(forClass: TeamsViewController.self)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        var teamsList=Teams.init()
+        
+         ChatSessions.init().createChatSessions()
+       /*var teamsList=Teams.init()
         teamsList.fetchTeams()
         var messgeChannelsList=MessageChannels.init()
         messgeChannelsList.fetchMessageChannels()
         //var chatsSessions=ChatSessions.init()
         //chatsSessions.createChatSessions()
-
+ */
+      // ChatSessions.init().createChatSessions()
     }
   
 

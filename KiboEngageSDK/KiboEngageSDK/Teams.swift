@@ -99,7 +99,7 @@ public class Teams
                 deptname = Finance;
                 */
                 ///print(response)
-                print(response.result.value)
+               ///// print(response.result.value)
                 var teamsData=JSON(response.result.value!)
                 
                 for(var i=0;i<teamsData.count;i++)

@@ -47,11 +47,11 @@ public class MessageChannels
         print(header.description)
         Alamofire.request(.GET,"\(url)",headers:header).validate().responseJSON { response in
             
-            print(response)
+           /* print(response)
             print(".......")
              print(response.data!)
             print(".......")
-            print(response.result.value!)
+            print(response.result.value!)*/
             
             /*
  
