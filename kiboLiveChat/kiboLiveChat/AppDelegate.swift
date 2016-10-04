@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("\(year) \(month) \(day) \(hr) \(min) \(sec)")
     
         application.statusBarHidden = true
-        kiboLiveChat=KiboSDK.init(appID:"5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59", appSecret: "jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx", clientID: "cd89f71715f2014725163952",customerid: "testID12323234", customerName: nil, companyemail: "testemail@cloudkibo.com", phone: "03201211991", account_number: nil)
+        kiboLiveChat=KiboSDK.init(appID:"5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59", appSecret: "jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx", clientID: "cd89f71715f2014725163952",customerid: "newCustomer1", customerName: nil, companyemail: "newemail@cloudkibo.com", phone: "01234556774", account_number: nil)
         
         
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]

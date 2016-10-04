@@ -32,14 +32,15 @@ name: "SDKstoryboard", bundle: NSBundle(forClass: TeamsViewController.self)
         // Do any additional setup after loading the view, typically from a nib.
         
         
-         ChatSessions.init().createChatSessions()
+       ChatSessions.init().createChatSessions()
        /*var teamsList=Teams.init()
         teamsList.fetchTeams()
         var messgeChannelsList=MessageChannels.init()
         messgeChannelsList.fetchMessageChannels()
+ */
         //var chatsSessions=ChatSessions.init()
         //chatsSessions.createChatSessions()
- */
+ 
       // ChatSessions.init().createChatSessions()
     }
   

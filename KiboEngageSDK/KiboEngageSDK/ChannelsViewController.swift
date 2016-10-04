@@ -38,6 +38,9 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         // Do any additional setup after loading the view.
         
         channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(deptid)
+        
+        
+        
         //cell.label1.text=GroupsObjectList[indexPath.row]["deptname"] as! String
         
         /*
@@ -164,6 +167,46 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
             return cell
         }*/
     }
+    
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!){
+        
+        //let indexPath = tableView.indexPathForSelectedRow();
+        //let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!;
+        
+        ///print(ContactNames[indexPath.row], terminator: "")
+       // if(tblForChat.editing.boolValue==false)
+        //{
+            self.performSegueWithIdentifier("showChats", sender: nil);
+      //  }
+        //slideToChat
+        
+    }
+    
+    
+    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        //showChannelsSegue
+        
+        if segue.identifier == "showChats" {
+            
+            if let destinationVC = segue.destinationViewController as? ChatsDetailViewController{
+                let selectedRow = tbl_channels.indexPathForSelectedRow!.row
+                
+                //.indexPathForSelectedRow!.row
+                destinationVC.team_id=deptid
+                destinationVC.messagechannel_id=channelsList[selectedRow]["_id"] as! String
+                                
+                //destinationVC.participants=self.participantsSelected
+                //  let selectedRow = tblForChat.indexPathForSelectedRow!.row
+                
+            }}
+    }
+
+    
+    
+    
     /*
     // MARK: - Navigation
 

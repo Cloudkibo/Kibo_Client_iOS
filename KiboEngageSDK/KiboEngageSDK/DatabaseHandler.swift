@@ -50,6 +50,7 @@ internal class DatabaseHandler:NSObject
         createTeamsTable()
         createMessageChannelsTable()
         createRequestIDsTable()
+        createChatsTable()
     }
     
     
@@ -95,6 +96,70 @@ internal class DatabaseHandler:NSObject
         }
         
 
+    }
+    
+    func createChatsTable()
+    {
+        /*
+        'to' : 'All Agents',
+        'from' : String, //customer name or customerID
+        'visitoremail' :  String //customer email:optional
+        'type': 'message',
+        'uniqueid' : String, //generate unique message id
+        'msg' : String, // message
+        'datetime' : Date.now(),
+        'request_id' : String, //request id of a session already stored
+        'messagechannel': String, //channel id
+        'companyid': String,
+        'is_seen': String, // ‘yes’/’no’
+        'time' : String,//hours,mins
+        ‘fromMobile’ : String // ‘yes’ or ‘no’
+        */
+        
+         let to = Expression<String>("to")
+         let from = Expression<String>("from")
+         let visitoremail = Expression<String>("visitoremail")
+         let type = Expression<String>("type")
+         let uniqueid = Expression<String>("uniqueid")
+         let msg = Expression<String>("msg")
+         let datetime = Expression<String>("datetime")
+         let request_id = Expression<String>("request_id")
+         let messagechannel = Expression<String>("messagechannel")
+         let companyid = Expression<String>("companyid")
+         let is_seen = Expression<String>("is_seen")
+         let time = Expression<String>("time")
+         let fromMobile = Expression<String>("fromMobile")
+        
+        self.userschats = Table("userschats")
+        
+        do{
+            try db.run(userschats.create(ifNotExists: true) { t in
+                
+                t.column(to)
+                t.column(from)
+                t.column(visitoremail)
+                t.column(type)
+                t.column(uniqueid, unique:true)
+                t.column(msg)
+                t.column(datetime)
+                t.column(request_id)
+                t.column(messagechannel)
+                t.column(companyid)
+                t.column(is_seen)
+                t.column(time)
+                t.column(fromMobile)
+                
+                })
+            
+        }
+        catch
+        {
+            print("error in creating credentials table")
+            
+        }
+        
+
+        
     }
     
     func createTeamsTable()
@@ -346,6 +411,51 @@ internal class DatabaseHandler:NSObject
         
     }
     
+    func storeChat(to1:String,from1:String,visitoremail1:String,type1:String,uniqueid1:String,msg1:String,datetime1:String,request_id1:String,messagechannel1:String,companyid1:String,is_seen1:String,time1:String,fromMobile1:String)
+    {
+        let to = Expression<String>("to")
+        let from = Expression<String>("from")
+        let visitoremail = Expression<String>("visitoremail")
+        let type = Expression<String>("type")
+        let uniqueid = Expression<String>("uniqueid")
+        let msg = Expression<String>("msg")
+        let datetime = Expression<String>("datetime")
+        let request_id = Expression<String>("request_id")
+        let messagechannel = Expression<String>("messagechannel")
+        let companyid = Expression<String>("companyid")
+        let is_seen = Expression<String>("is_seen")
+        let time = Expression<String>("time")
+        let fromMobile = Expression<String>("fromMobile")
+        
+        
+        
+        self.userschats = Table("userschats")
+        
+        do{
+            //sqliteDB.db.run(tbl_accounts.insert(
+            let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(userschats.insert(to<-to1,
+                from<-from1,
+                visitoremail<-visitoremail1,
+                type<-type1,
+                uniqueid<-uniqueid1,
+                msg<-msg1,
+                datetime<-datetime1,
+                request_id<-request_id1,
+                messagechannel<-messagechannel1,
+                companyid<-companyid1,
+                is_seen<-is_seen1,
+                time<-time1,
+                fromMobile<-fromMobile1
+                
+                ))
+        }
+        catch{
+            NSLog("error in saving message channels data \(error)")
+        }
+
+        
+    }
+    
     func getSingleTeamObject(teamid:String)->[String: AnyObject]
     {
        // var groupsList=[String:AnyObject]()
@@ -384,7 +494,32 @@ internal class DatabaseHandler:NSObject
     
     
     
-    
+    func getSingleRequestIDs(teamid:String,messagechannel_id:String)->String
+    {
+        // var groupsList=[String:AnyObject]()
+        var newEntry=""
+        
+        let team_id = Expression<String>("team_id")
+        let msg_channel_id = Expression<String>("msg_channel_id")
+        let request_id = Expression<String>("request_id")
+        
+        self.requestIDsTable = Table("requestIDsTable")
+        do
+        {for reqIDs in try self.db.prepare(self.requestIDsTable.filter(team_id==teamid && msg_channel_id==messagechannel_id)){
+            
+            newEntry=reqIDs.get(request_id)
+            
+            //groupsList.append(newEntry)
+            
+            
+            }
+        }
+        catch{
+            print("failed to get teams single object data")
+        }
+        return newEntry
+        
+    }
     
     func getRequestIDsObjectList()->[[String:AnyObject]]
     {

@@ -475,6 +475,7 @@
                         <outlet property="btnback" destination="UOl-nV-aAE" id="nQu-X6-VWi"/>
                         <outlet property="channelsTitleNavItem" destination="jON-j9-Xwm" id="dqP-z0-wtk"/>
                         <outlet property="tbl_channels" destination="QwZ-aP-LBf" id="kBT-Fm-HfO"/>
+                        <segue destination="TYd-2N-MDV" kind="show" identifier="showChats" id="Ru3-nt-yQT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yf-Ku-HZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -861,6 +862,9 @@
                                         <rect key="frame" x="46" y="7" width="220" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="TYd-2N-MDV" id="cmz-u0-xOh"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvm-qy-t7d">
                                         <rect key="frame" x="267" y="7" width="46" height="30"/>
@@ -868,6 +872,9 @@
                                             <color key="titleColor" red="0.0" green="0.7254902124" blue="0.41176474089999998" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnSendTapped:" destination="TYd-2N-MDV" eventType="touchUpInside" id="Pt0-GN-Dxt"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unB-QK-z0f" userLabel="fileAttachBtn">
                                         <rect key="frame" x="8" y="8" width="30" height="29"/>
@@ -882,7 +889,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
+                        <outlet property="btnSendChat" destination="Nvm-qy-t7d" id="EsV-yX-fpJ"/>
+                        <outlet property="composeView" destination="ssh-RA-onz" id="eQY-V4-8ua"/>
                         <outlet property="tblForGroupChat" destination="BQu-Td-Rlk" id="M5V-DH-x6j"/>
+                        <outlet property="txtFieldPost" destination="QFv-dX-bKz" id="un3-Bm-bN8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llJ-Jp-0kM" userLabel="First Responder" sceneMemberID="firstResponder"/>
