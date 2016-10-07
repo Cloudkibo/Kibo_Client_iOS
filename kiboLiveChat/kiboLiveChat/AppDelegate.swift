@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            ///// tagarray.append(username!.substringFromIndex(username!.startIndex.successor()))
            // print(username!.substringFromIndex(username!.startIndex.successor()))
             // var tagname=NSSet(object: username!.substringFromIndex(username!.startIndex))
-            tagarray.append("sojharo")
+            tagarray.append("newCustomer1")
             var tagname=NSSet(array: tagarray)
             // hub.registerNativeWithDeviceToken(deviceToken, tags: tagname as Set<NSObject>) { (error) in
         if(aaa != nil)
@@ -172,11 +172,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
         print("receivednotification method called \(userInfo.description)")
-        let navigationController = UIApplication.sharedApplication().windows[0].rootViewController as! UINavigationController
+       // let navigationController = UIApplication.sharedApplication().windows[0].rootViewController as! UINavigationController
         
-        let activeViewCont = navigationController.visibleViewController
+      //  let activeViewCont = navigationController.visibleViewController
         
-        kiboLiveChat.handleRemoteNotifications(userInfo, withController: activeViewCont!)
+      //  kiboLiveChat.handleRemoteNotifications(userInfo, withController: activeViewCont!)
         
         print("app state application is \(UIApplication.sharedApplication().applicationState.rawValue)")
         print("app state is \(application.applicationState.rawValue)")
