@@ -224,6 +224,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              print("json converted is \(notificationJSON)")
              print("json received is is \(notificationJSON["aps"])")
              */
+        
+        kiboLiveChat.handleRemoteNotifications(userInfo, withController: (self.window?.rootViewController)!)
             completionHandler(UIBackgroundFetchResult.NewData)
             NSNotificationCenter.defaultCenter().postNotificationName("ReceivedNotification", object:userInfo)
            

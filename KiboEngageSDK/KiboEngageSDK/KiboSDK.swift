@@ -7,9 +7,10 @@
 //
 
 import Foundation
-//import Alamofire
+import Alamofire
 import SQLite
 import UIKit
+import SwiftyJSON
 //import WindowsAzureMessaging
 public class KiboSDK{
     
@@ -26,6 +27,14 @@ public class KiboSDK{
         
     ]*/
     
+    
+    /*static let sharedInstance = KiboSDK()
+    class func getInstance() -> DatabaseObjectInitialiser
+    {
+        return sharedInstance
+        
+    }
+    */
     public init (appID:String,appSecret:String,clientID:String,customerid:String,customerName:String!,companyemail:String!,phone:String!,account_number:String!){
         print("Kibo Engage SDK has been initialised")
         
@@ -254,6 +263,76 @@ public class KiboSDK{
     public func handleRemoteNotifications(userInfo:[NSObject : AnyObject],withController:UIViewController)
     {
         print("inside kibo app received notification \(userInfo)")
+        
+        print("uniqueid is \(userInfo["uniqueid"])")
+        print("request_id is \(userInfo["request_id"])")
+         print("data is \(userInfo["data"])")
+        if  let data = userInfo["data"]{
+            print("inside 1")
+        if  let singleuniqueid = userInfo["data"]!["uniqueid"] as? String {
+            print("inside 2")
+            if  let requestid = userInfo["data"]!["request_id"] as? String {
+                print("inside 3")
+                fetchSingleMessage(singleuniqueid,request_id: requestid)
+            }
+        }
+        }
+    }
+    
+    private func fetchSingleMessage(uniqueid:String, request_id:String)
+        
+        //uniqueid = h5ha3rgh4tag52eyn45cdi2016101025546;)
+    {
+    var url=Constants.mainURL+Constants.fetchSingleChat
+    print(url.debugDescription)
+    /*
+     'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
+     'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
+     'kibo-client-id': 'cd89f71715f2014725163952',
+     */
+    var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+    var hhh=["headers":"\(header)"]
+    print(header.description)
+        Alamofire.request(.POST,"\(url)",parameters:["uniqueid":uniqueid,"request_id":request_id],headers:header).validate().responseJSON { response in
+    
+    /* print(response)
+     print(".......")
+     print(response.data!)
+     print(".......")
+     print(response.result.value!)*/
+    
+    /*
+     
+     "__v" = 0;
+     "_id" = 57c69e61dfff9e5223a8fcb2;
+     activeStatus = Yes;
+     companyid = cd89f71715f2014725163952;
+     createdby = 554896ca78aed92f4e6db296;
+     creationdate = "2016-08-31T09:07:45.236Z";
+     groupid = 57c69e61dfff9e5223a8fcb1;
+     "msg_channel_description" = "This channel is for general discussions";
+     "msg_channel_name" = General;
+     
+     
+     */
+            print("fetching single chat message")
+            if(response.response?.statusCode == 200)
+            {
+                print(response.debugDescription)
+                print(response.data)
+                print(response.result)
+                var chatmsg2=JSON(response.result.value!)
+                var chatmsg=JSON(response.data!)
+                print("chat message fetched is \(chatmsg)")
+                
+                print("chat message2 fetched is \(chatmsg2)")
+                
+            }
+            else{
+                print("error in fetching chat")
+            }
+    
+    }
     }
     
 }
