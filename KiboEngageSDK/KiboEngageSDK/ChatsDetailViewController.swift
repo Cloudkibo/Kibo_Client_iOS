@@ -154,7 +154,10 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         
         //////////////socket.emit()
         
-        DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("send:messageToAgent",chatdata)
+        //////// === commenting old socket logic...
+        //DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("send:messageToAgent",chatdata)
+        
+            sendChatOnServer(chatdata)
         
          /////////////api/userchats/create
             saveChatOnServer(chatdata)
@@ -178,12 +181,12 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     func saveChatOnServer(chatdata:[String:AnyObject])
     {
         
-        print("call endpoint, data is \(chatdata.description)")
+        print("call endpoint,saving chat data is \(chatdata.description)")
         var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
         var hhh=["headers":"\(header)"]
         print("header is \(header.description)")
         
-        var url=Constants.mainURL+Constants.sendChat
+        var url=Constants.mainURL+Constants.saveChat
        
         Alamofire.request(.POST,"\(url)",parameters: chatdata,headers:header,encoding: .JSON).response{
             request, response_, data, error in
@@ -200,6 +203,41 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     }
     
     
+    func sendChatOnServer(chatdata:[String:AnyObject])
+    {
+        
+        print("call endpoint, sending chat, data is \(chatdata.description)")
+        var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        var hhh=["headers":"\(header)"]
+        print("header is \(header.description)")
+        
+        var url=Constants.sendChat
+        
+        Alamofire.request(.POST,"\(url)",parameters: chatdata,headers:header,encoding: .JSON).response{
+            request, response_, data, error in
+            
+            
+            print("sending chat")
+            if(error != nil)
+            {
+                print("error sending chat \(error.debugDescription)")
+            }
+            if(error==nil)
+            {
+                print(response_!.debugDescription)
+                print(data.debugDescription)
+            }
+            //print(response)
+            
+         //   print(response_!.description)
+           // print(data!.description)
+            //print(".......")
+            
+            
+        }
+        
+    }
+    
     func addMessage(message: String, ofType msgType:String, date:String, uniqueid:String) {
         messages.addObject(["message":message, "type":msgType, "date":date, "uniqueid":uniqueid])
     }
@@ -209,12 +247,43 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         return messages.count
     }
      public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var messageDic = messages.objectAtIndex(indexPath.row) as! [String : String];
         
-        return 60
+        let msg = messageDic["message"] as NSString!
+        let msgType = messageDic["type"]! as NSString
+      
+            let sizeOFStr = self.getSizeOfString(msg)
+            
+            return sizeOFStr.height + 70
     }
      public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1
+    }
+    
+    
+    func getSizeOfString(postTitle: NSString) -> CGSize {
+        
+        
+        // Get the height of the font
+        let constraintSize = CGSizeMake(170, CGFloat.max)
+        
+        //let constraintSize = CGSizeMake(220, CGFloat.max)
+        
+        
+        
+        /*let attributes = [NSFontAttributeName:UIFont.systemFontOfSize(11.0)]
+         let labelSize = postTitle.boundingRectWithSize(constraintSize,
+         options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+         attributes: attributes,
+         context: nil)*/
+        
+        let labelSize = postTitle.boundingRectWithSize(constraintSize,
+                                                       options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+                                                       attributes:[NSFontAttributeName : UIFont.systemFontOfSize(11.0)],
+                                                       context: nil)
+        ////print("size is width \(labelSize.width) and height is \(labelSize.height)")
+        return labelSize.size
     }
     
      public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -228,7 +297,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
          let msgType = messageDic["type"] as NSString!
          let msg = messageDic["message"] as NSString!
          let date2=messageDic["date"] as NSString!
-         /////////let sizeOFStr = self.getSizeOfString(msg)
+         let sizeOFStr = self.getSizeOfString(msg)
          let uniqueidDictValue=messageDic["uniqueid"] as NSString!
          /////////print("sizeOFStr for \(msg) is \(sizeOFStr)")
          //// print("sizeOfstr is width \(sizeOFStr.width) and height is \(sizeOFStr.height)")
@@ -252,11 +321,32 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
          */
          
          if (msgType.isEqualToString("1")){
+           
+            print("yessssss 1")
+            
             var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatSentCell")! as UITableViewCell
             let nameLabel = cell.viewWithTag(15) as! UILabel
+            let textLable = cell.viewWithTag(12) as! UILabel
+            let chatImage = cell.viewWithTag(1) as! UIImageView
+            let profileImage = cell.viewWithTag(2) as! UIImageView
+            let timeLabel = cell.viewWithTag(11) as! UILabel
+            
+            
+            chatImage.frame = CGRectMake(chatImage.frame.origin.x, chatImage.frame.origin.y, ((sizeOFStr.width + 100)  > 200 ? (sizeOFStr.width + 100) : 200), sizeOFStr.height + 40)
+            chatImage.image = UIImage(named: "chat_receive")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
+            //******
+            
+           
+            textLable.frame = CGRectMake(textLable.frame.origin.x, textLable.frame.origin.y, textLable.frame.size.width, sizeOFStr.height)
+            ////// profileImage.center = CGPointMake(profileImage.center.x, textLable.frame.origin.y + textLable.frame.size.height - profileImage.frame.size.height/2 + 10)
+            profileImage.center = CGPointMake(profileImage.center.x, textLable.frame.origin.y + textLable.frame.size.height - profileImage.frame.size.height/2+20)
+            
+            
+           
             nameLabel.text="Sojharo"
-            let msgLabel = cell.viewWithTag(12) as! UILabel
-            msgLabel.text=msg.description
+            
+            
+            textLable.text=msg.description
         }
        //  return cell
  
@@ -268,9 +358,36 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             return cell
         }*/
         if (msgType.isEqualToString("2")){
+            print("yessss 2")
             var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
-            let msgLabel = cell.viewWithTag(12) as! UILabel
-            msgLabel.text=msg.description
+            
+            let deliveredLabel = cell.viewWithTag(13) as! UILabel
+            let textLable = cell.viewWithTag(12) as! UILabel
+            let timeLabel = cell.viewWithTag(11) as! UILabel
+            let chatImage = cell.viewWithTag(1) as! UIImageView
+           
+            let distanceFactor = (197.0 - sizeOFStr.width) < 107 ? (197.0 - sizeOFStr.width) : 107
+            //// //print("distanceFactor for \(msg) is \(distanceFactor)")
+            
+            chatImage.frame = CGRectMake(20 + distanceFactor, chatImage.frame.origin.y, ((sizeOFStr.width + 107)  > 207 ? (sizeOFStr.width + 107) : 200), sizeOFStr.height + 40)
+            ////    //print("chatImage.x for \(msg) is \(20 + distanceFactor) and chatimage.wdith is \(chatImage.frame.width)")
+            
+            
+            textLable.hidden=false
+            //chatImage.frame = CGRectMake(20 + distanceFactor, chatImage.frame.origin.y, ((sizeOFStr.width + 100)  > 200 ? (sizeOFStr.width + 100) : 200), sizeOFStr.height + 40)
+            chatImage.image = UIImage(named: "chat_send")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
+            //*********
+           // textLable.text = "\(msg)"
+            textLable.frame = CGRectMake(36 + distanceFactor, textLable.frame.origin.y, textLable.frame.size.width, sizeOFStr.height)
+            ///  //print("textLable.x for \(msg) is \(textLable.frame.origin.x) and textLable.width is \(textLable.frame.width)")
+            
+            ////profileImage.center = CGPointMake(profileImage.center.x, textLable.frame.origin.y + textLable.frame.size.height - profileImage.frame.size.height/2 + 10)
+            
+                       timeLabel.frame = CGRectMake(36 + distanceFactor, timeLabel.frame.origin.y, timeLabel.frame.size.width, timeLabel.frame.size.height)
+            deliveredLabel.frame = CGRectMake(deliveredLabel.frame.origin.x, textLable.frame.origin.y + textLable.frame.size.height + 15, deliveredLabel.frame.size.width, deliveredLabel.frame.size.height)
+            
+            
+            textLable.text=msg.description
             return cell
             
         }

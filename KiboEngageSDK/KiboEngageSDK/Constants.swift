@@ -15,5 +15,6 @@ internal class Constants
     static var fetchMessageChannels="/api/messagechannels"
     static var socketurl="http://kiboengage.cloudapp.net"
     static var createBulksessions="/api/visitorcalls/createbulksession"
-    static var sendChat="/api/userchats/create"
+    static var saveChat="/api/userchats/create"
+    static var sendChat="http://kiboengage.cloudapp.net/api/getchat"
 }

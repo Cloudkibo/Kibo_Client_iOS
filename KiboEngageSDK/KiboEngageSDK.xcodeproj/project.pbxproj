@@ -78,7 +78,7 @@
 		7132E0AF1D80EC0A00B8AD4C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		7132E0B11D80EC0F00B8AD4C /* EPContactsPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EPContactsPicker.framework; path = "Pods/../build/Debug-iphoneos/EPContactsPicker/EPContactsPicker.framework"; sourceTree = "<group>"; };
 		713486431D7FBF8B005E632F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		713486451D7FC04E005E632F /* SDKstoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SDKstoryboard.storyboard; sourceTree = "<group>"; };
+		713486451D7FC04E005E632F /* SDKstoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SDKstoryboard.storyboard; path = /Users/cloudkibo/Documents/Kibo_Client_iOS/KiboEngageSDK/KiboEngageSDK/SDKstoryboard.storyboard; sourceTree = "<absolute>"; };
 		713A6EF41D95BDF50084A816 /* temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = temp.h; sourceTree = "<group>"; };
 		713A6EF51D95BDF50084A816 /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
 		713F3DEB1D7B85320072C9E9 /* KiboEngageSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KiboEngageSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
