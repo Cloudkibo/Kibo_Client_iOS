@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "init(appID:appSecret:clientID:customerid:customerName:companyemail:phone:account_number:)"
-            landmarkType = "5">
+            landmarkName = "KiboSDK"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -127,7 +127,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "267"
             endingLineNumber = "267"
-            landmarkName = "fetchSingleMessage(_:request_id:)"
+            landmarkName = "handleRemoteNotifications(_:withController:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

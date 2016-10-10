@@ -266,6 +266,12 @@ internal class DatabaseHandler:NSObject
         let team_id = Expression<String>("team_id")
         let msg_channel_id = Expression<String>("msg_channel_id")
         let request_id = Expression<String>("request_id")
+        let agent_email = Expression<String>("agent_email")
+
+        let agent_id = Expression<String>("agent_id")
+
+        let agent_name = Expression<String>("agent_name")
+
         
         self.requestIDsTable = Table("requestIDsTable")
         
@@ -275,6 +281,10 @@ internal class DatabaseHandler:NSObject
                 t.column(team_id)
                 t.column(msg_channel_id)
                 t.column(request_id)
+                t.column(agent_email,defaultValue:"")
+                t.column(agent_id,defaultValue:"")
+                t.column(agent_name,defaultValue:"")
+                
                 
                 })
             
@@ -294,7 +304,13 @@ internal class DatabaseHandler:NSObject
         let team_id = Expression<String>("team_id")
         let msg_channel_id = Expression<String>("msg_channel_id")
         let request_id = Expression<String>("request_id")
+        let agent_email = Expression<String>("agent_email")
         
+        let agent_id = Expression<String>("agent_id")
+        
+        let agent_name = Expression<String>("agent_name")
+        
+
         //var requestid=""
         
         var uid=randomStringWithLength(7)
@@ -453,6 +469,76 @@ internal class DatabaseHandler:NSObject
             NSLog("error in saving message channels data \(error)")
         }
 
+        
+    }
+    
+    func storeAgentsInfo(agent_email1:String,agent_id1:String,agent_name1:String,request_id1:String)
+    {
+        let agent_email = Expression<String>("agent_email")
+        
+        let agent_id = Expression<String>("agent_id")
+        
+        let agent_name = Expression<String>("agent_name")
+        let request_id = Expression<String>("request_id")
+        
+        do{
+            
+            
+           var query=self.requestIDsTable.select(agent_id,agent_email,agent_name).filter(request_id == request_id1)
+            
+                try self.db.run(query.update([agent_id<-agent_id1,agent_name<-agent_name1,agent_email<-agent_email]))
+                
+                
+            }
+        catch{
+            print("error in saving agents info")
+        }
+         /*   let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(requestIDsTable.insert(
+                primeID<-prime,
+                team_id<-teamid,
+                msg_channel_id<-msgchannelid,
+                request_id<-requestid
+                
+                
+                //lastname<-"",
+                //email<-json["email"].string!,
+                ))
+        }
+        catch{
+            NSLog("error in saving credentials")
+        }
+*/
+    }
+    
+    func getAgentsInfo(request_id1:String)->[String:String]
+    {
+        let agent_email = Expression<String>("agent_email")
+        
+        let agent_id = Expression<String>("agent_id")
+        
+        let agent_name = Expression<String>("agent_name")
+        let request_id = Expression<String>("request_id")
+        
+        var result=[String:String]()
+        do{
+            
+            
+            var query=self.requestIDsTable.select(agent_id,agent_email,agent_name).filter(request_id == request_id1)
+            
+           
+                
+            for agentsinfo in try self.db.prepare(query)
+            {   result["agent_id"]=agentsinfo.get(agent_id)
+                result["agent_email"]=agentsinfo.get(agent_email)
+                result["agent_name"]=agentsinfo.get(agent_name)
+            }
+        }
+           
+        catch{
+            print("error in fetching agents info")
+        }
+    
+    return result
         
     }
     

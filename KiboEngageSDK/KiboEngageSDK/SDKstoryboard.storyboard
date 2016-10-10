@@ -1775,8 +1775,10 @@
                     <connections>
                         <outlet property="btnSendChat" destination="mXe-QM-MY8" id="vmq-sm-A8s"/>
                         <outlet property="composeView" destination="bj5-LI-Pnp" id="kw9-CM-Vww"/>
+                        <outlet property="scrollView" destination="rBq-Wv-YiN" id="025-aV-cvn"/>
                         <outlet property="tblForGroupChat" destination="0ek-0F-avi" id="bdG-5G-lEf"/>
                         <outlet property="txtFieldPost" destination="LKM-3f-0Hv" id="V2y-qV-EV1"/>
+                        <outlet property="viewfortableandtextfield" destination="gBq-Cg-TKG" id="VKD-rp-73U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzT-xc-A80" userLabel="First Responder" sceneMemberID="firstResponder"/>

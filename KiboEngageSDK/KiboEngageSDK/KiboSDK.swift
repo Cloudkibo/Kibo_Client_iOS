@@ -283,6 +283,7 @@ public class KiboSDK{
         
         //uniqueid = h5ha3rgh4tag52eyn45cdi2016101025546;)
     {
+        print("uniqueid is \(uniqueid) request_id is \(request_id)")
     var url=Constants.mainURL+Constants.fetchSingleChat
     print(url.debugDescription)
     /*
@@ -326,6 +327,30 @@ public class KiboSDK{
                 print("chat message fetched is \(chatmsg)")
                 
                 print("chat message2 fetched is \(chatmsg2)")
+                /*
+                 "datetime" : "2016-10-10T11:43:00.767Z",
+                 "agentid" : [
+                 
+                 ],
+                 "request_id" : "h d5771PZ 2016 10 4 9 43 1",
+                 "agentemail" : [
+                 
+                 ],
+                 "from" : "Jawaid",
+                 "visitoremail" : "newemail@cloudkibo.com",
+                 "type" : "message",
+                 "messagechannel" : "574db78d23785bca7c650a0f",
+                 "uniqueid" : "hwf6js2016101016430",
+                 "is_seen" : "no",
+                 "_id" : "57fb7ec57c3fbeaf73290b34",
+                 "__v" : 0,
+                 "msg" : "test message from agent",
+                 "companyid" : "cd89f71715f2014725163952",
+                 "to" : "newCustomer1"
+                 */
+                DatabaseObjectInitialiser.getDB().storeChat(chatmsg2["to"].string!, from1: chatmsg2["from"].string!, visitoremail1: chatmsg2["visitoremail"].string!, type1: chatmsg2["type"].string!, uniqueid1: chatmsg2["uniqueid"].string!, msg1: chatmsg2["msg"].string!, datetime1: chatmsg2["datetime"].string!, request_id1: chatmsg2["request_id"].string!, messagechannel1: chatmsg2["messagechannel"].string!, companyid1: chatmsg2["companyid"].string!, is_seen1: chatmsg2["is_seen"].string!, time1: chatmsg2["datetime"].string!, fromMobile1: "no")
+                
+               //UPDATE UI
                 
             }
             else{
@@ -336,3 +361,4 @@ public class KiboSDK{
     }
     
 }
+

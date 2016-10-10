@@ -19,6 +19,8 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     var messagechannel_id=""
     var team_id=""
     
+    @IBOutlet weak var viewfortableandtextfield: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var btnSendChat: UIButton!
     @IBOutlet weak var composeView: UIView!
     
@@ -27,17 +29,26 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     @IBOutlet var tblForGroupChat: UITableView!
     
     
+    
+    
+    func retrieveFromDatabase()
+    {
+        
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= keyboardSize.height
+            self.viewfortableandtextfield.frame.origin.y -= keyboardSize.height
+           // self.view.frame.origin.y -= keyboardSize.height
         }
         
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += keyboardSize.height
+            self.viewfortableandtextfield.frame.origin.y += keyboardSize.height
+            //self.view.frame.origin.y += keyboardSize.height
         }
     }
     public override func viewDidLoad() {
@@ -209,9 +220,12 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
             //print(response)
  
+            if(error != nil)
+            {
             print(response_!.description)
             print(data!.description)
             print(".......")
+            }
 
  
  }
