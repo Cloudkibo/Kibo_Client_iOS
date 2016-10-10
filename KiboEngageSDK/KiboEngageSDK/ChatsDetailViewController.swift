@@ -33,7 +33,21 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     
     func retrieveFromDatabase()
     {
+        var chatsList=DatabaseObjectInitialiser.getDB().getChat(request_id)
+        for(var i=0;i<chatsList.count;i++)
+        {
+            if(chatsList["from"]==DatabaseObjectInitialiser.getInstance().customerid)
+            {
+                //i sent so type is 2
+                 self.addMessage(chatsList["msg"], ofType: "2",date:chatsList["datetime"], uniqueid: chatsList["uniqueid"])
+            }
+            else
+            {
+                self.addMessage(chatsList["msg"], ofType: "1",date:chatsList["datetime"], uniqueid: chatsList["uniqueid"])
+                
+            }
         
+        }
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -65,6 +79,11 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
    
         print("req id is \(request_id)")
         print("reqid list is \(DatabaseObjectInitialiser.getDB().getSingleRequestIDs)")
+        
+        retrieveFromDatabase()
+        dispa
+        
+        
     
     }
     

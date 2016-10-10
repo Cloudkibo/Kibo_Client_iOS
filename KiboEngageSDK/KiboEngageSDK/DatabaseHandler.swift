@@ -754,7 +754,53 @@ internal class DatabaseHandler:NSObject
          
          }*/
     }
-
+    
+    func getChat(request_id1:String)->[[String:AnyObject]]
+    {
+        let to = Expression<String>("to")
+        let from = Expression<String>("from")
+        let visitoremail = Expression<String>("visitoremail")
+        let type = Expression<String>("type")
+        let uniqueid = Expression<String>("uniqueid")
+        let msg = Expression<String>("msg")
+        let datetime = Expression<String>("datetime")
+        let request_id = Expression<String>("request_id")
+        let messagechannel = Expression<String>("messagechannel")
+        let companyid = Expression<String>("companyid")
+        let is_seen = Expression<String>("is_seen")
+        let time = Expression<String>("time")
+        let fromMobile = Expression<String>("fromMobile")
+        
+         var ChatsList=[[String:AnyObject]]()
+        
+        self.userschats = Table("userschats")
+        do
+        {for chatmessages in try self.db.prepare(self.userschats.filter(request_id == request_id1)){
+           // print("channel name for deptid \(deptid) is \(channelNames.get(msg_channel_name))")
+            var newEntry: [String: AnyObject] = [:]
+            newEntry["to"]=chatmessages.get(to)
+            newEntry["from"]=chatmessages.get(from)
+            newEntry["visitoremail"]=chatmessages.get(visitoremail)
+            newEntry["type"]=chatmessages.get(type)
+            newEntry["uniqueid"]=chatmessages.get(uniqueid)
+            newEntry["msg"]=chatmessages.get(msg)
+            newEntry["datetime"]=chatmessages.get(datetime)
+            newEntry["request_id"]=chatmessages.get(request_id)
+            newEntry["messagechannel"]=chatmessages.get(messagechannel)
+            newEntry["companyid"]=chatmessages.get(companyid)
+            newEntry["is_seen"]=chatmessages.get(is_seen)
+            newEntry["time"]=chatmessages.get(time)
+            newEntry["fromMobile"]=chatmessages.get(fromMobile)
+            ChatsList.append(newEntry)
+        
+            }
+        }
+        catch{
+            print("error in getting chat messages")
+        }
+        return ChatsList
+    }
+    
     
     }
 
