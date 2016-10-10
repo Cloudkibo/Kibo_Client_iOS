@@ -15,11 +15,11 @@
                         <viewControllerLayoutGuide type="bottom" id="3eN-T8-dvG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LbK-wk-QVu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQ6-71-uYE">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="FAQs" id="HnK-er-sck">
@@ -28,7 +28,7 @@
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1AR-hV-A7d">
-                                <rect key="frame" x="0.0" y="45" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="kCy-1l-2FL">
                                     <size key="itemSize" width="202" height="202"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -37,7 +37,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells" id="YHv-hU-fYA" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
+                                        <rect key="frame" x="59" y="0.0" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
@@ -60,7 +60,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells1" id="EgC-LQ-TvS" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="212" y="0.0" width="202" height="202"/>
+                                        <rect key="frame" x="59" y="203" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
@@ -82,7 +82,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells2" id="0sV-9U-wbv" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="203" width="202" height="202"/>
+                                        <rect key="frame" x="59" y="406" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
@@ -104,7 +104,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells3" id="erl-E5-5HC" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="212" y="203" width="202" height="202"/>
+                                        <rect key="frame" x="59" y="609" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
@@ -126,7 +126,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells4" id="xqi-5Z-bGU" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="406" width="202" height="202"/>
+                                        <rect key="frame" x="59" y="812" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
@@ -148,7 +148,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FAQsCells5" id="Jaj-Mc-Nnt" customClass="TeamsCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="212" y="406" width="202" height="202"/>
+                                        <rect key="frame" x="59" y="1015" width="202" height="202"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="202" height="202"/>
@@ -178,15 +178,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="736"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="collectionViewTeams" destination="1AR-hV-A7d" id="kp1-hd-nsN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXw-2b-oTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="318.39999999999998" y="316.18666666666667"/>
+            <point key="canvasLocation" x="318" y="316"/>
         </scene>
         <!--Channels View Controller-->
         <scene sceneID="j1k-l9-CBU">
@@ -1512,7 +1511,7 @@
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" text="What do you think of this tool!" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMH-q7-9oV">
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="What do you think of this tool!" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMH-q7-9oV">
                                                                     <rect key="frame" x="96" y="25" width="170" height="80"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
@@ -1537,12 +1536,16 @@
                                                                 <constraint firstItem="5UZ-MI-DwV" firstAttribute="leading" secondItem="uPc-bI-dta" secondAttribute="leadingMargin" constant="88" id="2sl-wt-izf"/>
                                                                 <constraint firstItem="dPO-YE-4dR" firstAttribute="trailing" secondItem="uPc-bI-dta" secondAttribute="trailingMargin" id="5Yx-8v-LcP"/>
                                                                 <constraint firstItem="ipF-Pr-UEJ" firstAttribute="top" secondItem="dPO-YE-4dR" secondAttribute="top" id="8TX-r0-JYY"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="SMH-q7-9oV" secondAttribute="trailing" constant="46" id="Wca-sk-Zuz"/>
                                                                 <constraint firstAttribute="bottom" secondItem="ipF-Pr-UEJ" secondAttribute="bottom" id="Wt4-g1-DhG"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="5UZ-MI-DwV" secondAttribute="trailing" constant="51" id="adV-84-ymj"/>
                                                                 <constraint firstItem="5UZ-MI-DwV" firstAttribute="top" secondItem="uPc-bI-dta" secondAttribute="topMargin" constant="-6" id="dB2-n7-FAN"/>
                                                                 <constraint firstItem="ipF-Pr-UEJ" firstAttribute="top" secondItem="uPc-bI-dta" secondAttribute="top" id="gv1-FQ-5At"/>
                                                                 <constraint firstItem="ipF-Pr-UEJ" firstAttribute="trailing" secondItem="dPO-YE-4dR" secondAttribute="trailing" id="iKI-ma-Iyk"/>
+                                                                <constraint firstItem="SMH-q7-9oV" firstAttribute="leading" secondItem="5UZ-MI-DwV" secondAttribute="leading" id="iX7-0s-jDg"/>
                                                                 <constraint firstItem="ipF-Pr-UEJ" firstAttribute="trailing" secondItem="C1P-Qx-hBr" secondAttribute="trailing" id="ihZ-te-t3P"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="SMH-q7-9oV" secondAttribute="bottom" constant="-35" id="oYb-gq-Z9W"/>
+                                                                <constraint firstItem="SMH-q7-9oV" firstAttribute="top" secondItem="5UZ-MI-DwV" secondAttribute="bottom" constant="4" id="v38-Kj-QHY"/>
                                                                 <constraint firstItem="ipF-Pr-UEJ" firstAttribute="bottom" secondItem="C1P-Qx-hBr" secondAttribute="bottom" id="y3t-pq-cUA"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
