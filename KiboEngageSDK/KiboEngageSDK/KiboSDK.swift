@@ -15,7 +15,7 @@ import SwiftyJSON
 public class KiboSDK{
     
     
-    
+    var delegateChatDetails1:UpdateChatDetailsDelegate!
   //  var kiboAppID=""
    // var kiboAppSecret=""
    // var kiboClientID=""
@@ -269,12 +269,21 @@ public class KiboSDK{
          print("data is \(userInfo["data"])")
         if  let data = userInfo["data"]{
             print("inside 1")
+            
+            if  let singleuniqueid = userInfo["data"]!["agentid"] as? String {
+                //got agents info, save in database
+                
+                
+            }
+            else
+            {
         if  let singleuniqueid = userInfo["data"]!["uniqueid"] as? String {
             print("inside 2")
             if  let requestid = userInfo["data"]!["request_id"] as? String {
                 print("inside 3")
                 fetchSingleMessage(singleuniqueid,request_id: requestid)
             }
+        }
         }
         }
     }
@@ -320,8 +329,9 @@ public class KiboSDK{
             if(response.response?.statusCode == 200)
             {
                 print(response.debugDescription)
-                print(response.data)
-                print(response.result)
+                print(response.data!)
+                print(response.result.value!)
+                print(";;;;;;;;;;;;")
                 var chatmsg2=JSON(response.result.value!)
                 var chatmsg=JSON(response.data!)
                 print("chat message fetched is \(chatmsg)")
@@ -348,9 +358,22 @@ public class KiboSDK{
                  "companyid" : "cd89f71715f2014725163952",
                  "to" : "newCustomer1"
                  */
-                DatabaseObjectInitialiser.getDB().storeChat(chatmsg2["to"].string!, from1: chatmsg2["from"].string!, visitoremail1: chatmsg2["visitoremail"].string!, type1: chatmsg2["type"].string!, uniqueid1: chatmsg2["uniqueid"].string!, msg1: chatmsg2["msg"].string!, datetime1: chatmsg2["datetime"].string!, request_id1: chatmsg2["request_id"].string!, messagechannel1: chatmsg2["messagechannel"].string!, companyid1: chatmsg2["companyid"].string!, is_seen1: chatmsg2["is_seen"].string!, time1: chatmsg2["datetime"].string!, fromMobile1: "no")
+                
+                var agentid=""
+                var agentemail=""
+                print(chatmsg2[0]["to"].string!)
+                print(chatmsg2[0]["from"].string!)
+                
+                print(chatmsg2[0]["type"].string!)
+                //print(chatmsg2["from"].string!)
+              //  if()
+               DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "no")
                 
                //UPDATE UI
+                if(delegateChatDetails1 ! nil)
+                {
+                    delegateChatDetails1?.refreshChatsUI("updateUI", data: nil)
+                }
                 
             }
             else{
@@ -360,5 +383,10 @@ public class KiboSDK{
     }
     }
     
+}
+
+protocol UpdateChatDetailsDelegate:class
+{
+    func refreshChatsUI(message:String,data:AnyObject!);
 }
 

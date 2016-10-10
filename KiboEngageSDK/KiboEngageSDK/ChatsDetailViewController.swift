@@ -10,10 +10,10 @@
 import UIKit
 import Alamofire
 
-public class ChatsDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+public class ChatsDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UpdateChatDetailsDelegate {
     
     
-    
+    var delegateChatDetails1:UpdateChatDetailsDelegate!
     var messages:NSMutableArray!
     var request_id=""
     var messagechannel_id=""
@@ -31,23 +31,25 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     
     
     
-    func retrieveFromDatabase()
+    func retrieveFromDatabase(completion:(result:Bool)->())
     {
         var chatsList=DatabaseObjectInitialiser.getDB().getChat(request_id)
-        for(var i=0;i<chatsList.count;i++)
+        var i=0
+        for(i=0;i<chatsList.count;i++)
         {
-            if(chatsList["from"]==DatabaseObjectInitialiser.getInstance().customerid)
+            if(chatsList[i]["from"] as! String == DatabaseObjectInitialiser.getInstance().customerid)
             {
                 //i sent so type is 2
-                 self.addMessage(chatsList["msg"], ofType: "2",date:chatsList["datetime"], uniqueid: chatsList["uniqueid"])
+                 self.addMessage(chatsList[i]["msg"] as! String, ofType: "2",date:chatsList[i]["datetime"] as! String, uniqueid: chatsList[i]["uniqueid"] as! String)
             }
             else
             {
-                self.addMessage(chatsList["msg"], ofType: "1",date:chatsList["datetime"], uniqueid: chatsList["uniqueid"])
+                self.addMessage(chatsList[i]["msg"] as! String, ofType: "1",date:chatsList[i]["datetime"] as! String, uniqueid: chatsList[i]["uniqueid"] as! String)
                 
             }
         
         }
+        completion(result:true)
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -72,6 +74,8 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
 
         
+        
+        
         print("team id is \(team_id)")
             print("messageid is \(messagechannel_id)")
         messages=NSMutableArray()
@@ -80,8 +84,21 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         print("req id is \(request_id)")
         print("reqid list is \(DatabaseObjectInitialiser.getDB().getSingleRequestIDs)")
         
-        retrieveFromDatabase()
-        dispa
+        retrieveFromDatabase({result->() in
+            
+            dispatch_async(dispatch_get_main_queue())
+            {
+                
+                self.tblForGroupChat.reloadData()
+                if(self.messages.count>1)
+                {
+                    var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
+                    self.tblForGroupChat.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                    
+                }
+            }
+            })
+        
         
         
     
@@ -476,6 +493,11 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         }
         */
         return cell
+        
+    }
+    
+    func refreshChatsUI(message: String, data: AnyObject!) {
+        
         
     }
     

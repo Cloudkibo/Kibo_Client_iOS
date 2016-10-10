@@ -14,6 +14,7 @@
 		711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */; };
 		711F7E531D7E2BD700A6FD97 /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E521D7E2BD700A6FD97 /* Teams.swift */; };
 		711F7E551D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F7E541D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift */; };
+		7120DB351DAC17AC000D834E /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120DB341DAC17AC000D834E /* Delegates.swift */; };
 		7132E0AE1D80EBE600B8AD4C /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132E0AD1D80EBE600B8AD4C /* SQLite.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7132E0B01D80EC0A00B8AD4C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132E0AF1D80EC0A00B8AD4C /* Alamofire.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7132E0B21D80EC0F00B8AD4C /* EPContactsPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7132E0B11D80EC0F00B8AD4C /* EPContactsPicker.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -73,6 +74,7 @@
 		711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
 		711F7E521D7E2BD700A6FD97 /* Teams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
 		711F7E541D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseObjectInitialiser.swift; sourceTree = "<group>"; };
+		7120DB341DAC17AC000D834E /* Delegates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
 		712FE46A1D7E1B1A00E1AE69 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		7132E0AD1D80EBE600B8AD4C /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "Pods/../build/Debug-iphoneos/SQLite.swift/SQLite.framework"; sourceTree = "<group>"; };
 		7132E0AF1D80EC0A00B8AD4C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */,
 				713F3DF01D7B85320072C9E9 /* Info.plist */,
 				713F3E051D7B88110072C9E9 /* KiboSDK.swift */,
+				7120DB341DAC17AC000D834E /* Delegates.swift */,
 				711F7E541D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift */,
 				711F7E521D7E2BD700A6FD97 /* Teams.swift */,
 				71126B831D82840100F23261 /* messageChannels.swift */,
@@ -431,6 +434,7 @@
 				7181CDBF1D83CF16002A0D05 /* SocketEngineWebsocket.swift in Sources */,
 				7181CDC61D83CF16002A0D05 /* SocketPacket.swift in Sources */,
 				711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */,
+				7120DB351DAC17AC000D834E /* Delegates.swift in Sources */,
 				7181CDB91D83CF16002A0D05 /* SocketClientSpec.swift in Sources */,
 				713A6EF71D95BDF50084A816 /* temp.m in Sources */,
 				7181CDBB1D83CF16002A0D05 /* SocketEngineClient.swift in Sources */,
