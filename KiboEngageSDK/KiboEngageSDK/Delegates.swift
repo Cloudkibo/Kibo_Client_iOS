@@ -11,7 +11,7 @@ import Foundation
 
 internal class Delegates
 {
-    
+    var delegateChatDetails1:UpdateChatDetailsDelegate!
     static let sharedInstance = Delegates()
     
     class func getInstance() -> Delegates
@@ -23,4 +23,16 @@ internal class Delegates
     
     private init() {}
     
+    func UpdateChatDetailsDelegateCall()
+    {
+        if(delegateChatDetails1 != nil)
+        {
+            delegateChatDetails1?.refreshChatsUI("updateUI", data: nil)
+        }
+    }
+    
+}
+protocol UpdateChatDetailsDelegate:class
+{
+    func refreshChatsUI(message:String,data:AnyObject!);
 }

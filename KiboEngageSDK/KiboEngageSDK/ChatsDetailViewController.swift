@@ -75,7 +75,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
 
         
         
-        
+        Delegates.getInstance().delegateChatDetails1=self
         print("team id is \(team_id)")
             print("messageid is \(messagechannel_id)")
         messages=NSMutableArray()
@@ -390,15 +390,15 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
            
             print("yessssss 1")
             
-            var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatSentCell")! as UITableViewCell
-            let nameLabel = cell.viewWithTag(15) as! UILabel
+           cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatSentCell")! as UITableViewCell
+           // let nameLabel = cell.viewWithTag(15) as! UILabel
             let textLable = cell.viewWithTag(12) as! UILabel
             let chatImage = cell.viewWithTag(1) as! UIImageView
             let profileImage = cell.viewWithTag(2) as! UIImageView
             let timeLabel = cell.viewWithTag(11) as! UILabel
             
             
-            ////chatImage.frame = CGRectMake(chatImage.frame.origin.x, chatImage.frame.origin.y, ((sizeOFStr.width + 100)  > 200 ? (sizeOFStr.width + 100) : 200), sizeOFStr.height + 40)
+            chatImage.frame = CGRectMake(chatImage.frame.origin.x, chatImage.frame.origin.y, ((sizeOFStr.width + 100)  > 200 ? (sizeOFStr.width + 100) : 200), sizeOFStr.height + 40)
            ///// chatImage.image = UIImage(named: "chat_receive")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
             //******
             
@@ -409,10 +409,11 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
             
            
-            nameLabel.text="Sojharo"
+           // nameLabel.text="Sojharo"
             
             
             textLable.text=msg.description
+            //return cell
         }
        //  return cell
  
@@ -425,7 +426,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         }*/
         if (msgType.isEqualToString("2")){
             print("yessss 2")
-            var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
+            cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
             
             let deliveredLabel = cell.viewWithTag(13) as! UILabel
             let textLable = cell.viewWithTag(12) as! UILabel
@@ -454,7 +455,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
             
             textLable.text=msg.description
-            return cell
+          //  return cell
             
         }
       
@@ -498,6 +499,20 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     
     func refreshChatsUI(message: String, data: AnyObject!) {
         
+        retrieveFromDatabase({result->() in
+            
+            dispatch_async(dispatch_get_main_queue())
+            {
+                
+                self.tblForGroupChat.reloadData()
+                if(self.messages.count>1)
+                {
+                    var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
+                    self.tblForGroupChat.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                    
+                }
+            }
+        })
         
     }
     

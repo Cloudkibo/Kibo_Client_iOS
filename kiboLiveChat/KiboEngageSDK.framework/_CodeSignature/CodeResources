@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		IIZVw9XdBJ4X7jfRr1K4sjxFqzo=
+		C6BBkQ9Y2HSujOVSJMLiefiWRcU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -135,11 +135,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IIZVw9XdBJ4X7jfRr1K4sjxFqzo=
+			C6BBkQ9Y2HSujOVSJMLiefiWRcU=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZYNhZOq+PCZvptDydUUQ6RM8Hula+iA2RQOl2J6G2W0=
+			f10yl8z87cNlaPEpNYjhVH7LEgxNElg9Ah0F5cmAI4Y=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -39,6 +39,7 @@ public class KiboSDK{
         print("Kibo Engage SDK has been initialised")
         
      //   var aaa:SBNotificationHub!
+       
         DatabaseObjectInitialiser.getDB()
         
         if(DatabaseObjectInitialiser.getInstance().socketObj == nil)
@@ -370,10 +371,11 @@ public class KiboSDK{
                DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "no")
                 
                //UPDATE UI
-                if(delegateChatDetails1 ! nil)
+                Delegates.getInstance().UpdateChatDetailsDelegateCall()
+              /*  if(delegateChatDetails1 ! nil)
                 {
                     delegateChatDetails1?.refreshChatsUI("updateUI", data: nil)
-                }
+                }*/
                 
             }
             else{
@@ -385,8 +387,5 @@ public class KiboSDK{
     
 }
 
-protocol UpdateChatDetailsDelegate:class
-{
-    func refreshChatsUI(message:String,data:AnyObject!);
-}
+
 
