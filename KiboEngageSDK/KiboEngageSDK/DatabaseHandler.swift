@@ -486,7 +486,7 @@ internal class DatabaseHandler:NSObject
             
            var query=self.requestIDsTable.select(agent_id,agent_email,agent_name).filter(request_id == request_id1)
             
-                try self.db.run(query.update([agent_id<-agent_id1,agent_name<-agent_name1,agent_email<-agent_email]))
+                try self.db.run(query.update([agent_id<-agent_id1,agent_name<-agent_name1,agent_email<-agent_email1]))
                 
                 
             }
