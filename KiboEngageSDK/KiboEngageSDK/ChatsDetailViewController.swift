@@ -13,6 +13,8 @@ import Alamofire
 public class ChatsDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UpdateChatDetailsDelegate {
     
     
+    
+    //var requestIDsObject:[String:AnyObject] = [:]
     var delegateChatDetails1:UpdateChatDetailsDelegate!
     var messages:NSMutableArray!
     var request_id=""
@@ -79,8 +81,9 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         print("team id is \(team_id)")
             print("messageid is \(messagechannel_id)")
         messages=NSMutableArray()
-        var requestIDsObject=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(team_id,messagechannel_id:messagechannel_id)
-        requestIDsObject[]
+        var requestIDsObject=DatabaseObjectInitialiser.getDB().getSingleRequestIDsList(team_id,messagechannel_id:messagechannel_id)
+        print("requestIDsObject \(requestIDsObject)")
+        request_id=requestIDsObject["request_id"] as! String
         //request_id=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(team_id,messagechannel_id:messagechannel_id)
    
         print("req id is \(request_id)")
@@ -155,8 +158,34 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
         }*/
         
-        var chatdata=[String:AnyObject]()
+        
+          var chatdata=[String:AnyObject]()
+        //Session has been assigned
+        
+        var requestIDsObject=DatabaseObjectInitialiser.getDB().getSingleRequestIDsList(team_id,messagechannel_id:messagechannel_id)
+        print("requestIDsObject[agent_id] as! String is \(requestIDsObject["agent_id"] as! String)")
+        
+        var stringAngentsToField=""
+        if((requestIDsObject["agent_id"] as! String) != "")
+        {
+            print("agents id is available \(requestIDsObject["agent_id"] as! String)")
+            var agentIDsArrayList=(requestIDsObject["agent_id"] as! String).componentsSeparatedByString(",")
+            var agentEmailsArrayList=(requestIDsObject["agent_email"] as! String).componentsSeparatedByString(",")
+            var agentNamesArrayList=(requestIDsObject["agent_name"] as! String).componentsSeparatedByString(",")
+            
+            chatdata["to"]=agentNamesArrayList
+            chatdata["agentemail"]=agentEmailsArrayList
+            chatdata["agentid"]=agentIDsArrayList
+            chatdata["toagent"]=agentEmailsArrayList
+            
+            stringAngentsToField=agentNamesArrayList.joinWithSeparator(",")
+            
+        }
+        //Session has not yet been assigned
+        else{
+            stringAngentsToField="All Agents"
         chatdata["to"]="All Agents"
+        }
         chatdata["from"]=DatabaseObjectInitialiser.getInstance().customerid
         
         
@@ -197,7 +226,9 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         chatdata["time"]=NSDate().description
         chatdata["fromMobile"]="yes"
         
-        DatabaseObjectInitialiser.getDB().storeChat(chatdata["to"] as! String,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:chatdata["datetime"] as! String,request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,time1:chatdata["time"] as! String,fromMobile1:chatdata["fromMobile"] as! String)
+        
+        //cant store array, change it to string field 'stringAngentsToField'
+        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:chatdata["datetime"] as! String,request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,time1:chatdata["time"] as! String,fromMobile1:chatdata["fromMobile"] as! String)
         
 
         
