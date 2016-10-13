@@ -21,7 +21,7 @@ internal class DatabaseObjectInitialiser
     var account_number:String!
     */
     
-    var socketObj:SocketService!=nil
+   //// var socketObj:SocketService!=nil
     var database:DatabaseHandler!
     static let sharedInstance = DatabaseObjectInitialiser()
     class func getInstance() -> DatabaseObjectInitialiser

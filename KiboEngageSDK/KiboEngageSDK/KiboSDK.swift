@@ -42,7 +42,7 @@ public class KiboSDK{
        
         DatabaseObjectInitialiser.getDB()
         
-        if(DatabaseObjectInitialiser.getInstance().socketObj == nil)
+        /*if(DatabaseObjectInitialiser.getInstance().socketObj == nil)
         {
             print("socket is nillll", terminator: "")
             //dispatch_async(dispatch_get_main_queue())
@@ -55,7 +55,7 @@ public class KiboSDK{
             //socketObj.addWebRTCHandlers()
             //}
             //}
-        }
+        }*/
         
         
         //self.kiboAppID=appID

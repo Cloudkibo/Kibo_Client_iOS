@@ -170,7 +170,7 @@ public class ChatSessions
         }
     }
     
-    public func createChatSessionsOld()
+    /*public func createChatSessionsOld()
     {
         var TeamsObjectList:[[String:AnyObject]]
         TeamsObjectList = DatabaseObjectInitialiser.getDB().getTeamsObjectList()
@@ -337,5 +337,5 @@ public class ChatSessions
             }
         }
     }
-    
+    */
 }
