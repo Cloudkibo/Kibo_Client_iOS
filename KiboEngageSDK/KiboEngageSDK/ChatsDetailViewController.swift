@@ -79,7 +79,9 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         print("team id is \(team_id)")
             print("messageid is \(messagechannel_id)")
         messages=NSMutableArray()
-        request_id=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(team_id,messagechannel_id:messagechannel_id)
+        var requestIDsObject=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(team_id,messagechannel_id:messagechannel_id)
+        requestIDsObject[]
+        //request_id=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(team_id,messagechannel_id:messagechannel_id)
    
         print("req id is \(request_id)")
         print("reqid list is \(DatabaseObjectInitialiser.getDB().getSingleRequestIDs)")
@@ -231,6 +233,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         tblForGroupChat.reloadData()
         if(messages.count>1)
         {
+            
             var indexPath = NSIndexPath(forRow:messages.count-1, inSection: 0)
             tblForGroupChat.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
             
@@ -501,17 +504,35 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         
         retrieveFromDatabase({result->() in
             
-            dispatch_async(dispatch_get_main_queue())
-            {
+           // dispatch_async(dispatch_get_main_queue())
+           // {
                 
                 self.tblForGroupChat.reloadData()
-                if(self.messages.count>1)
+                
+               /* var offsetY = CGFloat.init(0)
+                var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
+                
+                for (var i = 0; i <= indexPath.row; i++) {
+                    offsetY += (self.tblForGroupChat.delegate?.tableView!(self.tblForGroupChat, heightForRowAtIndexPath: indexPath))!
+                        //[tableView.delegate tableView:tableView heightForRowAtIndexPath:indexPath];
+                }
+                
+                
+                UIView.animateWithDuration(0, delay: 0, options:[], animations: {
+                    self.tblForGroupChat.contentOffset = CGPointMake(0, offsetY)
+                    
+                    }, completion:{ (true)-> Void in
+                        //self.showKeyboard=false
+                })
+                */
+                
+               if(self.messages.count>1)
                 {
                     var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
                     self.tblForGroupChat.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
                     
                 }
-            }
+           // }
         })
         
     }

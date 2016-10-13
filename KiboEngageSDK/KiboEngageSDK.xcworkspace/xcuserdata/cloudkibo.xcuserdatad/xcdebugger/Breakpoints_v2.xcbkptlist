@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "507"
             endingLineNumber = "507"
-            landmarkName = "getSingleRequestIDs(_:messagechannel_id:)"
+            landmarkName = "storeAgentsInfo(_:agent_id1:agent_name1:request_id1:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -144,6 +144,22 @@
             startingLineNumber = "324"
             endingLineNumber = "324"
             landmarkName = "fetchSingleMessage(_:request_id:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KiboEngageSDK/KiboSDK.swift"
+            timestampString = "498044820.928674"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "handleRemoteNotifications(_:withController:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

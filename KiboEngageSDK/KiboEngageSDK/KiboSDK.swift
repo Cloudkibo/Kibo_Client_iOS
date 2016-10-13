@@ -36,7 +36,7 @@ public class KiboSDK{
     }
     */
     public init (appID:String,appSecret:String,clientID:String,customerid:String,customerName:String!,companyemail:String!,phone:String!,account_number:String!){
-        print("Kibo Engage SDK has been initialised")
+        print("Kibo Engage SDK has been initialised version \(KiboEngageSDKVersionNumber)")
         
      //   var aaa:SBNotificationHub!
        
@@ -265,27 +265,64 @@ public class KiboSDK{
     {
         print("inside kibo app received notification \(userInfo)")
         
-        print("uniqueid is \(userInfo["uniqueid"])")
-        print("request_id is \(userInfo["request_id"])")
-         print("data is \(userInfo["data"])")
+       // print("uniqueid is \(userInfo["uniqueid"])")
+       // print("request_id is \(userInfo["request_id"])")
+        // print("data is \(userInfo["data"])")
         if  let data = userInfo["data"]{
-            print("inside 1")
+          //  print("inside 1")
             
-            if  let singleuniqueid = userInfo["data"]!["agentid"] as? String {
+            if  let agentid = userInfo["data"]!["agentid"] as? [String]{
                 //got agents info, save in database
+                var arrayOfAgentsIDs=userInfo["data"]!["agentid"] as! [String]
+                var arrayOfAgentsEmails=userInfo["data"]!["agentemail"] as! [String]
+                var arrayOfAgentsNames=userInfo["data"]!["agentname"] as! [String]
+                var requestID=userInfo["data"]!["request_id"] as? String
                 
                 
+                //Converting to Strings
+                var stringOfAgentsIDs=arrayOfAgentsIDs.joinWithSeparator(",")
+                var stringOfAgentsEmails=arrayOfAgentsEmails.joinWithSeparator(",")
+                var stringOfAgentsNames=arrayOfAgentsNames.joinWithSeparator(",")
+                
+                /*
+                 var stringarray:[String]=["aaa","bbb","ccc"]
+                 //Array to string
+                 var b=stringarray.joinWithSeparator(",")
+                 //String to array
+                 b.componentsSeparatedByString(",")
+                 */
+              //  print("... \(agentid)")
+                //print("agents array \(arrayOfAgents)")
+                print("save agents info in database")
+                DatabaseObjectInitialiser.getDB().storeAgentsInfo(stringOfAgentsEmails,agent_id1:stringOfAgentsIDs,agent_name1:stringOfAgentsNames,request_id1:requestID!)
             }
             else
             {
         if  let singleuniqueid = userInfo["data"]!["uniqueid"] as? String {
-            print("inside 2")
+            print("inside 2 unique id is \(singleuniqueid)")
             if  let requestid = userInfo["data"]!["request_id"] as? String {
-                print("inside 3")
-                fetchSingleMessage(singleuniqueid,request_id: requestid)
+                print("inside 3 requestid is \(requestid)")
+                
+                
+                let seconds = 4.0
+                let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+                let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                
+                dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                    
+                    // here code perfomed with delay
+                    self.fetchSingleMessage(singleuniqueid,request_id: requestid)
+                    
+                })
+                
+                
+               ///// fetchSingleMessage(singleuniqueid,request_id: requestid)
             }
         }
         }
+        }
+        else{
+            print("error: wrong payload received")
         }
     }
     
@@ -293,17 +330,17 @@ public class KiboSDK{
         
         //uniqueid = h5ha3rgh4tag52eyn45cdi2016101025546;)
     {
-        print("uniqueid is \(uniqueid) request_id is \(request_id)")
+        print("inside API call function uniqueid is \(uniqueid) request_id is \(request_id)")
     var url=Constants.mainURL+Constants.fetchSingleChat
-    print(url.debugDescription)
+    //print(url.debugDescription)
     /*
      'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
      'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
      'kibo-client-id': 'cd89f71715f2014725163952',
      */
     var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
-    var hhh=["headers":"\(header)"]
-    print(header.description)
+    ///var hhh=["headers":"\(header)"]
+    print("headers are \(header.description)")
         Alamofire.request(.POST,"\(url)",parameters:["uniqueid":uniqueid,"request_id":request_id],headers:header).validate().responseJSON { response in
     
     /* print(response)
@@ -362,10 +399,10 @@ public class KiboSDK{
                 
                 var agentid=""
                 var agentemail=""
-                print(chatmsg2[0]["to"].string!)
-                print(chatmsg2[0]["from"].string!)
+               // print(chatmsg2[0]["to"].string!)
+              //  print(chatmsg2[0]["from"].string!)
                 
-                print(chatmsg2[0]["type"].string!)
+               // print(chatmsg2[0]["type"].string!)
                 //print(chatmsg2["from"].string!)
               //  if()
                DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "no")

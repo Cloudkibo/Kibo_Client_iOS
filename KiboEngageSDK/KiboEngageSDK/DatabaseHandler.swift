@@ -299,7 +299,7 @@ internal class DatabaseHandler:NSObject
     
     
     func storeRequestIDs(teamid:String,msgchannelid:String){
-        
+       
         let primeID=Expression<String>("primeID")
         let team_id = Expression<String>("team_id")
         let msg_channel_id = Expression<String>("msg_channel_id")
@@ -588,7 +588,11 @@ internal class DatabaseHandler:NSObject
         let team_id = Expression<String>("team_id")
         let msg_channel_id = Expression<String>("msg_channel_id")
         let request_id = Expression<String>("request_id")
+        let agent_email = Expression<String>("agent_email")
         
+        let agent_id = Expression<String>("agent_id")
+        
+        let agent_name = Expression<String>("agent_name")
         self.requestIDsTable = Table("requestIDsTable")
         do
         {for reqIDs in try self.db.prepare(self.requestIDsTable.filter(team_id==teamid && msg_channel_id==messagechannel_id)){
@@ -596,6 +600,40 @@ internal class DatabaseHandler:NSObject
             newEntry=reqIDs.get(request_id)
             
             //groupsList.append(newEntry)
+            
+            
+            }
+        }
+        catch{
+            print("failed to get teams single object data")
+        }
+        return newEntry
+        
+    }
+    
+    
+    func getSingleRequestIDsList(teamid:String,messagechannel_id:String)->[String: AnyObject]
+    {
+        // var groupsList=[String:AnyObject]()
+        var newEntry: [String: AnyObject] = [:]
+        
+        let team_id = Expression<String>("team_id")
+        let msg_channel_id = Expression<String>("msg_channel_id")
+        let request_id = Expression<String>("request_id")
+        let agent_email = Expression<String>("agent_email")
+        
+        let agent_id = Expression<String>("agent_id")
+        
+        let agent_name = Expression<String>("agent_name")
+        self.requestIDsTable = Table("requestIDsTable")
+        do
+        {for reqIDsOBj in try self.db.prepare(self.requestIDsTable.filter(team_id==teamid && msg_channel_id==messagechannel_id)){
+            newEntry["team_id"]=reqIDsOBj.get(team_id)
+            newEntry["msg_channel_id"]=reqIDsOBj.get(msg_channel_id)
+            newEntry["request_id"]=reqIDsOBj.get(request_id)
+            newEntry["agent_email"]=reqIDsOBj.get(agent_email)
+            newEntry["agent_id"]=reqIDsOBj.get(agent_id)
+            newEntry["agent_name"]=reqIDsOBj.get(agent_name)            //groupsList.append(newEntry)
             
             
             }
@@ -615,7 +653,11 @@ internal class DatabaseHandler:NSObject
         let team_id = Expression<String>("team_id")
         let msg_channel_id = Expression<String>("msg_channel_id")
         let request_id = Expression<String>("request_id")
+        let agent_email = Expression<String>("agent_email")
         
+        let agent_id = Expression<String>("agent_id")
+        
+        let agent_name = Expression<String>("agent_name")
         self.teams = Table("teams")
         do
         {for teamsnames in try self.db.prepare(self.requestIDsTable){
@@ -623,6 +665,9 @@ internal class DatabaseHandler:NSObject
             newEntry["team_id"]=teamsnames.get(team_id)
             newEntry["msg_channel_id"]=teamsnames.get(msg_channel_id)
             newEntry["request_id"]=teamsnames.get(request_id)
+            newEntry["agent_email"]=teamsnames.get(agent_email)
+            newEntry["agent_id"]=teamsnames.get(agent_id)
+            newEntry["agent_name"]=teamsnames.get(agent_name)
             requestIDsList.append(newEntry)
             }
         }
