@@ -18,4 +18,5 @@ internal class Constants
     static var saveChat="/api/userchats/create"
     static var sendChat="http://kiboengage.cloudapp.net/api/getchat"
     static var fetchSingleChat="/api/userchats/fetchChat"
+    static
 }

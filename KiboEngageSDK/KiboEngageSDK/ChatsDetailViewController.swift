@@ -35,6 +35,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     
     func retrieveFromDatabase(completion:(result:Bool)->())
     {
+         var tempmessages=NSMutableArray()
         var chatsList=DatabaseObjectInitialiser.getDB().getChat(request_id)
         var i=0
         for(i=0;i<chatsList.count;i++)
@@ -42,15 +43,24 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             if(chatsList[i]["from"] as! String == DatabaseObjectInitialiser.getInstance().customerid)
             {
                 //i sent so type is 2
-                 self.addMessage(chatsList[i]["msg"] as! String, ofType: "2",date:chatsList[i]["datetime"] as! String, uniqueid: chatsList[i]["uniqueid"] as! String)
+                tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"2", "date":chatsList[i]["datetime"] as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
+                
+              //  tempmessages.addObject(chatsList[i]["msg"] as! String, ofType: "2",date:chatsList[i]["datetime"] as! String, uniqueid: chatsList[i]["uniqueid"] as! String)
+
+                
             }
             else
             {
-                self.addMessage(chatsList[i]["msg"] as! String, ofType: "1",date:chatsList[i]["datetime"] as! String, uniqueid: chatsList[i]["uniqueid"] as! String)
+                
+                tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"1", "date":chatsList[i]["datetime"] as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
+               
+                
                 
             }
-        
+            
         }
+        
+            messages.setArray(tempmessages as [AnyObject])
         completion(result:true)
     }
     
@@ -58,7 +68,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             self.viewfortableandtextfield.frame.origin.y -= keyboardSize.height
-           // self.view.frame.origin.y -= keyboardSize.height
+            // self.view.frame.origin.y -= keyboardSize.height
         }
         
     }
@@ -74,18 +84,20 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
-
+        
         
         
         Delegates.getInstance().delegateChatDetails1=self
         print("team id is \(team_id)")
-            print("messageid is \(messagechannel_id)")
+        print("messageid is \(messagechannel_id)")
+        
         messages=NSMutableArray()
+        
         var requestIDsObject=DatabaseObjectInitialiser.getDB().getSingleRequestIDsList(team_id,messagechannel_id:messagechannel_id)
         print("requestIDsObject \(requestIDsObject)")
         request_id=requestIDsObject["request_id"] as! String
         //request_id=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(team_id,messagechannel_id:messagechannel_id)
-   
+        
         print("req id is \(request_id)")
         print("reqid list is \(DatabaseObjectInitialiser.getDB().getSingleRequestIDs)")
         
@@ -102,11 +114,11 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                     
                 }
             }
-            })
+        })
         
         
         
-    
+        
     }
     
     
@@ -132,34 +144,34 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         
         var duration : NSTimeInterval = 0
         
-       /* UIView.animateWithDuration(duration, delay: 0, options:[], animations: {
-            self.viewForContent.contentOffset = CGPointMake(0, 0)
-            
-            }, completion:{ (true)-> Void in
-                self.showKeyboard=false
-        })
-        */
+        /* UIView.animateWithDuration(duration, delay: 0, options:[], animations: {
+         self.viewForContent.contentOffset = CGPointMake(0, 0)
+         
+         }, completion:{ (true)-> Void in
+         self.showKeyboard=false
+         })
+         */
         return true
-
+        
         
     }
     
     @IBAction func btnSendTapped(sender: AnyObject) {
         
         
-       ///  sqliteDB.SaveChat("\(selectedContact)", from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: txtFldMessage.text!, date1: nil, uniqueid1: uniqueID, status1: statusNow, type1: "chat", file_type1: "", file_path1: "")
+        ///  sqliteDB.SaveChat("\(selectedContact)", from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: txtFldMessage.text!, date1: nil, uniqueid1: uniqueID, status1: statusNow, type1: "chat", file_type1: "", file_path1: "")
         
         
         // sqliteDB.SaveChat("\(selectedContact)", from1: "\(username!)",owneruser1: "\(username!)", fromFullName1: "\(loggedFullName!)", msg1: "\(txtFldMessage.text!)",date1: nil,uniqueid1: uniqueID, status1: statusNow)
         
         /*socketObj.socket.emitWithAck("im",["room":"globalchatroom","stanza":imParas])(timeoutAfter: 150000)
-        {data in
-            
-            
-        }*/
+         {data in
+         
+         
+         }*/
         
         
-          var chatdata=[String:AnyObject]()
+        var chatdata=[String:AnyObject]()
         //Session has been assigned
         
         var requestIDsObject=DatabaseObjectInitialiser.getDB().getSingleRequestIDsList(team_id,messagechannel_id:messagechannel_id)
@@ -181,10 +193,10 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             stringAngentsToField=agentNamesArrayList.joinWithSeparator(",")
             
         }
-        //Session has not yet been assigned
+            //Session has not yet been assigned
         else{
             stringAngentsToField="All Agents"
-        chatdata["to"]="All Agents"
+            chatdata["to"]="All Agents"
         }
         chatdata["from"]=DatabaseObjectInitialiser.getInstance().customerid
         
@@ -230,33 +242,33 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         //cant store array, change it to string field 'stringAngentsToField'
         DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:chatdata["datetime"] as! String,request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,time1:chatdata["time"] as! String,fromMobile1:chatdata["fromMobile"] as! String)
         
-
         
         
-     /*   'to' : 'All Agents',
-        'from' : String, //customer name or customerID
-        'visitoremail' :  String //customer email:optional
-        'type': 'message',
-        'uniqueid' : String, //generate unique message id
-        'msg' : String, // message
-        'datetime' : Date.now(),
-        'request_id' : String, //request id of a session already stored
-        'messagechannel': String, //channel id
-        'companyid': String,
-        'is_seen': String, // ‘yes’/’no’
-        'time' : String,//hours,mins
-        ‘fromMobile’ : String // ‘yes’ or ‘no’
-*/
+        
+        /*   'to' : 'All Agents',
+         'from' : String, //customer name or customerID
+         'visitoremail' :  String //customer email:optional
+         'type': 'message',
+         'uniqueid' : String, //generate unique message id
+         'msg' : String, // message
+         'datetime' : Date.now(),
+         'request_id' : String, //request id of a session already stored
+         'messagechannel': String, //channel id
+         'companyid': String,
+         'is_seen': String, // ‘yes’/’no’
+         'time' : String,//hours,mins
+         ‘fromMobile’ : String // ‘yes’ or ‘no’
+         */
         
         //////////////socket.emit()
         
         //////// === commenting old socket logic...
         //DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("send:messageToAgent",chatdata)
         
-            sendChatOnServer(chatdata)
+        sendChatOnServer(chatdata)
         
-         /////////////api/userchats/create
-            saveChatOnServer(chatdata)
+        /////////////api/userchats/create
+        saveChatOnServer(chatdata)
         
         
         self.addMessage(txtFieldPost.text!, ofType: "2",date:NSDate().description, uniqueid: uniqueid)
@@ -272,7 +284,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         
         
         
-        }
+    }
     
     
     func saveChatOnServer(chatdata:[String:AnyObject])
@@ -284,22 +296,22 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         print("header is \(header.description)")
         
         var url=Constants.mainURL+Constants.saveChat
-       
+        
         Alamofire.request(.POST,"\(url)",parameters: chatdata,headers:header,encoding: .JSON).response{
             request, response_, data, error in
             
             //print(response)
- 
+            
             if(error != nil)
             {
-            print(response_!.description)
-            print(data!.description)
-            print(".......")
+                print(response_!.description)
+                print(data!.description)
+                print(".......")
             }
-
- 
- }
- 
+            
+            
+        }
+        
     }
     
     
@@ -329,8 +341,8 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             }
             //print(response)
             
-         //   print(response_!.description)
-           // print(data!.description)
+            //   print(response_!.description)
+            // print(data!.description)
             //print(".......")
             
             
@@ -343,20 +355,20 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     }
     
     
-     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
-     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var messageDic = messages.objectAtIndex(indexPath.row) as! [String : String];
         
         let msg = messageDic["message"] as NSString!
         let msgType = messageDic["type"]! as NSString
-      
-            let sizeOFStr = self.getSizeOfString(msg)
-            
-            return sizeOFStr.height + 70
+        
+        let sizeOFStr = self.getSizeOfString(msg)
+        
+        return sizeOFStr.height + 70
     }
-     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1
     }
@@ -386,24 +398,24 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         return labelSize.size
     }
     
-     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
-         var cell : UITableViewCell!
+        var cell : UITableViewCell!
         
-         print("cellForRowAtIndexPath called \(indexPath)")
-         var messageDic = messages.objectAtIndex(indexPath.row) as! [String : String];
-         NSLog(messageDic["message"]!, 1)
-         let msgType = messageDic["type"] as NSString!
-         let msg = messageDic["message"] as NSString!
-         let date2=messageDic["date"] as NSString!
-         let sizeOFStr = self.getSizeOfString(msg)
-         let uniqueidDictValue=messageDic["uniqueid"] as NSString!
-         /////////print("sizeOFStr for \(msg) is \(sizeOFStr)")
-         //// print("sizeOfstr is width \(sizeOFStr.width) and height is \(sizeOFStr.height)")
-         
-         //var sizeOFStr=msg.boundingRectWithSize(CGSizeMake(220.0,CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: nil, context: nil).size
-         /*
+        print("cellForRowAtIndexPath called \(indexPath)")
+        var messageDic = messages.objectAtIndex(indexPath.row) as! [String : String];
+        NSLog(messageDic["message"]!, 1)
+        let msgType = messageDic["type"] as NSString!
+        let msg = messageDic["message"] as NSString!
+        let date2=messageDic["date"] as NSString!
+        let sizeOFStr = self.getSizeOfString(msg)
+        let uniqueidDictValue=messageDic["uniqueid"] as NSString!
+        /////////print("sizeOFStr for \(msg) is \(sizeOFStr)")
+        //// print("sizeOfstr is width \(sizeOFStr.width) and height is \(sizeOFStr.height)")
+        
+        //var sizeOFStr=msg.boundingRectWithSize(CGSizeMake(220.0,CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: nil, context: nil).size
+        /*
          
          Messagesize = [message.userMessage boundingRectWithSize:CGSizeMake(220.0f, CGFLOAT_MAX)
          options:NSStringDrawingUsesLineFragmentOrigin
@@ -419,13 +431,13 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
          
          size.height = Messagesize.height + Namesize.height + Timesize.height + 48.0f;
          */
-         
-         if (msgType.isEqualToString("1")){
-           
+        
+        if (msgType.isEqualToString("1")){
+            
             print("yessssss 1")
             
-           cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatSentCell")! as UITableViewCell
-           // let nameLabel = cell.viewWithTag(15) as! UILabel
+            cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatSentCell")! as UITableViewCell
+            // let nameLabel = cell.viewWithTag(15) as! UILabel
             let textLable = cell.viewWithTag(12) as! UILabel
             let chatImage = cell.viewWithTag(1) as! UIImageView
             let profileImage = cell.viewWithTag(2) as! UIImageView
@@ -433,31 +445,31 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
             
             chatImage.frame = CGRectMake(chatImage.frame.origin.x, chatImage.frame.origin.y, ((sizeOFStr.width + 100)  > 200 ? (sizeOFStr.width + 100) : 200), sizeOFStr.height + 40)
-           ///// chatImage.image = UIImage(named: "chat_receive")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
+            ///// chatImage.image = UIImage(named: "chat_receive")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
             //******
             
-           
+            
             textLable.frame = CGRectMake(textLable.frame.origin.x, textLable.frame.origin.y, textLable.frame.size.width, sizeOFStr.height)
             ////// profileImage.center = CGPointMake(profileImage.center.x, textLable.frame.origin.y + textLable.frame.size.height - profileImage.frame.size.height/2 + 10)
             profileImage.center = CGPointMake(profileImage.center.x, textLable.frame.origin.y + textLable.frame.size.height - profileImage.frame.size.height/2+20)
             
             
-           
-           // nameLabel.text="Sojharo"
+            
+            // nameLabel.text="Sojharo"
             
             
             textLable.text=msg.description
             //return cell
         }
-       //  return cell
- 
-      /*  if(indexPath.row==0)
-        {
-            var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatSentCell")! as UITableViewCell
-            let nameLabel = cell.viewWithTag(15) as! UILabel
-            nameLabel.text="Sojharo"
-            return cell
-        }*/
+        //  return cell
+        
+        /*  if(indexPath.row==0)
+         {
+         var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatSentCell")! as UITableViewCell
+         let nameLabel = cell.viewWithTag(15) as! UILabel
+         nameLabel.text="Sojharo"
+         return cell
+         }*/
         if (msgType.isEqualToString("2")){
             print("yessss 2")
             cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
@@ -466,67 +478,33 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             let textLable = cell.viewWithTag(12) as! UILabel
             let timeLabel = cell.viewWithTag(11) as! UILabel
             let chatImage = cell.viewWithTag(1) as! UIImageView
-           
+            
             let distanceFactor = (197.0 - sizeOFStr.width) < 107 ? (197.0 - sizeOFStr.width) : 107
             //// //print("distanceFactor for \(msg) is \(distanceFactor)")
             
-           chatImage.frame = CGRectMake(20 + distanceFactor, chatImage.frame.origin.y, ((sizeOFStr.width + 107)  > 207 ? (sizeOFStr.width + 107) : 200), sizeOFStr.height + 40)
+            chatImage.frame = CGRectMake(20 + distanceFactor, chatImage.frame.origin.y, ((sizeOFStr.width + 107)  > 207 ? (sizeOFStr.width + 107) : 200), sizeOFStr.height + 40)
             ////    //print("chatImage.x for \(msg) is \(20 + distanceFactor) and chatimage.wdith is \(chatImage.frame.width)")
             
             
             textLable.hidden=false
-          
-          ////////  chatImage.image = UIImage(named: "chat_send")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
+            
+            ////////  chatImage.image = UIImage(named: "chat_send")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
             //*********
-           // textLable.text = "\(msg)"
+            // textLable.text = "\(msg)"
             textLable.frame = CGRectMake(36 + distanceFactor, textLable.frame.origin.y, textLable.frame.size.width, sizeOFStr.height)
             ///  //print("textLable.x for \(msg) is \(textLable.frame.origin.x) and textLable.width is \(textLable.frame.width)")
             
             ////profileImage.center = CGPointMake(profileImage.center.x, textLable.frame.origin.y + textLable.frame.size.height - profileImage.frame.size.height/2 + 10)
             
-                       timeLabel.frame = CGRectMake(36 + distanceFactor, timeLabel.frame.origin.y, timeLabel.frame.size.width, timeLabel.frame.size.height)
+            timeLabel.frame = CGRectMake(36 + distanceFactor, timeLabel.frame.origin.y, timeLabel.frame.size.width, timeLabel.frame.size.height)
             deliveredLabel.frame = CGRectMake(deliveredLabel.frame.origin.x, textLable.frame.origin.y + textLable.frame.size.height + 15, deliveredLabel.frame.size.width, deliveredLabel.frame.size.height)
             
             
             textLable.text=msg.description
-          //  return cell
+            //  return cell
             
         }
-      
-        /*if(indexPath.row==2)
-        {
-            var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatSentCell")! as UITableViewCell
-            let nameLabel = cell.viewWithTag(15) as! UILabel
-            //nameLabel.textColor=UIColor.blueColor()
-            nameLabel.text="Sojharo"
-            let msgLabel = cell.viewWithTag(12) as! UILabel
-            msgLabel.text="Pkay. Please go ahead."
-            
-            return cell
-        }
-        */
-        /* if(indexPath.row==3)
-         {
-         var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
-         
-         return cell
-         }*/
-       /* if(indexPath.row==3)
-        {
-            var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatSentCell")! as UITableViewCell
-            let nameLabel = cell.viewWithTag(15) as! UILabel
-            nameLabel.text="Sojharo"
-            let msgLabel = cell.viewWithTag(12) as! UILabel
-            msgLabel.text="May I have your Order ID please?"
-            return cell
-        }
-        else{
-            var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
-            let msgLabel = cell.viewWithTag(12) as! UILabel
-            msgLabel.text="Yes. I am done"
-            return cell
-        }
-        */
+        
         return cell
         
     }
@@ -535,35 +513,35 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         
         retrieveFromDatabase({result->() in
             
-           // dispatch_async(dispatch_get_main_queue())
-           // {
-                
-                self.tblForGroupChat.reloadData()
-                
-               /* var offsetY = CGFloat.init(0)
+            // dispatch_async(dispatch_get_main_queue())
+            // {
+            
+            self.tblForGroupChat.reloadData()
+            
+            /* var offsetY = CGFloat.init(0)
+             var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
+             
+             for (var i = 0; i <= indexPath.row; i++) {
+             offsetY += (self.tblForGroupChat.delegate?.tableView!(self.tblForGroupChat, heightForRowAtIndexPath: indexPath))!
+             //[tableView.delegate tableView:tableView heightForRowAtIndexPath:indexPath];
+             }
+             
+             
+             UIView.animateWithDuration(0, delay: 0, options:[], animations: {
+             self.tblForGroupChat.contentOffset = CGPointMake(0, offsetY)
+             
+             }, completion:{ (true)-> Void in
+             //self.showKeyboard=false
+             })
+             */
+            
+            if(self.messages.count>1)
+            {
                 var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
+                self.tblForGroupChat.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
                 
-                for (var i = 0; i <= indexPath.row; i++) {
-                    offsetY += (self.tblForGroupChat.delegate?.tableView!(self.tblForGroupChat, heightForRowAtIndexPath: indexPath))!
-                        //[tableView.delegate tableView:tableView heightForRowAtIndexPath:indexPath];
-                }
-                
-                
-                UIView.animateWithDuration(0, delay: 0, options:[], animations: {
-                    self.tblForGroupChat.contentOffset = CGPointMake(0, offsetY)
-                    
-                    }, completion:{ (true)-> Void in
-                        //self.showKeyboard=false
-                })
-                */
-                
-               if(self.messages.count>1)
-                {
-                    var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
-                    self.tblForGroupChat.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-                    
-                }
-           // }
+            }
+            // }
         })
         
     }

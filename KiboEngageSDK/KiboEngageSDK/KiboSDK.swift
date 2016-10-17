@@ -11,6 +11,8 @@ import Alamofire
 import SQLite
 import UIKit
 import SwiftyJSON
+import SystemConfiguration
+import AVFoundation
 //import WindowsAzureMessaging
 public class KiboSDK{
     
@@ -303,7 +305,8 @@ public class KiboSDK{
             if  let requestid = userInfo["data"]!["request_id"] as? String {
                 print("inside 3 requestid is \(requestid)")
                 
-                
+             
+                /*
                 let seconds = 4.0
                 let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
                 let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
@@ -314,9 +317,10 @@ public class KiboSDK{
                     self.fetchSingleMessage(singleuniqueid,request_id: requestid)
                     
                 })
+                */
                 
                 
-               ///// fetchSingleMessage(singleuniqueid,request_id: requestid)
+               fetchSingleMessage(singleuniqueid,request_id: requestid)
             }
         }
         }
@@ -366,6 +370,12 @@ public class KiboSDK{
             print("fetching single chat message")
             if(response.response?.statusCode == 200)
             {
+                
+                let systemSoundID: SystemSoundID = 1016
+                
+                // to play sound
+                AudioServicesPlaySystemSound (systemSoundID)
+                
                 print(response.debugDescription)
                 print(response.data!)
                 print(response.result.value!)
@@ -405,6 +415,10 @@ public class KiboSDK{
                // print(chatmsg2[0]["type"].string!)
                 //print(chatmsg2["from"].string!)
               //  if()
+                
+                
+                print("storing chat sent by agent \(chatmsg2[0]["msg"].string!)")
+                
                DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "no")
                 
                //UPDATE UI

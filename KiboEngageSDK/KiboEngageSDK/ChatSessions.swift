@@ -19,6 +19,8 @@ public class ChatSessions
         
     }
     
+    
+ 
     public func createChatSessions()
     {
         //http://api.kibosupport.com/visitorcalls/createbulksession
@@ -140,7 +142,13 @@ public class ChatSessions
         //print("url is \(url)")
         //print("params are \(params2)")
         Alamofire.request(.POST,"\(url)",parameters: customerInfoList,headers:header,encoding: .JSON).response{
-            request, response_, data, error in            /* print(response)
+            request, response_, data, error in
+            
+            if(response_?.statusCode==200)
+            {
+            /* print(response)
+             
+             
              print(".......")
              print(response.data!)
              print(".......")
@@ -166,6 +174,7 @@ public class ChatSessions
             print(JSON(data!).debugDescription)
             print(error.debugDescription)
             //print(JSON(response.result.value!))
+            }
 
         }
     }

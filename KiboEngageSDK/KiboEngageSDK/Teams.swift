@@ -46,6 +46,10 @@ public class Teams
         print(header.description)
 
         Alamofire.request(.GET,"\(url)",headers:header).validate().responseJSON { response in
+            
+            //add success if
+            
+            
                 //print(request)
                // print(response)
                 //print(data)
