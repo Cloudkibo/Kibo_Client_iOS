@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		jiJWg54T4Hgf6IV9sChUFyFUfrI=
+		Xpk6AGSg0NP7yf/50UsA0jp/R6E=
 		</data>
 		<key>Headers/KiboEngageSDK-Swift.h</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		FSp0lpGBvEBthY7fXUYzU0f+SBc=
+		dsVJBqS9t/gqxyyJShZzX7Pme08=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -34,51 +34,51 @@
 		</data>
 		<key>SDKstoryboard.storyboardc/ChannelsViewController.nib</key>
 		<data>
-		bI2VuRf6/MOKkCNSuWEDV3bTEG0=
+		oPUJgiRtIm/YqQi0RGWpfds4kjE=
 		</data>
 		<key>SDKstoryboard.storyboardc/ChatsDetailViewController.nib</key>
 		<data>
-		CrUeA+LNF0KjZ4lQmFvG7cbBGGs=
+		fJtzfNtJdIkFeGtXFPCzU2Z2kWk=
 		</data>
 		<key>SDKstoryboard.storyboardc/Hp7-9f-iaX-view-PaV-pS-es6.nib</key>
 		<data>
-		JTZDO15h03y+xWmsepCT8g3fHJ0=
+		pZPNgBnw9RLrVyRseo7UZ9Xc7LY=
 		</data>
 		<key>SDKstoryboard.storyboardc/Info.plist</key>
 		<data>
-		UCT6pbafDHQmaqxY+cSPTIcpDwU=
+		W3Zev61SvpdQtVBEI/G1/HDp+/A=
 		</data>
 		<key>SDKstoryboard.storyboardc/K9i-dO-SzX-view-hba-Vl-gpM.nib</key>
 		<data>
-		G2jKjl16q5Nr6/g8TC+ijy5h78E=
+		WQc6ubQ8apViJN4XsYDEvbh+zRA=
 		</data>
 		<key>SDKstoryboard.storyboardc/MainChatView.nib</key>
 		<data>
-		6INNDTBmQgcuzAAEOyNt9D8CJNE=
+		huCLeqD0FuF4s0ZBPHYisQQrQmU=
 		</data>
 		<key>SDKstoryboard.storyboardc/QEw-B4-BAI-view-FBh-br-2kL.nib</key>
 		<data>
-		IOAay76xLDPu9977UmnllJaj5m0=
+		76Gyb0+vrnhjwwz9KQTkyuUL7j0=
 		</data>
 		<key>SDKstoryboard.storyboardc/TeamsViewController.nib</key>
 		<data>
-		MgPd7esABqBTicB2EpLEo5xDg3Q=
+		wlo6SCk4X7KKc6Cb2LVDiVoFi5U=
 		</data>
 		<key>SDKstoryboard.storyboardc/UITabBarController-PW8-fw-eyl.nib</key>
 		<data>
-		+9xwSSupFPXgAnappzsZl4gL3Hc=
+		FikqGkLg0Gao0zIPFcD2SymeZ30=
 		</data>
 		<key>SDKstoryboard.storyboardc/UIViewController-K9i-dO-SzX.nib</key>
 		<data>
-		4rNcK5+9bDyO56DmnrjTBOIjaH8=
+		qMy7bru1UpuP4NPISpd9LaJkxxY=
 		</data>
 		<key>SDKstoryboard.storyboardc/VXf-bw-0d6-view-LbK-wk-QVu.nib</key>
 		<data>
-		+JF8bfyYQiNS6hZchNWd5YpztJ4=
+		00+quLPgesVvlxK6Gwgcf6efmsg=
 		</data>
 		<key>SDKstoryboard.storyboardc/lj1-u7-FhL-view-q85-uQ-4Mc.nib</key>
 		<data>
-		y7CAjbilJBRL/Ld1QoKSV9lOmfA=
+		cijUISuBMsfvitwuK/DmUFc9/Ug=
 		</data>
 		<key>arrow.png</key>
 		<data>
@@ -91,11 +91,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jiJWg54T4Hgf6IV9sChUFyFUfrI=
+			Xpk6AGSg0NP7yf/50UsA0jp/R6E=
 			</data>
 			<key>hash2</key>
 			<data>
-			jRcD+PAZJNIp1nw+7CdgEHYMLTbDYSjweKhIZFxjJGU=
+			Od5ziqmp1keSFT11vEhJO0xTUiMfOgKohnozQybKB+Q=
 			</data>
 		</dict>
 		<key>Headers/KiboEngageSDK-Swift.h</key>
@@ -135,11 +135,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FSp0lpGBvEBthY7fXUYzU0f+SBc=
+			dsVJBqS9t/gqxyyJShZzX7Pme08=
 			</data>
 			<key>hash2</key>
 			<data>
-			GchiWjPEE18dbrBf1kVkNpaI3V8OlCVwuLoRetmNBgM=
+			khRweRPhoczbWcvgk0llYHwqJDCoZuBQI6YwbVXinv0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -157,132 +157,132 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bI2VuRf6/MOKkCNSuWEDV3bTEG0=
+			oPUJgiRtIm/YqQi0RGWpfds4kjE=
 			</data>
 			<key>hash2</key>
 			<data>
-			2Qptz+f3ysRZ1fySHVtBPNi/wZo5vVlxN37hlDk8LQA=
+			7RULxlepYD9eQM9csiJUAr5prazWmJBZPM7IQDUWhwA=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/ChatsDetailViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			CrUeA+LNF0KjZ4lQmFvG7cbBGGs=
+			fJtzfNtJdIkFeGtXFPCzU2Z2kWk=
 			</data>
 			<key>hash2</key>
 			<data>
-			nd7ZqRVMJyokZ/E7iFlYkKLbovdboRl9GlBC3MVE23w=
+			LwbxehIanQszlyDKt40FQUkkBqncyGz2O3EuBM7lr3o=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/Hp7-9f-iaX-view-PaV-pS-es6.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JTZDO15h03y+xWmsepCT8g3fHJ0=
+			pZPNgBnw9RLrVyRseo7UZ9Xc7LY=
 			</data>
 			<key>hash2</key>
 			<data>
-			LkNAnfJVdrDrdAJxDGAmXXv0r/wQ4i6LQLGXj+gjaTQ=
+			TRbo9etcvgWMXzM4//PskY99zcepAQpJISz6af5WjZA=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			UCT6pbafDHQmaqxY+cSPTIcpDwU=
+			W3Zev61SvpdQtVBEI/G1/HDp+/A=
 			</data>
 			<key>hash2</key>
 			<data>
-			vt4DrOFx8Sos02ZZIu8QYAI5FenpuxdP/GIX/R+olFs=
+			gWOB5OkpSdBk0stPV6RpHlVr8SFhWIKSxUm2/PVICWY=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/K9i-dO-SzX-view-hba-Vl-gpM.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			G2jKjl16q5Nr6/g8TC+ijy5h78E=
+			WQc6ubQ8apViJN4XsYDEvbh+zRA=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZR4XDK8+5SE7ocXAUOnxeLwPLJewCkrhdc5j9H/Z4mk=
+			TbVk4uhc8UpvvPSHIezrkGNzWHG/uyDmqgq4lucsz+c=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/MainChatView.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6INNDTBmQgcuzAAEOyNt9D8CJNE=
+			huCLeqD0FuF4s0ZBPHYisQQrQmU=
 			</data>
 			<key>hash2</key>
 			<data>
-			Bg5G4sS/5Y26HxummemJ+rpxURi+lRfEHtaKmcjbZq0=
+			YRzPkjMkH0UJv1YU1XJuO3agF3/T0g4ontIsB8AYEWw=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/QEw-B4-BAI-view-FBh-br-2kL.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IOAay76xLDPu9977UmnllJaj5m0=
+			76Gyb0+vrnhjwwz9KQTkyuUL7j0=
 			</data>
 			<key>hash2</key>
 			<data>
-			gk9LnJsnir2jPsMSMoerdJkzzh/zktRo7PhVrkw21wc=
+			3DWNNVBFH/rIHfjpQfh0c9GxEwIIasLA11Vo6+R2JYw=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/TeamsViewController.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MgPd7esABqBTicB2EpLEo5xDg3Q=
+			wlo6SCk4X7KKc6Cb2LVDiVoFi5U=
 			</data>
 			<key>hash2</key>
 			<data>
-			yzKlC5jlyWUNDQQJMc19dHc/OdDBgb8lhsE+WsBhBuk=
+			lFq+aMpUVq1NbVfFgaIXKQ9LAQOQhpesVcWtBDtAAp8=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/UITabBarController-PW8-fw-eyl.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+9xwSSupFPXgAnappzsZl4gL3Hc=
+			FikqGkLg0Gao0zIPFcD2SymeZ30=
 			</data>
 			<key>hash2</key>
 			<data>
-			TqCHro5AcdeanbEiH/BqHxdDHgClFd7uv8r2BPFXl7A=
+			LLW2LU+V3f06E6kVJoHNcGKwa/Vs8zRfzAQ3hIBT2jo=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/UIViewController-K9i-dO-SzX.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			4rNcK5+9bDyO56DmnrjTBOIjaH8=
+			qMy7bru1UpuP4NPISpd9LaJkxxY=
 			</data>
 			<key>hash2</key>
 			<data>
-			7F6MB2wg+Ul4MUAOkqHH5rJ1788Hjj1jPnsY9f1Mjek=
+			X9UwZgZsrFNbqeCWzYL3ysq9rHDGwXKuK7yIQmxV8cw=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/VXf-bw-0d6-view-LbK-wk-QVu.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+JF8bfyYQiNS6hZchNWd5YpztJ4=
+			00+quLPgesVvlxK6Gwgcf6efmsg=
 			</data>
 			<key>hash2</key>
 			<data>
-			mKVJJAVn0SEBJUqf/kPy/GVTSmhrClG37sjkHQ/xQ60=
+			0gWg+HcZZZlhCiTdQjYcFcg8llTzzxpYd90Ja1Z0+eA=
 			</data>
 		</dict>
 		<key>SDKstoryboard.storyboardc/lj1-u7-FhL-view-q85-uQ-4Mc.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			y7CAjbilJBRL/Ld1QoKSV9lOmfA=
+			cijUISuBMsfvitwuK/DmUFc9/Ug=
 			</data>
 			<key>hash2</key>
 			<data>
-			M5wYFHzTcIXGIp/ktogaaJ4f6rim9W48kA1OobeWDdk=
+			hOYhTbJifp+sUeSPCE5/Bm9qTMdMQm8mbubSZzHFvuI=
 			</data>
 		</dict>
 		<key>arrow.png</key>

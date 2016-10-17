@@ -20,7 +20,141 @@ public class ChatSessions
     }
     
     
+    public func getChatSessions()
+    {
+         var sessionInfoList=[[String:AnyObject]]()
+        
+        //get chat sessions if previously exists
+        print("get chat sessions if previously exists")
+        var url=Constants.mainURL+Constants.getChatSessions
+    
+        var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        var hhh=["headers":"\(header)"]
+       
+        print("header is \(header.description) and customer id is \(DatabaseObjectInitialiser.getInstance().customerid)")
+        
+            Alamofire.request(.POST,"\(url)",parameters: ["customerid":DatabaseObjectInitialiser.getInstance().customerid],headers:header,encoding: .JSON).validate().responseJSON { response in
+            //request, response_, data, error in
+            
+            if(response.response!.statusCode==200)
+            {
+                print("request success")
+                ////print(response.data.debugDescription)
+                print("..1")
+               /////print(JSON(response.data!).debugDescription)
+                 print("..2")
+                
+                print(JSON(response.result.value!))
+                
+                var receivedChatSessions=JSON(response.result.value!)
+            
+                print("receivedChatSessions count is \(receivedChatSessions.count)")
  
+                var TeamsObjectList=[[String:AnyObject]]()
+                TeamsObjectList = DatabaseObjectInitialiser.getDB().getTeamsObjectList()
+                
+                //for each team
+                var i=0
+                for(i=0;i<TeamsObjectList.count;i++)
+                {
+                    
+                    var channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(TeamsObjectList[i]["_id"] as! String)
+                    
+                    var j=0
+                    
+                    //for each channel
+                    for(j=0;j<channelsList.count;j++)
+                    {
+           
+                       
+                        var messagechannelsArray=[String]()
+                       
+                        var foundChatSessionAlready=false
+                        //for each channel received from server
+                        var k=0
+                       
+                        for(k=0;k<receivedChatSessions.count;k++)
+                        {
+                            messagechannelsArray=receivedChatSessions[k]["messagechannel"].arrayObject as! [String]
+                            var messageChannelLastElement=messagechannelsArray.last!
+                            var receivedTeamid=receivedChatSessions[k]["departmentid"].string!
+                            
+                            if(receivedTeamid == (TeamsObjectList[i]["_id"] as! String)
+                                && messageChannelLastElement == (channelsList[j]["_id"] as! String))
+                            {
+                                foundChatSessionAlready=true
+                                break
+                            }
+                        }
+                        
+                        if(foundChatSessionAlready==false)
+                        {
+                            
+                            //chat session doesnot exist, create new
+                            
+                            //store session data in requestIDs table
+                            DatabaseObjectInitialiser.getDB().storeRequestIDs(TeamsObjectList[i]["_id"] as! String, msgchannelid: channelsList[j]["_id"] as! String)
+                            
+                            var requestIDnew=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(TeamsObjectList[i]["_id"] as! String,messagechannel_id: channelsList[j]["_id"] as! String)
+                           
+                            if(requestIDnew != "")
+                                {
+                                sessionInfoList.append(["departmentid":TeamsObjectList[i]["_id"] as! String,"messagechannel":channelsList[j]["_id"]!,"request_id":requestIDnew])
+                                }
+                        }
+                        
+                    }
+                }
+                
+                /*
+                 [
+                 {
+                 "departmentid" : "5745e4da7329b12e16b0e7b7",
+                 "request_id" : "h kaIi5vx 2016 10 17 10 34 4",
+                 "is_rescheduled" : "false",
+                 "customerID" : "newCustomer1",
+                 "requesttime" : "2016-10-17T08:21:05.819Z",
+                 "socketid" : "",
+                 "_id" : "580489f111e5b3b774b7a998",
+                 "agent_ids" : [
+                 
+                 ],
+                 "platform" : "mobile",
+                 "messagechannel" : [
+                 "574db78d23785bca7c650a0f"
+                 ],
+                 "customerid" : "57f3335694e8ecba4161c6fd",
+                 "__v" : 0,
+                 "companyid" : "cd89f71715f2014725163952",
+                 "initiator" : "visitor",
+                 "status" : "new"
+                 },
+                 ......
+                 ]
+                 */
+                
+                
+                //if body null, no chat sessions created
+                // call createChatSessions()
+                
+                //if get data
+                
+                //start loop and for each session, do
+                
+                //save request id of that team/channel combination in table
+                //DatabaseObjectInitialiser.getDB().updateRequestID(<#T##team_id1: String##String#>, messagechannel_id1: <#T##String#>, request_id1: <#T##String#>)
+                
+                //end loop
+                
+            }
+            else{
+                print("request failed")
+                print(response.result.error)
+               
+                }
+        }
+    
+    }
     public func createChatSessions()
     {
         //http://api.kibosupport.com/visitorcalls/createbulksession

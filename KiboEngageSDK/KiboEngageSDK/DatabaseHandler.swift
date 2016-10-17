@@ -472,6 +472,29 @@ internal class DatabaseHandler:NSObject
         
     }
     
+    
+    func updateRequestID(team_id1:String,messagechannel_id1:String,request_id1:String)
+    {
+        
+        let team_id = Expression<String>("team_id")
+        let msg_channel_id = Expression<String>("msg_channel_id")
+        let request_id = Expression<String>("request_id")
+        
+        var query=self.requestIDsTable.select(team_id,msg_channel_id,request_id).filter(team_id == team_id1 && msg_channel_id==messagechannel_id1)
+        
+        do
+        {
+            var rowcount=try self.db.run(query.update([request_id<-request_id1]))
+            print("updating request ids \(rowcount) rows updated")
+        }
+        catch
+        {
+            print("error in updating requestid")
+        }
+        
+    }
+    
+
     func storeAgentsInfo(agent_email1:String,agent_id1:String,agent_name1:String,request_id1:String)
     {
         let agent_email = Expression<String>("agent_email")
