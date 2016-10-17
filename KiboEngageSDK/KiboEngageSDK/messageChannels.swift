@@ -21,7 +21,7 @@ public class MessageChannels
         
     }
     
-    public func fetchMessageChannels()
+    public func fetchMessageChannels(completion:(result:Bool, error:String!)->())
     {
         /* var tblGroups=DatabaseObjectInitialiser.getInstance().database.groups
          do
@@ -67,6 +67,9 @@ public class MessageChannels
  
  
  */
+            
+            if(response.result.isSuccess)
+            {
             var channelsData=JSON(response.result.value!)
  
             for(var i=0;i<channelsData.count;i++)
@@ -79,7 +82,12 @@ public class MessageChannels
                 ////  DatabaseObjectInitialiser.getDB().storeGroups("sfsfd", deptname1: "Sdfasdf", deptDesc: "sadfsadf", compID: "Sdfsafd", creeateby: "sdfsaf", datecreation: NSDate().description, delStatus: false)
                 
             }
+                completion(result: true,error: nil)
             
+        }
+            else{
+                completion(result: false,error: response.result.error?.localizedDescription)
+            }
         }
     }
 }

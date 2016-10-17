@@ -20,7 +20,7 @@ public class ChatSessions
     }
     
     
-    public func getChatSessions()
+    public func getChatSessions(completion:(result:Bool, error:String!)->())
     {
          var sessionInfoList=[[String:AnyObject]]()
         
@@ -70,6 +70,10 @@ public class ChatSessions
                         var messagechannelsArray=[String]()
                        
                         var foundChatSessionAlready=false
+                        
+                        //store session data in requestIDs table
+                        DatabaseObjectInitialiser.getDB().storeRequestIDs(TeamsObjectList[i]["_id"] as! String, msgchannelid: channelsList[j]["_id"] as! String)
+                        
                         //for each channel received from server
                         var k=0
                        
@@ -82,18 +86,17 @@ public class ChatSessions
                             if(receivedTeamid == (TeamsObjectList[i]["_id"] as! String)
                                 && messageChannelLastElement == (channelsList[j]["_id"] as! String))
                             {
+                                print("got session already")
                                 foundChatSessionAlready=true
+                                DatabaseObjectInitialiser.getDB().updateRequestID(TeamsObjectList[i]["_id"] as! String, messagechannel_id1: channelsList[j]["_id"] as! String, request_id1: receivedChatSessions[k]["request_id"].string!)
                                 break
                             }
                         }
                         
                         if(foundChatSessionAlready==false)
                         {
-                            
+                            print("saving new session info in array")
                             //chat session doesnot exist, create new
-                            
-                            //store session data in requestIDs table
-                            DatabaseObjectInitialiser.getDB().storeRequestIDs(TeamsObjectList[i]["_id"] as! String, msgchannelid: channelsList[j]["_id"] as! String)
                             
                             var requestIDnew=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(TeamsObjectList[i]["_id"] as! String,messagechannel_id: channelsList[j]["_id"] as! String)
                            
@@ -104,6 +107,24 @@ public class ChatSessions
                         }
                         
                     }
+                }
+                
+                if(sessionInfoList.count>0)
+                {
+                    print("sessionInfoList count is \(sessionInfoList.count)")
+                self.createRequiredChatSessions(sessionInfoList, completion: { (result, error) in
+                    
+                    if(result==true)
+                    {
+                      completion(result: true, error: nil)
+                    }
+                    else{
+                        completion(result: false, error: error)
+                    }
+                })
+                }
+                else{
+                    completion(result: true, error: nil)
                 }
                 
                 /*
@@ -149,14 +170,19 @@ public class ChatSessions
             }
             else{
                 print("request failed")
+                var errorMessage="Error occured in getting chat sessions"
+                if(response.result.error != nil)
+                {
+                    errorMessage=(response.result.error?.localizedDescription)!
+                }
                 print(response.result.error)
-               
+               completion(result: false,error: errorMessage)
                 }
         }
     
     }
     
-    public func createRequiredChatSessions(sessionInfoList:[[String:AnyObject]])
+    public func createRequiredChatSessions(sessionInfoList:[[String:AnyObject]],completion:(result:Bool,error:String!)->())
     {
         var customerInfoList=[String:AnyObject]()
         customerInfoList["customerID"]=DatabaseObjectInitialiser.getInstance().customerid
@@ -170,6 +196,67 @@ public class ChatSessions
         customerInfoList["status"]="new"
         
         customerInfoList["sessionInfo"]=sessionInfoList
+        
+        var url=Constants.mainURL+Constants.createBulksessions
+        //print(url.debugDescription)
+        /*
+         'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
+         'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
+         'kibo-client-id': 'cd89f71715f2014725163952',
+         */
+        var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        var hhh=["headers":"\(header)"]
+        print("header is \(header.description)")
+        
+        Alamofire.request(.POST,"\(url)",parameters: customerInfoList,headers:header,encoding: .JSON).response{
+            request, response_, data, error in
+            
+            if(response_?.statusCode==200)
+            {
+                print("created sessions required")
+                /* print(response)
+                 
+                 
+                 print(".......")
+                 print(response.data!)
+                 print(".......")
+                 print(response.result.value!)*/
+                
+                /*
+                 
+                 "__v" = 0;
+                 "_id" = 57c69e61dfff9e5223a8fcb2;
+                 activeStatus = Yes;
+                 companyid = cd89f71715f2014725163952;
+                 createdby = 554896ca78aed92f4e6db296;
+                 creationdate = "2016-08-31T09:07:45.236Z";
+                 groupid = 57c69e61dfff9e5223a8fcb1;
+                 "msg_channel_description" = "This channel is for general discussions";
+                 "msg_channel_name" = General;
+                 
+                 
+                 */
+                print(response_?.statusCode)
+                // print(request.debugDescription)
+                print(data.debugDescription)
+                print(JSON(data!).debugDescription)
+                print(error.debugDescription)
+                
+                //print(JSON(response.result.value!))
+                completion(result: true, error: nil)
+            }
+            else{
+                print("failed to create required sessions")
+                var errorMessage="failed to create required sessions"
+                if(error != nil)
+                {
+                   errorMessage=(error?.localizedDescription)!
+                }
+                completion(result: false,error: errorMessage)
+                
+            }
+            
+        }
     }
     
     public func createChatSessions()

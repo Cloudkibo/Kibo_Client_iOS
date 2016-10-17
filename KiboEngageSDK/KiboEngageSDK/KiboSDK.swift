@@ -106,6 +106,39 @@ public class KiboSDK{
         print("optionalDataList data is \(DatabaseObjectInitialiser.getInstance().optionalDataList.debugDescription)")
         print(appID+" "+appSecret+" "+clientID)
         
+ //ChatSessions.init().getChatSessions()
+ 
+ /*var teamsList=Teams.init()
+ teamsList.fetchTeams()
+ var messgeChannelsList=MessageChannels.init()
+ messgeChannelsList.fetchMessageChannels()
+ */
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+            print("synccccc fetching contacts in background...")
+            var teamsList=Teams.init()
+            teamsList.fetchTeams({ (result,error) in
+                if(result==true)
+                {
+                print("synccccc fetch contacts donee")
+                print("synccccc sending phone numbers to server...")
+                var messgeChannelsList=MessageChannels.init()
+                messgeChannelsList.fetchMessageChannels({ (result,error) in
+                    if(result==true)
+                    {
+                        ChatSessions.init().getChatSessions({ (result, error) in
+                            
+                            
+                        })
+                    }
+                })
+            }
+                else
+                {
+                    print("error: \(error)")
+                }
+            })
+        
+        }
         
         ////sqliteDB=DatabaseHandler(dbName:"kiboEngageDB.sqlite3")
         

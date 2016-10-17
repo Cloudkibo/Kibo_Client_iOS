@@ -20,7 +20,7 @@ public class Teams
         
     }
     
-    public func fetchTeams()
+    public func fetchTeams(completion:(result:Bool, error:String!)->())
     {
        /* var tblGroups=DatabaseObjectInitialiser.getInstance().database.groups
         do
@@ -104,6 +104,8 @@ public class Teams
                 */
                 ///print(response)
                ///// print(response.result.value)
+            if(response.response?.statusCode==200)
+            {
                 var teamsData=JSON(response.result.value!)
                 
                 for(var i=0;i<teamsData.count;i++)
@@ -114,7 +116,12 @@ public class Teams
                   ////  DatabaseObjectInitialiser.getDB().storeGroups("sfsfd", deptname1: "Sdfasdf", deptDesc: "sadfsadf", compID: "Sdfsafd", creeateby: "sdfsaf", datecreation: NSDate().description, delStatus: false)
                     
                 }
-               
+                completion(result: true,error: nil)
+            }
+            else{
+                completion(result: false,error: response.result.error?.localizedDescription)
+            }
+            
         }
     }
 }

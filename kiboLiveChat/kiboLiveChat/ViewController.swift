@@ -32,8 +32,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
- ChatSessions.init().createChatSessions()
-    /*  var teamsList=Teams.init()
+ ////ChatSessions.init().getChatSessions()
+     
+        /*var teamsList=Teams.init()
         teamsList.fetchTeams()
         var messgeChannelsList=MessageChannels.init()
         messgeChannelsList.fetchMessageChannels()
