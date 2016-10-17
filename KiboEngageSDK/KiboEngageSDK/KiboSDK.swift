@@ -127,6 +127,23 @@ public class KiboSDK{
                     {
                         ChatSessions.init().getChatSessions({ (result, error) in
                             
+                            if(result==true)
+                            {
+                                var syncChatserviceObj=syncChatService.init()
+                                syncChatserviceObj.syncChatFullRefresh({ (result, error) in
+                                    
+                                    if(result==true)
+                                    {
+                                        //update UI
+                                        Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                                    }
+                                    else
+                                    {
+                                        print("error: \(error)")
+                                    }
+                                })
+                                
+                            }
                             
                         })
                     }

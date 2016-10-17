@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2219999B99C0158F2B58C632 /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */; };
+		71083C0B1DB4FA2100CBF1CD /* syncChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71083C0A1DB4FA2100CBF1CD /* syncChatService.swift */; };
 		71117CB61D8117AD00868E36 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71117CB51D8117AD00868E36 /* ChannelsViewController.swift */; };
 		71117CB81D81186500868E36 /* ChannelsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71117CB71D81186500868E36 /* ChannelsCell.swift */; };
 		71126B841D82840100F23261 /* messageChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71126B831D82840100F23261 /* messageChannels.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		71083C0A1DB4FA2100CBF1CD /* syncChatService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = syncChatService.swift; sourceTree = "<group>"; };
 		71117CB51D8117AD00868E36 /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		71117CB71D81186500868E36 /* ChannelsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsCell.swift; sourceTree = "<group>"; };
 		71126B831D82840100F23261 /* messageChannels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messageChannels.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				711F7E521D7E2BD700A6FD97 /* Teams.swift */,
 				71126B831D82840100F23261 /* messageChannels.swift */,
 				71A1EB3F1D965D8600DAAF40 /* ChatSessions.swift */,
+				71083C0A1DB4FA2100CBF1CD /* syncChatService.swift */,
 				713486431D7FBF8B005E632F /* Constants.swift */,
 				711F7E4E1D7E276400A6FD97 /* DatabaseHandler.swift */,
 				713486451D7FC04E005E632F /* SDKstoryboard.storyboard */,
@@ -441,6 +444,7 @@
 				7181CDBD1D83CF16002A0D05 /* SocketEnginePollable.swift in Sources */,
 				7181CDC51D83CF16002A0D05 /* SocketLogger.swift in Sources */,
 				711F7E531D7E2BD700A6FD97 /* Teams.swift in Sources */,
+				71083C0B1DB4FA2100CBF1CD /* syncChatService.swift in Sources */,
 				7181CDCA1D83CF16002A0D05 /* SwiftRegex.swift in Sources */,
 				7181CDC21D83CF16002A0D05 /* SocketIOClient.swift in Sources */,
 				7181CDC91D83CF16002A0D05 /* SocketTypes.swift in Sources */,
