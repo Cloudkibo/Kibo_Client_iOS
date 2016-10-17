@@ -155,6 +155,23 @@ public class ChatSessions
         }
     
     }
+    
+    public func createRequiredChatSessions(sessionInfoList:[[String:AnyObject]])
+    {
+        var customerInfoList=[String:AnyObject]()
+        customerInfoList["customerID"]=DatabaseObjectInitialiser.getInstance().customerid
+        for keyname in DatabaseObjectInitialiser.getInstance().optionalDataList.keys {
+            print("Key: \(keyname) value: \(DatabaseObjectInitialiser.getInstance().optionalDataList[keyname]!)")
+            customerInfoList["\(keyname)"]=DatabaseObjectInitialiser.getInstance().optionalDataList[keyname]!
+        }
+        customerInfoList["isMobile"]=true
+        customerInfoList["companyid"]=DatabaseObjectInitialiser.getInstance().clientid //get from host app 'clientID'
+        customerInfoList["platform"]="mobile"
+        customerInfoList["status"]="new"
+        
+        customerInfoList["sessionInfo"]=sessionInfoList
+    }
+    
     public func createChatSessions()
     {
         //http://api.kibosupport.com/visitorcalls/createbulksession
