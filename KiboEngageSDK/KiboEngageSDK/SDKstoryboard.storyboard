@@ -1333,7 +1333,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="dwM-CT-S3q">
-                                        <barButtonItem key="leftBarButtonItem" title="BAck" id="rkC-f7-8at"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="rkC-f7-8at">
+                                            <connections>
+                                                <action selector="backBtnPressed:" destination="QEw-B4-BAI" id="z2E-rn-cAq"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -1775,6 +1779,7 @@
                     <connections>
                         <outlet property="btnSendChat" destination="mXe-QM-MY8" id="vmq-sm-A8s"/>
                         <outlet property="composeView" destination="bj5-LI-Pnp" id="kw9-CM-Vww"/>
+                        <outlet property="navigationBarTitleForChat" destination="dwM-CT-S3q" id="Jax-mm-7Gu"/>
                         <outlet property="scrollView" destination="rBq-Wv-YiN" id="025-aV-cvn"/>
                         <outlet property="tblForGroupChat" destination="0ek-0F-avi" id="bdG-5G-lEf"/>
                         <outlet property="txtFieldPost" destination="LKM-3f-0Hv" id="V2y-qV-EV1"/>

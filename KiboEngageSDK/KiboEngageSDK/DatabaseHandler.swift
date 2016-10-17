@@ -634,6 +634,27 @@ internal class DatabaseHandler:NSObject
         
     }
     
+    func getChannelName(channel_id:String)->String!
+    {
+        let _id = Expression<String>("_id")
+        let msg_channel_name = Expression<String>("msg_channel_name")
+        self.messageChannels = Table("messageChannels")
+        var channelname:String!=nil
+        do
+        {for name in try self.db.prepare(self.messageChannels.select(msg_channel_name).filter(_id==channel_id)){
+            
+           channelname=name.get(msg_channel_name)
+            
+            
+            }}
+        catch{
+            print("failed to get teams single object data")
+        }
+        return channelname
+
+        
+    }
+    
     
     func getSingleRequestIDsList(teamid:String,messagechannel_id:String)->[String: AnyObject]
     {

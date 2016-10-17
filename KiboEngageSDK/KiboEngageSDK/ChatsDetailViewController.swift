@@ -20,7 +20,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     var request_id=""
     var messagechannel_id=""
     var team_id=""
-    
+    var channelname="FAQs"
     @IBOutlet weak var viewfortableandtextfield: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var btnSendChat: UIButton!
@@ -30,6 +30,10 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     
     @IBOutlet var tblForGroupChat: UITableView!
     
+    @IBOutlet weak var navigationBarTitleForChat: UINavigationItem!
+    @IBAction func backBtnPressed(sender: AnyObject) {
+          self.dismissViewControllerAnimated(true, completion: nil);
+    }
     
     
     
@@ -77,6 +81,15 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             self.viewfortableandtextfield.frame.origin.y += keyboardSize.height
             //self.view.frame.origin.y += keyboardSize.height
+        }
+    }
+    
+    public override func viewWillAppear(animated: Bool) {
+        print("getting channel name, message id is \(messagechannel_id)")
+        var gotname=DatabaseObjectInitialiser.getDB().getChannelName(messagechannel_id)
+        if(gotname != nil && gotname != "")
+        {
+        navigationBarTitleForChat.title = gotname
         }
     }
     public override func viewDidLoad() {
