@@ -22,4 +22,6 @@ internal class Constants
     static var fetchSingleChat="/api/userchats/fetchChat"
     static var getChatSessions="/api/visitorcalls/getcustomersessions"
     static var syncChat="/api/userchats/sync"
+    static var partialSyncChat="/api/userchats/partialChatSync"
+    static var updateStatus="/api/userchats/updateStatus"
 }

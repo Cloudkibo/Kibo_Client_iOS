@@ -498,14 +498,13 @@ internal class DatabaseHandler:NSObject
     }
     
 
-    func updateChatStatus(uniqueid1:String,status1:String)
+    func updateChatStatus(uniqueid1:String,requestid1:String,status1:String)
     {
         let uniqueid = Expression<String>("uniqueid")
         let status = Expression<String>("status")
+        let request_id = Expression<String>("request_id")
         
-        
-        
-        var query=self.userschats.select(uniqueid,status).filter(uniqueid == uniqueid1)
+        var query=self.userschats.select(uniqueid,request_id,status).filter(uniqueid == uniqueid1 && request_id == requestid1)
         
         do
         {

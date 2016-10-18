@@ -321,7 +321,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             if(response_?.statusCode==200)
             {
                 //update status locally from pending to sent
-                DatabaseObjectInitialiser.getDB().updateChatStatus(chatdata["uniqueid"] as! String, status1: chatdata["status"] as! String)
+                DatabaseObjectInitialiser.getDB().updateChatStatus(chatdata["uniqueid"] as! String,requestid1: chatdata["request_id"] as! String, status1: chatdata["status"] as! String)
                 
                // updateUI:
                 Delegates.getInstance().UpdateChatDetailsDelegateCall()

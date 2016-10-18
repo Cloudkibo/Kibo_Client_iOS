@@ -383,6 +383,15 @@ public class KiboSDK{
                 {
                     //got push for status update
                     
+                    var uniqueid=userInfo["data"]!["uniqueid"] as? String
+                    var request_id = userInfo["data"]!["request_id"] as? String
+                    var status = userInfo["data"]!["status"] as? String
+                    
+                    print("push received uniqueid \(uniqueid!) , request_id is \(request_id!) , status is \(status!)")
+                    
+                    //update status in database
+                    DatabaseObjectInitialiser.getDB().updateChatStatus(uniqueid!, requestid1: request_id!, status1: status!)
+                    
                     
                 }
             }
@@ -393,12 +402,122 @@ public class KiboSDK{
         }
     }
     
+    
+    
+    
     private func fetchSingleMessage(uniqueid:String, request_id:String)
         
         //uniqueid = h5ha3rgh4tag52eyn45cdi2016101025546;)
     {
         print("inside API call function uniqueid is \(uniqueid) request_id is \(request_id)")
-    var url=Constants.mainURL+Constants.fetchSingleChat
+        var url=Constants.mainURL+Constants.fetchSingleChat
+        //print(url.debugDescription)
+        /*
+         'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
+         'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
+         'kibo-client-id': 'cd89f71715f2014725163952',
+         */
+        var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        ///var hhh=["headers":"\(header)"]
+        print("headers are \(header.description)")
+        Alamofire.request(.POST,"\(url)",parameters:["uniqueid":uniqueid,"request_id":request_id],headers:header).validate().responseJSON { response in
+            
+            /* print(response)
+             print(".......")
+             print(response.data!)
+             print(".......")
+             print(response.result.value!)*/
+            
+            /*
+             
+             "__v" = 0;
+             "_id" = 57c69e61dfff9e5223a8fcb2;
+             activeStatus = Yes;
+             companyid = cd89f71715f2014725163952;
+             createdby = 554896ca78aed92f4e6db296;
+             creationdate = "2016-08-31T09:07:45.236Z";
+             groupid = 57c69e61dfff9e5223a8fcb1;
+             "msg_channel_description" = "This channel is for general discussions";
+             "msg_channel_name" = General;
+             
+             
+             */
+            print("fetching single chat message")
+            if(response.response?.statusCode == 200)
+            {
+                
+                let systemSoundID: SystemSoundID = 1016
+                
+                // to play sound
+                AudioServicesPlaySystemSound (systemSoundID)
+                
+                print(response.debugDescription)
+                print(response.data!)
+                print(response.result.value!)
+                print(";;;;;;;;;;;;")
+                var chatmsg2=JSON(response.result.value!)
+                var chatmsg=JSON(response.data!)
+                print("chat message fetched is \(chatmsg)")
+                
+                print("chat message2 fetched is \(chatmsg2)")
+                /*
+                 "datetime" : "2016-10-10T11:43:00.767Z",
+                 "agentid" : [
+                 
+                 ],
+                 "request_id" : "h d5771PZ 2016 10 4 9 43 1",
+                 "agentemail" : [
+                 
+                 ],
+                 "from" : "Jawaid",
+                 "visitoremail" : "newemail@cloudkibo.com",
+                 "type" : "message",
+                 "messagechannel" : "574db78d23785bca7c650a0f",
+                 "uniqueid" : "hwf6js2016101016430",
+                 "is_seen" : "no",
+                 "_id" : "57fb7ec57c3fbeaf73290b34",
+                 "__v" : 0,
+                 "msg" : "test message from agent",
+                 "companyid" : "cd89f71715f2014725163952",
+                 "to" : "newCustomer1"
+                 */
+                
+                var agentid=""
+                var agentemail=""
+                // print(chatmsg2[0]["to"].string!)
+                //  print(chatmsg2[0]["from"].string!)
+                
+                // print(chatmsg2[0]["type"].string!)
+                //print(chatmsg2["from"].string!)
+                //  if()
+                
+                
+                print("storing chat sent by agent \(chatmsg2[0]["msg"].string!)")
+                
+                DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[0]["status"].string! )
+                
+                //UPDATE UI
+                Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                /*  if(delegateChatDetails1 ! nil)
+                 {
+                 delegateChatDetails1?.refreshChatsUI("updateUI", data: nil)
+                 }*/
+                
+            }
+            else{
+                print("error in fetching chat")
+            }
+            
+        }
+    }
+    
+
+    private func syncPartialChat(companyid:String, customerid:String)
+        
+        //uniqueid = h5ha3rgh4tag52eyn45cdi2016101025546;)
+    {
+        print("inside API call function uniqueid is \(uniqueid) request_id is \(request_id)")
+    var url=Constants.mainURL+Constants.partialSyncChat
     //print(url.debugDescription)
     /*
      'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
@@ -408,7 +527,7 @@ public class KiboSDK{
     var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
     ///var hhh=["headers":"\(header)"]
     print("headers are \(header.description)")
-        Alamofire.request(.POST,"\(url)",parameters:["uniqueid":uniqueid,"request_id":request_id],headers:header).validate().responseJSON { response in
+        Alamofire.request(.POST,"\(url)",parameters:["companyid":companyid,"customerid":customerid],headers:header).validate().responseJSON { response in
     
     /* print(response)
      print(".......")
@@ -430,7 +549,7 @@ public class KiboSDK{
      
      
      */
-            print("fetching single chat message")
+            print("fetching partial chat messages which are not on device")
             if(response.response?.statusCode == 200)
             {
                 
@@ -480,13 +599,33 @@ public class KiboSDK{
               //  if()
                 
                 
-                print("storing chat sent by agent \(chatmsg2[0]["msg"].string!)")
+                var updateStatusData=[String:AnyObject]()
+                var i=0
+                for(i=0;i<chatmsg2.count;i++)
+                {
                 
-               DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[0]["status"].string! )
+                    //add in status array to be sent in update Status API
+                    updateStatusData["uniqueid"]=chatmsg2[i]["uniqueid"].string!
+                    updateStatusData["request_id"]=chatmsg2[i]["request_id"].string!
+                    updateStatusData["status"]="delivered"
+                    
+                    
+                    //storing chat in local database
+                    print("storing chat sent by agent \(chatmsg2[0]["msg"].string!)")
+                
+               
+                    DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[i]["to"].string!, from1: chatmsg2[i]["from"].string!, visitoremail1: chatmsg2[i]["visitoremail"].string!, type1: chatmsg2[i]["type"].string!, uniqueid1: chatmsg2[i]["uniqueid"].string!, msg1: chatmsg2[i]["msg"].string!, datetime1: chatmsg2[i]["datetime"].string!, request_id1: chatmsg2[i]["request_id"].string!, messagechannel1: chatmsg2[i]["messagechannel"].string!, companyid1: chatmsg2[i]["companyid"].string!, is_seen1: chatmsg2[i]["is_seen"].string!, time1: chatmsg2[i]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[i]["status"].string! )
+                }
+                
                 
                //UPDATE UI
                 Delegates.getInstance().UpdateChatDetailsDelegateCall()
-              /*  if(delegateChatDetails1 ! nil)
+             
+                //call API for updateStatus to send status to server
+                self.updateStatus(updateStatusData)
+                
+                
+                /*  if(delegateChatDetails1 ! nil)
                 {
                     delegateChatDetails1?.refreshChatsUI("updateUI", data: nil)
                 }*/
@@ -496,6 +635,28 @@ public class KiboSDK{
                 print("error in fetching chat")
             }
     
+    }
+    }
+    
+    func updateStatus(updateStatusData:[String:AnyObject])
+    {
+        
+        print("inside updateStatus function updateStatusData is \(updateStatusData)")
+        
+        var url=Constants.mainURL+Constants.updateStatus
+       
+        var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        
+        print("headers are \(header.description)")
+        
+        Alamofire.request(.POST,"\(url)",parameters:["messages":updateStatusData],headers:header).validate().responseJSON { response in
+                        print("fetching partial chat messages which are not on device")
+            if(response.response?.statusCode == 200)
+            {
+                //got response
+                
+            }
+        
     }
     }
     
