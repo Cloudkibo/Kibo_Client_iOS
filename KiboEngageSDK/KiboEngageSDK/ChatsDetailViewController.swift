@@ -184,6 +184,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
          }*/
         
         
+        var status="pending"
         var chatdata=[String:AnyObject]()
         //Session has been assigned
         
@@ -251,9 +252,12 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         chatdata["time"]=NSDate().description
         chatdata["fromMobile"]="yes"
         
+        //currently status is pending
+        chatdata["status"]=status
+        
         
         //cant store array, change it to string field 'stringAngentsToField'
-        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:chatdata["datetime"] as! String,request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,time1:chatdata["time"] as! String,fromMobile1:chatdata["fromMobile"] as! String)
+        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:chatdata["datetime"] as! String,request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,time1:chatdata["time"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status)
         
         
         
@@ -314,7 +318,16 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             request, response_, data, error in
             
             //print(response)
-            
+            if(response_?.statusCode==200)
+            {
+                //update status locally from pending to sent
+                DatabaseObjectInitialiser.getDB().updateChatStatus(chatdata["uniqueid"] as! String, status1: chatdata["status"] as! String)
+                
+               // updateUI:
+                Delegates.getInstance().UpdateChatDetailsDelegateCall()
+
+                
+            }
             if(error != nil)
             {
                 print(response_!.description)

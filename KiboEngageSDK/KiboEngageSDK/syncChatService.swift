@@ -58,16 +58,36 @@ public class syncChatService{
                 print("chat fetched success")
                 print(".....\(response.data?.description)")
                 print("---\(JSON(response.result.value!))")
-                var chatMessages=JSON(response.data!)
+                var chatMessages=JSON(response.result.value!)
                 //save in database
                 print("chat messages \(chatMessages)")
                 var i=0
                 for(i=0;i<chatMessages.count;i++)
                 {
-                    DatabaseObjectInitialiser.getDB().storeChat(chatMessages[i]["to"].string!, from1: chatMessages[i]["from"].string!, visitoremail1: chatMessages[i]["visitoremail"].string!, type1: chatMessages[i]["type"].string!, uniqueid1: chatMessages[i]["uniqueid"].string!, msg1: chatMessages[i]["msg"].string!, datetime1: chatMessages[i]["datetime"].string!, request_id1: chatMessages[i]["request_id"].string!, messagechannel1: chatMessages[i]["messagechannel"].string!, companyid1: chatMessages[i]["companyid"].string!, is_seen1: chatMessages[i]["is_seen"].string!, time1: chatMessages[i]["time"].string!, fromMobile1: chatMessages[i]["fromMobile"].string!)
+                    var agentid=""
+                    var agentemail=""
+                    
+                    //from mobile is always 1 for communication between mobile client and agent
+                    var fromMobile1="yes"
+                    
+                    
+                   /* if(chatMessages[i]["from"].string!==DatabaseObjectInitialiser.getInstance().customerid)
+                    {
+                        fromMobile1="yes"
+                    }*/
+                    
+                    do{
+                        try DatabaseObjectInitialiser.getDB().db.run(DatabaseObjectInitialiser.getDB().userschats.delete())
+                    
+                        
+                        DatabaseObjectInitialiser.getDB().storeChat(chatMessages[i]["to"].string!, from1: chatMessages[i]["from"].string!, visitoremail1: chatMessages[i]["visitoremail"].string!, type1: chatMessages[i]["type"].string!, uniqueid1: chatMessages[i]["uniqueid"].string!, msg1: chatMessages[i]["msg"].string!, datetime1: chatMessages[i]["datetime"].string!, request_id1: chatMessages[i]["request_id"].string!, messagechannel1: chatMessages[i]["messagechannel"].string!, companyid1: chatMessages[i]["companyid"].string!, is_seen1: chatMessages[i]["is_seen"].string!, time1: chatMessages[i]["datetime"].string!, fromMobile1: fromMobile1, status1:chatMessages[i]["status"].string!)
                 }
-                
-                completion(result: true,error: nil)
+                catch{
+                     completion(result: false,error: "error in saving chat")
+                    }
+               
+            }
+                 completion(result: true,error: nil)
             }
             else{
                 print(response.description)

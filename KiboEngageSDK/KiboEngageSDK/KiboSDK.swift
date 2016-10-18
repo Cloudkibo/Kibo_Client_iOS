@@ -114,17 +114,20 @@ public class KiboSDK{
  messgeChannelsList.fetchMessageChannels()
  */
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-            print("synccccc fetching contacts in background...")
+            print("synccccc fetching teams in background...")
             var teamsList=Teams.init()
             teamsList.fetchTeams({ (result,error) in
                 if(result==true)
                 {
-                print("synccccc fetch contacts donee")
-                print("synccccc sending phone numbers to server...")
+                print("synccccc teams donee")
+                print("synccccc fetching message channels...")
                 var messgeChannelsList=MessageChannels.init()
                 messgeChannelsList.fetchMessageChannels({ (result,error) in
                     if(result==true)
                     {
+                        print("synccccc channels donee")
+                        print("synccccc fetching chat sessions now...")
+                        
                         ChatSessions.init().getChatSessions({ (result, error) in
                             
                             if(result==true)
@@ -374,6 +377,16 @@ public class KiboSDK{
             }
         }
         }
+            if  let status = userInfo["data"]!["status"] as? String!{
+                
+                if(status != "" && status != nil)
+                {
+                    //got push for status update
+                    
+                    
+                }
+            }
+            
         }
         else{
             print("error: wrong payload received")
@@ -469,7 +482,7 @@ public class KiboSDK{
                 
                 print("storing chat sent by agent \(chatmsg2[0]["msg"].string!)")
                 
-               DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "no")
+               DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[0]["status"].string! )
                 
                //UPDATE UI
                 Delegates.getInstance().UpdateChatDetailsDelegateCall()

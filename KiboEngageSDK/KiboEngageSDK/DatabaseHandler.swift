@@ -116,8 +116,8 @@ internal class DatabaseHandler:NSObject
         ‘fromMobile’ : String // ‘yes’ or ‘no’
         */
         
-         let to = Expression<String>("to")
-         let from = Expression<String>("from")
+         let to = Expression<String>("to")// agent email or customer id if agent is sender
+         let from = Expression<String>("from") //customer id or name
          let visitoremail = Expression<String>("visitoremail")
          let type = Expression<String>("type")
          let uniqueid = Expression<String>("uniqueid")
@@ -129,6 +129,7 @@ internal class DatabaseHandler:NSObject
          let is_seen = Expression<String>("is_seen")
          let time = Expression<String>("time")
          let fromMobile = Expression<String>("fromMobile")
+         let status = Expression<String>("status") //pending,sent,delivered,seen
         
         self.userschats = Table("userschats")
         
@@ -148,7 +149,7 @@ internal class DatabaseHandler:NSObject
                 t.column(is_seen)
                 t.column(time)
                 t.column(fromMobile)
-                
+                t.column(status)
                 })
             
         }
@@ -427,7 +428,7 @@ internal class DatabaseHandler:NSObject
         
     }
     
-    func storeChat(to1:String,from1:String,visitoremail1:String,type1:String,uniqueid1:String,msg1:String,datetime1:String,request_id1:String,messagechannel1:String,companyid1:String,is_seen1:String,time1:String,fromMobile1:String)
+    func storeChat(to1:String,from1:String,visitoremail1:String,type1:String,uniqueid1:String,msg1:String,datetime1:String,request_id1:String,messagechannel1:String,companyid1:String,is_seen1:String,time1:String,fromMobile1:String,status1:String)
     {
         let to = Expression<String>("to")
         let from = Expression<String>("from")
@@ -442,6 +443,7 @@ internal class DatabaseHandler:NSObject
         let is_seen = Expression<String>("is_seen")
         let time = Expression<String>("time")
         let fromMobile = Expression<String>("fromMobile")
+        let status = Expression<String>("status") //pending,sent,delivered,seen
         
         
         
@@ -461,7 +463,8 @@ internal class DatabaseHandler:NSObject
                 companyid<-companyid1,
                 is_seen<-is_seen1,
                 time<-time1,
-                fromMobile<-fromMobile1
+                fromMobile<-fromMobile1,
+                status<-status1
                 
                 ))
         }
@@ -495,6 +498,26 @@ internal class DatabaseHandler:NSObject
     }
     
 
+    func updateChatStatus(uniqueid1:String,status1:String)
+    {
+        let uniqueid = Expression<String>("uniqueid")
+        let status = Expression<String>("status")
+        
+        
+        
+        var query=self.userschats.select(uniqueid,status).filter(uniqueid == uniqueid1)
+        
+        do
+        {
+            var rowcount=try self.db.run(query.update([status<-status1]))
+            print("updating chat status  \(rowcount) rows updated")
+        }
+        catch
+        {
+            print("error in updating chat status")
+        }
+    }
+    
     func storeAgentsInfo(agent_email1:String,agent_id1:String,agent_name1:String,request_id1:String)
     {
         let agent_email = Expression<String>("agent_email")
@@ -859,6 +882,7 @@ internal class DatabaseHandler:NSObject
         let is_seen = Expression<String>("is_seen")
         let time = Expression<String>("time")
         let fromMobile = Expression<String>("fromMobile")
+        let status = Expression<String>("status") //pending,sent,delivered,seen
         
          var ChatsList=[[String:AnyObject]]()
         
@@ -880,6 +904,7 @@ internal class DatabaseHandler:NSObject
             newEntry["is_seen"]=chatmessages.get(is_seen)
             newEntry["time"]=chatmessages.get(time)
             newEntry["fromMobile"]=chatmessages.get(fromMobile)
+            newEntry["status"]=chatmessages.get(status)
             ChatsList.append(newEntry)
         
             }
