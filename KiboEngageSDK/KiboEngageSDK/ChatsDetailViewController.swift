@@ -41,10 +41,16 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     {
          var tempmessages=NSMutableArray()
         var chatsList=DatabaseObjectInitialiser.getDB().getChat(request_id)
+        
+        var updateStatusArray=[[String:AnyObject]]()
+        
         var i=0
         for(i=0;i<chatsList.count;i++)
         {
-            if(chatsList[i]["from"] as! String == DatabaseObjectInitialiser.getInstance().customerid)
+            var updateStatusData=[String:AnyObject]()
+            
+            //i am sender
+            if((chatsList[i]["to"] as! String) != DatabaseObjectInitialiser.getInstance().customerid)
             {
                 //i sent so type is 2
                 tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"2", "date":chatsList[i]["datetime"] as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
@@ -55,6 +61,15 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             }
             else
             {
+                //agent is sender
+               /// if((chatsList[i]["status"]=="delivered") || (chatsList[i]["status"]=="sent"))
+               // {
+                    updateStatusData["uniqueid"]=chatsList[i]["uniqueid"] as! String
+                    updateStatusData["request_id"]=chatsList[i]["request_id"] as! String
+                    updateStatusData["status"]="delivered"
+                    updateStatusArray.append(updateStatusData)
+
+               // }
                 
                 tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"1", "date":chatsList[i]["datetime"] as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
                
@@ -63,10 +78,43 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             }
             
         }
+        //send status update array of "seen" to server
+        updateStatus(updateStatusArray)
+        
         
             messages.setArray(tempmessages as [AnyObject])
         completion(result:true)
     }
+    
+    
+    func updateStatus(updateStatusData:[[String:AnyObject]])
+    {
+        
+        print("inside updateStatus function updateStatusData is \(updateStatusData)")
+        
+        var url=Constants.mainURL+Constants.updateStatus
+        
+        var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        
+        print("headers are \(header.description)")
+        
+        Alamofire.request(.POST,"\(url)",parameters:["messages":updateStatusData],headers:header).validate().responseJSON { response in
+            print("fetching partial chat messages which are not on device")
+            if(response.response?.statusCode == 200)
+            {
+                //got response
+                //status update sent to server
+                
+            }
+            else
+            {
+                print(response.debugDescription)
+                print("error: calling statusUpdate API failed")
+            }
+            
+        }
+    }
+
     
     func keyboardWillShow(notification: NSNotification) {
         

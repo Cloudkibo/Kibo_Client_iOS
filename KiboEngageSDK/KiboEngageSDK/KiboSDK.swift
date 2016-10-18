@@ -516,7 +516,7 @@ public class KiboSDK{
         
         //uniqueid = h5ha3rgh4tag52eyn45cdi2016101025546;)
     {
-        print("inside API call function uniqueid is \(uniqueid) request_id is \(request_id)")
+        print("inside syncPartialChat function syncPartialChat is \(syncPartialChat)")
     var url=Constants.mainURL+Constants.partialSyncChat
     //print(url.debugDescription)
     /*
@@ -598,17 +598,16 @@ public class KiboSDK{
                 //print(chatmsg2["from"].string!)
               //  if()
                 
-                
-                var updateStatusData=[String:AnyObject]()
+                 var updateStatusArray=[[String:AnyObject]]()
                 var i=0
                 for(i=0;i<chatmsg2.count;i++)
                 {
-                
+                    var updateStatusData=[String:AnyObject]()
                     //add in status array to be sent in update Status API
                     updateStatusData["uniqueid"]=chatmsg2[i]["uniqueid"].string!
                     updateStatusData["request_id"]=chatmsg2[i]["request_id"].string!
                     updateStatusData["status"]="delivered"
-                    
+                    updateStatusArray.append(updateStatusData)
                     
                     //storing chat in local database
                     print("storing chat sent by agent \(chatmsg2[0]["msg"].string!)")
@@ -622,7 +621,7 @@ public class KiboSDK{
                 Delegates.getInstance().UpdateChatDetailsDelegateCall()
              
                 //call API for updateStatus to send status to server
-                self.updateStatus(updateStatusData)
+                self.updateStatus(updateStatusArray)
                 
                 
                 /*  if(delegateChatDetails1 ! nil)
@@ -638,7 +637,7 @@ public class KiboSDK{
     }
     }
     
-    func updateStatus(updateStatusData:[String:AnyObject])
+    func updateStatus(updateStatusData:[[String:AnyObject]])
     {
         
         print("inside updateStatus function updateStatusData is \(updateStatusData)")
@@ -654,7 +653,13 @@ public class KiboSDK{
             if(response.response?.statusCode == 200)
             {
                 //got response
+                //status update sent to server
                 
+            }
+            else
+            {
+                print(response.debugDescription)
+                print("error: calling statusUpdate API failed")
             }
         
     }
