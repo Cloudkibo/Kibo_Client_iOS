@@ -433,6 +433,7 @@ internal class DatabaseHandler:NSObject
     
     func storeChat(to1:String,from1:String,visitoremail1:String,type1:String,uniqueid1:String,msg1:String,datetime1:String,request_id1:String,messagechannel1:String,companyid1:String,is_seen1:String,time1:String,fromMobile1:String,status1:String,customername1:String)
     {
+        print("inside db saving chat function")
         let to = Expression<String>("to")
         let from = Expression<String>("from")
         let visitoremail = Expression<String>("visitoremail")
@@ -472,6 +473,8 @@ internal class DatabaseHandler:NSObject
                 customername<-customername1
                 
                 ))
+            
+            print("saving chat \(rowid) rows saved")
         }
         catch{
             NSLog("error in saving message channels data \(error)")
@@ -505,6 +508,7 @@ internal class DatabaseHandler:NSObject
 
     func updateChatStatus(uniqueid1:String,requestid1:String,status1:String)
     {
+        print("trying to update status query")
         let uniqueid = Expression<String>("uniqueid")
         let status = Expression<String>("status")
         let request_id = Expression<String>("request_id")

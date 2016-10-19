@@ -367,7 +367,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         saveChatOnServer(chatdata)
         
         
-        self.addMessage(txtFieldPost.text!, ofType: "2",date:NSDate().description, uniqueid: uniqueid)
+        self.addMessage("\(txtFieldPost.text!) (\(status))", ofType: "2",date:NSDate().description, uniqueid: uniqueid)
         txtFieldPost.text = "";
         tblForGroupChat.reloadData()
         if(messages.count>1)
@@ -399,8 +399,9 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             //print(response)
             if(response_?.statusCode==200)
             {
+                print("saved chat success")
                 //update status locally from pending to sent
-                DatabaseObjectInitialiser.getDB().updateChatStatus(chatdata["uniqueid"] as! String,requestid1: chatdata["request_id"] as! String, status1: chatdata["status"] as! String)
+                DatabaseObjectInitialiser.getDB().updateChatStatus(chatdata["uniqueid"] as! String,requestid1: chatdata["request_id"] as! String, status1: "sent")
                 
                // updateUI:
                 Delegates.getInstance().UpdateChatDetailsDelegateCall()
@@ -441,6 +442,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             }
             if(error==nil)
             {
+                print("chat sent to kiboengage")
                 print(response_!.debugDescription)
                 print(data.debugDescription)
             }
