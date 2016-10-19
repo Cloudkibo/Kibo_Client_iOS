@@ -53,7 +53,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             if((chatsList[i]["to"] as! String) != DatabaseObjectInitialiser.getInstance().customerid)
             {
                 //i sent so type is 2
-                tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"2", "date":chatsList[i]["datetime"] as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
+                tempmessages.addObject(["message":"\(chatsList[i]["msg"] as! String) \(chatsList[i]["status"] as! String)", "type":"2", "date":chatsList[i]["datetime"] as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
                 
               //  tempmessages.addObject(chatsList[i]["msg"] as! String, ofType: "2",date:chatsList[i]["datetime"] as! String, uniqueid: chatsList[i]["uniqueid"] as! String)
 
@@ -79,8 +79,11 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
         }
         //send status update array of "seen" to server
+        if(updateStatusArray.count>0)
+        {
+            print("count updateStatusArray is \(updateStatusArray.count)")
         updateStatus(updateStatusArray)
-        
+        }
         
             messages.setArray(tempmessages as [AnyObject])
         completion(result:true)
@@ -97,11 +100,13 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
         
         print("headers are \(header.description)")
-        
-        Alamofire.request(.POST,"\(url)",parameters:["messages":updateStatusData],headers:header).validate().responseJSON { response in
-            print("fetching partial chat messages which are not on device")
+        var messagesArray=[String:AnyObject]()
+        messagesArray["messages"]=updateStatusData
+        Alamofire.request(.POST,"\(url)",parameters:messagesArray,headers:header,encoding: .JSON).validate().responseJSON { response in
+            print("updating status API called \(messagesArray)")
             if(response.response?.statusCode == 200)
             {
+                print("response success of status update")
                 //got response
                 //status update sent to server
                 
@@ -139,6 +144,20 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         {
         navigationBarTitleForChat.title = gotname
         }
+        retrieveFromDatabase({result->() in
+            
+            dispatch_async(dispatch_get_main_queue())
+            {
+                
+                self.tblForGroupChat.reloadData()
+                if(self.messages.count>1)
+                {
+                    var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
+                    self.tblForGroupChat.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                    
+                }
+            }
+        })
     }
     public override func viewDidLoad() {
         
@@ -162,7 +181,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         print("req id is \(request_id)")
         print("reqid list is \(DatabaseObjectInitialiser.getDB().getSingleRequestIDs)")
         
-        retrieveFromDatabase({result->() in
+       /* retrieveFromDatabase({result->() in
             
             dispatch_async(dispatch_get_main_queue())
             {
@@ -175,12 +194,14 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                     
                 }
             }
-        })
+        })*/
         
         
         
         
     }
+    
+
     
     
     func randomStringWithLength (len : Int) -> NSString {
@@ -303,9 +324,19 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         //currently status is pending
         chatdata["status"]=status
         
+        var customername=""
+        if((DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"]) != nil)
+        {
+            print("customerName field not nil it exists")
+            customername=DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"] as! String
+            chatdata["customername"]=DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"]
+            
+            
+        }
+        
         
         //cant store array, change it to string field 'stringAngentsToField'
-        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:chatdata["datetime"] as! String,request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,time1:chatdata["time"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status)
+        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:chatdata["datetime"] as! String,request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,time1:chatdata["time"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status,customername1: customername)
         
         
         

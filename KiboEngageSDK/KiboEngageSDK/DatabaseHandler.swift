@@ -130,6 +130,8 @@ internal class DatabaseHandler:NSObject
          let time = Expression<String>("time")
          let fromMobile = Expression<String>("fromMobile")
          let status = Expression<String>("status") //pending,sent,delivered,seen
+        let customername = Expression<String>("customername") //pending,sent,delivered,seen
+        
         
         self.userschats = Table("userschats")
         
@@ -150,6 +152,7 @@ internal class DatabaseHandler:NSObject
                 t.column(time)
                 t.column(fromMobile)
                 t.column(status)
+                t.column(customername)
                 })
             
         }
@@ -428,7 +431,7 @@ internal class DatabaseHandler:NSObject
         
     }
     
-    func storeChat(to1:String,from1:String,visitoremail1:String,type1:String,uniqueid1:String,msg1:String,datetime1:String,request_id1:String,messagechannel1:String,companyid1:String,is_seen1:String,time1:String,fromMobile1:String,status1:String)
+    func storeChat(to1:String,from1:String,visitoremail1:String,type1:String,uniqueid1:String,msg1:String,datetime1:String,request_id1:String,messagechannel1:String,companyid1:String,is_seen1:String,time1:String,fromMobile1:String,status1:String,customername1:String)
     {
         let to = Expression<String>("to")
         let from = Expression<String>("from")
@@ -444,6 +447,7 @@ internal class DatabaseHandler:NSObject
         let time = Expression<String>("time")
         let fromMobile = Expression<String>("fromMobile")
         let status = Expression<String>("status") //pending,sent,delivered,seen
+        let customername = Expression<String>("customername") //pending,sent,delivered,seen
         
         
         
@@ -464,7 +468,8 @@ internal class DatabaseHandler:NSObject
                 is_seen<-is_seen1,
                 time<-time1,
                 fromMobile<-fromMobile1,
-                status<-status1
+                status<-status1,
+                customername<-customername1
                 
                 ))
         }
@@ -882,6 +887,7 @@ internal class DatabaseHandler:NSObject
         let time = Expression<String>("time")
         let fromMobile = Expression<String>("fromMobile")
         let status = Expression<String>("status") //pending,sent,delivered,seen
+        let customername = Expression<String>("customername") //pending,sent,delivered,seen
         
          var ChatsList=[[String:AnyObject]]()
         
@@ -904,6 +910,7 @@ internal class DatabaseHandler:NSObject
             newEntry["time"]=chatmessages.get(time)
             newEntry["fromMobile"]=chatmessages.get(fromMobile)
             newEntry["status"]=chatmessages.get(status)
+            newEntry["customername"]=chatmessages.get(customername)
             ChatsList.append(newEntry)
         
             }

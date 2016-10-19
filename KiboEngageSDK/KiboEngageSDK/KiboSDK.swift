@@ -115,6 +115,7 @@ public class KiboSDK{
  */
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             print("synccccc fetching teams in background...")
+            var chatsessions=ChatSessions.init()
             var teamsList=Teams.init()
             teamsList.fetchTeams({ (result,error) in
                 if(result==true)
@@ -128,15 +129,20 @@ public class KiboSDK{
                         print("synccccc channels donee")
                         print("synccccc fetching chat sessions now...")
                         
-                        ChatSessions.init().getChatSessions({ (result, error) in
+                        chatsessions.getChatSessions({ (result, error) in
                             
                             if(result==true)
                             {
+                                print("synccccc chat sessions fetched now..")
+                                
                                 var syncChatserviceObj=syncChatService.init()
                                 syncChatserviceObj.syncChatFullRefresh({ (result, error) in
                                     
                                     if(result==true)
                                     {
+                                        print("synccccc updating UI now..")
+                                        
+                                        
                                         //update UI
                                         Delegates.getInstance().UpdateChatDetailsDelegateCall()
                                     }
@@ -372,8 +378,8 @@ public class KiboSDK{
                 })
                 */
                 
-                
-               fetchSingleMessage(singleuniqueid,request_id: requestid)
+                syncPartialChat(DatabaseObjectInitialiser.getInstance().clientid, customerid: DatabaseObjectInitialiser.getInstance().customerid)
+               ///fetchSingleMessage(singleuniqueid,request_id: requestid)
             }
         }
         }
@@ -493,8 +499,16 @@ public class KiboSDK{
                 
                 
                 print("storing chat sent by agent \(chatmsg2[0]["msg"].string!)")
+                var customername=""
+                if((DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"]) != nil)
+                {
+                    print("customerName field not nil it exists")
+                    customername=DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"] as! String
+                    
+                    
+                }
                 
-                DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[0]["status"].string! )
+                DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[0]["status"].string!,customername1: customername )
                 
                 //UPDATE UI
                 Delegates.getInstance().UpdateChatDetailsDelegateCall()
@@ -549,7 +563,7 @@ public class KiboSDK{
      
      
      */
-            print("fetching partial chat messages which are not on device")
+            print("partial chat sync API called")
             if(response.response?.statusCode == 200)
             {
                 
@@ -558,15 +572,15 @@ public class KiboSDK{
                 // to play sound
                 AudioServicesPlaySystemSound (systemSoundID)
                 
-                print(response.debugDescription)
-                print(response.data!)
-                print(response.result.value!)
+               // print(response.debugDescription)
+               // print(response.data!)
+               // print(response.result.value!)
                 print(";;;;;;;;;;;;")
                 var chatmsg2=JSON(response.result.value!)
                 var chatmsg=JSON(response.data!)
-                print("chat message fetched is \(chatmsg)")
+                print("chat message sync is \(chatmsg)")
                 
-                print("chat message2 fetched is \(chatmsg2)")
+                print("chat message2 sync is \(chatmsg2)")
                 /*
                  "datetime" : "2016-10-10T11:43:00.767Z",
                  "agentid" : [
@@ -610,10 +624,18 @@ public class KiboSDK{
                     updateStatusArray.append(updateStatusData)
                     
                     //storing chat in local database
-                    print("storing chat sent by agent \(chatmsg2[0]["msg"].string!)")
-                
+                    print("storing chat sent by agent \(chatmsg2[i]["msg"].string!)")
+                    var customername=""
+                    if((DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"]) != nil)
+                    {
+                        print("customerName field not nil it exists")
+                        customername=DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"] as! String
+                        
+                        
+                    }
+                    
                
-                    DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[i]["to"].string!, from1: chatmsg2[i]["from"].string!, visitoremail1: chatmsg2[i]["visitoremail"].string!, type1: chatmsg2[i]["type"].string!, uniqueid1: chatmsg2[i]["uniqueid"].string!, msg1: chatmsg2[i]["msg"].string!, datetime1: chatmsg2[i]["datetime"].string!, request_id1: chatmsg2[i]["request_id"].string!, messagechannel1: chatmsg2[i]["messagechannel"].string!, companyid1: chatmsg2[i]["companyid"].string!, is_seen1: chatmsg2[i]["is_seen"].string!, time1: chatmsg2[i]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[i]["status"].string! )
+                    DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[i]["to"].string!, from1: chatmsg2[i]["from"].string!, visitoremail1: chatmsg2[i]["visitoremail"].string!, type1: chatmsg2[i]["type"].string!, uniqueid1: chatmsg2[i]["uniqueid"].string!, msg1: chatmsg2[i]["msg"].string!, datetime1: chatmsg2[i]["datetime"].string!, request_id1: chatmsg2[i]["request_id"].string!, messagechannel1: chatmsg2[i]["messagechannel"].string!, companyid1: chatmsg2[i]["companyid"].string!, is_seen1: chatmsg2[i]["is_seen"].string!, time1: chatmsg2[i]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[i]["status"].string!,customername1: customername )
                 }
                 
                 
@@ -621,7 +643,11 @@ public class KiboSDK{
                 Delegates.getInstance().UpdateChatDetailsDelegateCall()
              
                 //call API for updateStatus to send status to server
+                if(updateStatusArray.count>0)
+                {
+                    print("updateStatusArray count is \(updateStatusArray.count), calling API now")
                 self.updateStatus(updateStatusArray)
+                }
                 
                 
                 /*  if(delegateChatDetails1 ! nil)
@@ -647,11 +673,16 @@ public class KiboSDK{
         var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
         
         print("headers are \(header.description)")
-        
-        Alamofire.request(.POST,"\(url)",parameters:["messages":updateStatusData],headers:header).validate().responseJSON { response in
-                        print("fetching partial chat messages which are not on device")
+        var messagesArray=[String:AnyObject]()
+        messagesArray["messages"]=updateStatusData
+        Alamofire.request(.POST,"\(url)",parameters:messagesArray,headers:header,encoding: .JSON).validate().responseJSON { response in
+       
+            
+        //Alamofire.request(.POST,"\(url)",parameters:["messages":updateStatusData],headers:header).validate().responseJSON { response in
+                        print("calling updateStatus API from kiboSDK \(messagesArray)")
             if(response.response?.statusCode == 200)
             {
+                print("response is \(response.response?.debugDescription)")
                 //got response
                 //status update sent to server
                 
@@ -659,6 +690,7 @@ public class KiboSDK{
             else
             {
                 print(response.debugDescription)
+                print(response.response?.debugDescription)
                 print("error: calling statusUpdate API failed")
             }
         
