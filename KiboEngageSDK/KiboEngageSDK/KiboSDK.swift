@@ -621,7 +621,9 @@ public class KiboSDK{
                     updateStatusData["uniqueid"]=chatmsg2[i]["uniqueid"].string!
                     updateStatusData["request_id"]=chatmsg2[i]["request_id"].string!
                     updateStatusData["status"]="delivered"
+                    DatabaseObjectInitialiser.getDB().updateChatStatus(chatmsg2[i]["uniqueid"].string!, requestid1: chatmsg2[i]["request_id"].string!, status1: "delivered")
                     updateStatusArray.append(updateStatusData)
+                    
                     
                     //storing chat in local database
                     print("storing chat sent by agent \(chatmsg2[i]["msg"].string!)")

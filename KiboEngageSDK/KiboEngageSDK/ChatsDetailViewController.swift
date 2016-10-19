@@ -62,14 +62,16 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             else
             {
                 //agent is sender
-               /// if((chatsList[i]["status"]=="delivered") || (chatsList[i]["status"]=="sent"))
-               // {
+                var currentstatus=chatsList[i]["status"] as! String
+               if((currentstatus=="delivered") || (currentstatus=="sent"))
+               {
                     updateStatusData["uniqueid"]=chatsList[i]["uniqueid"] as! String
                     updateStatusData["request_id"]=chatsList[i]["request_id"] as! String
-                    updateStatusData["status"]="delivered"
+                    updateStatusData["status"]="seen"
+                DatabaseObjectInitialiser.getDB().updateChatStatus(chatsList[i]["uniqueid"] as! String, requestid1: chatsList[i]["request_id"] as! String, status1: "seen")
                     updateStatusArray.append(updateStatusData)
 
-               // }
+                }
                 
                 tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"1", "date":chatsList[i]["datetime"] as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
                
@@ -396,8 +398,8 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         Alamofire.request(.POST,"\(url)",parameters: chatdata,headers:header,encoding: .JSON).response{
             request, response_, data, error in
             
-            //print(response)
-            if(response_?.statusCode==200)
+            print(response_.debugDescription)
+            if(response_?.statusCode==200 || response_?.statusCode==201)
             {
                 print("saved chat success")
                 //update status locally from pending to sent
@@ -407,6 +409,9 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 Delegates.getInstance().UpdateChatDetailsDelegateCall()
 
                 
+            }
+            else{
+                print("error: save chat on kibosupport failed \(response_.debugDescription)")
             }
             if(error != nil)
             {
