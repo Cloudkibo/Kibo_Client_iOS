@@ -359,7 +359,25 @@ public class KiboSDK{
             }
             else
             {
-        if  let singleuniqueid = userInfo["data"]!["uniqueid"] as? String {
+                if  let status = userInfo["data"]!["status"] as? String!{
+                    
+                    if(status != "" && status != nil)
+                    {
+                        //got push for status update
+                        
+                        var uniqueid=userInfo["data"]!["uniqueid"] as? String
+                        var request_id = userInfo["data"]!["request_id"] as? String
+                        var status = userInfo["data"]!["status"] as? String
+                        
+                        print("push received uniqueid \(uniqueid!) , request_id is \(request_id!) , status is \(status!)")
+                        
+                        //update status in database
+                        DatabaseObjectInitialiser.getDB().updateChatStatus(uniqueid!, requestid1: request_id!, status1: status!)
+                        
+                        
+                    }
+                
+       /* if  let singleuniqueid = userInfo["data"]!["uniqueid"] as? String {
             print("inside 2 unique id is \(singleuniqueid)")
             if  let requestid = userInfo["data"]!["request_id"] as? String {
                 print("inside 3 requestid is \(requestid)")
@@ -381,35 +399,48 @@ public class KiboSDK{
                 syncPartialChat(DatabaseObjectInitialiser.getInstance().clientid, customerid: DatabaseObjectInitialiser.getInstance().customerid)
                ///fetchSingleMessage(singleuniqueid,request_id: requestid)
             }
+            */
         }
         else{
-            if  let status = userInfo["data"]!["status"] as? String!{
-                
-                if(status != "" && status != nil)
-                {
-                    //got push for status update
-                    
-                    var uniqueid=userInfo["data"]!["uniqueid"] as? String
-                    var request_id = userInfo["data"]!["request_id"] as? String
-                    var status = userInfo["data"]!["status"] as? String
-                    
-                    print("push received uniqueid \(uniqueid!) , request_id is \(request_id!) , status is \(status!)")
-                    
-                    //update status in database
-                    DatabaseObjectInitialiser.getDB().updateChatStatus(uniqueid!, requestid1: request_id!, status1: status!)
-                    
-                    
-                }
-            }
+            
+             if  let singleuniqueid = userInfo["data"]!["uniqueid"] as? String {
+             print("inside 2 unique id is \(singleuniqueid)")
+             if  let requestid = userInfo["data"]!["request_id"] as? String {
+             print("inside 3 requestid is \(requestid)")
+             
+             
+             /*
+             let seconds = 4.0
+             let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+             let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+             
+             dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+             
+             // here code perfomed with delay
+             self.fetchSingleMessage(singleuniqueid,request_id: requestid)
+             
+             })
+             */
+             
+             syncPartialChat(DatabaseObjectInitialiser.getInstance().clientid, customerid: DatabaseObjectInitialiser.getInstance().customerid)
+             ///fetchSingleMessage(singleuniqueid,request_id: requestid)
+             }
+             }
+ 
+            //
             else{
                 
                 ///
-                if  let bulksms = userInfo["data"]!["bulksms"] as? String!{
+                /*if  let type = userInfo["data"]!["type"] as? String!{
                     
-                    if(bulksms != "" && bulksms != nil)
+                    if(type == "bulksms")
                     {
                         var uniqueid=userInfo["data"]!["uniqueid"] as? String
-                    }
+                        fetchP
+                    }*/
+                if  let title = userInfo["data"]!["title"] as? String!{
+                     var msg=userInfo["data"]!["uniqueid"] as? String
+                    
                 }
                 
             }

@@ -959,5 +959,18 @@ internal class DatabaseHandler:NSObject
     }
     
     
+    //bulk SMS
+    /*
+     var NotificationsSchema = new Schema({
+     title: String,
+     description: String,
+     agent_id: {type: Schema.ObjectId, ref: 'Account'},
+     hasImage : {type : String, default : 'false'},
+     image_url : String,
+     companyid : String,
+     datetime : {type: Date, default: Date.now }
+     });
+ */
+    
     }
 
