@@ -22,13 +22,54 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet weak var btnback: UIBarButtonItem!
     @IBOutlet weak var tbl_channels: UITableView!
     
-    
+    var LastMessage=[String]()
     
     
     override func viewWillAppear(animated: Bool) {
         
+        let to = Expression<String>("to")// agent email or customer id if agent is sender
+        let from = Expression<String>("from") //customer id or name
+        let visitoremail = Expression<String>("visitoremail")
+        let type = Expression<String>("type")
+        let uniqueid = Expression<String>("uniqueid")
+        let msg = Expression<String>("msg")
+        let datetime = Expression<String>("datetime")
+        let request_id = Expression<String>("request_id")
+        let messagechannel = Expression<String>("messagechannel")
+        let companyid = Expression<String>("companyid")
+        let is_seen = Expression<String>("is_seen")
+        let time = Expression<String>("time")
+        let fromMobile = Expression<String>("fromMobile")
+        let status = Expression<String>("status") //pending,sent,delivered,seen
+        let customername = Expression<String>("customername") //pending,sent,delivered,seen
+
+       
+        
         channelsTitleNavItem.title=teamName
-    }
+        channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(deptid)
+        
+        for(var i=0;i<channelsList.count;i++)
+        {
+            var reqidgot=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(channelsList[i]["team_id"] as! String, messagechannel_id: channelsList[i]["msg_channel_id"] as! String)
+            
+            let myquerylastmsg=DatabaseObjectInitialiser.getDB().userschats.filter(request_id==reqidgot).order(datetime.desc)
+            
+            var queryruncount=0
+            
+            
+            
+            
+            do{for ccclastmsg in try DatabaseObjectInitialiser.getDB().db.prepare(myquerylastmsg) {
+                print("date received in chat view is \(ccclastmsg[datetime])")
+                LastMessage.append(ccclastmsg[msg])
+                }
+            }
+            catch{
+                print("errorrr")
+            }
+ 
+        }
+            }
     @IBAction func backbtnPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil);
     }
@@ -37,7 +78,6 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
 
         // Do any additional setup after loading the view.
         
-        channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(deptid)
         
         
         
@@ -123,7 +163,7 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         //GroupsObjectList[indexPath.row]["deptname"] as! String
         
         cell.lblChannelName.text=channelsList[indexPath.row]["msg_channel_name"] as! String
-        cell.lbl_description.text="Last message will be shown here"
+        cell.lbl_description.text=LastMessage[indexPath.row]
         
         return cell
 

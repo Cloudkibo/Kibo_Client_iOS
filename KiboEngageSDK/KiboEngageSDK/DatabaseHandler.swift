@@ -720,6 +720,39 @@ internal class DatabaseHandler:NSObject
         
     }
     
+    
+    func getTeam_ChannelObjectList(reqid:String)->[[String:AnyObject]]
+    {
+        
+        var requestIDsList=[[String:AnyObject]]()
+        
+        let team_id = Expression<String>("team_id")
+        let msg_channel_id = Expression<String>("msg_channel_id")
+        let request_id = Expression<String>("request_id")
+        let agent_email = Expression<String>("agent_email")
+        
+        let agent_id = Expression<String>("agent_id")
+        
+        let agent_name = Expression<String>("agent_name")
+        self.teams = Table("teams")
+        do
+        {for reqids in try self.db.prepare(self.requestIDsTable.filter(request_id==reqid)){
+            var newEntry: [String: AnyObject] = [:]
+            newEntry["team_id"]=reqids.get(team_id)
+            newEntry["msg_channel_id"]=reqids.get(msg_channel_id)
+            
+            requestIDsList.append(newEntry)
+            }
+        }
+        catch{
+            print("failed to get requestIDsList data")
+        }
+        print("requestIDsList count is \(requestIDsList.count)")
+        return requestIDsList
+        
+    }
+
+    
     func getRequestIDsObjectList()->[[String:AnyObject]]
     {
         
