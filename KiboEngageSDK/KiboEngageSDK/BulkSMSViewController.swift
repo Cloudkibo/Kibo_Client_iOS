@@ -16,6 +16,8 @@ class BulkSMSViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         messages=NSMutableArray()
+         let cellNib = UINib(nibName: "Cell" , bundle: NSBundle(identifier: "com.kiboEngage.client.KiboEngageSDK"))
+        tbl_BulkSMS.registerNib(cellNib, forCellReuseIdentifier: "Cell")
         // Do any additional setup after loading the view.
     }
 
@@ -35,12 +37,16 @@ class BulkSMSViewController: UIViewController {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       //  print("channels count is \(channelsList.count)")
-        return messages.count
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-         let cell=tbl_channels.dequeueReusableCellWithIdentifier("channelsCell") as! ChannelsCell
+        
+        
+         let cell=tbl_BulkSMS.dequeueReusableCellWithIdentifier("Cell") as! bulkSMScell
+        //cell.awakeFromNib()
+        return cell
     }
 
     /*

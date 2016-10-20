@@ -15,11 +15,11 @@ class ViewController: UIViewController {
    
        //ChatSessions.init().createChatSessions()
         
-       let s = UIStoryboard (name: "SDKstoryboard", bundle: NSBundle(forClass: TeamsViewController.self))
-      //  let s = UIStoryboard (name: "SDKstoryboard", bundle: nil)
+       //let s = UIStoryboard (name: "SDKstoryboard", bundle: NSBundle(forClass: TeamsViewController.self))
+      let s = UIStoryboard (name: "SDKstoryboard", bundle: NSBundle(identifier: "com.kiboEngage.client.KiboEngageSDK"))
        
-       /// let vc = s.instantiateInitialViewController()! as! TeamsViewController
-        let vc = s.instantiateViewControllerWithIdentifier("TeamsViewController") as! TeamsViewController
+    let vc = s.instantiateInitialViewController()! as! TeamsViewController
+     ////   let vc = s.instantiateViewControllerWithIdentifier("TeamsViewController") as! TeamsViewController
         
         self.presentViewController(vc, animated: true, completion: nil)
  
