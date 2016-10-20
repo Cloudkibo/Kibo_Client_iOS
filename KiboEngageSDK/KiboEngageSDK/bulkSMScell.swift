@@ -10,6 +10,7 @@ import UIKit
 
 class bulkSMScell: UITableViewCell {
 
+    @IBOutlet weak var view_bulkSMS: UIView!
     @IBOutlet weak var lbl_bulkSMStitle: UILabel!
     @IBOutlet weak var lbl_bulkSMScontent: UILabel!
     override func awakeFromNib() {

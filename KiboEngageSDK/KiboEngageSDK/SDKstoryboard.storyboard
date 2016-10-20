@@ -493,26 +493,26 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bulkSMSwithImageCell" rowHeight="375" id="rMv-Ib-JUW" customClass="bulkSMSwithImageCell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="375"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bulkSMSwithImageCell" rowHeight="391" id="rMv-Ib-JUW" customClass="bulkSMSwithImageCell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="391"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rMv-Ib-JUW" id="5YG-Bc-8dn">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="374.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="390.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" id="3Vl-Ft-iul">
-                                                    <rect key="frame" x="21" y="20" width="278" height="333.5"/>
+                                                    <rect key="frame" x="21" y="18" width="278" height="353.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer Sale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kRM-9l-ISj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="21"/>
+                                                            <rect key="frame" x="0.0" y="8" width="278" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iRA-gh-8dW">
-                                                            <rect key="frame" x="8" y="29" width="262" height="105"/>
+                                                            <rect key="frame" x="8" y="37" width="262" height="105"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <string key="text">We are delighted to let our customers know about Summer Sale 2016. You will be happy to know that eith "VIP coupon" you can now avail upto 40% discount on all products.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -520,7 +520,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_on" id="KxZ-G6-QgN">
-                                                            <rect key="frame" x="8" y="134" width="262" height="183.5"/>
+                                                            <rect key="frame" x="8" y="150" width="262" height="183.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                     </subviews>
@@ -529,27 +529,33 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="img_bulkSMS" destination="KxZ-G6-QgN" id="tu2-zd-RQu"/>
+                                            <outlet property="lbl_content_bulkSMS_withimage" destination="iRA-gh-8dW" id="C1Y-2M-bnJ"/>
+                                            <outlet property="lbl_title_BulkSMS_withimage" destination="kRM-9l-ISj" id="imp-oz-cMS"/>
+                                            <outlet property="view_bulkSMS_withimage" destination="3Vl-Ft-iul" id="r9F-7k-XlK"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bulkSMScell" rowHeight="184" id="nSv-Zx-P3E" customClass="bulkSMScell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="403" width="320" height="184"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bulkSMScell" rowHeight="265" id="nSv-Zx-P3E" customClass="bulkSMScell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="419" width="320" height="265"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nSv-Zx-P3E" id="MVp-tp-wHU">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="183.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="264.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" id="EXB-0G-8K3">
-                                                    <rect key="frame" x="21" y="20" width="278" height="333.5"/>
+                                                    <rect key="frame" x="21" y="25" width="278" height="214.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer Sale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Ar-6u-IAv">
-                                                            <rect key="frame" x="0.0" y="0.0" width="278" height="21"/>
+                                                            <rect key="frame" x="0.0" y="8" width="278" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="APF-TZ-IxO">
-                                                            <rect key="frame" x="8" y="29" width="262" height="105"/>
+                                                            <rect key="frame" x="8" y="37" width="262" height="105"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <string key="text">We are delighted to let our customers know about Summer Sale 2016. You will be happy to know that eith "VIP coupon" you can now avail upto 40% discount on all products.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -562,6 +568,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="lbl_bulkSMScontent" destination="APF-TZ-IxO" id="p3c-Xb-61N"/>
+                                            <outlet property="lbl_bulkSMStitle" destination="1Ar-6u-IAv" id="PVH-jE-qTE"/>
+                                            <outlet property="view_bulkSMS" destination="EXB-0G-8K3" id="bZf-xS-yvT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

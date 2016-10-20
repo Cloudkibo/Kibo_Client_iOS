@@ -11,6 +11,7 @@ import UIKit
 class bulkSMSwithImageCell: UITableViewCell {
     @IBOutlet weak var lbl_title_BulkSMS_withimage: UILabel!
 
+    @IBOutlet weak var view_bulkSMS_withimage: UIView!
     @IBOutlet weak var lbl_content_bulkSMS_withimage: UILabel!
     @IBOutlet weak var img_bulkSMS: UIImageView!
     override func awakeFromNib() {
