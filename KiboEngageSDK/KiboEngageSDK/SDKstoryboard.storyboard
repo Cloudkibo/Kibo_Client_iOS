@@ -182,9 +182,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="PRJ-7z-4sf"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="collectionViewTeams" destination="1AR-hV-A7d" id="kp1-hd-nsN"/>
+                        <segue destination="ewX-xu-bSw" kind="push" id="M6g-3v-v2a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXw-2b-oTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -463,6 +463,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yf-Ku-HZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1163" y="175"/>
+        </scene>
+        <!--Bulk SMS-->
+        <scene sceneID="aA0-hd-hkF">
+            <objects>
+                <viewController id="ewX-xu-bSw" customClass="BulkSMSViewController" customModule="KiboEngageSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U1J-Hp-6vQ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="npu-Dz-auc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ewX-xu-bSw" id="xAZ-mm-qOJ"/>
+                                    <outlet property="delegate" destination="ewX-xu-bSw" id="7zZ-nZ-ERR"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Bulk SMS" id="BO2-f7-Uk3"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tbl_BulkSMS" destination="npu-Dz-auc" id="QaB-NM-U3J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RWB-r1-gxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1501" y="-497"/>
         </scene>
         <!--Chats Detail View Controller-->
         <scene sceneID="yao-FQ-szC">
@@ -916,7 +946,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llJ-Jp-0kM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1546" y="-97"/>
+            <point key="canvasLocation" x="1618" y="169"/>
         </scene>
         <!--New Group-->
         <scene sceneID="jVb-jV-4uB">
@@ -1318,7 +1348,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aW9-X5-ue1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1725" y="56"/>
+            <point key="canvasLocation" x="2063" y="48"/>
         </scene>
         <!--Chats Detail View Controller-->
         <scene sceneID="zJB-TH-9Qc">

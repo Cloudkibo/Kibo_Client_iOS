@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		2219999B99C0158F2B58C632 /* Pods_KiboEngageSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74814507E3E922D47E247F5A /* Pods_KiboEngageSDK.framework */; };
 		71083C0B1DB4FA2100CBF1CD /* syncChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71083C0A1DB4FA2100CBF1CD /* syncChatService.swift */; };
+		71083C161DB8BE8500CBF1CD /* bulkSMScell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71083C151DB8BE8500CBF1CD /* bulkSMScell.xib */; };
+		71083C181DB8C74200CBF1CD /* bulkSMSwithImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71083C171DB8C74200CBF1CD /* bulkSMSwithImageCell.xib */; };
+		71083C1E1DB8C98800CBF1CD /* bulkSMScell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71083C1D1DB8C98800CBF1CD /* bulkSMScell.swift */; };
+		71083C201DB8C99900CBF1CD /* bulkSMSwithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71083C1F1DB8C99900CBF1CD /* bulkSMSwithImageCell.swift */; };
+		71083C221DB8CCF000CBF1CD /* BulkSMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71083C211DB8CCF000CBF1CD /* BulkSMSViewController.swift */; };
 		71117CB61D8117AD00868E36 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71117CB51D8117AD00868E36 /* ChannelsViewController.swift */; };
 		71117CB81D81186500868E36 /* ChannelsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71117CB71D81186500868E36 /* ChannelsCell.swift */; };
 		71126B841D82840100F23261 /* messageChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71126B831D82840100F23261 /* messageChannels.swift */; };
@@ -70,6 +75,11 @@
 
 /* Begin PBXFileReference section */
 		71083C0A1DB4FA2100CBF1CD /* syncChatService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = syncChatService.swift; sourceTree = "<group>"; };
+		71083C151DB8BE8500CBF1CD /* bulkSMScell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bulkSMScell.xib; sourceTree = "<group>"; };
+		71083C171DB8C74200CBF1CD /* bulkSMSwithImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bulkSMSwithImageCell.xib; sourceTree = "<group>"; };
+		71083C1D1DB8C98800CBF1CD /* bulkSMScell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bulkSMScell.swift; sourceTree = "<group>"; };
+		71083C1F1DB8C99900CBF1CD /* bulkSMSwithImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bulkSMSwithImageCell.swift; sourceTree = "<group>"; };
+		71083C211DB8CCF000CBF1CD /* BulkSMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkSMSViewController.swift; sourceTree = "<group>"; };
 		71117CB51D8117AD00868E36 /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		71117CB71D81186500868E36 /* ChannelsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsCell.swift; sourceTree = "<group>"; };
 		71126B831D82840100F23261 /* messageChannels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messageChannels.swift; sourceTree = "<group>"; };
@@ -205,6 +215,11 @@
 				7181CD991D83C58F002A0D05 /* Images.xcassets */,
 				7181CD981D83C4D6002A0D05 /* Resources */,
 				7162D47D1D800811001BF40D /* arrow.png */,
+				71083C1D1DB8C98800CBF1CD /* bulkSMScell.swift */,
+				71083C151DB8BE8500CBF1CD /* bulkSMScell.xib */,
+				71083C1F1DB8C99900CBF1CD /* bulkSMSwithImageCell.swift */,
+				71083C171DB8C74200CBF1CD /* bulkSMSwithImageCell.xib */,
+				71083C211DB8CCF000CBF1CD /* BulkSMSViewController.swift */,
 				713F3DEE1D7B85320072C9E9 /* KiboEngageSDK.h */,
 				713F3DF01D7B85320072C9E9 /* Info.plist */,
 				713F3E051D7B88110072C9E9 /* KiboSDK.swift */,
@@ -370,6 +385,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7181CD9A1D83C58F002A0D05 /* Images.xcassets in Resources */,
+				71083C181DB8C74200CBF1CD /* bulkSMSwithImageCell.xib in Resources */,
+				71083C161DB8BE8500CBF1CD /* bulkSMScell.xib in Resources */,
 				713486461D7FC04E005E632F /* SDKstoryboard.storyboard in Resources */,
 				7162D47E1D800811001BF40D /* arrow.png in Resources */,
 			);
@@ -430,10 +447,12 @@
 				7181CDC71D83CF16002A0D05 /* SocketParsable.swift in Sources */,
 				71117CB81D81186500868E36 /* ChannelsCell.swift in Sources */,
 				7181CDC81D83CF16002A0D05 /* SocketStringReader.swift in Sources */,
+				71083C1E1DB8C98800CBF1CD /* bulkSMScell.swift in Sources */,
 				7181CDB61D83CF16002A0D05 /* SocketAckEmitter.swift in Sources */,
 				713F3E061D7B88110072C9E9 /* KiboSDK.swift in Sources */,
 				71117CB61D8117AD00868E36 /* ChannelsViewController.swift in Sources */,
 				7162D4771D7FE2E6001BF40D /* TeamsViewController.swift in Sources */,
+				71083C201DB8C99900CBF1CD /* bulkSMSwithImageCell.swift in Sources */,
 				7181CDBF1D83CF16002A0D05 /* SocketEngineWebsocket.swift in Sources */,
 				7181CDC61D83CF16002A0D05 /* SocketPacket.swift in Sources */,
 				711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */,
@@ -448,6 +467,7 @@
 				7181CDCA1D83CF16002A0D05 /* SwiftRegex.swift in Sources */,
 				7181CDC21D83CF16002A0D05 /* SocketIOClient.swift in Sources */,
 				7181CDC91D83CF16002A0D05 /* SocketTypes.swift in Sources */,
+				71083C221DB8CCF000CBF1CD /* BulkSMSViewController.swift in Sources */,
 				7181CDB81D83CF16002A0D05 /* SocketAnyEvent.swift in Sources */,
 				7181CDC01D83CF16002A0D05 /* SocketEventHandler.swift in Sources */,
 				7181CDBA1D83CF16002A0D05 /* SocketEngine.swift in Sources */,
