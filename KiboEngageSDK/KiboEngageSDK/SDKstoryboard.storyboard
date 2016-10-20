@@ -489,7 +489,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="npu-Dz-auc">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -536,15 +536,15 @@
                                             <outlet property="view_bulkSMS_withimage" destination="3Vl-Ft-iul" id="r9F-7k-XlK"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bulkSMScell" rowHeight="265" id="nSv-Zx-P3E" customClass="bulkSMScell" customModule="KiboEngageSDK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="419" width="320" height="265"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bulkSMScell" rowHeight="221" id="nSv-Zx-P3E" customClass="bulkSMScell" customModule="KiboEngageSDK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="419" width="320" height="221"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nSv-Zx-P3E" id="MVp-tp-wHU">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="264.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="220.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" id="EXB-0G-8K3">
-                                                    <rect key="frame" x="21" y="25" width="278" height="214.5"/>
+                                                    <rect key="frame" x="21" y="20" width="278" height="179.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer Sale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Ar-6u-IAv">

@@ -382,7 +382,7 @@ public class KiboSDK{
                ///fetchSingleMessage(singleuniqueid,request_id: requestid)
             }
         }
-        }
+        else{
             if  let status = userInfo["data"]!["status"] as? String!{
                 
                 if(status != "" && status != nil)
@@ -401,6 +401,22 @@ public class KiboSDK{
                     
                 }
             }
+            else{
+                
+                ///
+                if  let bulksms = userInfo["data"]!["bulksms"] as? String!{
+                    
+                    if(bulksms != "" && bulksms != nil)
+                    {
+                        var uniqueid=userInfo["data"]!["uniqueid"] as? String
+                    }
+                }
+                
+            }
+            
+                }
+        }
+         
             
         }
         else{

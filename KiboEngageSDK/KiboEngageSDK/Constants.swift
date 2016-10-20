@@ -24,4 +24,5 @@ internal class Constants
     static var syncChat="/api/userchats/sync"
     static var partialSyncChat="/api/userchats/partialChatSync"
     static var updateStatus="/api/userchats/updateStatus"
+    static var getBulkSMSurl="/api/notifications/fetchbulksms"
 }
