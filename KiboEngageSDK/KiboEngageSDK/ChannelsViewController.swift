@@ -23,6 +23,7 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet weak var tbl_channels: UITableView!
     
     var LastMessage=[String]()
+    var lastMessageTimestamp=[String]()
     
     
     override func viewWillAppear(animated: Bool) {
@@ -33,17 +34,18 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let type = Expression<String>("type")
         let uniqueid = Expression<String>("uniqueid")
         let msg = Expression<String>("msg")
-        let datetime = Expression<String>("datetime")
+        let datetime = Expression<NSDate>("datetime")
         let request_id = Expression<String>("request_id")
         let messagechannel = Expression<String>("messagechannel")
         let companyid = Expression<String>("companyid")
         let is_seen = Expression<String>("is_seen")
-        let time = Expression<String>("time")
+       // let time = Expression<String>("time")
         let fromMobile = Expression<String>("fromMobile")
         let status = Expression<String>("status") //pending,sent,delivered,seen
         let customername = Expression<String>("customername") //pending,sent,delivered,seen
 
        LastMessage.removeAll()
+       lastMessageTimestamp.removeAll()
         
         channelsTitleNavItem.title=teamName
         channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(deptid)
@@ -62,6 +64,25 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
             do{for ccclastmsg in try DatabaseObjectInitialiser.getDB().db.prepare(myquerylastmsg) {
                 print("date received in chat view is \(ccclastmsg[datetime])")
                 LastMessage.append(ccclastmsg[msg])
+                
+                
+                /*var formatter2 = NSDateFormatter();
+                formatter2.dateFormat = "MM/dd, HH:mm"
+                formatter2.timeZone = NSTimeZone.localTimeZone()
+                ///////////////==========var defaultTimeeee = formatter2.stringFromDate(defaultTimeZoneStr!)
+                var defaultTimeeee = formatter2.stringFromDate(ccclastmsg[datetime] as! NSDate)
+                
+                
+                */
+                
+                
+                var formatter2 = NSDateFormatter();
+                formatter2.dateFormat = "MM/dd, HH:mm"
+                formatter2.timeZone = NSTimeZone.localTimeZone()
+                ///////////////==========var defaultTimeeee = formatter2.stringFromDate(defaultTimeZoneStr!)
+                var defaultTimeeee = formatter2.stringFromDate(ccclastmsg[datetime])
+                
+                lastMessageTimestamp.append(defaultTimeeee)
                 break
                 }
             }
@@ -169,6 +190,11 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         if(!LastMessage.isEmpty)
         {
         cell.lbl_description.text=LastMessage[indexPath.row]
+            cell.lblTime.text=lastMessageTimestamp[indexPath.row]
+        }
+        else{
+            cell.lbl_description.text=channelsList[indexPath.row]["msg_channel_description"] as! String
+            cell.lblTime.hidden=true
         }
         
         return cell

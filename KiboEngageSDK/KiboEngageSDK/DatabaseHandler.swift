@@ -122,12 +122,12 @@ internal class DatabaseHandler:NSObject
          let type = Expression<String>("type")
          let uniqueid = Expression<String>("uniqueid")
          let msg = Expression<String>("msg")
-         let datetime = Expression<String>("datetime")
+         let datetime = Expression<NSDate>("datetime")
          let request_id = Expression<String>("request_id")
          let messagechannel = Expression<String>("messagechannel")
          let companyid = Expression<String>("companyid")
          let is_seen = Expression<String>("is_seen")
-         let time = Expression<String>("time")
+         //let time = Expression<String>("time")
          let fromMobile = Expression<String>("fromMobile")
          let status = Expression<String>("status") //pending,sent,delivered,seen
         let customername = Expression<String>("customername") //pending,sent,delivered,seen
@@ -149,7 +149,7 @@ internal class DatabaseHandler:NSObject
                 t.column(messagechannel)
                 t.column(companyid)
                 t.column(is_seen)
-                t.column(time)
+                //t.column(time)
                 t.column(fromMobile)
                 t.column(status)
                 t.column(customername)
@@ -431,7 +431,7 @@ internal class DatabaseHandler:NSObject
         
     }
     
-    func storeChat(to1:String,from1:String,visitoremail1:String,type1:String,uniqueid1:String,msg1:String,datetime1:String,request_id1:String,messagechannel1:String,companyid1:String,is_seen1:String,time1:String,fromMobile1:String,status1:String,customername1:String)
+    func storeChat(to1:String,from1:String,visitoremail1:String,type1:String,uniqueid1:String,msg1:String,datetime1:NSDate,request_id1:String,messagechannel1:String,companyid1:String,is_seen1:String,fromMobile1:String,status1:String,customername1:String)
     {
         print("inside db saving chat function")
         let to = Expression<String>("to")
@@ -440,7 +440,7 @@ internal class DatabaseHandler:NSObject
         let type = Expression<String>("type")
         let uniqueid = Expression<String>("uniqueid")
         let msg = Expression<String>("msg")
-        let datetime = Expression<String>("datetime")
+        let datetime = Expression<NSDate>("datetime")
         let request_id = Expression<String>("request_id")
         let messagechannel = Expression<String>("messagechannel")
         let companyid = Expression<String>("companyid")
@@ -467,7 +467,7 @@ internal class DatabaseHandler:NSObject
                 messagechannel<-messagechannel1,
                 companyid<-companyid1,
                 is_seen<-is_seen1,
-                time<-time1,
+                //time<-time1,
                 fromMobile<-fromMobile1,
                 status<-status1,
                 customername<-customername1
@@ -916,12 +916,12 @@ internal class DatabaseHandler:NSObject
         let type = Expression<String>("type")
         let uniqueid = Expression<String>("uniqueid")
         let msg = Expression<String>("msg")
-        let datetime = Expression<String>("datetime")
+        let datetime = Expression<NSDate>("datetime")
         let request_id = Expression<String>("request_id")
         let messagechannel = Expression<String>("messagechannel")
         let companyid = Expression<String>("companyid")
         let is_seen = Expression<String>("is_seen")
-        let time = Expression<String>("time")
+       // let time = Expression<String>("time")
         let fromMobile = Expression<String>("fromMobile")
         let status = Expression<String>("status") //pending,sent,delivered,seen
         let customername = Expression<String>("customername") //pending,sent,delivered,seen
@@ -944,7 +944,7 @@ internal class DatabaseHandler:NSObject
             newEntry["messagechannel"]=chatmessages.get(messagechannel)
             newEntry["companyid"]=chatmessages.get(companyid)
             newEntry["is_seen"]=chatmessages.get(is_seen)
-            newEntry["time"]=chatmessages.get(time)
+            //newEntry["time"]=chatmessages.get(time)
             newEntry["fromMobile"]=chatmessages.get(fromMobile)
             newEntry["status"]=chatmessages.get(status)
             newEntry["customername"]=chatmessages.get(customername)

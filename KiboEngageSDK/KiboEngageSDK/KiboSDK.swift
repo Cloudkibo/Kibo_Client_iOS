@@ -507,8 +507,12 @@ public class KiboSDK{
                     
                     
                 }
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.timeZone=NSTimeZone.localTimeZone()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                var dateFormatted=dateFormatter.dateFromString(chatmsg2[0]["datetime"].string!)
                 
-                DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: chatmsg2[0]["datetime"].string!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, time1: chatmsg2[0]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[0]["status"].string!,customername1: customername )
+                DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[0]["to"].string!, from1: chatmsg2[0]["from"].string!, visitoremail1: chatmsg2[0]["visitoremail"].string!, type1: chatmsg2[0]["type"].string!, uniqueid1: chatmsg2[0]["uniqueid"].string!, msg1: chatmsg2[0]["msg"].string!, datetime1: dateFormatted!, request_id1: chatmsg2[0]["request_id"].string!, messagechannel1: chatmsg2[0]["messagechannel"].string!, companyid1: chatmsg2[0]["companyid"].string!, is_seen1: chatmsg2[0]["is_seen"].string!, fromMobile1: "yes",status1:chatmsg2[0]["status"].string!,customername1: customername )
                 
                 //UPDATE UI
                 Delegates.getInstance().UpdateChatDetailsDelegateCall()
@@ -641,8 +645,15 @@ public class KiboSDK{
                         
                     }
                     
-               
-                    DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[i]["to"].string!, from1: chatmsg2[i]["from"].string!, visitoremail1: chatmsg2[i]["visitoremail"].string!, type1: chatmsg2[i]["type"].string!, uniqueid1: chatmsg2[i]["uniqueid"].string!, msg1: chatmsg2[i]["msg"].string!, datetime1: chatmsg2[i]["datetime"].string!, request_id1: chatmsg2[i]["request_id"].string!, messagechannel1: chatmsg2[i]["messagechannel"].string!, companyid1: chatmsg2[i]["companyid"].string!, is_seen1: chatmsg2[i]["is_seen"].string!, time1: chatmsg2[i]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[i]["status"].string!,customername1: customername )
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.timeZone=NSTimeZone.localTimeZone()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                    //  let datens2 = dateFormatter.dateFromString(date2.debugDescription)
+                    //2016-09-18T19:13:00.588Z
+                    let datens2 = dateFormatter.dateFromString(chatmsg2[i]["datetime"].string!)
+                    
+                    
+                    DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[i]["to"].string!, from1: chatmsg2[i]["from"].string!, visitoremail1: chatmsg2[i]["visitoremail"].string!, type1: chatmsg2[i]["type"].string!, uniqueid1: chatmsg2[i]["uniqueid"].string!, msg1: chatmsg2[i]["msg"].string!, datetime1: datens2!, request_id1: chatmsg2[i]["request_id"].string!, messagechannel1: chatmsg2[i]["messagechannel"].string!, companyid1: chatmsg2[i]["companyid"].string!, is_seen1: chatmsg2[i]["is_seen"].string!, fromMobile1: "yes",status1:chatmsg2[i]["status"].string!,customername1: customername )
  
                 }
                 

@@ -53,7 +53,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             if((chatsList[i]["to"] as! String) != DatabaseObjectInitialiser.getInstance().customerid)
             {
                 //i sent so type is 2
-                tempmessages.addObject(["message":"\(chatsList[i]["msg"] as! String) \(chatsList[i]["status"] as! String)", "type":"2", "date":chatsList[i]["datetime"] as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
+                tempmessages.addObject(["message":"\(chatsList[i]["msg"] as! String) \(chatsList[i]["status"] as! String)", "type":"2", "date":chatsList[i]["datetime"]!.description as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
                 
               //  tempmessages.addObject(chatsList[i]["msg"] as! String, ofType: "2",date:chatsList[i]["datetime"] as! String, uniqueid: chatsList[i]["uniqueid"] as! String)
 
@@ -75,7 +75,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
 
                 }
                 
-                tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"1", "date":chatsList[i]["datetime"] as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
+                tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"1", "date":chatsList[i]["datetime"]!.description as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
                
                 
                 
@@ -330,12 +330,12 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         //var uniqueid="aaaaaaaa"
         chatdata["uniqueid"]=uniqueid
         chatdata["msg"]=txtFieldPost.text
-        chatdata["datetime"]=NSDate().description
+        chatdata["datetime"]=NSDate().debugDescription
         chatdata["request_id"]=request_id
         chatdata["messagechannel"]=messagechannel_id
         chatdata["companyid"]=DatabaseObjectInitialiser.getInstance().clientid
         chatdata["is_seen"]="no"
-        chatdata["time"]=NSDate().description
+       // chatdata["time"]=NSDate().description
         chatdata["fromMobile"]="yes"
         
         //currently status is pending
@@ -350,10 +350,15 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
             
         }
+       /*
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone=NSTimeZone.localTimeZone()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        var dateFormatted=dateFormatter.dateFromString(chatdata["datetime"] as! String)
         
-        
+        */
         //cant store array, change it to string field 'stringAngentsToField'
-        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:chatdata["datetime"] as! String,request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,time1:chatdata["time"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status,customername1: customername)
+        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:NSDate(),request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status,customername1: customername)
         
         
         

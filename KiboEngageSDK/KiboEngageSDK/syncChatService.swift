@@ -93,8 +93,20 @@ public class syncChatService{
                             
                             
                         }
-                       
-                        DatabaseObjectInitialiser.getDB().storeChat(chatMessages[i]["to"].string!, from1: chatMessages[i]["from"].string!, visitoremail1: chatMessages[i]["visitoremail"].string!, type1: chatMessages[i]["type"].string!, uniqueid1: chatMessages[i]["uniqueid"].string!, msg1: chatMessages[i]["msg"].string!, datetime1: chatMessages[i]["datetime"].string!, request_id1: chatMessages[i]["request_id"].string!, messagechannel1: chatMessages[i]["messagechannel"].string!, companyid1: chatMessages[i]["companyid"].string!, is_seen1: chatMessages[i]["is_seen"].string!, time1: chatMessages[i]["datetime"].string!, fromMobile1: fromMobile1, status1:chatMessages[i]["status"].string!,customername1: customername)
+                    print("dateeeeeee is \(chatMessages[i]["datetime"]) and type is \(chatMessages[i]["datetime"].type)")
+                    
+               
+                    
+                    
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.timeZone=NSTimeZone.localTimeZone()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                    //  let datens2 = dateFormatter.dateFromString(date2.debugDescription)
+                    //2016-09-18T19:13:00.588Z
+                    let datens2 = dateFormatter.dateFromString(chatMessages[i]["datetime"].string!)
+                    
+                    
+                        DatabaseObjectInitialiser.getDB().storeChat(chatMessages[i]["to"].string!, from1: chatMessages[i]["from"].string!, visitoremail1: chatMessages[i]["visitoremail"].string!, type1: chatMessages[i]["type"].string!, uniqueid1: chatMessages[i]["uniqueid"].string!, msg1: chatMessages[i]["msg"].string!, datetime1: datens2!, request_id1: chatMessages[i]["request_id"].string!, messagechannel1: chatMessages[i]["messagechannel"].string!, companyid1: chatMessages[i]["companyid"].string!, is_seen1: chatMessages[i]["is_seen"].string!, fromMobile1: fromMobile1, status1:chatMessages[i]["status"].string!,customername1: customername)
                // }
                // catch{
                   //   completion(result: false,error: "error in saving chat")
