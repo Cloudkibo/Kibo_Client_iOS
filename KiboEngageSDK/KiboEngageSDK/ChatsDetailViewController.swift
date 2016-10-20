@@ -9,7 +9,7 @@
 
 import UIKit
 import Alamofire
-
+import SwiftyJSON
 public class ChatsDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UpdateChatDetailsDelegate {
     
     
@@ -68,7 +68,9 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                     updateStatusData["uniqueid"]=chatsList[i]["uniqueid"] as! String
                     updateStatusData["request_id"]=chatsList[i]["request_id"] as! String
                     updateStatusData["status"]="seen"
-                DatabaseObjectInitialiser.getDB().updateChatStatus(chatsList[i]["uniqueid"] as! String, requestid1: chatsList[i]["request_id"] as! String, status1: "seen")
+                // do in response of server
+                
+               // DatabaseObjectInitialiser.getDB().updateChatStatus(chatsList[i]["uniqueid"] as! String, requestid1: chatsList[i]["request_id"] as! String, status1: "seen")
                     updateStatusArray.append(updateStatusData)
 
                 }
@@ -107,10 +109,23 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         Alamofire.request(.POST,"\(url)",parameters:messagesArray,headers:header,encoding: .JSON).validate().responseJSON { response in
             print("updating status API called \(messagesArray)")
             if(response.response?.statusCode == 200)
-            {
-                print("response success of status update")
-                //got response
-                //status update sent to server
+            { print("response is \(response.response?.debugDescription)")
+                var statusjson=JSON(response.result.value!)
+                print("statusUpdate API result json is \(statusjson["status"])")
+                if(statusjson["status"].string == "statusUpdated")
+                {
+                    //update local database
+                    for(var i=0;i<updateStatusData.count;i++)
+                    {
+                        DatabaseObjectInitialiser.getDB().updateChatStatus(updateStatusData[i]["uniqueid"] as! String, requestid1: updateStatusData[i]["request_id"] as! String, status1: updateStatusData[i]["status"] as! String)
+                    }
+                    
+                
+                    Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                }
+                else{
+                    print("error in status Update")
+                }
                 
             }
             else

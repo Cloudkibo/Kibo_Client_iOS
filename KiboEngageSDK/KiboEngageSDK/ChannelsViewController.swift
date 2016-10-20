@@ -43,14 +43,14 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let status = Expression<String>("status") //pending,sent,delivered,seen
         let customername = Expression<String>("customername") //pending,sent,delivered,seen
 
-       
+       LastMessage.removeAll()
         
         channelsTitleNavItem.title=teamName
         channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(deptid)
         
         for(var i=0;i<channelsList.count;i++)
         {
-            var reqidgot=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(channelsList[i]["team_id"] as! String, messagechannel_id: channelsList[i]["msg_channel_id"] as! String)
+            var reqidgot=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(channelsList[i]["groupid"] as! String, messagechannel_id: channelsList[i]["_id"] as! String)
             
             let myquerylastmsg=DatabaseObjectInitialiser.getDB().userschats.filter(request_id==reqidgot).order(datetime.desc)
             
@@ -62,6 +62,7 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
             do{for ccclastmsg in try DatabaseObjectInitialiser.getDB().db.prepare(myquerylastmsg) {
                 print("date received in chat view is \(ccclastmsg[datetime])")
                 LastMessage.append(ccclastmsg[msg])
+                break
                 }
             }
             catch{
@@ -69,6 +70,8 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
             }
  
         }
+        
+        tbl_channels.reloadData()
             }
     @IBAction func backbtnPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil);
@@ -151,7 +154,7 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        print("channels count is \(channelsList.count)")
         return channelsList.count
     }
 
@@ -163,7 +166,10 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         //GroupsObjectList[indexPath.row]["deptname"] as! String
         
         cell.lblChannelName.text=channelsList[indexPath.row]["msg_channel_name"] as! String
+        if(!LastMessage.isEmpty)
+        {
         cell.lbl_description.text=LastMessage[indexPath.row]
+        }
         
         return cell
 

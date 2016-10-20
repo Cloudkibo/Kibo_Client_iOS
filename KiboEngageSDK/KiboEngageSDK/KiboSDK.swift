@@ -621,7 +621,12 @@ public class KiboSDK{
                     updateStatusData["uniqueid"]=chatmsg2[i]["uniqueid"].string!
                     updateStatusData["request_id"]=chatmsg2[i]["request_id"].string!
                     updateStatusData["status"]="delivered"
-                    DatabaseObjectInitialiser.getDB().updateChatStatus(chatmsg2[i]["uniqueid"].string!, requestid1: chatmsg2[i]["request_id"].string!, status1: "delivered")
+                   
+                    
+                    
+                    //do in server response
+                    
+                    //DatabaseObjectInitialiser.getDB().updateChatStatus(chatmsg2[i]["uniqueid"].string!, requestid1: chatmsg2[i]["request_id"].string!, status1: "delivered")
                     updateStatusArray.append(updateStatusData)
                     
                     
@@ -638,6 +643,7 @@ public class KiboSDK{
                     
                
                     DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[i]["to"].string!, from1: chatmsg2[i]["from"].string!, visitoremail1: chatmsg2[i]["visitoremail"].string!, type1: chatmsg2[i]["type"].string!, uniqueid1: chatmsg2[i]["uniqueid"].string!, msg1: chatmsg2[i]["msg"].string!, datetime1: chatmsg2[i]["datetime"].string!, request_id1: chatmsg2[i]["request_id"].string!, messagechannel1: chatmsg2[i]["messagechannel"].string!, companyid1: chatmsg2[i]["companyid"].string!, is_seen1: chatmsg2[i]["is_seen"].string!, time1: chatmsg2[i]["datetime"].string!, fromMobile1: "yes",status1:chatmsg2[i]["status"].string!,customername1: customername )
+ 
                 }
                 
                 
@@ -685,9 +691,25 @@ public class KiboSDK{
             if(response.response?.statusCode == 200)
             {
                 print("response is \(response.response?.debugDescription)")
+                var statusjson=JSON(response.result.value!)
+                print("statusUpdate API result json is \(statusjson["status"])")
+                if(statusjson["status"].string == "statusUpdated")
+                {
+                    //update local database
+                    for(var i=0;i<updateStatusData.count;i++)
+                    {
+                        DatabaseObjectInitialiser.getDB().updateChatStatus(updateStatusData[i]["uniqueid"] as! String, requestid1: updateStatusData[i]["request_id"] as! String, status1: updateStatusData[i]["status"] as! String)
+                    }
+                    
+                    Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                 
                 //got response
                 //status update sent to server
                 
+            }
+                else{
+                    print("error is status update")
+                }
             }
             else
             {
