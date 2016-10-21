@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KiboEngageSDK/KiboEngageSDK/KiboSDK.swift"
-            timestampString = "498701270.576439"
+            timestampString = "498717146.047725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "719"
-            endingLineNumber = "719"
+            startingLineNumber = "842"
+            endingLineNumber = "842"
             landmarkName = "fetchSingleMessage(_:request_id:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KiboEngageSDK/KiboEngageSDK/KiboSDK.swift"
-            timestampString = "498701270.576439"
+            timestampString = "498717146.047725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "730"
-            endingLineNumber = "730"
+            startingLineNumber = "853"
+            endingLineNumber = "853"
             landmarkName = "fetchSingleMessage(_:request_id:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -94,6 +94,22 @@
             startingLineNumber = "91"
             endingLineNumber = "91"
             landmarkName = "syncBulkSMSfullRefresh(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kiboLiveChat/AppDelegate.swift"
+            timestampString = "498717146.047725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

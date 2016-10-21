@@ -335,9 +335,15 @@ public class KiboSDK{
     */
     }
     
-    public func handleRemoteNotifications(userInfo:[NSObject : AnyObject],withController:UIViewController)
+    public func handleRemoteNotifications(userInfo:[NSObject : AnyObject],withController:UIViewController,appstate:UIApplicationState)
     {
         print("inside kibo app received notification \(userInfo)")
+        print("receivednotification method called")
+        print("app state application is \(UIApplication.sharedApplication().applicationState.rawValue)")
+        print("app state is \(appstate.rawValue)")
+        print("app state value background is \(UIApplicationState.Background.rawValue)")
+        print("app state value inactive is \(UIApplicationState.Inactive.rawValue)")
+        print("app state value active is \(UIApplicationState.Active.rawValue)")
         
        // print("uniqueid is \(userInfo["uniqueid"])")
        // print("request_id is \(userInfo["request_id"])")
@@ -457,7 +463,15 @@ public class KiboSDK{
                     
                     //if app active
                     //fetch using uniqueid
+                    
+                    if(appstate.rawValue == UIApplicationState.Active.rawValue)
+                    {
+                        let systemSoundID: SystemSoundID = 1334
+                        
+                        // to play sound
+                        AudioServicesPlaySystemSound (systemSoundID)
                     fetchSingleBulkSMS(uniqueid!)
+                    }
                     //else
                     //do partial sync
                     
@@ -515,10 +529,10 @@ public class KiboSDK{
             if(response.response?.statusCode == 200)
             {
                 
-                let systemSoundID: SystemSoundID = 1334
+               /* let systemSoundID: SystemSoundID = 1334
                 
                 // to play sound
-                AudioServicesPlaySystemSound (systemSoundID)
+                AudioServicesPlaySystemSound (systemSoundID)*/
                 
                 print(response.debugDescription)
                 print(response.data!)
