@@ -25,7 +25,7 @@ public class syncBulkSMSservice{
         
         print("header is \(header.description) and customer id is \(DatabaseObjectInitialiser.getInstance().customerid)")
         
-        Alamofire.request(.POST,"\(url)",headers:header).validate().responseJSON { response in
+        Alamofire.request(.GET,"\(url)",headers:header).validate().responseJSON { response in
             //request, response_, data, error in
             
             if(response.response!.statusCode==200 || response.response!.statusCode==201)
