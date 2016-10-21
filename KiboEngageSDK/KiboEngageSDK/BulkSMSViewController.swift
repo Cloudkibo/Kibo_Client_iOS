@@ -10,14 +10,15 @@ import UIKit
 
 class BulkSMSViewController: UIViewController {
 
-    var messages:NSMutableArray!
-    
+   // var messages:NSMutableArray!
+    var bulkSMSObjectList=[[String:AnyObject]]()
     @IBOutlet weak var tbl_BulkSMS: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        messages=NSMutableArray()
-       //  let cellNib = UINib(nibName: "Cell" , bundle: NSBundle(identifier: "com.kiboEngage.client.KiboEngageSDK"))
-        //tbl_BulkSMS.registerNib(cellNib, forCellReuseIdentifier: "Cell")
+        //messages=NSMutableArray()
+        
+       bulkSMSObjectList = DatabaseObjectInitialiser.getDB().getBulkSMSobjectList()
+      
         // Do any additional setup after loading the view.
     }
 
@@ -30,10 +31,16 @@ class BulkSMSViewController: UIViewController {
         
         var sizeOFStr=CGSize()
         var heightrow=CGFloat()
-        if(indexPath.row==0)
+        if((bulkSMSObjectList[indexPath.row]["hasImage"] as! String) == "true")
         {
          let cell=tbl_BulkSMS.dequeueReusableCellWithIdentifier("bulkSMSwithImageCell") as! bulkSMSwithImageCell
-        cell.lbl_content_bulkSMS_withimage.text="asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000 asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000"
+            
+            cell.lbl_content_bulkSMS_withimage.text=bulkSMSObjectList[indexPath.row]["description"] as! String
+            
+            cell.lbl_title_BulkSMS_withimage.text=bulkSMSObjectList[indexPath.row]["title"] as! String
+
+            
+       // cell.lbl_content_bulkSMS_withimage.text="asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000 asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000"
         
        sizeOFStr=getSizeOfString(cell.lbl_content_bulkSMS_withimage.text!)
             heightrow=sizeOFStr.height+282
@@ -41,17 +48,29 @@ class BulkSMSViewController: UIViewController {
         else{
             let cell=tbl_BulkSMS.dequeueReusableCellWithIdentifier("bulkSMScell") as! bulkSMScell
             // cell
-            cell.lbl_bulkSMScontent.text="asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000 asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000"
+           
+            cell.lbl_bulkSMScontent.text=bulkSMSObjectList[indexPath.row]["description"] as! String
+
+            cell.lbl_bulkSMStitle.text=bulkSMSObjectList[indexPath.row]["title"] as! String
+            //cell.lbl_bulkSMScontent.text="asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000 asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000"
             
             
            sizeOFStr=getSizeOfString(cell.lbl_bulkSMScontent.text!)
-            heightrow=sizeOFStr.height+20
+            heightrow=sizeOFStr.height
             
         }
         
     //var heightrow=cell.view_bulkSMS_withimage.frame.height
         print("view height is \(heightrow)")
-        return heightrow
+        /*if(heightrow < 40)
+        {
+            print("inside row less")
+            return 100
+        }
+        else{
+ */
+        return heightrow+70
+        //}
         //return 300
     }
     
@@ -61,17 +80,21 @@ class BulkSMSViewController: UIViewController {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       //  print("channels count is \(channelsList.count)")
-        return 2
+        return bulkSMSObjectList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        
-        if(indexPath.row == 0)
-        {
+        if((bulkSMSObjectList[indexPath.row]["hasImage"] as! String) == "true")
+         {
          let cell=tbl_BulkSMS.dequeueReusableCellWithIdentifier("bulkSMSwithImageCell") as! bulkSMSwithImageCell
         
-        cell.lbl_content_bulkSMS_withimage.text="asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000 asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000"
+            cell.lbl_content_bulkSMS_withimage.text=bulkSMSObjectList[indexPath.row]["description"] as! String
+            
+            cell.lbl_title_BulkSMS_withimage.text=bulkSMSObjectList[indexPath.row]["title"] as! String
+            
+        //cell.lbl_content_bulkSMS_withimage.text="asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000 asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000"
+            
         var sizeOFStr=getSizeOfString(cell.lbl_content_bulkSMS_withimage.text!)
         //textsize.height+185
        cell.lbl_content_bulkSMS_withimage.frame = CGRectMake(cell.lbl_content_bulkSMS_withimage.frame.origin.x, cell.lbl_content_bulkSMS_withimage.frame.origin.y, ((sizeOFStr.width)  > 262 ? (sizeOFStr.width) : 262), sizeOFStr.height)
@@ -93,7 +116,15 @@ class BulkSMSViewController: UIViewController {
  */
             let cell=tbl_BulkSMS.dequeueReusableCellWithIdentifier("bulkSMScell") as! bulkSMScell
            // cell
-            cell.lbl_bulkSMScontent.text="asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000 asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000"
+          
+            
+            cell.lbl_bulkSMScontent.text=bulkSMSObjectList[indexPath.row]["description"] as! String
+            
+            cell.lbl_bulkSMStitle.text=bulkSMSObjectList[indexPath.row]["title"] as! String
+         
+            
+            
+          //  cell.lbl_bulkSMScontent.text="asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000 asdfafd adfadf adfadf adfadfad fadfasdf adfasdf adfadf adfasadfjk adnfjkasdnf ajsdfnkajdf kajnfjadnfjakdfn ajdknfakasdf akasdfnaskf jkadnfkajdfn 111 222 333 444 555 666 777 888 999 000"
             
             
             var sizeOFStr=getSizeOfString(cell.lbl_bulkSMScontent.text!)
@@ -101,7 +132,7 @@ class BulkSMSViewController: UIViewController {
             cell.lbl_bulkSMScontent.frame = CGRectMake(cell.lbl_bulkSMScontent.frame.origin.x, cell.lbl_bulkSMScontent.frame.origin.y, ((sizeOFStr.width)  > 262 ? (sizeOFStr.width) : 262), sizeOFStr.height)
           //  cell.img_bulkSMS.frame=CGRectMake(cell.img_bulkSMS.frame.origin.x,(cell.lbl_content_bulkSMS_withimage.frame.origin.y) + (cell.lbl_content_bulkSMS_withimage.frame.height)+20, cell.img_bulkSMS.frame.width,cell.img_bulkSMS.frame.height)
             //cell.awakeFromNib()
-            cell.view_bulkSMS.frame=CGRectMake(cell.view_bulkSMS.frame.origin.x,cell.view_bulkSMS.frame.origin.y,cell.view_bulkSMS.frame.width,cell.lbl_bulkSMScontent.frame.height+cell.lbl_bulkSMScontent.frame.height+60)
+            cell.view_bulkSMS.frame=CGRectMake(cell.view_bulkSMS.frame.origin.x,cell.view_bulkSMS.frame.origin.y,cell.view_bulkSMS.frame.width,cell.lbl_bulkSMStitle.frame.height+cell.lbl_bulkSMScontent.frame.height+30)
             
             print("view height 2 is \(cell.view_bulkSMS.frame.height)")
      

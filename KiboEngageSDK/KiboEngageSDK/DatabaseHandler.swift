@@ -21,7 +21,7 @@ internal class DatabaseHandler:NSObject
     var messageChannels:Table!
     var userschats:Table!
     var requestIDsTable:Table!
-    
+    var bulkSMStable:Table!
     init(dbName:String)
     {print("inside database handler class")
         
@@ -51,6 +51,7 @@ internal class DatabaseHandler:NSObject
         createMessageChannelsTable()
         createRequestIDsTable()
         createChatsTable()
+        createBulkSMStable()
     }
     
     
@@ -301,6 +302,50 @@ internal class DatabaseHandler:NSObject
         
     }
     
+    func createBulkSMStable()
+    {
+         let title = Expression<String>("title")
+         let description = Expression<String>("description")
+         let agent_id = Expression<String>("agent_id")
+         let hasImage = Expression<String>("hasImage")
+         let image_url = Expression<String>("image_url")
+         let companyid = Expression<String>("companyid")
+         let datetime = Expression<NSDate>("datetime")
+        //bulk SMS
+        /*
+         var NotificationsSchema = new Schema({
+         title: String,
+         description: String,
+         agent_id: {type: Schema.ObjectId, ref: 'Account'},
+         hasImage : {type : String, default : 'false'},
+         image_url : String,
+         companyid : String,
+         datetime : {type: Date, default: Date.now }
+         });
+         */
+        self.bulkSMStable = Table("bulkSMStable")
+        
+        do{
+            try db.run(bulkSMStable.create(ifNotExists: true) { t in
+                
+                t.column(title)
+                t.column(description)
+                t.column(agent_id)
+                t.column(hasImage)
+                t.column(image_url)
+                t.column(companyid)
+                t.column(datetime)
+                
+                })
+            
+        }
+        catch
+        {
+            print("error in creating credentials table")
+            
+        }
+
+    }
     
     func storeRequestIDs(teamid:String,msgchannelid:String){
        
@@ -959,18 +1004,74 @@ internal class DatabaseHandler:NSObject
     }
     
     
-    //bulk SMS
-    /*
-     var NotificationsSchema = new Schema({
-     title: String,
-     description: String,
-     agent_id: {type: Schema.ObjectId, ref: 'Account'},
-     hasImage : {type : String, default : 'false'},
-     image_url : String,
-     companyid : String,
-     datetime : {type: Date, default: Date.now }
-     });
- */
+    func storeBulkSMS(title1:String,description1:String,agent_id1:String,hasImage1:String,image_url1:String,companyid1:String,datetime1:NSDate)
+    {
+        let title = Expression<String>("title")
+        let description = Expression<String>("description")
+        let agent_id = Expression<String>("agent_id")
+        let hasImage = Expression<String>("hasImage")
+        let image_url = Expression<String>("image_url")
+        let companyid = Expression<String>("companyid")
+        let datetime = Expression<NSDate>("datetime")
+        
+        do{
+            let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(bulkSMStable.insert(
+                title<-title1,
+                description<-description1,
+                agent_id<-agent_id1,
+                hasImage<-hasImage1,
+                image_url<-image_url1,
+                companyid<-companyid1,
+                datetime<-datetime1
+                
+                
+                //lastname<-"",
+                //email<-json["email"].string!,
+                ))
+        }
+        catch{
+            NSLog("error in saving bulk sms")
+        }
+        
+
+    }
+    
+    func getBulkSMSobjectList()->[[String:AnyObject]]
+    {
+        
+        let title = Expression<String>("title")
+        let description = Expression<String>("description")
+        let agent_id = Expression<String>("agent_id")
+        let hasImage = Expression<String>("hasImage")
+        let image_url = Expression<String>("image_url")
+        let companyid = Expression<String>("companyid")
+        let datetime = Expression<NSDate>("datetime")
+        
+        
+        var bulksmsList=[[String:AnyObject]]()
+         self.bulkSMStable = Table("bulkSMStable")
+        do
+        {for teamsnames in try self.db.prepare(self.bulkSMStable){
+            var newEntry: [String: AnyObject] = [:]
+            newEntry["title"]=teamsnames.get(title)
+            newEntry["description"]=teamsnames.get(description)
+            newEntry["agent_id"]=teamsnames.get(agent_id)
+            newEntry["hasImage"]=teamsnames.get(hasImage)
+            newEntry["image_url"]=teamsnames.get(image_url)
+            newEntry["companyid"]=teamsnames.get(companyid)
+            newEntry["datetime"]=teamsnames.get(datetime)
+            bulksmsList.append(newEntry)
+            
+            
+            }
+        }
+        catch{
+            print("failed to get groups data")
+        }
+        
+        return bulksmsList
+    }
+  
     
     }
 

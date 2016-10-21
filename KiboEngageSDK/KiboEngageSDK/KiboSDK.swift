@@ -452,7 +452,14 @@ public class KiboSDK{
                         fetchP
                     }*/
                 if  let title = userInfo["data"]!["title"] as? String!{
-                     var msg=userInfo["data"]!["uniqueid"] as? String
+                     var uniqueid=userInfo["data"]!["uniqueid"] as? String
+                    var title=userInfo["data"]!["title"] as? String
+                    
+                    //if app active
+                    //fetch using uniqueid
+                    fetchSingleBulkSMS(uniqueid!)
+                    //else
+                    //do partial sync
                     
                 }
                 
@@ -469,7 +476,88 @@ public class KiboSDK{
     }
     
     
-    
+    func fetchSingleBulkSMS(id:String)
+    {
+        print("inside API call fetch bulk sms uniqueid is \(id)")
+        var url=Constants.mainURL+Constants.getBulkSMSurl
+        //print(url.debugDescription)
+        /*
+         'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
+         'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
+         'kibo-client-id': 'cd89f71715f2014725163952',
+         */
+        var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        ///var hhh=["headers":"\(header)"]
+        print("headers are \(header.description)")
+        Alamofire.request(.POST,"\(url)",parameters:["id":id],headers:header).validate().responseJSON { response in
+            
+            /* print(response)
+             print(".......")
+             print(response.data!)
+             print(".......")
+             print(response.result.value!)*/
+            
+            /*
+             
+             "__v" = 0;
+             "_id" = 57c69e61dfff9e5223a8fcb2;
+             activeStatus = Yes;
+             companyid = cd89f71715f2014725163952;
+             createdby = 554896ca78aed92f4e6db296;
+             creationdate = "2016-08-31T09:07:45.236Z";
+             groupid = 57c69e61dfff9e5223a8fcb1;
+             "msg_channel_description" = "This channel is for general discussions";
+             "msg_channel_name" = General;
+             
+             
+             */
+            print("fetching single bulk sms message")
+            if(response.response?.statusCode == 200)
+            {
+                
+                let systemSoundID: SystemSoundID = 1334
+                
+                // to play sound
+                AudioServicesPlaySystemSound (systemSoundID)
+                
+                print(response.debugDescription)
+                print(response.data!)
+                print(response.result.value!)
+                print(";;;;;;;;;;;;")
+                var bulksms2=JSON(response.result.value!)
+                var bulksms=JSON(response.data!)
+                print("bulk sms message fetched is \(bulksms)")
+                
+                print("bulk sms2 fetched is \(bulksms2)")
+                                let dateFormatter = NSDateFormatter()
+                dateFormatter.timeZone=NSTimeZone.localTimeZone()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                //  let datens2 = dateFormatter.dateFromString(date2.debugDescription)
+                //2016-09-18T19:13:00.588Z
+                let datens2 = dateFormatter.dateFromString(bulksms2[0]["datetime"].string!)
+                
+                var imgurl=""
+                if(bulksms2[0]["image_url"] != nil)
+                {
+                    imgurl=bulksms2[0]["image_url"].string!
+                }
+                DatabaseObjectInitialiser.getDB().storeBulkSMS(bulksms2[0]["title"].string!, description1: bulksms2[0]["description"].string!, agent_id1: bulksms2[0]["agent_id"].string!, hasImage1: bulksms2[0]["hasImage"].string!, image_url1: imgurl, companyid1: bulksms2[0]["companyid"].string!, datetime1: datens2!)
+                //UPDATE UI
+                
+                
+                Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                /*  if(delegateChatDetails1 ! nil)
+                 {
+                 delegateChatDetails1?.refreshChatsUI("updateUI", data: nil)
+                 }*/
+                
+            }
+            else{
+                print("error in fetching chat")
+            }
+            
+        }
+    }
     
     private func fetchSingleMessage(uniqueid:String, request_id:String)
         
@@ -589,45 +677,20 @@ public class KiboSDK{
         }
     }
     
-
-    private func syncPartialChat(companyid:String, customerid:String)
+    
+    private func syncPartialBulkSMS(companyid:String, customerid:String)
         
         //uniqueid = h5ha3rgh4tag52eyn45cdi2016101025546;)
     {
         print("inside syncPartialChat function syncPartialChat is \(syncPartialChat)")
-    var url=Constants.mainURL+Constants.partialSyncChat
-    //print(url.debugDescription)
-    /*
-     'kibo-app-id' : '5wdqvvi8jyvfhxrxmu73dxun9za8x5u6n59',
-     'kibo-app-secret': 'jcmhec567tllydwhhy2z692l79j8bkxmaa98do1bjer16cdu5h79xvx',
-     'kibo-client-id': 'cd89f71715f2014725163952',
-     */
-    var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
-    ///var hhh=["headers":"\(header)"]
-    print("headers are \(header.description)")
+        var url=Constants.mainURL+"fetchPartial"
+        
+        var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        ///var hhh=["headers":"\(header)"]
+        print("headers are \(header.description)")
         Alamofire.request(.POST,"\(url)",parameters:["companyid":companyid,"customerid":customerid],headers:header).validate().responseJSON { response in
-    
-    /* print(response)
-     print(".......")
-     print(response.data!)
-     print(".......")
-     print(response.result.value!)*/
-    
-    /*
-     
-     "__v" = 0;
-     "_id" = 57c69e61dfff9e5223a8fcb2;
-     activeStatus = Yes;
-     companyid = cd89f71715f2014725163952;
-     createdby = 554896ca78aed92f4e6db296;
-     creationdate = "2016-08-31T09:07:45.236Z";
-     groupid = 57c69e61dfff9e5223a8fcb1;
-     "msg_channel_description" = "This channel is for general discussions";
-     "msg_channel_name" = General;
-     
-     
-     */
-            print("partial chat sync API called")
+            
+            print("partial bulk sms sync API called")
             if(response.response?.statusCode == 200)
             {
                 
@@ -636,46 +699,92 @@ public class KiboSDK{
                 // to play sound
                 AudioServicesPlaySystemSound (systemSoundID)
                 
-               // print(response.debugDescription)
-               // print(response.data!)
-               // print(response.result.value!)
+                
+                print(";;;;;;;;;;;;")
+                var bulksms2=JSON(response.result.value!)
+                var bulksms=JSON(response.data!)
+                print("bulksms message sync is \(bulksms)")
+                
+                print("bulksms message2 sync is \(bulksms2)")
+                var agentid=""
+                var agentemail=""
+                
+                var updateStatusArray=[[String:AnyObject]]()
+                var i=0
+                for(i=0;i<bulksms2.count;i++)
+                {
+                    let systemSoundID: SystemSoundID = 1334
+                    
+                    // to play sound
+                    AudioServicesPlaySystemSound (systemSoundID)
+                    
+                                       let dateFormatter = NSDateFormatter()
+                    dateFormatter.timeZone=NSTimeZone.localTimeZone()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                    //  let datens2 = dateFormatter.dateFromString(date2.debugDescription)
+                    //2016-09-18T19:13:00.588Z
+                    let datens2 = dateFormatter.dateFromString(bulksms2[i]["datetime"].string!)
+                    
+                    var imgurl=""
+                    if(bulksms2[i]["image_url"] != nil)
+                    {
+                        imgurl=bulksms2[i]["image_url"].string!
+                    }
+                    DatabaseObjectInitialiser.getDB().storeBulkSMS(bulksms2[i]["title"].string!, description1: bulksms2[i]["description"].string!, agent_id1: bulksms2[i]["agent_id"].string!, hasImage1: bulksms2[i]["hasImage"].string!, image_url1: imgurl, companyid1: bulksms2[i]["companyid"].string!, datetime1: datens2!)
+                }
+                
+                
+                //UPDATE UI
+                //uncomment to update bulk sms ui
+               // Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                
+                //call API for updateStatus to send status to server
+                //uncomment later
+                /*if(updateStatusArray.count>0)
+                {
+                    print("updateStatusArray count is \(updateStatusArray.count), calling API now")
+                    self.updateStatus(updateStatusArray)
+                }*/
+                
+            }
+            else{
+                print("error in bulk sms partial sync")
+            }
+            
+        }
+    }
+
+    private func syncPartialChat(companyid:String, customerid:String)
+        
+        //uniqueid = h5ha3rgh4tag52eyn45cdi2016101025546;)
+    {
+        print("inside syncPartialChat function syncPartialChat is \(syncPartialChat)")
+    var url=Constants.mainURL+Constants.partialSyncChat
+   
+    var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+    ///var hhh=["headers":"\(header)"]
+    print("headers are \(header.description)")
+        Alamofire.request(.POST,"\(url)",parameters:["companyid":companyid,"customerid":customerid],headers:header).validate().responseJSON { response in
+    
+      print("partial chat sync API called")
+            if(response.response?.statusCode == 200)
+            {
+                
+                let systemSoundID: SystemSoundID = 1016
+                
+                // to play sound
+                AudioServicesPlaySystemSound (systemSoundID)
+                
+              
                 print(";;;;;;;;;;;;")
                 var chatmsg2=JSON(response.result.value!)
                 var chatmsg=JSON(response.data!)
                 print("chat message sync is \(chatmsg)")
                 
                 print("chat message2 sync is \(chatmsg2)")
-                /*
-                 "datetime" : "2016-10-10T11:43:00.767Z",
-                 "agentid" : [
-                 
-                 ],
-                 "request_id" : "h d5771PZ 2016 10 4 9 43 1",
-                 "agentemail" : [
-                 
-                 ],
-                 "from" : "Jawaid",
-                 "visitoremail" : "newemail@cloudkibo.com",
-                 "type" : "message",
-                 "messagechannel" : "574db78d23785bca7c650a0f",
-                 "uniqueid" : "hwf6js2016101016430",
-                 "is_seen" : "no",
-                 "_id" : "57fb7ec57c3fbeaf73290b34",
-                 "__v" : 0,
-                 "msg" : "test message from agent",
-                 "companyid" : "cd89f71715f2014725163952",
-                 "to" : "newCustomer1"
-                 */
-                
-                var agentid=""
+                               var agentid=""
                 var agentemail=""
-               // print(chatmsg2[0]["to"].string!)
-              //  print(chatmsg2[0]["from"].string!)
-                
-               // print(chatmsg2[0]["type"].string!)
-                //print(chatmsg2["from"].string!)
-              //  if()
-                
+              
                  var updateStatusArray=[[String:AnyObject]]()
                 var i=0
                 for(i=0;i<chatmsg2.count;i++)
@@ -728,13 +837,7 @@ public class KiboSDK{
                 self.updateStatus(updateStatusArray)
                 }
                 
-                
-                /*  if(delegateChatDetails1 ! nil)
-                {
-                    delegateChatDetails1?.refreshChatsUI("updateUI", data: nil)
-                }*/
-                
-            }
+                           }
             else{
                 print("error in fetching chat")
             }

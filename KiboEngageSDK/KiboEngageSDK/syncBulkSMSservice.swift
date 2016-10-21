@@ -63,43 +63,22 @@ public class syncBulkSMSservice{
                 //save in database
                 print("bulk SMS messages \(bulksms)")
                 
-                
+              // var bulksms=bulksmsOuter[0]
                 //uncomment when create bulk sms table
-               /* do{
-                    try DatabaseObjectInitialiser.getDB().db.run(DatabaseObjectInitialiser.getDB().userschats.delete())
+                do{
+                    try DatabaseObjectInitialiser.getDB().db.run(DatabaseObjectInitialiser.getDB().bulkSMStable.delete())
                 }
                 catch{
-                    completion(result: false,error: "error in deleting old chat")
-                }*/
+                    completion(result: false,error: "error in deleting old bulk sms table")
+                }
                 
                 var i=0
+                print("bulk sms count is \(bulksms.count)")
                 
                 //uncomment later
-                /*for(i=0;i<bulksms.count;i++)
+                for(i=0;i<bulksms.count;i++)
                 {
-                    var agentid=""
-                    var agentemail=""
-                    
-                    //from mobile is always 1 for communication between mobile client and agent
-                    var fromMobile1="yes"
-                    
-                    
-                    /* if(chatMessages[i]["from"].string!==DatabaseObjectInitialiser.getInstance().customerid)
-                     {
-                     fromMobile1="yes"
-                     }*/
-                    
-                    //     do{
-                    var customername=""
-                    if((DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"]) != nil)
-                    {
-                        print("customerName field not nil it exists")
-                        customername=DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"] as! String
-                        
-                        
-                    }
-                    print("dateeeeeee is \(chatMessages[i]["datetime"]) and type is \(chatMessages[i]["datetime"].type)")
-                    
+                print("bulk sms count is \(bulksms.count)")
                     
                     
                     
@@ -108,10 +87,14 @@ public class syncBulkSMSservice{
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                     //  let datens2 = dateFormatter.dateFromString(date2.debugDescription)
                     //2016-09-18T19:13:00.588Z
-                    let datens2 = dateFormatter.dateFromString(chatMessages[i]["datetime"].string!)
+                    let datens2 = dateFormatter.dateFromString(bulksms[i]["datetime"].string!)
                     
-                    
-                    DatabaseObjectInitialiser.getDB().storeChat(chatMessages[i]["to"].string!, from1: chatMessages[i]["from"].string!, visitoremail1: chatMessages[i]["visitoremail"].string!, type1: chatMessages[i]["type"].string!, uniqueid1: chatMessages[i]["uniqueid"].string!, msg1: chatMessages[i]["msg"].string!, datetime1: datens2!, request_id1: chatMessages[i]["request_id"].string!, messagechannel1: chatMessages[i]["messagechannel"].string!, companyid1: chatMessages[i]["companyid"].string!, is_seen1: chatMessages[i]["is_seen"].string!, fromMobile1: fromMobile1, status1:chatMessages[i]["status"].string!,customername1: customername)
+                    var imgurl=""
+                    if(bulksms[i]["image_url"] != nil)
+                    {
+                        imgurl=bulksms[i]["image_url"].string!
+                    }
+                    DatabaseObjectInitialiser.getDB().storeBulkSMS(bulksms[i]["title"].string!, description1: bulksms[i]["description"].string!, agent_id1: bulksms[i]["agent_id"].string!, hasImage1: bulksms[i]["hasImage"].string!, image_url1: imgurl, companyid1: bulksms[i]["companyid"].string!, datetime1: datens2!)
                     // }
                     // catch{
                     //   completion(result: false,error: "error in saving chat")
@@ -119,7 +102,7 @@ public class syncBulkSMSservice{
                     
                 }
                 
-                */
+ 
                 completion(result: true,error: nil)
             }
             else{
