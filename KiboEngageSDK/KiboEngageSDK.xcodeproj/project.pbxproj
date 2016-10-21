@@ -14,6 +14,7 @@
 		71083C1E1DB8C98800CBF1CD /* bulkSMScell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71083C1D1DB8C98800CBF1CD /* bulkSMScell.swift */; };
 		71083C201DB8C99900CBF1CD /* bulkSMSwithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71083C1F1DB8C99900CBF1CD /* bulkSMSwithImageCell.swift */; };
 		71083C221DB8CCF000CBF1CD /* BulkSMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71083C211DB8CCF000CBF1CD /* BulkSMSViewController.swift */; };
+		71083C241DB9926900CBF1CD /* syncBulkSMSservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71083C231DB9926900CBF1CD /* syncBulkSMSservice.swift */; };
 		71117CB61D8117AD00868E36 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71117CB51D8117AD00868E36 /* ChannelsViewController.swift */; };
 		71117CB81D81186500868E36 /* ChannelsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71117CB71D81186500868E36 /* ChannelsCell.swift */; };
 		71126B841D82840100F23261 /* messageChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71126B831D82840100F23261 /* messageChannels.swift */; };
@@ -80,6 +81,7 @@
 		71083C1D1DB8C98800CBF1CD /* bulkSMScell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bulkSMScell.swift; sourceTree = "<group>"; };
 		71083C1F1DB8C99900CBF1CD /* bulkSMSwithImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bulkSMSwithImageCell.swift; sourceTree = "<group>"; };
 		71083C211DB8CCF000CBF1CD /* BulkSMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulkSMSViewController.swift; sourceTree = "<group>"; };
+		71083C231DB9926900CBF1CD /* syncBulkSMSservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = syncBulkSMSservice.swift; sourceTree = "<group>"; };
 		71117CB51D8117AD00868E36 /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		71117CB71D81186500868E36 /* ChannelsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsCell.swift; sourceTree = "<group>"; };
 		71126B831D82840100F23261 /* messageChannels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messageChannels.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				71117CB51D8117AD00868E36 /* ChannelsViewController.swift */,
 				71117CB71D81186500868E36 /* ChannelsCell.swift */,
 				7181CD9B1D83C710002A0D05 /* ChatsDetailViewController.swift */,
+				71083C231DB9926900CBF1CD /* syncBulkSMSservice.swift */,
 				7181CDCC1D83CF4A002A0D05 /* SocketService.swift */,
 				713A6EF41D95BDF50084A816 /* temp.h */,
 				713A6EF51D95BDF50084A816 /* temp.m */,
@@ -453,6 +456,7 @@
 				71117CB61D8117AD00868E36 /* ChannelsViewController.swift in Sources */,
 				7162D4771D7FE2E6001BF40D /* TeamsViewController.swift in Sources */,
 				71083C201DB8C99900CBF1CD /* bulkSMSwithImageCell.swift in Sources */,
+				71083C241DB9926900CBF1CD /* syncBulkSMSservice.swift in Sources */,
 				7181CDBF1D83CF16002A0D05 /* SocketEngineWebsocket.swift in Sources */,
 				7181CDC61D83CF16002A0D05 /* SocketPacket.swift in Sources */,
 				711F7E4F1D7E276500A6FD97 /* DatabaseHandler.swift in Sources */,

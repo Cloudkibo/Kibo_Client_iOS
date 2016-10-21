@@ -140,11 +140,24 @@ public class KiboSDK{
                                     
                                     if(result==true)
                                     {
-                                        print("synccccc updating UI now..")
+                                        //syncBulkSMSfullRefresh
+                                        var syncBulkSMSServiceObj=syncBulkSMSservice.init()
+                                        syncBulkSMSServiceObj.syncBulkSMSfullRefresh({ (result, error) in
+                                            
+                                            if(result==true){
+                                                 print("synccccc bulk SMS fetched now..")
+                                            }
+                                            print("synccccc updating UI now..")
+                                            
+                                            
+                                            //update UI
+                                            Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                                            })
                                         
-                                        
-                                        //update UI
-                                        Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                                        //get bulk sms
+                                        //getAllBulkSMSListURL
+                                        //post request
+                                       
                                     }
                                     else
                                     {

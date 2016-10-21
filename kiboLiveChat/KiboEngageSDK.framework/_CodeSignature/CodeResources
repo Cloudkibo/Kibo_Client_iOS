@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		qUSDhUijSu08Ysv+ZVEQts/Nn/U=
+		SQ/rwIHUL5yak/yEGENpfFpcOek=
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		L3yAXYYOPCjxW06C4sRtSOplFlQ=
+		Y0neQKltoxDksJWaZB5Jpwt1H0Q=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -155,11 +155,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qUSDhUijSu08Ysv+ZVEQts/Nn/U=
+			SQ/rwIHUL5yak/yEGENpfFpcOek=
 			</data>
 			<key>hash2</key>
 			<data>
-			/A5NKaFFQUo1leeJ4KLofd2dTisuG1MGTZpozkdcPqM=
+			XZ/6ph+dvO28PKbRW4zU2Ex5fGqOTsGwHZlsO6UFLNY=
 			</data>
 		</dict>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftdoc</key>
@@ -177,11 +177,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			L3yAXYYOPCjxW06C4sRtSOplFlQ=
+			Y0neQKltoxDksJWaZB5Jpwt1H0Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			KCqTUuGnPq3JCX1zyfOsnEVwdAfEtCXcbegIk8sSINs=
+			aUV2LYO1X38k4bpKnSyJABrVoYTxNJ3X7BVOjRMA1JM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
