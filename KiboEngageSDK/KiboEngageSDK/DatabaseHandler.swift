@@ -1072,6 +1072,49 @@ internal class DatabaseHandler:NSObject
         return bulksmsList
     }
   
+    func deleteMessageChannel(id:String)
+    {
+        let _id = Expression<String>("_id")
+        let msg_channel_name = Expression<String>("msg_channel_name")
+        let msg_channel_description = Expression<String>("msg_channel_description")
+        let companyid = Expression<String>("companyid")
+        let groupid = Expression<String>("groupid")
+        let createdby = Expression<String>("createdby")
+        let creationdate = Expression<String>("creationdate")
+        let deleteStatus = Expression<String>("deleteStatus")
+        
+        self.messageChannels = Table("messageChannels")
+        
+        do{
+            try db.run(messageChannels.filter(_id==id).delete())
+        }
+        catch{
+            print("cannot delete channel")
+            
+        }
+    }
+    func updateMessageChannels(channelid:String,channelname:String,channelDesc:String,compID:String,groupID:String,creeateby:String,datecreation:String,delStatus:String)
+    {
+        
+        let _id = Expression<String>("_id")
+        let msg_channel_name = Expression<String>("msg_channel_name")
+        let msg_channel_description = Expression<String>("msg_channel_description")
+        let companyid = Expression<String>("companyid")
+        let groupid = Expression<String>("groupid")
+        let createdby = Expression<String>("createdby")
+        let creationdate = Expression<String>("creationdate")
+        let deleteStatus = Expression<String>("deleteStatus")
+        
+        self.messageChannels = Table("messageChannels")
+        
+        do{
+            try db.run(messageChannels.filter(_id==channelid).update([_id<-channelid,msg_channel_name<-channelname,msg_channel_description<-channelDesc,companyid<-compID,groupid<-groupID,createdby<-creeateby,creationdate<-datecreation,deleteStatus<-delStatus]))
+        }
+        catch{
+            print("cannot update channel")
+            
+        }
+    }
     
     }
 

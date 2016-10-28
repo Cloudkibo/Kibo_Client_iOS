@@ -535,9 +535,23 @@ public class KiboSDK{
                         }
                         if(operation == "DeleteChannel")
                         {
+                            var _id = obj!["_id"] as! String
+
+                            DatabaseObjectInitialiser.getDB().deleteMessageChannel(_id)
                         }
                         if(operation == "EditChannel")
                         {
+                            var _id = obj!["_id"] as! String
+                            var msg_channel_name = obj!["msg_channel_name"] as! String
+                            var msg_channel_description = obj!["msg_channel_description"] as! String
+                            var companyid = obj!["companyid"] as! String
+                            var groupid = obj!["groupid"] as! String
+                            var createdby = obj!["createdby"] as! String
+                            var creationdate = obj!["creationdate"] as! String
+                            var deletestatus = obj!["activeStatus"] as! String
+                            
+                            DatabaseObjectInitialiser.getDB().updateMessageChannels(_id, channelname: msg_channel_name, channelDesc: msg_channel_description, compID: companyid, groupID: groupid, creeateby: createdby, datecreation: creationdate, delStatus: deletestatus)
+
                         }
                     }
                     else
