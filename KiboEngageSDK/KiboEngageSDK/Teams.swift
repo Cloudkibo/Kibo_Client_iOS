@@ -106,6 +106,8 @@ public class Teams
                ///// print(response.result.value)
             if(response.response?.statusCode==200)
             {
+                
+                DatabaseObjectInitialiser.getDB().deleteTeamsTableData()
                 var teamsData=JSON(response.result.value!)
                 
                 for(var i=0;i<teamsData.count;i++)

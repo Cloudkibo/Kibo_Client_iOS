@@ -386,10 +386,10 @@ public class KiboSDK{
             }
             else
             {
-                if  let status = userInfo["data"]!["status"] as? String!{
+                if  let havestatus = userInfo["data"]!["status"]{
                     print("inside got status")
-                    
-                    if(status != "" && status != nil)
+                    var status=userInfo["data"]!["status"] as! String
+                    if(status != "")
                     {
                         //got push for status update
                         
@@ -466,7 +466,7 @@ public class KiboSDK{
                         var uniqueid=userInfo["data"]!["uniqueid"] as? String
                         fetchP
                     }*/
-                if  let title = userInfo["data"]!["title"] as? String!{
+                if  let title = userInfo["data"]!["title"] as? String{
                     print("inside got title bulk sms")
                     
                      var uniqueid=userInfo["data"]!["uniqueid"] as? String
@@ -492,7 +492,7 @@ public class KiboSDK{
                 }
                 else
                 {
-                    if  let sync = userInfo["data"]!["Obj"] as? String!{
+                    if  let sync = userInfo["data"]!["Obj"] as? String{
                         print("inside got sync push")
                         /*
                          _id : String

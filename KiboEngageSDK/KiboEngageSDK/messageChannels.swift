@@ -70,6 +70,8 @@ public class MessageChannels
             
             if(response.result.isSuccess)
             {
+                
+                DatabaseObjectInitialiser.getDB().deleteChannelsTableData()
             var channelsData=JSON(response.result.value!)
  
             for(var i=0;i<channelsData.count;i++)

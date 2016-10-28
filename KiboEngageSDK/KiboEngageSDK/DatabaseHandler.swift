@@ -1116,5 +1116,31 @@ internal class DatabaseHandler:NSObject
         }
     }
     
+    func deleteTeamsTableData()
+    {
+        self.teams = Table("teams")
+        
+        do{
+            try db.run(teams.delete())
+        }
+        catch{
+            print("cannot delete teams data")
+            
+        }
+        
+    }
+    func deleteChannelsTableData()
+    {
+        self.messageChannels = Table("messageChannels")
+        
+        do{
+            try db.run(messageChannels.delete())
+        }
+        catch{
+            print("cannot delete channels data")
+            
+        }
+    }
+    
     }
 

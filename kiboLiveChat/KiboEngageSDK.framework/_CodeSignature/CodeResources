@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		+ZUBuE6togk01XqwPjEB2zuVm+U=
+		yY8i64XXvUK0nz1YYpGcJTPU4Qs=
 		</data>
 		<key>Headers/KiboEngageSDK-Swift.h</key>
 		<data>
@@ -22,19 +22,19 @@
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		sLwh22NlgHkHMS2+Lea7e+PYUwM=
+		vjyf1PwTMoeW4AG57leno5CKovw=
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		wW1DvAW2jGp06Ixm+2P4vQvadlQ=
+		w3m4+DHZ1TNKP2QzSksWYBf0fys=
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		f/dt84MSIOI/VRaKsFmfsxfv0uk=
+		idHGamUdl/V3pDTdti4cLevXR0c=
 		</data>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		m3RemEtRwq3LWrlGJcyF/C5CI50=
+		zGaXpmXcDQ/m7snEuksvkMMCeT4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -111,11 +111,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+ZUBuE6togk01XqwPjEB2zuVm+U=
+			yY8i64XXvUK0nz1YYpGcJTPU4Qs=
 			</data>
 			<key>hash2</key>
 			<data>
-			tOGXh1bR2TXRXR3agb3ByGerFRnKZnujILOx++6wuxA=
+			E6IQoGxVni/S8UG+vfrIxkWYMjLrDhVNv34SDbjrwks=
 			</data>
 		</dict>
 		<key>Headers/KiboEngageSDK-Swift.h</key>
@@ -144,44 +144,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			sLwh22NlgHkHMS2+Lea7e+PYUwM=
+			vjyf1PwTMoeW4AG57leno5CKovw=
 			</data>
 			<key>hash2</key>
 			<data>
-			mBq9K/Z6ACdmbti8kNylxz5Q7Q1EgfTyyBsMMwWoeBk=
+			ljlixX/IIIPg5U/Qafp2Z1MdbUf1JO1EtvFpAL697L4=
 			</data>
 		</dict>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wW1DvAW2jGp06Ixm+2P4vQvadlQ=
+			w3m4+DHZ1TNKP2QzSksWYBf0fys=
 			</data>
 			<key>hash2</key>
 			<data>
-			GaaVylEstBnSx4ZZsW+0hC8aK2J8JZY9VnP+mHH3wp0=
+			Dq7cNymchnVP/mVGq2dh3hnfSfj8KE3T8dfh2voQyiQ=
 			</data>
 		</dict>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			f/dt84MSIOI/VRaKsFmfsxfv0uk=
+			idHGamUdl/V3pDTdti4cLevXR0c=
 			</data>
 			<key>hash2</key>
 			<data>
-			CF/fA3zUhgltOY9/6THN9WR1AwsCQj1KyO2sZ7eaQr8=
+			vOEsenHYR9fBbzLghOsDUqAe5S48OhRu0FZMu2dYxy8=
 			</data>
 		</dict>
 		<key>Modules/KiboEngageSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			m3RemEtRwq3LWrlGJcyF/C5CI50=
+			zGaXpmXcDQ/m7snEuksvkMMCeT4=
 			</data>
 			<key>hash2</key>
 			<data>
-			H1KAd8pE1oW3AxUmn574n2TcKwqpXuUmPAlQLuLuWCA=
+			UfidfqHYEck0W6icjeLp8fOV+COx6OxKytV8ELPlSTU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
