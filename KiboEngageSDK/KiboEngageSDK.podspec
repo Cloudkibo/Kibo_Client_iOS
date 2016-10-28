@@ -27,7 +27,8 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                    DESC
 
-  s.homepage     = "http://EXAMPLE/KiboEngageSDK"
+
+  s.homepage     = "https://github.com/Cloudkibo/Kibo_Client_iOS/"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -64,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+   s.platform     = :ios, "9.1"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -79,8 +80,9 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/KiboEngageSDK.git", :tag => "#{s.version}" }
-
+  #s.source       = { :git => "http://EXAMPLE/KiboEngageSDK.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/Cloudkibo/Kibo_Client_iOS.git", :tag => "{s.version}" }
+  #https://github.com/Cloudkibo/Kibo_Client_iOS/tree/master/KiboEngageSDK
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -90,8 +92,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+
+  #s.source_files  = "KiboEngageSDK/KiboEngageSDK", "KiboEngageSDK/KiboEngageSDK/**/*.{h,m,swift}"
+  #s.source_files  = "Classes", "Classes/**/*.{h,m}"
+# s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -104,9 +108,10 @@ Pod::Spec.new do |s|
   #  non-essential files like tests, examples and documentation.
   #
 
+spec.resources = ['KiboEngageSDK/Images.xcassets/*', 'KiboEngageSDK/SDKstoryboard.storyboard' , 'KiboEngageSDK/arrow.png']
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
-
+#Images.xcassets/
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
 
@@ -133,5 +138,8 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
+  s.dependency  'Alamofire', '~> 3.0'
+  s.dependency 'SQLite.swift', '~> 0.10.1'
+  s.dependency ‘SwiftyJSON’
 
 end
