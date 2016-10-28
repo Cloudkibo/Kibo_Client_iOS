@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
                    DESC
 
 
-  s.homepage     = "https://github.com/Cloudkibo/Kibo_Client_iOS/"
+  s.homepage     = "https://github.com/Cloudkibo/Kibo_Client_iOS/KiboEngageSDK"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
