@@ -390,7 +390,7 @@ internal class DatabaseHandler:NSObject
                 ))
         }
         catch{
-            NSLog("error in saving credentials")
+            NSLog("error in saving request IDs \(error)")
         }
         
     }
@@ -404,7 +404,7 @@ internal class DatabaseHandler:NSObject
         let customerid = Expression<String>("customerid")
         
         do{
-             let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(teams.insert(kiboAppID<-appID,
+             let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(credentials.insert(kiboAppID<-appID,
             kiboAppSecret<-appSecret,
             kiboClientID<-appClientID,
             customerid<-customerID
@@ -414,7 +414,7 @@ internal class DatabaseHandler:NSObject
         ))
         }
         catch{
-            NSLog("error in saving credentials")
+            NSLog("error in saving credentials \(error)")
         }
         
     }

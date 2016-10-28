@@ -335,23 +335,31 @@ public class KiboSDK{
     */
     }
     
-    public func handleRemoteNotifications(userInfo:[NSObject : AnyObject],withController:UIViewController,appstate:UIApplicationState)
+    public func handleRemoteNotifications(userInfo:[NSObject : AnyObject],withController:UIViewController)
     {
+        
+        let systemSoundID: SystemSoundID = 1016
+        
+        // to play sound
+        AudioServicesPlaySystemSound (systemSoundID)
+        
+        
         print("inside kibo app received notification \(userInfo)")
-        print("receivednotification method called")
-        print("app state application is \(UIApplication.sharedApplication().applicationState.rawValue)")
-        print("app state is \(appstate.rawValue)")
-        print("app state value background is \(UIApplicationState.Background.rawValue)")
-        print("app state value inactive is \(UIApplicationState.Inactive.rawValue)")
-        print("app state value active is \(UIApplicationState.Active.rawValue)")
+       // print("receivednotification method called")
+       // print("app state application is \(UIApplication.sharedApplication().applicationState.rawValue)")
+       ///// print("app state is \(appstate.rawValue)")
+       // print("app state value background is \(UIApplicationState.Background.rawValue)")
+      //  print("app state value inactive is \(UIApplicationState.Inactive.rawValue)")
+     //   print("app state value active is \(UIApplicationState.Active.rawValue)")
         
        // print("uniqueid is \(userInfo["uniqueid"])")
        // print("request_id is \(userInfo["request_id"])")
         // print("data is \(userInfo["data"])")
         if  let data = userInfo["data"]{
           //  print("inside 1")
-            
+            print("inside data .. ")
             if  let agentid = userInfo["data"]!["agentid"] as? [String]{
+                print("inside got agentid")
                 //got agents info, save in database
                 var arrayOfAgentsIDs=userInfo["data"]!["agentid"] as! [String]
                 var arrayOfAgentsEmails=userInfo["data"]!["agentemail"] as! [String]
@@ -379,6 +387,7 @@ public class KiboSDK{
             else
             {
                 if  let status = userInfo["data"]!["status"] as? String!{
+                    print("inside got status")
                     
                     if(status != "" && status != nil)
                     {
@@ -458,23 +467,83 @@ public class KiboSDK{
                         fetchP
                     }*/
                 if  let title = userInfo["data"]!["title"] as? String!{
+                    print("inside got title bulk sms")
+                    
                      var uniqueid=userInfo["data"]!["uniqueid"] as? String
                     var title=userInfo["data"]!["title"] as? String
                     
                     //if app active
                     //fetch using uniqueid
                     
-                    if(appstate.rawValue == UIApplicationState.Active.rawValue)
-                    {
+                  //  if(appstate.rawValue == UIApplicationState.Active.rawValue)
+                   // {
                         let systemSoundID: SystemSoundID = 1334
                         
                         // to play sound
                         AudioServicesPlaySystemSound (systemSoundID)
-                    fetchSingleBulkSMS(uniqueid!)
-                    }
+                   
+                        
+                        //uncomment later
+                        ///////fetchSingleBulkSMS(uniqueid!)
+                  //  }
                     //else
                     //do partial sync
                     
+                }
+                else
+                {
+                    if  let sync = userInfo["data"]!["Obj"] as? String!{
+                        print("inside got sync push")
+                        /*
+                         _id : String
+                         msg_channel_name : String,
+                         msg_channel_description : String,
+                         companyid : String,
+                         groupid : String,
+                         createdby : {type: Schema.ObjectId, ref: 'Account'},
+                         creationdate : { type: Date, default: Date.now },
+                         activeStatus : { type: String, default: 'Yes' }
+                         },
+                         tablename : “Channels”,
+                         operation : “EditChannel” or “DeleteChannel” or “CreateChannel”,
+
+ 
+ */
+                        var obj=userInfo["data"]!["Obj"] as? [String:AnyObject]
+                        var operation=userInfo["data"]!["operation"] as? String
+                        if(operation == "CreateChannel")
+                        {
+                            var _id = obj!["_id"] as! String
+                            var msg_channel_name = obj!["msg_channel_name"] as! String
+                            var msg_channel_description = obj!["msg_channel_description"] as! String
+                            var companyid = obj!["companyid"] as! String
+                            var groupid = obj!["groupid"] as! String
+                            var createdby = obj!["createdby"] as! String
+                            var creationdate = obj!["creationdate"] as! String
+                            var deletestatus = obj!["activeStatus"] as! String
+
+                            DatabaseObjectInitialiser.getDB().storeMessageChannel(_id, channelname: msg_channel_name, channelDesc: msg_channel_description, compID: companyid, groupID: groupid, creeateby: createdby, datecreation: creationdate, delStatus: deletestatus)
+                            /*self.messageChannels = Table("messageChannels")
+                            
+                            do{
+                                try db.run(messageChannels
+                            }
+                            catch{
+                                
+                            }*/
+                            
+                        }
+                        if(operation == "DeleteChannel")
+                        {
+                        }
+                        if(operation == "EditChannel")
+                        {
+                        }
+                    }
+                    else
+                    {
+                    print("no payload matched")
+                    }
                 }
                 
             }
@@ -534,9 +603,9 @@ public class KiboSDK{
                 // to play sound
                 AudioServicesPlaySystemSound (systemSoundID)*/
                 
-                print(response.debugDescription)
-                print(response.data!)
-                print(response.result.value!)
+               // print(response.debugDescription)
+               // print(response.data!)
+               // print(response.result.value!)
                 print(";;;;;;;;;;;;")
                 var bulksms2=JSON(response.result.value!)
                 var bulksms=JSON(response.data!)
@@ -784,16 +853,17 @@ public class KiboSDK{
             if(response.response?.statusCode == 200)
             {
                 
-                let systemSoundID: SystemSoundID = 1016
+                //uncomment later moving up for testing
+            /*    let systemSoundID: SystemSoundID = 1016
                 
                 // to play sound
                 AudioServicesPlaySystemSound (systemSoundID)
                 
-              
+              */
                 print(";;;;;;;;;;;;")
                 var chatmsg2=JSON(response.result.value!)
                 var chatmsg=JSON(response.data!)
-                print("chat message sync is \(chatmsg)")
+              //  print("chat message sync is \(chatmsg)")
                 
                 print("chat message2 sync is \(chatmsg2)")
                                var agentid=""

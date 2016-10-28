@@ -15,15 +15,9 @@ internal class DatabaseObjectInitialiser
     var secretid=""
     var customerid=""
     var optionalDataList=[String:AnyObject]()
-    /*var companyname:String!
-    var companyemail:String!
-    var phone:String!
-    var account_number:String!
-    */
-    
-   //// var socketObj:SocketService!=nil
     var database:DatabaseHandler!
-    static let sharedInstance = DatabaseObjectInitialiser()
+    
+    
     class func getInstance() -> DatabaseObjectInitialiser
     {
        return sharedInstance
@@ -58,6 +52,21 @@ internal class DatabaseObjectInitialiser
         return randomString
     }
     
- private init() {}
-    
 }
+
+let sharedInstance = DatabaseObjectInitialiser()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

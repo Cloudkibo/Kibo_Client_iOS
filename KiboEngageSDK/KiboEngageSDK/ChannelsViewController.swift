@@ -189,8 +189,8 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         cell.lblChannelName.text=channelsList[indexPath.row]["msg_channel_name"] as! String
         if(!LastMessage.isEmpty)
         {
-        cell.lbl_description.text=LastMessage[indexPath.row]
-            cell.lblTime.text=lastMessageTimestamp[indexPath.row]
+      //  cell.lbl_description.text=LastMessage[indexPath.row]
+          //  cell.lblTime.text=lastMessageTimestamp[indexPath.row]
         }
         else{
             cell.lbl_description.text=channelsList[indexPath.row]["msg_channel_description"] as! String
