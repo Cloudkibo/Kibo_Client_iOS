@@ -184,6 +184,7 @@ public class ChatSessions
     
     public func createRequiredChatSessions(sessionInfoList:[[String:AnyObject]],completion:(result:Bool,error:String!)->())
     {
+        print("got session as \(sessionInfoList)")
         var customerInfoList=[String:AnyObject]()
         customerInfoList["customerID"]=DatabaseObjectInitialiser.getInstance().customerid
         for keyname in DatabaseObjectInitialiser.getInstance().optionalDataList.keys {
@@ -211,6 +212,8 @@ public class ChatSessions
         Alamofire.request(.POST,"\(url)",parameters: customerInfoList,headers:header,encoding: .JSON).response{
             request, response_, data, error in
             
+            print(response_?.description)
+            print(response_?.statusCode)
             if(response_?.statusCode==200)
             {
                 print("created sessions required")

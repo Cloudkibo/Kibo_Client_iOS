@@ -386,7 +386,7 @@ public class KiboSDK{
             }
             else
             {
-                if  let havestatus = userInfo["data"]!["status"]{
+                if  let havestatus = userInfo["data"]!["status"] as? String{
                     print("inside got status")
                     var status=userInfo["data"]!["status"] as! String
                     if(status != "")
@@ -492,7 +492,7 @@ public class KiboSDK{
                 }
                 else
                 {
-                    if  let sync = userInfo["data"]!["Obj"] as? String{
+                    if  let sync = userInfo["data"]!["obj"] as? [String:AnyObject]{
                         print("inside got sync push")
                         /*
                          _id : String
@@ -509,7 +509,7 @@ public class KiboSDK{
 
  
  */
-                        var obj=userInfo["data"]!["Obj"] as? [String:AnyObject]
+                        var obj=userInfo["data"]!["obj"] as? [String:AnyObject]
                         var operation=userInfo["data"]!["operation"] as? String
                         if(operation == "CreateChannel")
                         {
@@ -520,9 +520,23 @@ public class KiboSDK{
                             var groupid = obj!["groupid"] as! String
                             var createdby = obj!["createdby"] as! String
                             var creationdate = obj!["creationdate"] as! String
-                            var deletestatus = obj!["activeStatus"] as! String
+                            var deletestatus = "No"
 
                             DatabaseObjectInitialiser.getDB().storeMessageChannel(_id, channelname: msg_channel_name, channelDesc: msg_channel_description, compID: companyid, groupID: groupid, creeateby: createdby, datecreation: creationdate, delStatus: deletestatus)
+                            
+                            //create sessions
+                            self.createNewSession(groupid,channelid1: _id,completion: {(result,error) in
+                            if(result==true)
+                            {
+                            print("session created successfully")
+                            }
+                            else{
+                                print("error:session creation failed")
+                                
+                                }
+                            })
+                      
+                            
                             /*self.messageChannels = Table("messageChannels")
                             
                             do{
@@ -538,6 +552,9 @@ public class KiboSDK{
                             var _id = obj!["_id"] as! String
 
                             DatabaseObjectInitialiser.getDB().deleteMessageChannel(_id)
+                            DatabaseObjectInitialiser.getDB().deleteSession(_id)
+                            DatabaseObjectInitialiser.getDB().deleteChat(_id)
+                            
                         }
                         if(operation == "EditChannel")
                         {
@@ -546,11 +563,11 @@ public class KiboSDK{
                             var msg_channel_description = obj!["msg_channel_description"] as! String
                             var companyid = obj!["companyid"] as! String
                             var groupid = obj!["groupid"] as! String
-                            var createdby = obj!["createdby"] as! String
-                            var creationdate = obj!["creationdate"] as! String
-                            var deletestatus = obj!["activeStatus"] as! String
+                            //var createdby = obj!["createdby"] as! String
+                          //  var creationdate = obj!["creationdate"] as! String
+                           // var deletestatus = obj!["activeStatus"] as! String
                             
-                            DatabaseObjectInitialiser.getDB().updateMessageChannels(_id, channelname: msg_channel_name, channelDesc: msg_channel_description, compID: companyid, groupID: groupid, creeateby: createdby, datecreation: creationdate, delStatus: deletestatus)
+                            DatabaseObjectInitialiser.getDB().updateMessageChannels(_id, channelname: msg_channel_name, channelDesc: msg_channel_description)
 
                         }
                     }
@@ -572,6 +589,42 @@ public class KiboSDK{
         }
     }
     
+    func createNewSession(groupid1:String,channelid1:String,completion:(result:Bool,error:String!)->())
+    {
+        //generate unique req id and save
+        DatabaseObjectInitialiser.getDB().storeRequestIDs(groupid1, msgchannelid:channelid1)
+        
+       
+        //now create session API call
+        var sessionInfoList=[[String:AnyObject]]()
+        var requestIDnew=DatabaseObjectInitialiser.getDB().getSingleRequestIDs(groupid1,messagechannel_id: channelid1)
+      
+        print("generated request id new is \(requestIDnew)")
+        sessionInfoList.append(["departmentid":groupid1,"messagechannel":channelid1,"request_id":requestIDnew])
+        var chatsessions=ChatSessions.init()
+        
+        if(sessionInfoList.count>0)
+        {
+            print("sessionInfoList count is \(sessionInfoList.count)")
+            chatsessions.createRequiredChatSessions(sessionInfoList, completion: { (result, error) in
+                
+                if(result==true)
+                {
+                    completion(result: true, error: nil)
+                }
+                else{
+                    completion(result: false, error: error)
+                }
+            })
+        }
+        else{
+            completion(result: true, error: nil)
+        }
+
+        
+        
+
+    }
     
     func fetchSingleBulkSMS(id:String)
     {

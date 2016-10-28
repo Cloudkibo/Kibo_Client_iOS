@@ -125,7 +125,7 @@ internal class DatabaseHandler:NSObject
          let msg = Expression<String>("msg")
          let datetime = Expression<NSDate>("datetime")
          let request_id = Expression<String>("request_id")
-         let messagechannel = Expression<String>("messagechannel")
+         let messagechannel = Expression<String>("messagechannel") //id
          let companyid = Expression<String>("companyid")
          let is_seen = Expression<String>("is_seen")
          //let time = Expression<String>("time")
@@ -1093,7 +1093,7 @@ internal class DatabaseHandler:NSObject
             
         }
     }
-    func updateMessageChannels(channelid:String,channelname:String,channelDesc:String,compID:String,groupID:String,creeateby:String,datecreation:String,delStatus:String)
+    func updateMessageChannels(channelid:String,channelname:String,channelDesc:String)
     {
         
         let _id = Expression<String>("_id")
@@ -1105,10 +1105,11 @@ internal class DatabaseHandler:NSObject
         let creationdate = Expression<String>("creationdate")
         let deleteStatus = Expression<String>("deleteStatus")
         
+        
         self.messageChannels = Table("messageChannels")
         
         do{
-            try db.run(messageChannels.filter(_id==channelid).update([_id<-channelid,msg_channel_name<-channelname,msg_channel_description<-channelDesc,companyid<-compID,groupid<-groupID,createdby<-creeateby,creationdate<-datecreation,deleteStatus<-delStatus]))
+            try db.run(messageChannels.filter(_id==channelid).update([_id<-channelid,msg_channel_name<-channelname,msg_channel_description<-channelDesc]))
         }
         catch{
             print("cannot update channel")
@@ -1142,5 +1143,42 @@ internal class DatabaseHandler:NSObject
         }
     }
     
+    func deleteSession(channelid:String)
+    {
+        let primeID=Expression<String>("primeID")
+        let team_id = Expression<String>("team_id")
+        let msg_channel_id = Expression<String>("msg_channel_id")
+        let request_id = Expression<String>("request_id")
+        let agent_email = Expression<String>("agent_email")
+        
+        let agent_id = Expression<String>("agent_id")
+        
+        let agent_name = Expression<String>("agent_name")
+        
+        
+        self.requestIDsTable = Table("requestIDsTable")
+        do{
+            try db.run(requestIDsTable.filter(msg_channel_id==channelid).delete())
+        }
+        catch{
+            print("cannot delete session")
+            
+        }
+        
+    }
+    
+    func deleteChat(channelid:String)
+    {
+        let messagechannel = Expression<String>("messagechannel") //id
+        self.userschats = Table("userschats")
+        do{
+            try db.run(userschats.filter(messagechannel==channelid).delete())
+        }
+        catch{
+            print("cannot delete session")
+            
+        }
+        
+    }
     }
 
