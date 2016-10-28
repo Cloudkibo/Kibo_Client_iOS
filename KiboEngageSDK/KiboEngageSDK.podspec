@@ -81,7 +81,7 @@ Pod::Spec.new do |s|
   #
 
   #s.source       = { :git => "http://EXAMPLE/KiboEngageSDK.git", :tag => "#{s.version}" }
-  s.source       = { :git => "https://github.com/Cloudkibo/Kibo_Client_iOS.git", :tag => "{s.version}" }
+  s.source       = { :git => "https://github.com/Cloudkibo/Kibo_Client_iOS/KiboEngageSDK", :tag => "{s.version}" }
   #https://github.com/Cloudkibo/Kibo_Client_iOS/tree/master/KiboEngageSDK
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -93,7 +93,7 @@ Pod::Spec.new do |s|
   #
 
 
-  #s.source_files  = "KiboEngageSDK/KiboEngageSDK", "KiboEngageSDK/KiboEngageSDK/**/*.{h,m,swift}"
+  s.source_files  = "KiboEngageSDK", "KiboEngageSDK/**/*.{h,m,swift}"
   #s.source_files  = "Classes", "Classes/**/*.{h,m}"
 # s.exclude_files = "Classes/Exclude"
 
@@ -108,7 +108,7 @@ Pod::Spec.new do |s|
   #  non-essential files like tests, examples and documentation.
   #
 
-spec.resources = ['KiboEngageSDK/Images.xcassets/*', 'KiboEngageSDK/SDKstoryboard.storyboard' , 'KiboEngageSDK/arrow.png']
+spec.resources = ['Images.xcassets/*', 'SDKstoryboard.storyboard' , 'arrow.png']
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
 #Images.xcassets/
