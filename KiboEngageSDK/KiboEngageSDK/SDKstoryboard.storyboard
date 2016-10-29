@@ -485,7 +485,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" red="0.0" green="0.7254902124" blue="0.41176474089999998" alpha="1" colorSpace="deviceRGB"/>
                                 <items>
-                                    <navigationItem title="Bulk SMS Notifications" id="gCF-Ie-Gbl"/>
+                                    <navigationItem title="Bulk SMS" id="gCF-Ie-Gbl">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Fd5-gd-vjC"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="npu-Dz-auc">
