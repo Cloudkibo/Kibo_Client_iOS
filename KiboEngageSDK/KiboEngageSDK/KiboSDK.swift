@@ -529,6 +529,7 @@ public class KiboSDK{
                             if(result==true)
                             {
                             print("session created successfully")
+                                Delegates.getInstance().UpdateChannelsDetailsDelegateCall()
                             }
                             else{
                                 print("error:session creation failed")
@@ -555,6 +556,8 @@ public class KiboSDK{
                             DatabaseObjectInitialiser.getDB().deleteSession(_id)
                             DatabaseObjectInitialiser.getDB().deleteChat(_id)
                             
+                               Delegates.getInstance().UpdateChannelsDetailsDelegateCall()
+                            
                         }
                         if(operation == "EditChannel")
                         {
@@ -569,6 +572,7 @@ public class KiboSDK{
                             
                             DatabaseObjectInitialiser.getDB().updateMessageChannels(_id, channelname: msg_channel_name, channelDesc: msg_channel_description)
 
+                               Delegates.getInstance().UpdateChannelsDetailsDelegateCall()
                         }
                         
                         //“DeleteTeam” or “EditTeam” or “CreateTeam”,
@@ -587,12 +591,13 @@ public class KiboSDK{
                                 DatabaseObjectInitialiser.getDB().deleteChat(channelid)
                                 DatabaseObjectInitialiser.getDB().deleteSession(channelid)
                                 DatabaseObjectInitialiser.getDB().deleteMessageChannel(channelid)
-                             
+                             Delegates.getInstance().UpdateTeamsDetailsDelegate()
                                 
                             }
                             
                             //delete team
                             DatabaseObjectInitialiser.getDB().deleteTeam(_id)
+                            Delegates.getInstance().UpdateTeamsDetailsDelegate()
 
                         }
                         if(operation == "EditTeam")
@@ -602,6 +607,7 @@ public class KiboSDK{
                             var deptdescription=obj!["deptdescription"] as! String
 
                             DatabaseObjectInitialiser.getDB().updateTeam(_id, teamname1: deptname, teamDesc1: deptdescription)
+                            Delegates.getInstance().UpdateTeamsDetailsDelegate()
                         }
                         
                         if(operation == "CreateTeam")
@@ -626,6 +632,7 @@ public class KiboSDK{
                             var deletestatus = "No"
                             
                             DatabaseObjectInitialiser.getDB().storeTeams(_id, deptname1: deptname, deptDesc: deptdescription, compID: companyid, creeateby: createdby, datecreation: creationdate, delStatus: deletestatus)
+                            Delegates.getInstance().UpdateTeamsDetailsDelegate()
                         }
                     }
                     else

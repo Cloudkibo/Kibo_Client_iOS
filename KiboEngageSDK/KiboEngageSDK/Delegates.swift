@@ -12,6 +12,8 @@ import Foundation
 internal class Delegates
 {
     var delegateChatDetails1:UpdateChatDetailsDelegate!
+    var delegateChannelsDetails1:UpdateChannelsDetailsDelegate!
+    var delegateTeamsDetails1:UpdateTeamsDetailsDelegate!
     static let sharedInstance = Delegates()
     
     class func getInstance() -> Delegates
@@ -30,9 +32,31 @@ internal class Delegates
             delegateChatDetails1?.refreshChatsUI("updateUI", data: nil)
         }
     }
+    func UpdateChannelsDetailsDelegateCall()
+    {
+        if(delegateChannelsDetails1 != nil)
+        {
+            delegateChannelsDetails1?.refreshChannelsUI("updateUI", data: nil)
+        }
+    }
+    func UpdateTeamsDetailsDelegate()
+    {
+        if(delegateTeamsDetails1 != nil)
+        {
+            delegateTeamsDetails1?.refreshTeamsUI("updateUI", data: nil)
+        }
+    }
     
 }
 protocol UpdateChatDetailsDelegate:class
 {
     func refreshChatsUI(message:String,data:AnyObject!);
+}
+protocol UpdateChannelsDetailsDelegate:class
+{
+    func refreshChannelsUI(message:String,data:AnyObject!);
+}
+protocol UpdateTeamsDetailsDelegate:class
+{
+    func refreshTeamsUI(message:String,data:AnyObject!);
 }

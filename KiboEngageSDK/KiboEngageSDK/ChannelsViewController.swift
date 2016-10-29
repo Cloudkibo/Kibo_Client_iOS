@@ -10,8 +10,9 @@ import UIKit
 import SQLite
 import SwiftyJSON
 
-class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UpdateChannelsDetailsDelegate {
 
+    var delegateChannels:UpdateChannelsDetailsDelegate!
     
     
     var teamName:String!
@@ -44,6 +45,8 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let status = Expression<String>("status") //pending,sent,delivered,seen
         let customername = Expression<String>("customername") //pending,sent,delivered,seen
 
+        
+         Delegates.getInstance().delegateChannelsDetails1=self
        LastMessage.removeAll()
        lastMessageTimestamp.removeAll()
         
@@ -276,7 +279,13 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
             }}
     }
 
-    
+    func refreshChannelsUI(message: String, data: AnyObject!) {
+        
+        dispatch_async(dispatch_get_main_queue())
+        {
+            self.tbl_channels.reloadData()
+        }
+    }
     
     
     /*
