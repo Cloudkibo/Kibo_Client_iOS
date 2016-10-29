@@ -1071,6 +1071,22 @@ internal class DatabaseHandler:NSObject
         
         return bulksmsList
     }
+    
+    func deleteTeam(_id1:String)
+    {
+        
+        let _id = Expression<String>("_id")
+
+        self.teams = Table("teams")
+        
+        do{
+            try db.run(teams.filter(_id==_id1).delete())
+        }
+        catch{
+            print("cannot delete team")
+            
+        }
+    }
   
     func deleteMessageChannel(id:String)
     {
@@ -1110,6 +1126,23 @@ internal class DatabaseHandler:NSObject
         
         do{
             try db.run(messageChannels.filter(_id==channelid).update([_id<-channelid,msg_channel_name<-channelname,msg_channel_description<-channelDesc]))
+        }
+        catch{
+            print("cannot update channel")
+            
+        }
+    }
+    
+    func updateTeam(teamid1:String,teamname1:String,teamDesc1:String)
+    {
+        
+        let _id = Expression<String>("_id")
+        let deptname = Expression<String>("deptname")
+        let deptdescription = Expression<String>("deptdescription")
+        self.teams = Table("teams")
+        
+        do{
+            try db.run(teams.filter(_id==teamid1).update([_id<-teamid1,deptname<-teamname1,deptdescription<-teamDesc1]))
         }
         catch{
             print("cannot update channel")

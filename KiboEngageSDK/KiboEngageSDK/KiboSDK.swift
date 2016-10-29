@@ -570,6 +570,63 @@ public class KiboSDK{
                             DatabaseObjectInitialiser.getDB().updateMessageChannels(_id, channelname: msg_channel_name, channelDesc: msg_channel_description)
 
                         }
+                        
+                        //“DeleteTeam” or “EditTeam” or “CreateTeam”,
+                        if(operation == "DeleteTeam")
+                        {
+                            var _id = obj!["_id"] as! String
+                            var deptname=obj!["deptname"] as! String
+                            var deptdescription=obj!["deptdescription"] as! String
+                            
+                            var channelsObjectList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(_id)
+                            
+                            //Delete all channels of group
+                            for(var i=0;i<channelsObjectList.count;i++)
+                            {
+                                var channelid=channelsObjectList[i]["_id"] as! String
+                                DatabaseObjectInitialiser.getDB().deleteChat(channelid)
+                                DatabaseObjectInitialiser.getDB().deleteSession(channelid)
+                                DatabaseObjectInitialiser.getDB().deleteMessageChannel(channelid)
+                             
+                                
+                            }
+                            
+                            //delete team
+                            DatabaseObjectInitialiser.getDB().deleteTeam(_id)
+
+                        }
+                        if(operation == "EditTeam")
+                        {
+                            var _id = obj!["_id"] as! String
+                            var deptname=obj!["deptname"] as! String
+                            var deptdescription=obj!["deptdescription"] as! String
+
+                            DatabaseObjectInitialiser.getDB().updateTeam(_id, teamname1: deptname, teamDesc1: deptdescription)
+                        }
+                        
+                        if(operation == "CreateTeam")
+                        {
+                            
+                            
+                            
+                            let _id = obj!["_id"] as! String
+                            let deptname = obj!["deptname"] as! String
+                            let deptdescription = obj!["deptdescription"] as! String
+                            let companyid = obj!["companyid"] as! String
+                            let createdby = obj!["createdby"] as! String
+                            let creationdate = obj!["creationdate"] as! String
+                            
+                           /* let dateFormatter = NSDateFormatter()
+                            dateFormatter.timeZone=NSTimeZone.localTimeZone()
+                            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                            //  let datens2 = dateFormatter.dateFromString(date2.debugDescription)
+                            //2016-09-18T19:13:00.588Z
+                            let datens2 = dateFormatter.dateFromString(creationdate)
+                            */
+                            var deletestatus = "No"
+                            
+                            DatabaseObjectInitialiser.getDB().storeTeams(_id, deptname1: deptname, deptDesc: deptdescription, compID: companyid, creeateby: createdby, datecreation: creationdate, delStatus: deletestatus)
+                        }
                     }
                     else
                     {
@@ -679,7 +736,7 @@ public class KiboSDK{
                 print("bulk sms message fetched is \(bulksms)")
                 
                 print("bulk sms2 fetched is \(bulksms2)")
-                                let dateFormatter = NSDateFormatter()
+                let dateFormatter = NSDateFormatter()
                 dateFormatter.timeZone=NSTimeZone.localTimeZone()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 //  let datens2 = dateFormatter.dateFromString(date2.debugDescription)
