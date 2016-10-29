@@ -17,7 +17,8 @@ import AVFoundation
 public class KiboSDK{
     
     
-    var delegateChatDetails1:UpdateChatDetailsDelegate!
+  //  var delegateChatDetails1:UpdateChatDetailsDelegate!
+//    var delegateteamsdetails:UpdateTeamsDetailsDelegate!
   //  var kiboAppID=""
    // var kiboAppSecret=""
    // var kiboClientID=""
@@ -42,7 +43,7 @@ public class KiboSDK{
         
      //   var aaa:SBNotificationHub!
        
-        DatabaseObjectInitialiser.getDB()
+        //DatabaseObjectInitialiser.getDB()
         
         /*if(DatabaseObjectInitialiser.getInstance().socketObj == nil)
         {
@@ -68,7 +69,7 @@ public class KiboSDK{
         
         self.presentViewController(next, animated: true, completion: {
        */
-        DatabaseObjectInitialiser.getInstance().database.storeCredentials(appID,appSecret:appSecret,appClientID:clientID,customerID:customerid)
+        DatabaseObjectInitialiser.getDB().storeCredentials(appID,appSecret:appSecret,appClientID:clientID,customerID:customerid)
         DatabaseObjectInitialiser.getInstance().appid=appID
         DatabaseObjectInitialiser.getInstance().secretid=appSecret
         DatabaseObjectInitialiser.getInstance().clientid=clientID
@@ -591,13 +592,13 @@ public class KiboSDK{
                                 DatabaseObjectInitialiser.getDB().deleteChat(channelid)
                                 DatabaseObjectInitialiser.getDB().deleteSession(channelid)
                                 DatabaseObjectInitialiser.getDB().deleteMessageChannel(channelid)
-                             Delegates.getInstance().UpdateTeamsDetailsDelegate()
+                             Delegates.getInstance().UpdateTeamsDetailsDelegateCall()
                                 
                             }
                             
                             //delete team
                             DatabaseObjectInitialiser.getDB().deleteTeam(_id)
-                            Delegates.getInstance().UpdateTeamsDetailsDelegate()
+                          //  Delegates.getInstance().UpdateTeamsDetailsDelegate()
 
                         }
                         if(operation == "EditTeam")
@@ -607,7 +608,7 @@ public class KiboSDK{
                             var deptdescription=obj!["deptdescription"] as! String
 
                             DatabaseObjectInitialiser.getDB().updateTeam(_id, teamname1: deptname, teamDesc1: deptdescription)
-                            Delegates.getInstance().UpdateTeamsDetailsDelegate()
+                            Delegates.getInstance().UpdateTeamsDetailsDelegateCall()
                         }
                         
                         if(operation == "CreateTeam")
@@ -632,7 +633,7 @@ public class KiboSDK{
                             var deletestatus = "No"
                             
                             DatabaseObjectInitialiser.getDB().storeTeams(_id, deptname1: deptname, deptDesc: deptdescription, compID: companyid, creeateby: createdby, datecreation: creationdate, delStatus: deletestatus)
-                            Delegates.getInstance().UpdateTeamsDetailsDelegate()
+                            Delegates.getInstance().UpdateTeamsDetailsDelegateCall()
                         }
                     }
                     else

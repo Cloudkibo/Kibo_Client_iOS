@@ -14,6 +14,9 @@ internal class Delegates
     var delegateChatDetails1:UpdateChatDetailsDelegate!
     var delegateChannelsDetails1:UpdateChannelsDetailsDelegate!
     var delegateTeamsDetails1:UpdateTeamsDetailsDelegate!
+
+   // var delegateTeamsDetails1:UpdateTeamsDetailsDelegate!
+  
     static let sharedInstance = Delegates()
     
     class func getInstance() -> Delegates
@@ -39,7 +42,7 @@ internal class Delegates
             delegateChannelsDetails1?.refreshChannelsUI("updateUI", data: nil)
         }
     }
-    func UpdateTeamsDetailsDelegate()
+    func UpdateTeamsDetailsDelegateCall()
     {
         if(delegateTeamsDetails1 != nil)
         {

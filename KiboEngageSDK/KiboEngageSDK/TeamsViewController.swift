@@ -8,9 +8,9 @@
 
 import UIKit
 import SQLite
-public class TeamsViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource {
+public class TeamsViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource,UpdateTeamsDetailsDelegate {
 
-    
+    var delegateTeams:UpdateTeamsDetailsDelegate!
     var TeamsObjectList=[[String:AnyObject]]()
     //var GroupNamesList=[String]()
     
@@ -51,6 +51,16 @@ public class TeamsViewController: UIViewController,UICollectionViewDelegate, UIC
         TeamsObjectList=DatabaseObjectInitialiser.getDB().getTeamsObjectList()
 
         // Do any additional setup after loading the view.
+    }
+    public override func viewWillAppear(animated: Bool) {
+        
+        Delegates.sharedInstance.delegateTeamsDetails1=self
+    }
+    
+    func refreshTeamsUI(message: String, data: AnyObject!) {
+        
+        TeamsObjectList=DatabaseObjectInitialiser.getDB().getTeamsObjectList()
+        collectionViewTeams.reloadData()
     }
 
     override public func didReceiveMemoryWarning() {

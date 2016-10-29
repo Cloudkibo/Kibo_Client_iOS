@@ -27,7 +27,9 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var lastMessageTimestamp=[String]()
     
     
-    override func viewWillAppear(animated: Bool) {
+    func retrieveChannels()
+    {
+        
         
         let to = Expression<String>("to")// agent email or customer id if agent is sender
         let from = Expression<String>("from") //customer id or name
@@ -40,15 +42,13 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         let messagechannel = Expression<String>("messagechannel")
         let companyid = Expression<String>("companyid")
         let is_seen = Expression<String>("is_seen")
-       // let time = Expression<String>("time")
+        // let time = Expression<String>("time")
         let fromMobile = Expression<String>("fromMobile")
         let status = Expression<String>("status") //pending,sent,delivered,seen
         let customername = Expression<String>("customername") //pending,sent,delivered,seen
 
-        
-         Delegates.getInstance().delegateChannelsDetails1=self
-       LastMessage.removeAll()
-       lastMessageTimestamp.removeAll()
+        LastMessage.removeAll()
+        lastMessageTimestamp.removeAll()
         
         channelsTitleNavItem.title=teamName
         channelsList=DatabaseObjectInitialiser.getDB().getMessageChannelsObjectList(deptid)
@@ -70,13 +70,13 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 
                 
                 /*var formatter2 = NSDateFormatter();
-                formatter2.dateFormat = "MM/dd, HH:mm"
-                formatter2.timeZone = NSTimeZone.localTimeZone()
-                ///////////////==========var defaultTimeeee = formatter2.stringFromDate(defaultTimeZoneStr!)
-                var defaultTimeeee = formatter2.stringFromDate(ccclastmsg[datetime] as! NSDate)
-                
-                
-                */
+                 formatter2.dateFormat = "MM/dd, HH:mm"
+                 formatter2.timeZone = NSTimeZone.localTimeZone()
+                 ///////////////==========var defaultTimeeee = formatter2.stringFromDate(defaultTimeZoneStr!)
+                 var defaultTimeeee = formatter2.stringFromDate(ccclastmsg[datetime] as! NSDate)
+                 
+                 
+                 */
                 
                 
                 var formatter2 = NSDateFormatter();
@@ -92,9 +92,16 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
             catch{
                 print("errorrr")
             }
- 
+            
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         
+        
+         Delegates.getInstance().delegateChannelsDetails1=self
+       
+        retrieveChannels()
         tbl_channels.reloadData()
             }
     @IBAction func backbtnPressed(sender: AnyObject) {
@@ -281,6 +288,7 @@ class ChannelsViewController: UIViewController,UITableViewDelegate,UITableViewDa
 
     func refreshChannelsUI(message: String, data: AnyObject!) {
         
+        retrieveChannels()
         dispatch_async(dispatch_get_main_queue())
         {
             self.tbl_channels.reloadData()
