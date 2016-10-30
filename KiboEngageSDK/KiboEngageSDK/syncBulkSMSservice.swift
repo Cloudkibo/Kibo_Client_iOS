@@ -130,9 +130,13 @@ public class syncBulkSMSservice{
             
             Alamofire.request(.POST,"\(url)",parameters: ["customerid":DatabaseObjectInitialiser.getInstance().customerid,"companyid":DatabaseObjectInitialiser.getInstance().clientid],headers:header,encoding: .JSON).validate().responseJSON { response in
                 //request, response_, data, error in
-                
+                print(response)
+                print("single bulk")
                 if(response.response!.statusCode==200 || response.response!.statusCode==201)
                 {
+                    print(response.result.value)
+                    print(";;;")
+                    print(response.data)
                 }
             }
         

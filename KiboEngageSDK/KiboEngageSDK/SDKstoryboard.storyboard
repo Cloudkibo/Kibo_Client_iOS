@@ -486,7 +486,11 @@
                                 <color key="barTintColor" red="0.0" green="0.7254902124" blue="0.41176474089999998" alpha="1" colorSpace="deviceRGB"/>
                                 <items>
                                     <navigationItem title="Bulk SMS" id="gCF-Ie-Gbl">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Fd5-gd-vjC"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Fd5-gd-vjC">
+                                            <connections>
+                                                <action selector="backbtnPressed:" destination="ewX-xu-bSw" id="Yhn-Gj-EJh"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

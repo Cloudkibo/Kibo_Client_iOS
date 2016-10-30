@@ -454,6 +454,69 @@ public class KiboSDK{
              syncPartialChat(DatabaseObjectInitialiser.getInstance().clientid, customerid: DatabaseObjectInitialiser.getInstance().customerid)
              ///fetchSingleMessage(singleuniqueid,request_id: requestid)
              }
+             else{
+                //bulksms
+                if  let title = userInfo["data"]!["title"] as? String{
+                    print("inside got title bulk sms")
+                    
+                    var uniqueid=userInfo["data"]!["uniqueid"] as? String
+                    
+                    var bool_fetch=userInfo["data"]!["bool_fetch"] as? String
+                    if(bool_fetch! == "false")
+                    {
+                        var title=userInfo["data"]!["title"] as? String
+                        //  companyid = cd89f71715f2014725163952;
+                        
+                        var datetime = userInfo["data"]!["datetime"] as? String
+                        
+                        var description = userInfo["data"]!["description"] as? String
+                        
+                        var hasImage = userInfo["data"]!["hasImage"] as? String
+                        var imgurl=""
+                        if(hasImage == "true")
+                        {
+                            imgurl = (userInfo["data"]!["imgurl"] as? String)!
+                            
+                        }
+                        let dateFormatter = NSDateFormatter()
+                        dateFormatter.timeZone=NSTimeZone.localTimeZone()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                        //  let datens2 = dateFormatter.dateFromString(date2.debugDescription)
+                        //2016-09-18T19:13:00.588Z
+                        let datens2 = dateFormatter.dateFromString(datetime!)
+                        
+                        
+                        var compid=DatabaseObjectInitialiser.getInstance().clientid
+                        
+                        var agent_id=userInfo["data"]!["agent_id"] as? String
+                        
+                        DatabaseObjectInitialiser.getDB().storeBulkSMS(title!, description1: description!, agent_id1: agent_id!, hasImage1: hasImage!, image_url1: imgurl, companyid1: compid, datetime1: datens2!)
+                    }
+                    else{
+                        fetchSingleBulkSMS(uniqueid!)
+                        
+                        
+                    }
+                    
+                    //if app active
+                    //fetch using uniqueid
+                    
+                    //  if(appstate.rawValue == UIApplicationState.Active.rawValue)
+                    // {
+                    let systemSoundID: SystemSoundID = 1334
+                    
+                    // to play sound
+                    AudioServicesPlaySystemSound (systemSoundID)
+                    
+                    
+                    //uncomment later
+                    ///////fetchSingleBulkSMS(uniqueid!)
+                    //  }
+                    //else
+                    //do partial sync
+                    
+                }
+                }
              }
  
             //
@@ -467,32 +530,9 @@ public class KiboSDK{
                         var uniqueid=userInfo["data"]!["uniqueid"] as? String
                         fetchP
                     }*/
-                if  let title = userInfo["data"]!["title"] as? String{
-                    print("inside got title bulk sms")
-                    
-                     var uniqueid=userInfo["data"]!["uniqueid"] as? String
-                    var title=userInfo["data"]!["title"] as? String
-                    
-                    //if app active
-                    //fetch using uniqueid
-                    
-                  //  if(appstate.rawValue == UIApplicationState.Active.rawValue)
-                   // {
-                        let systemSoundID: SystemSoundID = 1334
-                        
-                        // to play sound
-                        AudioServicesPlaySystemSound (systemSoundID)
-                   
-                        
-                        //uncomment later
-                        ///////fetchSingleBulkSMS(uniqueid!)
-                  //  }
-                    //else
-                    //do partial sync
-                    
-                }
-                else
-                {
+        
+                //else
+              //  {
                     if  let sync = userInfo["data"]!["obj"] as? [String:AnyObject]{
                         print("inside got sync push")
                         /*
@@ -640,7 +680,7 @@ public class KiboSDK{
                     {
                     print("no payload matched")
                     }
-                }
+                ////}
                 
             }
             
@@ -726,6 +766,9 @@ public class KiboSDK{
              
              
              */
+            
+            print(response.description)
+            print(response.result.debugDescription)
             print("fetching single bulk sms message")
             if(response.response?.statusCode == 200)
             {
@@ -760,7 +803,7 @@ public class KiboSDK{
                 //UPDATE UI
                 
                 
-                Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                ///Delegates.getInstance().UpdateChatDetailsDelegateCall()
                 /*  if(delegateChatDetails1 ! nil)
                  {
                  delegateChatDetails1?.refreshChatsUI("updateUI", data: nil)

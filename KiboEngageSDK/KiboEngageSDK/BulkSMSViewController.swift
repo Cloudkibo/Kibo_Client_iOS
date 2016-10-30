@@ -27,6 +27,14 @@ class BulkSMSViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func backbtnPressed(sender: AnyObject) {
+    
+    self.dismissViewControllerAnimated(true) { 
+        
+        
+        }
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         var sizeOFStr=CGSize()
