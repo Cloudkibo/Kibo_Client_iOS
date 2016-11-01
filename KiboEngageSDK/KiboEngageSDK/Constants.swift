@@ -24,7 +24,9 @@ internal class Constants
     static var syncChat="/api/userchats/sync"
     static var partialSyncChat="/api/userchats/partialChatSync"
     static var updateStatus="/api/userchats/updateStatus"
-    static var getBulkSMSurl="/api/notifications/fetchbulksms"
+    static var getBulkSMSurl="/api/notifications/getbulksms" //single
+   // /getbulksms/ companyid uniqueid
     static var getAllBulkSMSListURL="/api/notifications/"
+    static var uploadFileKiboEngage="http://kiboengage.cloudapp.net/api/uploadchatfile"
    
 }

@@ -22,7 +22,10 @@ internal class DatabaseHandler:NSObject
     var userschats:Table!
     var requestIDsTable:Table!
     var bulkSMStable:Table!
+    var files:Table!
+    
     init(dbName:String)
+        
     {print("inside database handler class")
         
         
@@ -1213,5 +1216,70 @@ internal class DatabaseHandler:NSObject
         }
         
     }
+    
+    func createFileTable(){
+     
+        let to = Expression<String>("to")
+        let from = Expression<String>("from")
+        let date = Expression<NSDate>("date")
+        let uniqueid = Expression<String>("uniqueid")
+        let contactPhone = Expression<String>("contactPhone")
+        let type = Expression<String>("type")  //image or document
+        let file_name = Expression<String>("file_name")
+        let file_size = Expression<String>("file_size")
+        let file_type = Expression<String>("file_type")
+        let file_path = Expression<String>("file_path")
+        let request_id = Expression<String>("request_id")
+        
+        
+        // let dateFormatter = NSDateFormatter()
+        // dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        // dateFormatter.
+        //let datens2 = dateFormatter.dateFromString(NSDate().debugDescription)
+        //print("defaultDate is \(datens2)")
+        self.files = Table("files")
+        
+        /*var date22=NSDate()
+         var formatter = NSDateFormatter();
+         //formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ";
+         formatter.dateFormat = "MM/dd, HH:mm";
+         formatter.timeZone = NSTimeZone.localTimeZone()
+         //formatter.dateStyle = .ShortStyle
+         //formatter.timeStyle = .ShortStyle
+         let defaultTimeZoneStr = formatter.stringFromDate(date22);*/
+        /*var date22=NSDate()
+        var formatter = NSDateFormatter();
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+        //formatter.dateFormat = "MM/dd, HH:mm";
+        formatter.timeZone = NSTimeZone.localTimeZone()
+        //formatter.dateStyle = .ShortStyle
+        //formatter.timeStyle = .ShortStyle
+        let defaultTimeZoneStr2 = formatter.stringFromDate(date22);
+        var defaultTimeZoneStr = formatter.dateFromString(defaultTimeZoneStr2)
+        */
+        do{
+            try db.run(files.create(ifNotExists: true) { t in
+                t.column(to)
+                t.column(from)
+                t.column(contactPhone)
+                t.column(date)
+                t.column(uniqueid)
+                t.column(request_id)
+                t.column(type, defaultValue:"")
+                t.column(file_name, defaultValue:"")
+                t.column(file_size, defaultValue:"")
+                t.column(file_type, defaultValue:"")
+                t.column(file_path, defaultValue:"")
+                
+                })
+            
+        }
+        catch(let error)
+        {
+            print("error in creating files table \(error)")
+        }
+      
+    }
+    
     }
 

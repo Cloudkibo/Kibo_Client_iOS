@@ -744,7 +744,7 @@ public class KiboSDK{
         var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
         ///var hhh=["headers":"\(header)"]
         print("headers are \(header.description)")
-        Alamofire.request(.POST,"\(url)",parameters:["id":id],headers:header).validate().responseJSON { response in
+        Alamofire.request(.POST,"\(url)",parameters:["uniqueid":id,"companyid":DatabaseObjectInitialiser.getInstance().clientid],headers:header).validate().responseJSON { response in
             
             /* print(response)
              print(".......")
