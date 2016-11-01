@@ -10,6 +10,9 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import AssetsLibrary
+import Photos
+
 public class ChatsDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UpdateChatDetailsDelegate {
     
     
@@ -677,5 +680,437 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         })
         
     }
+    
+    
+    @IBAction func btnFileSharePressed(sender: AnyObject) {
+        
+        
+        let shareMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        shareMenu.modalPresentationStyle=UIModalPresentationStyle.OverCurrentContext
+        let photoAction = UIAlertAction(title: "Photo/Video Library", style: UIAlertActionStyle.Default,handler: { (action) -> Void in
+            
+            var picker=UIImagePickerController.init()
+            picker.delegate=self
+            
+            picker.allowsEditing = true;
+            //picker.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+            // if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary))
+            //  {
+            
+            //savedPhotosAlbum
+            // picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            //}
+            picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            ////picker.mediaTypes=[kUTTypeMovie as NSString as String,kUTTypeMovie as NSString as String]
+            //[self presentViewController:picker animated:YES completion:NULL];
+            dispatch_async(dispatch_get_main_queue())
+            { () -> Void in
+                //  picker.addChildViewController(UILabel("hiiiiiiiiiiiii"))
+                
+                self.presentViewController(picker, animated: true, completion: nil)
+                
+            }
+            
+            
+        })
+        let documentAction = UIAlertAction(title: "Share Document", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            
+            //print(NSOpenStepRootDirectory())
+            ///var UTIs=UTTypeCopyPreferredTagWithClass("public.image", kUTTypeImage)?.takeRetainedValue() as! [String]
+            
+            //let importMenu = UIDocumentMenuViewController(documentTypes: [kUTTypeText as NSString as String, kUTTypeImage as String,"com.adobe.pdf","public.jpeg","public.html","public.content","public.data","public.item",kUTTypeBundle as String],
+            //   inMode: .Import)
+            
+            let importMenu = UIDocumentMenuViewController(documentTypes: [kUTTypeText as NSString as String,"com.adobe.pdf","public.html",/*"public.content",*/"public.text",/*kUTTypeBundle as String,"com.apple.rtfd"*/"com.adobe.pdf","com.microsoft.word.doc","org.openxmlformats.wordprocessingml.document"],
+                inMode: .Import)
+            ///////let importMenu = UIDocumentMenuViewController(documentTypes: UTIs, inMode: .Import)
+            importMenu.delegate = self
+            
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.presentViewController(importMenu, animated: true, completion: nil)
+                
+                
+            }
+            
+            
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:nil)
+        shareMenu.addAction(photoAction)
+        shareMenu.addAction(documentAction)
+        shareMenu.addAction(cancelAction)
+        
+        
+        
+        self.presentViewController(shareMenu, animated: true, completion: {
+            
+        })
+        
+        
+        
+        
+        
+        
+        
+        
+        //................................
+        
+        /*
+         //socketObj.socket.emit("logClient","\(username!) is sharing file with \(iamincallWith)")
+         //print(NSOpenStepRootDirectory())
+         ///var UTIs=UTTypeCopyPreferredTagWithClass("public.image", kUTTypeImage)?.takeRetainedValue() as! [String]
+         
+         let importMenu = UIDocumentMenuViewController(documentTypes: [kUTTypeText as NSString as String, kUTTypeImage as String,"com.adobe.pdf","public.jpeg","public.html","public.content","public.data","public.item",kUTTypeBundle as String],
+         inMode: .Import)
+         ///////let importMenu = UIDocumentMenuViewController(documentTypes: UTIs, inMode: .Import)
+         importMenu.delegate = self
+         if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary))
+         {
+         importMenu.addOptionWithTitle("Photots and Movies", image: nil, order: UIDocumentMenuOrder.First) {
+         var picker=UIImagePickerController.init()
+         picker.delegate=self
+         
+         picker.allowsEditing = true;
+         // if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary))
+         //  {
+         picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+         //}
+         
+         //[self presentViewController:picker animated:YES completion:NULL];
+         dispatch_async(dispatch_get_main_queue()) { () -> Void in
+         self.presentViewController(picker, animated: true, completion: nil)
+         
+         
+         }
+         
+         
+         }
+         }
+         dispatch_async(dispatch_get_main_queue()) { () -> Void in
+         self.presentViewController(importMenu, animated: true, completion: nil)
+         
+         
+         }
+         */
+        }
+        
+        func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+            
+            
+            
+            //  var filesizenew=""
+            
+            
+            let imageUrl          = editingInfo![UIImagePickerControllerReferenceURL] as! NSURL
+            let imageName         = imageUrl.lastPathComponent
+            let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first as String!
+            let photoURL          = NSURL(fileURLWithPath: documentDirectory)
+            let localPath         = photoURL.URLByAppendingPathComponent(imageName!)
+            let image             = editingInfo![UIImagePickerControllerOriginalImage]as! UIImage
+            let data              = UIImagePNGRepresentation(image)
+            
+            if let imageURL = editingInfo![UIImagePickerControllerReferenceURL] as? NSURL {
+                let result = PHAsset.fetchAssetsWithALAssetURLs([imageURL], options: nil)
+                
+                
+                self.filename = result.firstObject?.filename ?? ""
+                
+                // var myasset=result.firstObject as! PHAsset
+                ////print(myasset.mediaType)
+                
+                
+                
+            }
+            
+            
+            let shareMenu = UIAlertController(title: nil, message: " Send \" \(filename) \" to \(selectedFirstName) ? ", preferredStyle: .ActionSheet)
+            shareMenu.modalPresentationStyle=UIModalPresentationStyle.OverCurrentContext
+            let confirm = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default,handler: { (action) -> Void in
+                
+                socketObj.socket.emit("logClient","IPHONE-LOG: \(username!) selected image ")
+                //print("file gotttttt")
+                var furl=NSURL(string: localPath.URLString)
+                
+                //print(furl!.pathExtension!)
+                //print(furl!.URLByDeletingPathExtension?.lastPathComponent!)
+                var ftype=furl!.pathExtension!
+                var fname=furl!.URLByDeletingPathExtension?.lastPathComponent!
+                
+                
+                let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                let docsDir1 = dirPaths[0]
+                var documentDir=docsDir1 as NSString
+                var filePathImage2=documentDir.stringByAppendingPathComponent(self.filename)
+                var fm=NSFileManager.defaultManager()
+                
+                var fileAttributes:[String:AnyObject]=["":""]
+                do {
+                    /// let fileAttributes : NSDictionary? = try NSFileManager.defaultManager().attributesOfItemAtPath(furl!.path!)
+                    ///    let fileAttributes : NSDictionary? = try NSFileManager.defaultManager().attributesOfItemAtPath(imageUrl.path!)
+                    let fileAttributes : NSDictionary? = try NSFileManager.defaultManager().attributesOfItemAtPath(filePathImage2)
+                    if let _attr = fileAttributes {
+                        self.fileSize1 = _attr.fileSize();
+                        //print("file size is \(self.fileSize1)")
+                        //// ***april 2016 neww self.fileSize=(fileSize1 as! NSNumber).integerValue
+                    }
+                } catch {
+                    socketObj.socket.emit("logClient","IPHONE-LOG: error: \(error)")
+                    //print("Error:+++ \(error)")
+                }
+                
+                
+                //print("filename is \(self.filename) destination path is \(filePathImage2) image name \(imageName) imageurl \(imageUrl) photourl \(photoURL) localPath \(localPath).. \(localPath.absoluteString)")
+                
+                var s=fm.createFileAtPath(filePathImage2, contents: nil, attributes: nil)
+                
+                //  var written=fileData!.writeToFile(filePathImage2, atomically: false)
+                
+                //filePathImage2
+                
+                data!.writeToFile(filePathImage2, atomically: true)
+                // data!.writeToFile(localPath.absoluteString, atomically: true)
+                
+                
+                let calendar = NSCalendar.currentCalendar()
+                let comp = calendar.components([.Hour, .Minute], fromDate: NSDate())
+                let year = String(comp.year)
+                let month = String(comp.month)
+                let day = String(comp.day)
+                let hour = String(comp.hour)
+                let minute = String(comp.minute)
+                let second = String(comp.second)
+                
+                
+                var randNum5=self.randomStringWithLength(5) as! String
+                var uniqueID=randNum5+year+month+day+hour+minute+second
+                //var uniqueID=randNum5+year
+                //print("unique ID is \(uniqueID)")
+                
+                //var loggedid=_id!
+                //^^var firstNameSelected=selectedUserObj["firstname"]
+                //^^^var lastNameSelected=selectedUserObj["lastname"]
+                //^^^var fullNameSelected=firstNameSelected.string!+" "+lastNameSelected.string!
+                //var imParas=["from":"\(username!)","to":"\(self.selectedContact)","fromFullName":"\(displayname)","msg":"\(self.txtFldMessage.text!)","uniqueid":"\(uniqueID)"]
+                
+                
+                
+                
+                
+                
+                
+                
+                var imParas=["from":"\(username!)","to":"\(self.selectedContact)","fromFullName":"\(displayname)","msg":self.filename,"uniqueid":uniqueID,"type":"file","file_type":"image"]
+                //print("imparas are \(imParas)")
+                
+                
+                var statusNow="pending"
+                //}
+                
+                ////sqliteDB.SaveChat("\(selectedContact)", from1: username!, owneruser1: username!, fromFullName1: displayname!, msg1: fname!+"."+ftype, date1: nil, uniqueid1: uniqueID, status1: statusNow, type1: "chat", file_type1: "", file_path1: "")
+                // sqliteDB.SaveChat("\(selectedContact)", from1: "\(username!)",owneruser1: "\(username!)", fromFullName1: "\(loggedFullName!)", msg1: "\(txtFldMessage.text!)",date1: nil,uniqueid1: uniqueID, status1: statusNow)
+                
+                
+                
+                //------
+                sqliteDB.SaveChat(self.selectedContact, from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: self.filename, date1: nil, uniqueid1: uniqueID, status1: statusNow, type1: "file", file_type1: "image", file_path1: filePathImage2)
+                
+                
+                //do when upload finish
+                //think about pending file
+                /* socketObj.socket.emitWithAck("im",["room":"globalchatroom","stanza":imParas])(timeoutAfter: 150000)
+                 {data in
+                 
+                 //print("chat ack received  \(data)")
+                 statusNow="sent"
+                 var chatmsg=JSON(data)
+                 //print(data[0])
+                 //print(chatmsg[0])
+                 sqliteDB.UpdateChatStatus(chatmsg[0]["uniqueid"].string!, newstatus: chatmsg[0]["status"].string!)
+                 
+                 self.retrieveChatFromSqlite(self.selectedContact)
+                 //self.tblForChats.reloadData()
+                 
+                 
+                 
+                 }
+                 */
+                
+                //sqliteDB.SaveChat(self.selectedContact, from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: self.filename, date1: nil, uniqueid1: uniqueID, status1: "pending", type1: "image", file_type1: ftype, file_path1: filePathImage2)
+                
+                sqliteDB.saveFile(self.selectedContact, from1: username!, owneruser1: username!, file_name1: self.filename, date1: nil, uniqueid1: uniqueID, file_size1: "\(self.fileSize1)", file_type1: ftype, file_path1: filePathImage2, type1: "image")
+                
+                self.addUploadInfo(self.selectedContact,uniqueid1: uniqueID, rowindex: self.messages.count, uploadProgress: 0.0, isCompleted: false)
+                
+                managerFile.uploadFile(filePathImage2, to1: self.selectedContact, from1: username!, uniqueid1: uniqueID, file_name1: self.filename, file_size1: "\(self.fileSize1)", file_type1: ftype,type1:"image")
+                //print("alamofire upload calledddd")
+                
+                ///sqliteDB.saveChatImage(self.selectedContact, from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: self.filename, date1: nil, uniqueid1: uniqueID, status1: "pending", type1: "document",file_type1: ftype, file_path1: filePathImage2)
+                
+                self.retrieveChatFromSqlite(self.selectedContact,completion:{(result)-> () in
+                    self.tblForChats.reloadData()
+                    
+                    if(self.messages.count>1)
+                    {
+                        var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
+                        
+                        self.tblForChats.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                    }
+                })
+                
+                /////// self.addMessage(filePathImage2, ofType: "3", date: nil)
+                ////print(result.firstObject?.keys)
+                //filename = result.firstObject?.fileSize.debugDescription
+                /* PHImageManager.defaultManager().requestImageDataForAsset(result.firstObject as! PHAsset, options: PHImageRequestOptions.init(), resultHandler: { (imageData, dataUTI, orientation, infoDict) in
+                 infoDict?.keys.elements.forEach({ (infoKeys) in
+                 //print("---+++---")
+                 //print(dataUTI)
+                 ////print(infoKeys.debugDescription)
+                 })
+                 
+                 
+                 })*/
+                // filename = result.firstObject?.
+                
+                
+                
+                
+                
+                
+                self.dismissViewControllerAnimated(true, completion:{ ()-> Void in
+                    
+                    if(self.showKeyboard==true)
+                    {var duration : NSTimeInterval = 0
+                        
+                        
+                        UIView.animateWithDuration(duration, delay: 0, options:[], animations: {
+                            self.chatComposeView.frame = CGRectMake(self.chatComposeView.frame.origin.x, self.chatComposeView.frame.origin.y + self.keyheight-self.chatComposeView.frame.size.height-3, self.chatComposeView.frame.size.width, self.chatComposeView.frame.size.height)
+                            self.tblForChats.frame = CGRectMake(self.tblForChats.frame.origin.x, self.tblForChats.frame.origin.y, self.tblForChats.frame.size.width, self.tblForChats.frame.size.height + self.keyFrame.size.height-49);
+                            }, completion: nil)
+                        self.showKeyboard=false
+                        
+                    }
+                    
+                    if(self.messages.count>1)
+                    {
+                        var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
+                        
+                        self.tblForChats.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                    }
+                    
+                });
+                
+                
+                
+                
+                /*if (controller.documentPickerMode == UIDocumentPickerMode.Import) {
+                 NSLog("Opened ", url.path!);
+                 //print("picker url is \(url)")
+                 
+                 
+                 */
+                
+                
+                
+                
+                
+                //    urlLocalFile=localPath
+                /////let text2 = fm.contentsAtPath(filePath)
+                //////////print(text2)
+                ///////////print(JSON(text2!))
+                ///mdata.fileContents=fm.contentsAtPath(filePathImage)!
+                //    self.fileContents=NSData(contentsOfURL: localPath)
+                //   self.filePathImage=localPath.URLString
+                //var filecontentsJSON=JSON(NSData(contentsOfURL: url)!)
+                ////print(filecontentsJSON)
+                // //print("file url is \(self.filePathImage) file type is \(ftype)")
+                //    var filename=fname!+"."+ftype
+                // socketObj.socket.emit("logClient","\(username!) is sending file \(fname)")
+                
+                // var mjson="{\"file_meta\":{\"name\":\"\(filename)\",\"size\":\"\(self.fileSize1.description)\",\"filetype\":\"\(ftype)\",\"browser\":\"firefox\",\"uname\":\"\(username!)\",\"fid\":\(self.myfid),\"senderid\":\(currentID!)}}"
+                /// var fmetadata="{\"eventName\":\"data_msg\",\"data\":\(mjson)}"
+                
+                
+                //----------sendDataBuffer(fmetadata,isb: false)
+                
+                
+                //  socketObj.socket.emit("conference.chat", ["message":"You have received a file. Download and Save it.","username":username!])
+                
+                /*  let alert = UIAlertController(title: "Success", message: "Your file has been successfully sent", preferredStyle: UIAlertControllerStyle.Alert)
+                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                 self.presentViewController(alert, animated: true, completion: nil)*/
+                
+                
+                //mdata.sharefile(url)
+                // }
+                
+            })
+            
+            let notConfirm = UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
+                
+            })
+            
+            shareMenu.addAction(confirm)
+            shareMenu.addAction(notConfirm)
+            
+            self.dismissViewControllerAnimated(true, completion:{ ()-> Void in
+                
+                if(self.showKeyboard==true)
+                {var duration : NSTimeInterval = 0
+                    
+                    
+                    UIView.animateWithDuration(duration, delay: 0, options:[], animations: {
+                        self.chatComposeView.frame = CGRectMake(self.chatComposeView.frame.origin.x, self.chatComposeView.frame.origin.y + self.keyheight-self.chatComposeView.frame.size.height-3, self.chatComposeView.frame.size.width, self.chatComposeView.frame.size.height)
+                        self.tblForChats.frame = CGRectMake(self.tblForChats.frame.origin.x, self.tblForChats.frame.origin.y, self.tblForChats.frame.size.width, self.tblForChats.frame.size.height + self.keyFrame.size.height-49);
+                        }, completion: nil)
+                    self.showKeyboard=false
+                    
+                }
+                self.tblForChats.reloadData()
+                if(self.messages.count>1)
+                {
+                    var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
+                    self.tblForChats.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                    
+                }
+                
+                self.presentViewController(shareMenu, animated: true) {
+                    
+                    
+                }
+                
+            });
+            
+            
+            
+            /* self.presentViewController(shareMenu, animated: true) {
+             
+             
+             }*/
+            
+        }
+        func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.dismissViewControllerAnimated(true, completion: { ()-> Void in
+                    
+                    if(self.showKeyboard==true)
+                    {var duration : NSTimeInterval = 0
+                        
+                        
+                        UIView.animateWithDuration(duration, delay: 0, options:[], animations: {
+                            self.chatComposeView.frame = CGRectMake(self.chatComposeView.frame.origin.x, self.chatComposeView.frame.origin.y + self.keyheight-self.chatComposeView.frame.size.height-3, self.chatComposeView.frame.size.width, self.chatComposeView.frame.size.height)
+                            self.tblForChats.frame = CGRectMake(self.tblForChats.frame.origin.x, self.tblForChats.frame.origin.y, self.tblForChats.frame.size.width, self.tblForChats.frame.size.height + self.keyFrame.size.height-49);
+                            }, completion: nil)
+                        self.showKeyboard=false
+                        
+                    }});
+            }
+        }
+        
+    
+    
+    }
+    
+    
+    
+    
     
 }
