@@ -132,8 +132,8 @@ class UtilityFunctions{
     func uploadFile(chatstanza:[String:AnyObject],filePath1:String,file_name1:String,file_type1:String)
     {
         
-        var parameters = [
-            "chatmsg": chatstanza]
+        var parameters = JSON([
+            "chatmsg": chatstanza])
         
         
         /*var parameterJSON = JSON([
@@ -170,9 +170,11 @@ class UtilityFunctions{
                 multipartFormData.appendBodyPart(data: imageData!, name: "file"
                     ,fileName: file_name1, mimeType: self.MimeType(file_type1))
                 //,fileName: file_name1, mimeType: "image/\(file_type1)")
-                for (key, value) in parameters {
+                do{for (key, value) in parameters {
                     print("key is \(key) value is \(value.description)")
-                    multipartFormData.appendBodyPart(data: NSKeyedArchiver.archivedDataWithRootObject(value), name: key)
+                    multipartFormData.appendBodyPart(data:  try value.rawData(options: NSJSONWritingOptions.PrettyPrinted), name: key)
+                    }}catch{
+                        print("cannot convert value to NSData")
                 }
                 ///multipartFormData.appendBodyPart(data: jsonParameterData!, name: "goesIntoForm")
                 
