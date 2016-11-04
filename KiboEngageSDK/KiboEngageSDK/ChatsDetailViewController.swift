@@ -1454,7 +1454,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                          }*/
                         
                         
-                        DatabaseObjectInitialiser.getDB().storeFiles(chatstanza["to"] as! String, from1: chatstanza["from"] as! String, date1: NSDate(), uniqueid1: chatstanza["uniqueid"] as! String, type1: "file", filename1: fname!, filesize1: self.fileSize1 as! String, filetype1: ftype, filepath1: filePathImage2, requestid1: chatstanza["request_id"] as! String)
+                        DatabaseObjectInitialiser.getDB().storeFiles(chatstanza["to"] as! String, from1: chatstanza["from"] as! String, date1: NSDate(), uniqueid1: chatstanza["uniqueid"] as! String, type1: "file", filename1: fname!+"."+ftype, filesize1: "\(self.fileSize1)", filetype1: ftype, filepath1: filePathImage2, requestid1: chatstanza["request_id"] as! String)
                         
                         
                       /////  sqliteDB.saveFile(self.selectedContact, from1: username!, owneruser1: username!, file_name1: fname!+"."+ftype, date1: nil, uniqueid1: uniqueID, file_size1: "\(self.fileSize1)", file_type1: ftype, file_path1: filePathImage2, type1: "document")
@@ -1463,7 +1463,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                        //========= self.addUploadInfo(self.selectedContact,uniqueid1: uniqueID, rowindex: self.messages.count, uploadProgress: 0.0, isCompleted: false)
                         
                        
-                        UtilityFunctions.init().uploadFile(chatstanza, filePath1: filePathImage2, file_name1: fname!, file_type1: ftype)
+                        UtilityFunctions.init().uploadFile(chatstanza, filePath1: filePathImage2, file_name1: fname!+"."+ftype, file_type1: ftype)
                         
                       //====  managerFile.uploadFile(filePathImage2, to1: self.selectedContact, from1: username!, uniqueid1: uniqueID, file_name1: fname!+"."+ftype, file_size1: "\(self.fileSize1)", file_type1: ftype, type1:"document")
                         

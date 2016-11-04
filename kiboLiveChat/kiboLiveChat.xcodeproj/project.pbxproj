@@ -61,6 +61,7 @@
 		713A6EFB1D95CDD60084A816 /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
 		713A6EFD1D95CE0B0084A816 /* WindowsAzureMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMessaging.framework; sourceTree = "<group>"; };
 		7155355B1D95D2900081AB9C /* ConstantsString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsString.swift; sourceTree = "<group>"; };
+		716D345B1DCD5108006DEDFF /* kiboLiveChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = kiboLiveChat.entitlements; sourceTree = "<group>"; };
 		718F593D1D80EA0D000007D8 /* kiboLiveChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kiboLiveChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		718F59401D80EA0D000007D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		718F59421D80EA0D000007D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +139,7 @@
 		718F593F1D80EA0D000007D8 /* kiboLiveChat */ = {
 			isa = PBXGroup;
 			children = (
+				716D345B1DCD5108006DEDFF /* kiboLiveChat.entitlements */,
 				718F59401D80EA0D000007D8 /* AppDelegate.swift */,
 				718F59421D80EA0D000007D8 /* ViewController.swift */,
 				718F59441D80EA0D000007D8 /* Main.storyboard */,
@@ -263,6 +265,9 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -529,6 +534,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = kiboLiveChat/kiboLiveChat.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -553,6 +559,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = kiboLiveChat/kiboLiveChat.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
