@@ -35,6 +35,7 @@
 		713F3E061D7B88110072C9E9 /* KiboSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713F3E051D7B88110072C9E9 /* KiboSDK.swift */; };
 		7162D4771D7FE2E6001BF40D /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162D4761D7FE2E6001BF40D /* TeamsViewController.swift */; };
 		7162D47E1D800811001BF40D /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7162D47D1D800811001BF40D /* arrow.png */; };
+		716D34581DCC2D3C006DEDFF /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D34571DCC2D3C006DEDFF /* UtilityFunctions.swift */; };
 		7181CD9A1D83C58F002A0D05 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7181CD991D83C58F002A0D05 /* Images.xcassets */; };
 		7181CD9C1D83C710002A0D05 /* ChatsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7181CD9B1D83C710002A0D05 /* ChatsDetailViewController.swift */; };
 		7181CDB61D83CF16002A0D05 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7181CDA01D83CF16002A0D05 /* SocketAckEmitter.swift */; };
@@ -106,6 +107,7 @@
 		713F3E051D7B88110072C9E9 /* KiboSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KiboSDK.swift; sourceTree = "<group>"; };
 		7162D4761D7FE2E6001BF40D /* TeamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
 		7162D47D1D800811001BF40D /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		716D34571DCC2D3C006DEDFF /* UtilityFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		7181CD991D83C58F002A0D05 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7181CD9B1D83C710002A0D05 /* ChatsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsDetailViewController.swift; sourceTree = "<group>"; };
 		7181CDA01D83CF16002A0D05 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				7181CD9B1D83C710002A0D05 /* ChatsDetailViewController.swift */,
 				71083C231DB9926900CBF1CD /* syncBulkSMSservice.swift */,
 				7181CDCC1D83CF4A002A0D05 /* SocketService.swift */,
+				716D34571DCC2D3C006DEDFF /* UtilityFunctions.swift */,
 				713A6EF41D95BDF50084A816 /* temp.h */,
 				713A6EF51D95BDF50084A816 /* temp.m */,
 			);
@@ -469,6 +472,7 @@
 				711F7E531D7E2BD700A6FD97 /* Teams.swift in Sources */,
 				71083C0B1DB4FA2100CBF1CD /* syncChatService.swift in Sources */,
 				7181CDCA1D83CF16002A0D05 /* SwiftRegex.swift in Sources */,
+				716D34581DCC2D3C006DEDFF /* UtilityFunctions.swift in Sources */,
 				7181CDC21D83CF16002A0D05 /* SocketIOClient.swift in Sources */,
 				7181CDC91D83CF16002A0D05 /* SocketTypes.swift in Sources */,
 				71083C221DB8CCF000CBF1CD /* BulkSMSViewController.swift in Sources */,

@@ -15,7 +15,9 @@ import Photos
 import MobileCoreServices
 
 public class ChatsDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIDocumentPickerDelegate,UIDocumentMenuDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UpdateChatDetailsDelegate {
+   
     
+    var urlLocalFile:NSURL! //in appdelegate
     var filePathImage:String!
     ////** new commented april 2016var fileSize:Int!
     var fileContents:NSData!
@@ -410,12 +412,107 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             tblForGroupChat.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
             
         }
+    }
+    
+    func makeChatStanzaAndSaveInDB(type1:String,msg1:String,status1:String,filetype1:String,filepath1:String)->[String:AnyObject]
+    {
+        
+        var status="pending"
+        var chatdata=[String:AnyObject]()
+        //Session has been assigned
+        
+        var requestIDsObject=DatabaseObjectInitialiser.getDB().getSingleRequestIDsList(team_id,messagechannel_id:messagechannel_id)
+        print("requestIDsObject[agent_id] as! String is \(requestIDsObject["agent_id"] as! String)")
+        
+        var stringAngentsToField=""
+        if((requestIDsObject["agent_id"] as! String) != "")
+        {
+            print("agents id is available \(requestIDsObject["agent_id"] as! String)")
+            var agentIDsArrayList=(requestIDsObject["agent_id"] as! String).componentsSeparatedByString(",")
+            var agentEmailsArrayList=(requestIDsObject["agent_email"] as! String).componentsSeparatedByString(",")
+            var agentNamesArrayList=(requestIDsObject["agent_name"] as! String).componentsSeparatedByString(",")
+            
+            chatdata["to"]=agentNamesArrayList
+            chatdata["agentemail"]=agentEmailsArrayList
+            chatdata["agentid"]=agentIDsArrayList
+            chatdata["toagent"]=agentEmailsArrayList
+            
+            stringAngentsToField=agentNamesArrayList.joinWithSeparator(",")
+            
+        }
+            //Session has not yet been assigned
+        else{
+            stringAngentsToField="All Agents"
+            chatdata["to"]="All Agents"
+        }
+        chatdata["from"]=DatabaseObjectInitialiser.getInstance().customerid
+        
+        
+        var emailfield=""
+        if((DatabaseObjectInitialiser.getInstance().optionalDataList["email"]) != nil)
+        {
+            print("email field not nil it exists")
+            emailfield=DatabaseObjectInitialiser.getInstance().optionalDataList["email"] as! String
+            chatdata["visitoremail"]=DatabaseObjectInitialiser.getInstance().optionalDataList["email"]
+        }
+        chatdata["type"]=type1
+        //generate uniqueid
         
         
         
+        
+        var uniqueid=generateUniqueID()
+        
+        //var uniqueid="aaaaaaaa"
+        chatdata["uniqueid"]=uniqueid
+        chatdata["msg"]=msg1
+        chatdata["datetime"]=NSDate().debugDescription
+        chatdata["request_id"]=request_id
+        chatdata["messagechannel"]=messagechannel_id
+        chatdata["companyid"]=DatabaseObjectInitialiser.getInstance().clientid
+        chatdata["is_seen"]="no"
+        // chatdata["time"]=NSDate().description
+        chatdata["fromMobile"]="yes"
+        
+        //currently status is pending
+        chatdata["status"]=status1
+        
+        var customername=""
+        if((DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"]) != nil)
+        {
+            print("customerName field not nil it exists")
+            customername=DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"] as! String
+            chatdata["customername"]=DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"]
+            
+            
+        }
+        
+        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:NSDate(),request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status,customername1: customername)
+        
+        
+        DatabaseObjectInitialiser.getDB().storeFiles(requestIDsObject["agent_name"] as! String, from1: chatdata["from"] as! String, date1: NSDate(), uniqueid1: chatdata["uniqueid"] as! String, type1: "file", filename1: filename, filesize1: "1", filetype1: filetype1, filepath1: filepath1, requestid1: chatdata["request_id"] as! String)
+        
+        return chatdata
     }
     
     
+    func generateUniqueID()->String
+    {
+        var uid=randomStringWithLength(7)
+        
+        var date=NSDate()
+        var calendar = NSCalendar.currentCalendar()
+        var year=calendar.components(NSCalendarUnit.Year,fromDate: date).year
+        var month=calendar.components(NSCalendarUnit.Month,fromDate: date).month
+        var day=calendar.components(.Day,fromDate: date).day
+        var hr=calendar.components(NSCalendarUnit.Hour,fromDate: date).hour
+        var min=calendar.components(NSCalendarUnit.Minute,fromDate: date).minute
+        var sec=calendar.components(NSCalendarUnit.Second,fromDate: date).second
+        print("\(year) \(month) \(day) \(hr) \(min) \(sec)")
+        var uniqueid="h \(uid) \(year) \(month) \(day) \(hr) \(min) \(sec)"
+        return uniqueid
+        
+    }
     func saveChatOnServer(chatdata:[String:AnyObject])
     {
         
@@ -878,18 +975,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 // data!.writeToFile(localPath.absoluteString, atomically: true)
                 
                 
-                let calendar = NSCalendar.currentCalendar()
-                let comp = calendar.components([.Hour, .Minute], fromDate: NSDate())
-                let year = String(comp.year)
-                let month = String(comp.month)
-                let day = String(comp.day)
-                let hour = String(comp.hour)
-                let minute = String(comp.minute)
-                let second = String(comp.second)
-                
-                
-                var randNum5=self.randomStringWithLength(5) as! String
-                var uniqueID=randNum5+year+month+day+hour+minute+second
+               
                 //var uniqueID=randNum5+year
                 //print("unique ID is \(uniqueID)")
                 
@@ -901,11 +987,64 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 
                 
                 
+                var mime=UtilityFunctions.init().MimeType(ftype)
+                print("mime is \(mime)")
+                var filemsgbody="\(mime);\(self.filename)"
+                var chatdata=self.makeChatStanzaAndSaveInDB("file", msg1: self.filename, status1: "pending",filetype1: ftype,filepath1: filePathImage2)
+                
+               /* var stringAngentsToField=chatdata["to"]
+                //chatdata["agentemail"]
+                var emailfield=chatdata["visitoremail"]
+                var status=chatdata["status"]
+                
+
+                DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:NSDate(),request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status,customername1: customername)
+                */
                 
                 
                 
+                /*   'to' : 'All Agents',
+                 'from' : String, //customer name or customerID
+                 'visitoremail' :  String //customer email:optional
+                 'type': 'message',
+                 'uniqueid' : String, //generate unique message id
+                 'msg' : String, // message
+                 'datetime' : Date.now(),
+                 'request_id' : String, //request id of a session already stored
+                 'messagechannel': String, //channel id
+                 'companyid': String,
+                 'is_seen': String, // ‘yes’/’no’
+                 'time' : String,//hours,mins
+                 ‘fromMobile’ : String // ‘yes’ or ‘no’
+                 */
+                
+                //////////////socket.emit()
+                
+                //////// === commenting old socket logic...
+                //DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("send:messageToAgent",chatdata)
+                
+                ////==auto on server after file aved self.sendChatOnServer(chatdata)
+                
+                /////////////api/userchats/create
+                //============self.saveChatOnServer(chatdata)
                 
                 
+                self.addMessage("\(self.filename)", ofType: "2",date:NSDate().description, uniqueid: chatdata["uniqueid"] as! String)
+                self.txtFieldPost.text = "";
+                self.tblForGroupChat.reloadData()
+                if(self.messages.count>1)
+                {
+                    
+                    var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
+                    self.tblForGroupChat.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                    
+                }
+
+                
+                //make chat and store chat ================
+                
+                
+                /*
                 var imParas=["from":"\(username!)","to":"\(self.selectedContact)","fromFullName":"\(displayname)","msg":self.filename,"uniqueid":uniqueID,"type":"file","file_type":"image"]
                 //print("imparas are \(imParas)")
                 
@@ -922,7 +1061,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 
                 DatabaseObjectInitialiser.getDB().storeChat(String, from1: <#T##String#>, visitoremail1: <#T##String#>, type1: <#T##String#>, uniqueid1: <#T##String#>, msg1: <#T##String#>, datetime1: <#T##NSDate#>, request_id1: <#T##String#>, messagechannel1: <#T##String#>, companyid1: <#T##String#>, is_seen1: <#T##String#>, fromMobile1: <#T##String#>, status1: <#T##String#>, customername1: <#T##String#>)
                 sqliteDB.SaveChat(self.selectedContact, from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: self.filename, date1: nil, uniqueid1: uniqueID, status1: statusNow, type1: "file", file_type1: "image", file_path1: filePathImage2)
-                
+                */
                 
                 //do when upload finish
                 //think about pending file
@@ -946,11 +1085,15 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 
                 //sqliteDB.SaveChat(self.selectedContact, from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: self.filename, date1: nil, uniqueid1: uniqueID, status1: "pending", type1: "image", file_type1: ftype, file_path1: filePathImage2)
                 
-                sqliteDB.saveFile(self.selectedContact, from1: username!, owneruser1: username!, file_name1: self.filename, date1: nil, uniqueid1: uniqueID, file_size1: "\(self.fileSize1)", file_type1: ftype, file_path1: filePathImage2, type1: "image")
+               //==done above== sqliteDB.saveFile(self.selectedContact, from1: username!, owneruser1: username!, file_name1: self.filename, date1: nil, uniqueid1: uniqueID, file_size1: "\(self.fileSize1)", file_type1: ftype, file_path1: filePathImage2, type1: "image")
                 
-                self.addUploadInfo(self.selectedContact,uniqueid1: uniqueID, rowindex: self.messages.count, uploadProgress: 0.0, isCompleted: false)
+               //uncomment later self.addUploadInfo(self.selectedContact,uniqueid1: uniqueID, rowindex: self.messages.count, uploadProgress: 0.0, isCompleted: false)
                 
-                managerFile.uploadFile(filePathImage2, to1: self.selectedContact, from1: username!, uniqueid1: uniqueID, file_name1: self.filename, file_size1: "\(self.fileSize1)", file_type1: ftype,type1:"image")
+                
+                UtilityFunctions.init().uploadFile(chatdata, filePath1: filePathImage2, file_name1: self.filename, file_type1: ftype)
+               
+                
+                /////managerFile.uploadFile(filePathImage2, to1: self.selectedContact, from1: username!, uniqueid1: uniqueID, file_name1: self.filename, file_size1: "\(self.fileSize1)", file_type1: ftype,type1:"image")
                 //print("alamofire upload calledddd")
                 
                 ///sqliteDB.saveChatImage(self.selectedContact, from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: self.filename, date1: nil, uniqueid1: uniqueID, status1: "pending", type1: "document",file_type1: ftype, file_path1: filePathImage2)
@@ -1114,7 +1257,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                         
                 })}
     }
-    func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
+    public func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
         
         
         
@@ -1133,7 +1276,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         //var attributesError=nil
         var fileAttributes:[String:AnyObject]=["":""]
         
-        shareMenu = UIAlertController(title: nil, message: " Send \" \(fname!) .\(ftype)\" to \(selectedFirstName) ? ", preferredStyle: .ActionSheet)
+        shareMenu = UIAlertController(title: nil, message: " Send \" \(fname!) .\(ftype)\" to sumaira ? ", preferredStyle: .ActionSheet)
         // shareMenu.modalPresentationStyle=UIModalPresentationStyle.OverCurrentContext
         let confirm = UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default,handler: { (action) -> Void in
             
@@ -1174,7 +1317,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                         // do something with it
                         let fileData = NSData(contentsOfURL: url)
                         /////////////////////////print(fileData?.description)
-                        socketObj.socket.emit("logClient","IPHONE-LOG: \(username!) selected file ")
+                      //  socketObj.socket.emit("logClient","IPHONE-LOG: \(username!) selected file ")
                         //print("file gotttttt")
                         
                         do {
@@ -1186,11 +1329,11 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                                 //// ***april 2016 neww self.fileSize=(fileSize1 as! NSNumber).integerValue
                             }
                         } catch {
-                            socketObj.socket.emit("logClient","IPHONE-LOG: error: \(error)")
+                           // socketObj.socket.emit("logClient","IPHONE-LOG: error: \(error)")
                             //print("Error:.... \(error)")
                         }
                         
-                        urlLocalFile=url
+                        self.urlLocalFile=url
                         /////let text2 = fm.contentsAtPath(filePath)
                         //////////print(text2)
                         ///////////print(JSON(text2!))
@@ -1252,7 +1395,15 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                         //----------sendDataBuffer(fmetadata,isb: false)
                         
                         
-                        let calendar = NSCalendar.currentCalendar()
+                        
+                        
+                        
+                        //====UNCOMMENT LATER ========
+                        //======================================
+                        
+                        
+                        
+                        /*let calendar = NSCalendar.currentCalendar()
                         let comp = calendar.components([.Hour, .Minute], fromDate: NSDate())
                         let year = String(comp.year)
                         let month = String(comp.month)
@@ -1336,6 +1487,9 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                         
                         //// sqliteDB.saveChatImage(self.selectedContact, from1: username!,fromFullName1: displayname, owneruser1:username!, msg1: fname!+"."+ftype, date1: nil, uniqueid1: uniqueID, status1: "pending", type1: "doc",file_type1: ftype, file_path1: filePathImage2)
                         selectedText = filePathImage2
+                        
+                        
+                        */
                         
                         ////  self.retrieveChatFromSqlite(self.selectedContact)
                         self.retrieveFromDatabase({(result)-> () in

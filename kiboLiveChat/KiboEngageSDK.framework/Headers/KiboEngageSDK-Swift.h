@@ -104,17 +104,27 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 @class UITableView;
 @class NSIndexPath;
 @class UITableViewCell;
+@class UIImagePickerController;
+@class UIImage;
+@class UIDocumentPickerViewController;
+@class NSURL;
+@class UIDocumentMenuViewController;
 @class NSBundle;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC13KiboEngageSDK25ChatsDetailViewController")
-@interface ChatsDetailViewController : UIViewController <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface ChatsDetailViewController : UIViewController <UIScrollViewDelegate, UITableViewDelegate, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource>
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidLoad;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingImage:(UIImage * _Nonnull)image editingInfo:(NSDictionary<NSString *, id> * _Nullable)editingInfo;
+- (void)imagePickerControllerDidCancel:(UIImagePickerController * _Nonnull)picker;
+- (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentAtURL:(NSURL * _Nonnull)url;
+- (void)documentMenu:(UIDocumentMenuViewController * _Nonnull)documentMenu didPickDocumentPicker:(UIDocumentPickerViewController * _Nonnull)documentPicker;
+- (void)documentMenuWasCancelled:(UIDocumentMenuViewController * _Nonnull)documentMenu;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -355,7 +365,6 @@ SWIFT_CLASS("_TtC13KiboEngageSDK19TeamsViewController")
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 @end
 
-@class NSURL;
 @class NSStream;
 
 SWIFT_CLASS("_TtC13KiboEngageSDK9WebSocket")

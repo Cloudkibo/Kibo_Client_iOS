@@ -55,6 +55,7 @@ internal class DatabaseHandler:NSObject
         createRequestIDsTable()
         createChatsTable()
         createBulkSMStable()
+        createFileTable()
     }
     
     
@@ -695,7 +696,7 @@ internal class DatabaseHandler:NSObject
         let agent_id = Expression<String>("agent_id")
         
         let agent_name = Expression<String>("agent_name")
-        self.requestIDsTable = Table("requestIDsTable")
+       // self.requestIDsTable = Table("requestIDsTable")
         do
         {for reqIDs in try self.db.prepare(self.requestIDsTable.filter(team_id==teamid && msg_channel_id==messagechannel_id)){
             
@@ -814,7 +815,7 @@ internal class DatabaseHandler:NSObject
         let agent_id = Expression<String>("agent_id")
         
         let agent_name = Expression<String>("agent_name")
-        self.teams = Table("teams")
+        self.requestIDsTable = Table("requestIDsTable")
         do
         {for teamsnames in try self.db.prepare(self.requestIDsTable){
             var newEntry: [String: AnyObject] = [:]
@@ -1102,6 +1103,8 @@ internal class DatabaseHandler:NSObject
         let creationdate = Expression<String>("creationdate")
         let deleteStatus = Expression<String>("deleteStatus")
         
+        if(self.messageChannels != nil)
+        {
         self.messageChannels = Table("messageChannels")
         
         do{
@@ -1110,6 +1113,7 @@ internal class DatabaseHandler:NSObject
         catch{
             print("cannot delete channel")
             
+        }
         }
     }
     func updateMessageChannels(channelid:String,channelname:String,channelDesc:String)
@@ -1155,6 +1159,8 @@ internal class DatabaseHandler:NSObject
     
     func deleteTeamsTableData()
     {
+        if(self.teams != nil)
+        {
         self.teams = Table("teams")
         
         do{
@@ -1163,6 +1169,7 @@ internal class DatabaseHandler:NSObject
         catch{
             print("cannot delete teams data")
             
+        }
         }
         
     }
@@ -1192,6 +1199,8 @@ internal class DatabaseHandler:NSObject
         let agent_name = Expression<String>("agent_name")
         
         
+        if(self.requestIDsTable != nil)
+        {
         self.requestIDsTable = Table("requestIDsTable")
         do{
             try db.run(requestIDsTable.filter(msg_channel_id==channelid).delete())
@@ -1200,12 +1209,15 @@ internal class DatabaseHandler:NSObject
             print("cannot delete session")
             
         }
+        }
         
     }
     
     func deleteChat(channelid:String)
     {
         let messagechannel = Expression<String>("messagechannel") //id
+        if(self.userschats != nil)
+        {
         self.userschats = Table("userschats")
         do{
             try db.run(userschats.filter(messagechannel==channelid).delete())
@@ -1214,7 +1226,7 @@ internal class DatabaseHandler:NSObject
             print("cannot delete session")
             
         }
-        
+        }
     }
     
     func createFileTable(){
@@ -1279,6 +1291,40 @@ internal class DatabaseHandler:NSObject
             print("error in creating files table \(error)")
         }
       
+    }
+    func storeFiles(to1:String,from1:String,date1:NSDate,uniqueid1:String,type1:String,filename1:String,filesize1:String,filetype1:String,filepath1:String,requestid1:String)
+    {
+        let to = Expression<String>("to")
+        let from = Expression<String>("from")
+        let date = Expression<NSDate>("date")
+        let uniqueid = Expression<String>("uniqueid")
+        //let contactPhone = Expression<String>("contactPhone")
+        let type = Expression<String>("type")  //image or document
+        let file_name = Expression<String>("file_name")
+        let file_size = Expression<String>("file_size")
+        let file_type = Expression<String>("file_type")
+        let file_path = Expression<String>("file_path")
+        let request_id = Expression<String>("request_id")
+        
+        do{
+            let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(files.insert(
+                to<-to1,
+                from<-from1,
+                date<-date1,
+                uniqueid<-uniqueid1,
+                type<-type1,
+                file_name<-filename1,
+                file_size<-filesize1,
+                file_type<-filetype1,
+                file_path<-filepath1,
+                request_id<-requestid1
+            
+                ))}
+        catch{
+            
+        }
+            
+        
     }
     
     }
