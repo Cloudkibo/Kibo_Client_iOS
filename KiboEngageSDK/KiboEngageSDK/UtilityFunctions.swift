@@ -129,6 +129,9 @@ class UtilityFunctions{
         return DEFAULT_MIME_TYPE
     }
     
+    
+     var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+    
     func uploadFile(chatstanza:[String:AnyObject],filePath1:String,file_name1:String,file_type1:String)
     {
         
@@ -160,7 +163,7 @@ class UtilityFunctions{
         print("mimetype is \(MimeType(file_type1))")
         
         var urlupload=Constants.uploadFileKiboEngage
-         var header:[String:String]=["kibo-app-id":DatabaseObjectInitialiser.getInstance().appid,"kibo-app-secret":DatabaseObjectInitialiser.getInstance().secretid,"kibo-client-id":DatabaseObjectInitialiser.getInstance().clientid]
+        
         
         Alamofire.upload(
             .POST,
@@ -279,5 +282,123 @@ class UtilityFunctions{
         
         
     }
+    
+    
+    func downloadFile(requestID:String,fileuniqueid:String,filePendingName:String,filefrom:String,filetype:String,filePendingSize:String,filependingDate:String,filePendingTo:String)
+    {
+        print("inside download")
+        let path = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)[0] as NSURL
+        //print("path download is \(path)")
+        //////// let newPath = path.URLByAppendingPathComponent(fileName1)
+        /////// print("full path download file is \(newPath)")
+        //////  let destination = Alamofire.Request.suggestedDownloadDestination(directory: .DocumentDirectory, domain: .UserDomainMask)
+        //  print("path download is \(destination.lowercaseString)")
+        //  Alamofire.download(.GET, "http://httpbin.org/stream/100", destination: destination)
+        var downloadURL=Constants.downloadFileKiboEngage
+        
+        let destination: (NSURL, NSHTTPURLResponse) -> (NSURL) = {
+            (temporaryURL, response) in
+            
+            if let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as? NSURL {
+                //// var localImageURL = directoryURL.URLByAppendingPathComponent("\(response.suggestedFilename!)")
+                //filenamePending
+                var localImageURL = directoryURL.URLByAppendingPathComponent(filePendingName)
+                
+                /*let checkValidation = NSFileManager.defaultManager()
+                 
+                 if (checkValidation.fileExistsAtPath("\(localImageURL)"))
+                 {
+                 print("FILE AVAILABLE")
+                 }
+                 else
+                 {
+                 print("FILE NOT AVAILABLE")
+                 }*/
+                
+                
+                print("localpathhhhhh \(localImageURL.debugDescription)")
+                return localImageURL
+            }
+            print("tempurl is \(temporaryURL.debugDescription)")
+            return temporaryURL
+        }
+        
+        
+        print("downloading call unique id \(fileuniqueid)")
+        Alamofire.download(.POST, "\(downloadURL)", headers:header, parameters: ["uniqueid":fileuniqueid], destination: destination)
+            .progress { (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
+                print("writing bytes \(totalBytesRead)")
+                print(" bytes1 \(bytesRead)")
+                print("totalBytesRead bytes \(totalBytesRead)")
+                var progressbytes=(Float(totalBytesRead)/Float(totalBytesExpectedToRead)) as Float
+                print("totalBytesExpectedToRead are \(totalBytesExpectedToRead)")
+                /* if(self.delegateProgressUpload != nil)
+                 {
+                 if(progressbytes<1.0)
+                 {
+                 
+                 print("calling delegate progress bar.....")
+                 self.delegateProgressUpload.updateProgressUpload(progressbytes,uniqueid: fileuniqueid)
+                 }
+                 
+                 }
+                 */
+                
+                /* if(self.delegateProgressUpload != nil)
+                 {print("progress download value is \(progressbytes)")
+                 self.delegateProgressUpload.updateProgressUpload(progressbytes,uniqueid: fileuniqueid)
+                 
+                 }*/
+            }
+            .response { (request, response, _, error) in
+                print(response)
+                print("1...... \(request?.URLString)")
+                print("2..... \(request?.URL.debugDescription)")
+                print("3.... \(response?.URL.debugDescription)")
+                
+                
+                let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                let docsDir1 = dirPaths[0]
+                var documentDir=docsDir1 as NSString
+                var filePendingPath=documentDir.stringByAppendingPathComponent(filePendingName)
+                
+               // if(self.imageExtensions.contains(filetype.lowercaseString))
+                //{
+                    //filePendingName
+                
+                
+                DatabaseObjectInitialiser.getDB().storeFiles(filePendingTo, from1: filefrom, date1: NSDate(), uniqueid1: fileuniqueid, type1: filetype, filename1: filePendingName, filesize1: filePendingSize, filetype1: filetype, filepath1: filePendingPath, requestid1: requestID)
+                //}
+                /*else
+                {
+                    sqliteDB.saveFile(filePendingTo, from1: filefrom, owneruser1: username!, file_name1: filePendingName, date1: nil, uniqueid1: fileuniqueid, file_size1: filePendingSize, file_type1: filetype, file_path1: filePendingPath, type1: "document")
+                    
+                }*/
+               
+               //UPDATE UI
+                //filedownloaded’ to with parameters ‘senderoffile’, ‘receiveroffile’
+                
+                
+                // print(request?.)
+                
+        }
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

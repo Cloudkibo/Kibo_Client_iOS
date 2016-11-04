@@ -28,5 +28,6 @@ internal class Constants
    // /getbulksms/ companyid uniqueid
     static var getAllBulkSMSListURL="/api/notifications/"
     static var uploadFileKiboEngage="http://kiboengage.cloudapp.net/api/uploadchatfile"
+    static var downloadFileKiboEngage="http://kiboengage.cloudapp.net/api/downloadchatfile"
    
 }

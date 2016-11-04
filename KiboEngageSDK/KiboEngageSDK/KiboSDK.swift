@@ -678,7 +678,163 @@ public class KiboSDK{
                     }
                     else
                     {
+                        
+                        if  let filemeta = userInfo["data"]!["filemeta"] as? [String:AnyObject]{
+                            print("inside got file push")
+                            /*
+                             data: {
+                             chat : body.chatmsg,// stanza of chat message
+                             filemeta:body.filedata,//stanze of filetransfers table on kibosupport
+                             type : 'File'
+                             },
+                             -------
+                             filemeta =     {
+                             
+                             "__v" = 0;
+                             
+                             "_id" = 581d097f3a08b26e12147ec4;
+                             
+                             date = "2016-11-04T22:19:33.950Z";
+                             
+                             "file_name" = "avatarblack.png";
+                             
+                             "file_size" = 38967;
+                             
+                             "file_type" = "image/png";
+                             
+                             from = Jawaid;
+                             
+                             path = "fjms7nr201611531933.png";
+                             
+                             "request_id" = "h 39iMeK2 2016 10 28 15 4 19";
+                             
+                             status = sent;
+                             
+                             to = newCustomer1;
+                             
+                             uniqueid = fjms7nr201611531933;
+                             
+                             --------
+                             
+                             var updateStatusData=[String:AnyObject]()
+                             //add in status array to be sent in update Status API
+                             updateStatusData["uniqueid"]=chatmsg2[i]["uniqueid"].string!
+                             updateStatusData["request_id"]=chatmsg2[i]["request_id"].string!
+                             updateStatusData["status"]="delivered"
+                             
+                             
+                             
+                             //do in server response
+                             
+                             //DatabaseObjectInitialiser.getDB().updateChatStatus(chatmsg2[i]["uniqueid"].string!, requestid1: chatmsg2[i]["request_id"].string!, status1: "delivered")
+                             updateStatusArray.append(updateStatusData)
+                             
+                             
+                             //storing chat in local database
+                             print("storing chat sent by agent \(chatmsg2[i]["msg"].string!)")
+                             var customername=""
+                             if((DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"]) != nil)
+                             {
+                             print("customerName field not nil it exists")
+                             customername=DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"] as! String
+                             
+                             
+                             }
+                             
+                             let dateFormatter = NSDateFormatter()
+                             dateFormatter.timeZone=NSTimeZone.localTimeZone()
+                             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                             //  let datens2 = dateFormatter.dateFromString(date2.debugDescription)
+                             //2016-09-18T19:13:00.588Z
+                             let datens2 = dateFormatter.dateFromString(chatmsg2[i]["datetime"].string!)
+                             
+                             
+                             DatabaseObjectInitialiser.getDB().storeChat(chatmsg2[i]["to"].string!, from1: chatmsg2[i]["from"].string!, visitoremail1: chatmsg2[i]["visitoremail"].string!, type1: chatmsg2[i]["type"].string!, uniqueid1: chatmsg2[i]["uniqueid"].string!, msg1: chatmsg2[i]["msg"].string!, datetime1: datens2!, request_id1: chatmsg2[i]["request_id"].string!, messagechannel1: chatmsg2[i]["messagechannel"].string!, companyid1: chatmsg2[i]["companyid"].string!, is_seen1: chatmsg2[i]["is_seen"].string!, fromMobile1: "yes",status1:chatmsg2[i]["status"].string!,customername1: customername )
+                             
+                             }
+                             
+                             
+                             //UPDATE UI
+                             Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                             
+                             //call API for updateStatus to send status to server
+                             if(updateStatusArray.count>0)
+                             {
+                             print("updateStatusArray count is \(updateStatusArray.count), calling API now")
+                             self.updateStatus(updateStatusArray)
+                             }
+                             
+                             }
+                             
+ */
+                            var filechatstanza=userInfo["data"]!["chat"] as? [String:AnyObject]
+                            var operation=userInfo["data"]!["operation"] as? String
+                            
+                                var chatuniqueid = filechatstanza!["uniqueid"] as! String
+                                var fileuniqueid = filemeta["uniqueid"] as! String
+                          
+                            
+                            var filedate=filemeta["date"] as! String
+                            var filename=filemeta["file_name"] as! String
+                            var filesize=filemeta["file_size"]!.description
+                            var filetype=filemeta["file_type"] as! String
+                            var filestatus=filemeta["status"] as! String
+                            var filefrom=filemeta["from"] as! String
+                            var filerequestid=filemeta["request_id"] as! String
+                            var fileTo=filemeta["to"] as! String
+                            
+                            
+                            var updateStatusData=[String:AnyObject]()
+                            //add in status array to be sent in update Status API
+                            updateStatusData["uniqueid"]=filechatstanza!["uniqueid"] as! String
+                            updateStatusData["request_id"]=filechatstanza!["request_id"] as! String
+                            updateStatusData["status"]="delivered"
+                            
+                            
+                            var agentid=""
+                            var agentemail=""
+                            
+                            var updateStatusArray=[[String:AnyObject]]()
+                            //do in server response
+                            
+                            //DatabaseObjectInitialiser.getDB().updateChatStatus(chatmsg2[i]["uniqueid"].string!, requestid1: chatmsg2[i]["request_id"].string!, status1: "delivered")
+                            updateStatusArray.append(updateStatusData)
+                            
+                            
+                            //storing chat in local database
+                           // print("storing file chat stanza \(filechatstanza!["msg"]!.string!)")
+                            var customername=""
+                            if((DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"]) != nil)
+                            {
+                                print("customerName field not nil it exists")
+                                customername=DatabaseObjectInitialiser.getInstance().optionalDataList["customerName"] as! String
+                                
+                                
+                            }
+                            
+                            let dateFormatter = NSDateFormatter()
+                            dateFormatter.timeZone=NSTimeZone.localTimeZone()
+                            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                            //  let datens2 = dateFormatter.dateFromString(date2.debugDescription)
+                            //2016-09-18T19:13:00.588Z
+                            let datens2 = dateFormatter.dateFromString(filechatstanza!["datetime"] as! String)
+                            
+                            
+                            
+                            UtilityFunctions.init().downloadFile(filechatstanza!["request_id"] as! String, fileuniqueid: fileuniqueid, filePendingName: filename, filefrom: filefrom, filetype: filetype, filePendingSize: filesize, filependingDate: filedate, filePendingTo: fileTo)
+                            //store in file download response
+                            DatabaseObjectInitialiser.getDB().storeChat(filechatstanza!["to"] as! String, from1: filechatstanza!["from"] as! String, visitoremail1: filechatstanza!["visitoremail"] as! String, type1: filechatstanza!["type"] as! String, uniqueid1: filechatstanza!["uniqueid"] as! String, msg1: filechatstanza!["msg"] as! String, datetime1: datens2!, request_id1: filechatstanza!["request_id"] as! String, messagechannel1: filechatstanza!["messagechannel"] as! String, companyid1: filechatstanza!["companyid"] as! String, is_seen1: filechatstanza!["is_seen"] as! String, fromMobile1: "yes",status1:filechatstanza!["status"] as! String,customername1: customername )
+                       
+                        
+                        //UPDATE UI
+
+
+                        
+                        
+                        }
+                        else{
                     print("no payload matched")
+                        }
                     }
                 ////}
                 
@@ -693,6 +849,8 @@ public class KiboSDK{
             print("error: wrong payload received")
         }
     }
+    
+    
     
     func createNewSession(groupid1:String,channelid1:String,completion:(result:Bool,error:String!)->())
     {

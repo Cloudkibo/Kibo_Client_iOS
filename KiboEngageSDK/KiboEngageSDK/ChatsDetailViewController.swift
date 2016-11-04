@@ -990,7 +990,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 var mime=UtilityFunctions.init().MimeType(ftype)
                 print("mime is \(mime)")
                 var filemsgbody="\(mime);\(self.filename)"
-                var chatdata=self.makeChatStanzaAndSaveInDB("file", msg1: self.filename, status1: "pending",filetype1: ftype,filepath1: filePathImage2)
+                var chatdata=self.makeChatStanzaAndSaveInDB("file", msg1: mime+";"+self.filename, status1: "pending",filetype1: ftype,filepath1: filePathImage2)
                 
                /* var stringAngentsToField=chatdata["to"]
                 //chatdata["agentemail"]
