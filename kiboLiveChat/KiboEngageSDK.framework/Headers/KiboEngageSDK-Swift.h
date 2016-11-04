@@ -93,8 +93,8 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
-@import CoreGraphics;
 @import Foundation;
+@import CoreGraphics;
 @import ObjectiveC;
 @import Dispatch;
 #endif
@@ -109,11 +109,12 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 @class UIDocumentPickerViewController;
 @class NSURL;
 @class UIDocumentMenuViewController;
+@class UIStoryboardSegue;
 @class NSBundle;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC13KiboEngageSDK25ChatsDetailViewController")
-@interface ChatsDetailViewController : UIViewController <UIScrollViewDelegate, UITableViewDelegate, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource>
+@interface ChatsDetailViewController : UIViewController <UIScrollViewDelegate, UITableViewDelegate, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NSFileManagerDelegate, UITableViewDataSource>
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidLoad;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
@@ -125,6 +126,7 @@ SWIFT_CLASS("_TtC13KiboEngageSDK25ChatsDetailViewController")
 - (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentAtURL:(NSURL * _Nonnull)url;
 - (void)documentMenu:(UIDocumentMenuViewController * _Nonnull)documentMenu didPickDocumentPicker:(UIDocumentPickerViewController * _Nonnull)documentPicker;
 - (void)documentMenuWasCancelled:(UIDocumentMenuViewController * _Nonnull)documentMenu;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nullable)segue sender:(id _Nullable)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -348,7 +350,6 @@ typedef SWIFT_ENUM(NSInteger, SocketIOClientStatus) {
 @class UICollectionView;
 @class UICollectionViewLayout;
 @class UICollectionViewCell;
-@class UIStoryboardSegue;
 
 SWIFT_CLASS("_TtC13KiboEngageSDK19TeamsViewController")
 @interface TeamsViewController : UIViewController <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>

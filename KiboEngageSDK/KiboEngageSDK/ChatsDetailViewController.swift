@@ -14,9 +14,11 @@ import AssetsLibrary
 import Photos
 import MobileCoreServices
 
-public class ChatsDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIDocumentPickerDelegate,UIDocumentMenuDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UpdateChatDetailsDelegate {
+public class ChatsDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIDocumentPickerDelegate,UIDocumentMenuDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UpdateChatDetailsDelegate,NSFileManagerDelegate {
    
     
+    
+    var selectedText=""
     var urlLocalFile:NSURL! //in appdelegate
     var filePathImage:String!
     ////** new commented april 2016var fileSize:Int!
@@ -1402,37 +1404,13 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                         //======================================
                         
                         
+                      var uniqueID=self.generateUniqueID()
+                        var mime=UtilityFunctions.init().MimeType(ftype)
+                        var chatstanza=self.makeChatStanzaAndSaveInDB("file", msg1: mime+";"+fname!, status1: "pending", filetype1: "document", filepath1: filePathImage2)
+                      
                         
-                        /*let calendar = NSCalendar.currentCalendar()
-                        let comp = calendar.components([.Hour, .Minute], fromDate: NSDate())
-                        let year = String(comp.year)
-                        let month = String(comp.month)
-                        let day = String(comp.day)
-                        let hour = String(comp.hour)
-                        let minute = String(comp.minute)
-                        let second = String(comp.second)
+                       //--alternative above====== var imParas=["from":"\(username!)","to":"\(self.selectedContact)","fromFullName":"\(displayname)","msg":fname!+"."+ftype,"uniqueid":uniqueID,"type":"file","file_type":"document"]
                         
-                        
-                        var randNum5=self.randomStringWithLength(5) as! String
-                        var uniqueID=randNum5+year+month+day+hour+minute+second
-                        
-                        
-                        
-                        //var uniqueID=randNum5+year
-                        //print("unique ID is \(uniqueID)")
-                        
-                        //^^var firstNameSelected=selectedUserObj["firstname"]
-                        //^^^var lastNameSelected=selectedUserObj["lastname"]
-                        //^^^var fullNameSelected=firstNameSelected.string!+" "+lastNameSelected.string!
-                        var imParas=["from":"\(username!)","to":"\(self.selectedContact)","fromFullName":"\(displayname)","msg":fname!+"."+ftype,"uniqueid":uniqueID,"type":"file","file_type":"document"]
-                        //print("imparas are \(imParas)")
-                        //print(imParas, terminator: "")
-                        //print("", terminator: "")
-                        ///=== code for sending chat here
-                        ///=================
-                        
-                        //socketObj.socket.emit("logClient","IPHONE-LOG: \(username!) is sending chat message")
-                        //////socketObj.socket.emit("im",["room":"globalchatroom","stanza":imParas])
                         var statusNow=""
                         /*if(isSocketConnected==true)
                          {
@@ -1451,7 +1429,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                         
                         
                         //------
-                        sqliteDB.SaveChat(self.selectedContact, from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: fname!+"."+ftype, date1: nil, uniqueid1: uniqueID, status1: statusNow, type1: "file", file_type1: "document", file_path1: filePathImage2)
+                        //====done already in above function for chat stanza........ sqliteDB.SaveChat(self.selectedContact, from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: fname!+"."+ftype, date1: nil, uniqueid1: uniqueID, status1: statusNow, type1: "file", file_type1: "document", file_path1: filePathImage2)
                         
                         
                         
@@ -1476,20 +1454,27 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                          }*/
                         
                         
-                        sqliteDB.saveFile(self.selectedContact, from1: username!, owneruser1: username!, file_name1: fname!+"."+ftype, date1: nil, uniqueid1: uniqueID, file_size1: "\(self.fileSize1)", file_type1: ftype, file_path1: filePathImage2, type1: "document")
+                        DatabaseObjectInitialiser.getDB().storeFiles(chatstanza["to"] as! String, from1: chatstanza["from"] as! String, date1: NSDate(), uniqueid1: chatstanza["uniqueid"] as! String, type1: "file", filename1: fname!, filesize1: self.fileSize1 as! String, filetype1: ftype, filepath1: filePathImage2, requestid1: chatstanza["request_id"] as! String)
                         
                         
-                        self.addUploadInfo(self.selectedContact,uniqueid1: uniqueID, rowindex: self.messages.count, uploadProgress: 0.0, isCompleted: false)
+                      /////  sqliteDB.saveFile(self.selectedContact, from1: username!, owneruser1: username!, file_name1: fname!+"."+ftype, date1: nil, uniqueid1: uniqueID, file_size1: "\(self.fileSize1)", file_type1: ftype, file_path1: filePathImage2, type1: "document")
                         
-                        managerFile.uploadFile(filePathImage2, to1: self.selectedContact, from1: username!, uniqueid1: uniqueID, file_name1: fname!+"."+ftype, file_size1: "\(self.fileSize1)", file_type1: ftype, type1:"document")
+                        
+                       //========= self.addUploadInfo(self.selectedContact,uniqueid1: uniqueID, rowindex: self.messages.count, uploadProgress: 0.0, isCompleted: false)
+                        
+                       
+                        UtilityFunctions.init().uploadFile(chatstanza, filePath1: filePathImage2, file_name1: fname!, file_type1: ftype)
+                        
+                      //====  managerFile.uploadFile(filePathImage2, to1: self.selectedContact, from1: username!, uniqueid1: uniqueID, file_name1: fname!+"."+ftype, file_size1: "\(self.fileSize1)", file_type1: ftype, type1:"document")
                         
                         ////  sqliteDB.saveChatImage(self.selectedContact, from1: username!, owneruser1: username!, fromFullName1: "fafa", msg1: fname!+"."+ftype, date1: nil, uniqueid1: uniqueID, status1: "pending", type1: "document", file_type1: ftype, file_path1: filePathImage2)
                         
                         //// sqliteDB.saveChatImage(self.selectedContact, from1: username!,fromFullName1: displayname, owneruser1:username!, msg1: fname!+"."+ftype, date1: nil, uniqueid1: uniqueID, status1: "pending", type1: "doc",file_type1: ftype, file_path1: filePathImage2)
-                        selectedText = filePathImage2
+                        
+                        self.selectedText = filePathImage2
                         
                         
-                        */
+                        
                         
                         ////  self.retrieveChatFromSqlite(self.selectedContact)
                         self.retrieveFromDatabase({(result)-> () in
@@ -1559,6 +1544,44 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         
         
     }
+    
+    override public func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        
+        
+       /* if segue!.identifier == "showFullImageSegue" {
+            if let destinationVC = segue!.destinationViewController as? ShowImageViewController{
+                //destinationVC.tabBarController?.selectedIndex=0
+                //self.tabBarController?.selectedIndex=0
+                destinationVC.newimage=self.selectedImage
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                    
+                    
+                })
+            }
+        }*/
+        if segue!.identifier == "showFullDocSegue" {
+            if let destinationVC = segue!.destinationViewController as? textDocumentViewController{
+                let selectedRow = tblForGroupChat.indexPathForSelectedRow!.row
+                var messageDic = messages.objectAtIndex(selectedRow) as! [String : String];
+                
+                let msg = messageDic["message"] as NSString!
+                selectedText=msg as String
+                //destinationVC.tabBarController?.selectedIndex=0
+                //self.tabBarController?.selectedIndex=0
+                destinationVC.newtext=selectedText
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                    
+                    
+                })
+            }
+        }
+        
+    }
+    
 
     
     

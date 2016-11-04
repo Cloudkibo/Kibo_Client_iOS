@@ -597,7 +597,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RWB-r1-gxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1501" y="-497"/>
+            <point key="canvasLocation" x="1876" y="-556"/>
         </scene>
         <!--Chats Detail View Controller-->
         <scene sceneID="yao-FQ-szC">
@@ -1922,11 +1922,48 @@
                         <outlet property="tblForGroupChat" destination="0ek-0F-avi" id="bdG-5G-lEf"/>
                         <outlet property="txtFieldPost" destination="LKM-3f-0Hv" id="V2y-qV-EV1"/>
                         <outlet property="viewfortableandtextfield" destination="gBq-Cg-TKG" id="VKD-rp-73U"/>
+                        <segue destination="z5Q-1R-2ah" kind="push" id="dve-MD-w75"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzT-xc-A80" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1062" y="-497"/>
+        </scene>
+        <!--Document Viewer-->
+        <scene sceneID="nlB-B9-NHs">
+            <objects>
+                <viewController id="z5Q-1R-2ah" customClass="textDocumentViewController" customModule="KiboEngageSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pb2-1z-AuD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="OhH-uO-I0T">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Document Viewer" id="Q2e-Jy-eLO">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="A0o-8s-yM1"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="File is corrupt. Please try again." textAlignment="center" id="bwm-Sx-KQq">
+                                <rect key="frame" x="0.0" y="44" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Document Viewer" id="Kde-0M-ffS"/>
+                    <connections>
+                        <outlet property="textViewDoc" destination="bwm-Sx-KQq" id="Ldt-bz-sFX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QXy-nS-TAG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1456" y="-513"/>
         </scene>
         <!--Chats-->
         <scene sceneID="yXq-9f-MOx">
@@ -2695,6 +2732,6 @@
         <image name="video_on" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ozn-8w-lFE"/>
+        <segue reference="M6g-3v-v2a"/>
     </inferredMetricsTieBreakers>
 </document>

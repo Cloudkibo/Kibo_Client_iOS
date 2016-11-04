@@ -36,6 +36,7 @@
 		7162D4771D7FE2E6001BF40D /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162D4761D7FE2E6001BF40D /* TeamsViewController.swift */; };
 		7162D47E1D800811001BF40D /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7162D47D1D800811001BF40D /* arrow.png */; };
 		716D34581DCC2D3C006DEDFF /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D34571DCC2D3C006DEDFF /* UtilityFunctions.swift */; };
+		716D345A1DCD4BEC006DEDFF /* textDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D34591DCD4BEC006DEDFF /* textDocumentViewController.swift */; };
 		7181CD9A1D83C58F002A0D05 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7181CD991D83C58F002A0D05 /* Images.xcassets */; };
 		7181CD9C1D83C710002A0D05 /* ChatsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7181CD9B1D83C710002A0D05 /* ChatsDetailViewController.swift */; };
 		7181CDB61D83CF16002A0D05 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7181CDA01D83CF16002A0D05 /* SocketAckEmitter.swift */; };
@@ -108,6 +109,7 @@
 		7162D4761D7FE2E6001BF40D /* TeamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
 		7162D47D1D800811001BF40D /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		716D34571DCC2D3C006DEDFF /* UtilityFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
+		716D34591DCD4BEC006DEDFF /* textDocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = textDocumentViewController.swift; sourceTree = "<group>"; };
 		7181CD991D83C58F002A0D05 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7181CD9B1D83C710002A0D05 /* ChatsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsDetailViewController.swift; sourceTree = "<group>"; };
 		7181CDA01D83CF16002A0D05 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				71083C231DB9926900CBF1CD /* syncBulkSMSservice.swift */,
 				7181CDCC1D83CF4A002A0D05 /* SocketService.swift */,
 				716D34571DCC2D3C006DEDFF /* UtilityFunctions.swift */,
+				716D34591DCD4BEC006DEDFF /* textDocumentViewController.swift */,
 				713A6EF41D95BDF50084A816 /* temp.h */,
 				713A6EF51D95BDF50084A816 /* temp.m */,
 			);
@@ -485,6 +488,7 @@
 				7181CDC11D83CF16002A0D05 /* SocketFixUTF8.swift in Sources */,
 				7181CDC41D83CF16002A0D05 /* SocketIOClientStatus.swift in Sources */,
 				711F7E551D7E2F1000A6FD97 /* DatabaseObjectInitialiser.swift in Sources */,
+				716D345A1DCD4BEC006DEDFF /* textDocumentViewController.swift in Sources */,
 				7181CDBC1D83CF16002A0D05 /* SocketEnginePacketType.swift in Sources */,
 				71126B841D82840100F23261 /* messageChannels.swift in Sources */,
 				7181CDC31D83CF16002A0D05 /* SocketIOClientOption.swift in Sources */,
