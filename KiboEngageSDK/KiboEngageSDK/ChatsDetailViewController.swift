@@ -14,10 +14,10 @@ import AssetsLibrary
 import Photos
 import MobileCoreServices
 
-public class ChatsDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIDocumentPickerDelegate,UIDocumentMenuDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UpdateChatDetailsDelegate,NSFileManagerDelegate {
+public class ChatsDetailViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIDocumentPickerDelegate,UIDocumentMenuDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UpdateChatDetailsDelegate,NSFileManagerDelegate,showUploadProgressDelegate {
    
     
-    
+    var delegateProgressUpload:showUploadProgressDelegate!
     var selectedText=""
     var urlLocalFile:NSURL! //in appdelegate
     var filePathImage:String!
@@ -54,31 +54,55 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     
     func retrieveFromDatabase(completion:(result:Bool)->())
     {
-         var tempmessages=NSMutableArray()
+        var tempmessages=NSMutableArray()
         var chatsList=DatabaseObjectInitialiser.getDB().getChat(request_id)
         
         var updateStatusArray=[[String:AnyObject]]()
         
         var i=0
-        for(i=0;i<chatsList.count;i++)
-        {
+        for(i=0;i<chatsList.count;i++){
             var updateStatusData=[String:AnyObject]()
+            var formatter2 = NSDateFormatter();
+            formatter2.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+            formatter2.timeZone = NSTimeZone.localTimeZone()
+            var defaultTimeeee = formatter2.stringFromDate(chatsList[i]["datetime"] as! NSDate)
+            var filedata=DatabaseObjectInitialiser.getDB().getFileDataFromUniqueID(chatsList[i]["uniqueid"] as! String)
+            
             
             //i am sender
             if((chatsList[i]["to"] as! String) != DatabaseObjectInitialiser.getInstance().customerid)
             {
+                
+                if((chatsList[i]["type"] as! String)=="file" && filedata.count > 0)
+                {
+                    print("client chatlist type is \(chatsList[i]["type"] as! String) and filedata type is \(filedata["type"] as! String)")
+                    
+                    
+                    if((filedata["type"] as! String)=="image")
+                    {
+                        print("i am sending image")
+                    //tempmessages.addObject(["message":filedata["file_path"] as! String, "type":"4", "date":defaultTimeeee, "uniqueid":filedata["uniqueid"] as! String])
+                        tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"4", "date":defaultTimeeee, "uniqueid":filedata["uniqueid"] as! String])
+                        //chatsList[i]
+                    
+                    }
+                    if((filedata["type"] as! String)=="document")
+                    {
+                        print("i am sending document")
+                         tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"6", "date":defaultTimeeee, "uniqueid":filedata["uniqueid"] as! String])}
+                }
+                else{
                 //i sent so type is 2
-                tempmessages.addObject(["message":"\(chatsList[i]["msg"] as! String) \(chatsList[i]["status"] as! String)", "type":"2", "date":chatsList[i]["datetime"]!.description as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
                 
-              //  tempmessages.addObject(chatsList[i]["msg"] as! String, ofType: "2",date:chatsList[i]["datetime"] as! String, uniqueid: chatsList[i]["uniqueid"] as! String)
-
-                
+                    tempmessages.addObject(["message":"\(chatsList[i]["msg"] as! String) \(chatsList[i]["status"] as! String)", "type":"2", "date":chatsList[i]["datetime"]!.description as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
+                    }
             }
             else
             {
                 //agent is sender
-                var currentstatus=chatsList[i]["status"] as! String
-               if((currentstatus=="delivered") || (currentstatus=="sent"))
+                    var currentstatus=chatsList[i]["status"] as! String
+               
+                if((currentstatus=="delivered") || (currentstatus=="sent"))
                {
                     updateStatusData["uniqueid"]=chatsList[i]["uniqueid"] as! String
                     updateStatusData["request_id"]=chatsList[i]["request_id"] as! String
@@ -89,10 +113,28 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                     updateStatusArray.append(updateStatusData)
 
                 }
-                
-                tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"1", "date":chatsList[i]["datetime"]!.description as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
+                if((chatsList[i]["type"] as! String)=="file" && filedata.count > 0)
+                {
+                    print("agent chatlist type is \(chatsList[i]["type"] as! String) and filedata type is \(filedata["type"] as! String)")
+                    
+                    if((filedata["type"] as! String)=="image")
+                    { tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"3", "date":defaultTimeeee, "uniqueid":filedata["uniqueid"] as! String])
+                        
+                        //messages2.addObject(["message":tblContacts[msg], "type":"3", "date":tblContacts[date], "uniqueid":tblContacts[uniqueid]])
+                     }
+                    if((filedata["type"] as! String)=="document")
+                    {
+                        tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"5", "date":defaultTimeeee, "uniqueid":filedata["uniqueid"] as! String])
+                        //^^^^ self.addMessage(tblContacts[msg], ofType: "5",date: tblContacts[date],uniqueid: tblContacts[uniqueid])
+                        
+                    }
+                }
+                    
+                else
+                {
+                    tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"1", "date":chatsList[i]["datetime"]!.description as! String, "uniqueid":chatsList[i]["uniqueid"] as! String])
                
-                
+                }
                 
             }
             
@@ -172,6 +214,10 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     public override func viewWillAppear(animated: Bool) {
         print("getting channel name, message id is \(messagechannel_id)")
         var gotname=DatabaseObjectInitialiser.getDB().getChannelName(messagechannel_id)
+        
+        
+        DatabaseObjectInitialiser.getInstance().delegateProgressUpload=self
+        
         if(gotname != nil && gotname != "")
         {
         navigationBarTitleForChat.title = gotname
@@ -365,38 +411,8 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
             
         }
-       /*
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone=NSTimeZone.localTimeZone()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        var dateFormatted=dateFormatter.dateFromString(chatdata["datetime"] as! String)
-        
-        */
-        //cant store array, change it to string field 'stringAngentsToField'
-        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:NSDate(),request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status,customername1: customername)
-        
-        
-        
-        
-        /*   'to' : 'All Agents',
-         'from' : String, //customer name or customerID
-         'visitoremail' :  String //customer email:optional
-         'type': 'message',
-         'uniqueid' : String, //generate unique message id
-         'msg' : String, // message
-         'datetime' : Date.now(),
-         'request_id' : String, //request id of a session already stored
-         'messagechannel': String, //channel id
-         'companyid': String,
-         'is_seen': String, // ‘yes’/’no’
-         'time' : String,//hours,mins
-         ‘fromMobile’ : String // ‘yes’ or ‘no’
-         */
-        
-        //////////////socket.emit()
-        
-        //////// === commenting old socket logic...
-        //DatabaseObjectInitialiser.getInstance().socketObj.socket.emit("send:messageToAgent",chatdata)
+    
+     DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:NSDate(),request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status,customername1: customername)
         
         sendChatOnServer(chatdata)
         
@@ -457,7 +473,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             emailfield=DatabaseObjectInitialiser.getInstance().optionalDataList["email"] as! String
             chatdata["visitoremail"]=DatabaseObjectInitialiser.getInstance().optionalDataList["email"]
         }
-        chatdata["type"]=type1
+        chatdata["type"]="file"
         //generate uniqueid
         
         
@@ -489,12 +505,8 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
         }
         
-        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:chatdata["type"] as! String,uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:NSDate(),request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status,customername1: customername)
-        
-        
-        DatabaseObjectInitialiser.getDB().storeFiles(requestIDsObject["agent_name"] as! String, from1: chatdata["from"] as! String, date1: NSDate(), uniqueid1: chatdata["uniqueid"] as! String, type1: "file", filename1: filename, filesize1: "1", filetype1: filetype1, filepath1: filepath1, requestid1: chatdata["request_id"] as! String)
-        
-        return chatdata
+        DatabaseObjectInitialiser.getDB().storeChat(stringAngentsToField,from1:chatdata["from"] as! String,visitoremail1:emailfield,type1:"file",uniqueid1:chatdata["uniqueid"] as! String,msg1:chatdata["msg"] as! String,datetime1:NSDate(),request_id1:chatdata["request_id"] as! String,messagechannel1:chatdata["messagechannel"] as! String,companyid1:chatdata["companyid"] as! String,is_seen1:chatdata["is_seen"] as! String,fromMobile1:chatdata["fromMobile"] as! String,status1: status,customername1: customername)
+      return chatdata
     }
     
     
@@ -600,20 +612,130 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
+   
+    
+    
+    
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var messageDic = messages.objectAtIndex(indexPath.row) as! [String : String];
         
         let msg = messageDic["message"] as NSString!
         let msgType = messageDic["type"]! as NSString
         
+        
+              if(msgType.isEqualToString("3")||msgType.isEqualToString("4"))
+        {
+            var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("FileImageReceivedCell")! as UITableViewCell
+            let chatImage = cell.viewWithTag(1) as! UIImageView
+            
+            
+            if(chatImage.frame.height <= 230)
+            {
+                return chatImage.frame.height+20
+            }
+            else
+            {
+                return 200
+            }
+            
+            
+        }
+        
+              
+              else{
         let sizeOFStr = self.getSizeOfString(msg)
         
         return sizeOFStr.height + 70
+        }
     }
+   
+    
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return 1
     }
+    
+    
+    func updateProgressUpload(progress: Float, uniqueid: String) {
+        
+        //print("progress delegate called \(progress) .. uniqueid is \(uniqueid)")
+        //uploadInfo.indexOfObject(<#T##anObject: AnyObject##AnyObject#>)
+        /* uploadInfo.filterUsingPredicate(NSPredicate(block: { ("uniqueid", uniqueid) -> Bool in
+         
+         
+         })*/
+        var predicate=NSPredicate(format: "uniqueid = %@", uniqueid)
+        var resultArray=DatabaseObjectInitialiser.getInstance().uploadInfo.filteredArrayUsingPredicate(predicate)
+        //cfpresultArray.first
+        
+        var foundInd=DatabaseObjectInitialiser.getInstance().uploadInfo.indexOfObject(resultArray.first!)
+        var resultArrayMsgs=messages.filteredArrayUsingPredicate(predicate)
+        
+        
+        var foundMsgInd=messages.indexOfObject(resultArrayMsgs.first!)
+        //if(foundInd != NSNotFound)
+        if(resultArray.count>0){
+            // //print("found uniqueID index as \(foundInd)")
+            var newuser=resultArray.first!.valueForKey("selectedUser")
+            var newuniqueid=resultArray.first!.valueForKey("uniqueid")
+            var newrowindex=foundMsgInd
+            var newuploadProgress=progress
+            ///var newIsCompleted=resultArray.first!.valueForKey("isCompleted")
+            
+            var newIsCompleted=false
+            if(progress==1.0)
+            {
+                newIsCompleted=true
+            }
+            
+            var aaa:[String:AnyObject]=["selectedUser":newuser!,"uniqueid":newuniqueid!,"rowIndex":newrowindex,"uploadProgress":newuploadProgress,"isCompleted":newIsCompleted]
+         
+            DatabaseObjectInitialiser.getInstance().uploadInfo.replaceObjectAtIndex(foundInd, withObject: aaa)
+            var indexPath = NSIndexPath(forRow: foundMsgInd, inSection: 0)
+            
+            dispatch_async(dispatch_get_main_queue())
+            {
+                
+                var newcell=self.tblForGroupChat.cellForRowAtIndexPath(indexPath)
+                do{
+                    var newprogressview = try newcell!.viewWithTag(14) as! KDCircularProgress!
+                    var intangle=(progress*360) as NSNumber
+                    
+                    //print("from \(newprogressview.angle) to \(intangle.integerValue)")
+                    newprogressview.hidden=false
+                    newprogressview.animateToAngle(intangle.integerValue, duration: 0.7, completion: { (Bool) in
+                        
+                        if(intangle.integerValue==360)
+                        {
+                            newprogressview.hidden=true
+                        }
+                        else
+                        {
+                            newprogressview.hidden=false
+                        }
+                        //newprogressview.angle=intangle.integerValue
+                        
+                    })
+                    //self.tblForChats.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                    
+                    //var cell=self.tblForChats.dequeueReusableCellWithIdentifier("")! as UITableViewCell
+                }
+                catch
+                {
+                    //print("errorrrrr 788")
+                }
+            }
+            
+        }
+    }
+    
+    
+    
+    func addUploadInfo(selectedUser1:String,uniqueid1:String,rowindex:Int,uploadProgress:Float,isCompleted:Bool)
+    {
+        DatabaseObjectInitialiser.getInstance().uploadInfo.addObject(["selectedUser":selectedUser1,"uniqueid":uniqueid1,"rowIndex":rowindex,"uploadProgress":uploadProgress,"isCompleted":isCompleted])
+    }
+    
     
     
     func getSizeOfString(postTitle: NSString) -> CGSize {
@@ -653,26 +775,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         let date2=messageDic["date"] as NSString!
         let sizeOFStr = self.getSizeOfString(msg)
         let uniqueidDictValue=messageDic["uniqueid"] as NSString!
-        /////////print("sizeOFStr for \(msg) is \(sizeOFStr)")
-        //// print("sizeOfstr is width \(sizeOFStr.width) and height is \(sizeOFStr.height)")
-        
-        //var sizeOFStr=msg.boundingRectWithSize(CGSizeMake(220.0,CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: nil, context: nil).size
-        /*
-         
-         Messagesize = [message.userMessage boundingRectWithSize:CGSizeMake(220.0f, CGFLOAT_MAX)
-         options:NSStringDrawingUsesLineFragmentOrigin
-         attributes:@{NSFontAttributeName:fontArray[1]}
-         context:nil].size;
-         
-         
-         Timesize = [@"Time" boundingRectWithSize:CGSizeMake(220.0f, CGFLOAT_MAX)
-         options:NSStringDrawingUsesLineFragmentOrigin
-         attributes:@{NSFontAttributeName:fontArray[2]}
-         context:nil].size;
-         
-         
-         size.height = Messagesize.height + Namesize.height + Timesize.height + 48.0f;
-         */
+      
         
         if (msgType.isEqualToString("1")){
             
@@ -692,26 +795,10 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
             
             textLable.frame = CGRectMake(textLable.frame.origin.x, textLable.frame.origin.y, textLable.frame.size.width, sizeOFStr.height)
-            ////// profileImage.center = CGPointMake(profileImage.center.x, textLable.frame.origin.y + textLable.frame.size.height - profileImage.frame.size.height/2 + 10)
             profileImage.center = CGPointMake(profileImage.center.x, textLable.frame.origin.y + textLable.frame.size.height - profileImage.frame.size.height/2+20)
-            
-            
-            
-            // nameLabel.text="Sojharo"
-            
-            
-            textLable.text=msg.description
+           textLable.text=msg.description
             //return cell
         }
-        //  return cell
-        
-        /*  if(indexPath.row==0)
-         {
-         var cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatSentCell")! as UITableViewCell
-         let nameLabel = cell.viewWithTag(15) as! UILabel
-         nameLabel.text="Sojharo"
-         return cell
-         }*/
         if (msgType.isEqualToString("2")){
             print("yessss 2")
             cell = tblForGroupChat.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
@@ -725,18 +812,10 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             //// //print("distanceFactor for \(msg) is \(distanceFactor)")
             
             chatImage.frame = CGRectMake(20 + distanceFactor, chatImage.frame.origin.y, ((sizeOFStr.width + 107)  > 207 ? (sizeOFStr.width + 107) : 200), sizeOFStr.height + 40)
-            ////    //print("chatImage.x for \(msg) is \(20 + distanceFactor) and chatimage.wdith is \(chatImage.frame.width)")
-            
-            
+           
             textLable.hidden=false
             
-            ////////  chatImage.image = UIImage(named: "chat_send")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
-            //*********
-            // textLable.text = "\(msg)"
             textLable.frame = CGRectMake(36 + distanceFactor, textLable.frame.origin.y, textLable.frame.size.width, sizeOFStr.height)
-            ///  //print("textLable.x for \(msg) is \(textLable.frame.origin.x) and textLable.width is \(textLable.frame.width)")
-            
-            ////profileImage.center = CGPointMake(profileImage.center.x, textLable.frame.origin.y + textLable.frame.size.height - profileImage.frame.size.height/2 + 10)
             
             timeLabel.frame = CGRectMake(36 + distanceFactor, timeLabel.frame.origin.y, timeLabel.frame.size.width, timeLabel.frame.size.height)
             deliveredLabel.frame = CGRectMake(deliveredLabel.frame.origin.x, textLable.frame.origin.y + textLable.frame.size.height + 15, deliveredLabel.frame.size.width, deliveredLabel.frame.size.height)
@@ -746,10 +825,328 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             //  return cell
             
         }
+        if (msgType.isEqualToString("3")){
+            
+            print("yesss 3")
+            cell = ///tblForChats.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
+               
+                //FileImageReceivedCell
+                tblForGroupChat.dequeueReusableCellWithIdentifier("FileImageSentCell")! as UITableViewCell
+            let deliveredLabel = cell.viewWithTag(13) as! UILabel
+            let textLable = cell.viewWithTag(12) as! UILabel
+            let timeLabel = cell.viewWithTag(11) as! UILabel
+            let chatImage = cell.viewWithTag(1) as! UIImageView
+            //let profileImage = cell.viewWithTag(2) as! UIImageView
+            
+            let progressView = cell.viewWithTag(14) as! KDCircularProgress!
+            
+            
+            let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            let docsDir1 = dirPaths[0]
+            var documentDir=docsDir1 as NSString
+            
+            
+            //split by ; 
+            var msgArray=msg.componentsSeparatedByString(";")
+           // var imgPath=documentDir.stringByAppendingPathComponent(msg as! String)
+            var imgPath=documentDir.stringByAppendingPathComponent(msgArray[1])
+            //msgArray
+            var imgNSData=NSFileManager.defaultManager().contentsAtPath(imgPath)
+           
+            
+            if(imgNSData != nil)
+            {
+                print("imgNSData is not nil")
+                chatImage.userInteractionEnabled = true
+              
+              
+                
+                //now you need a tap gesture recognizer
+                //note that target and action point to what happens when the action is recognized.
+                let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
+                //Add the recognizer to your view.
+                chatImage.addGestureRecognizer(tapRecognizer)
+                
+                
+                chatImage.frame = CGRectMake(chatImage.frame.origin.x, chatImage.frame.origin.y, 200, 200)
+                
+                chatImage.image = UIImage(data: imgNSData!)!
+                ///.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
+                chatImage.contentMode = .ScaleAspectFill
+                chatImage.setNeedsDisplay()
+                //print("file shownnnnnnnnn")
+                textLable.hidden=true
+            }
+            else
+            {
+                 print("imgNSData is nil")
+            }
+        }
+         if (msgType.isEqualToString("4")){
+            
+            print("yesss 4")
+            cell = ///tblForChats.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
+                
+                //FileImageReceivedCell
+                tblForGroupChat.dequeueReusableCellWithIdentifier("FileImageReceivedCell")! as UITableViewCell
+            let deliveredLabel = cell.viewWithTag(13) as! UILabel
+            let textLable = cell.viewWithTag(12) as! UILabel
+            let timeLabel = cell.viewWithTag(11) as! UILabel
+            let chatImage = cell.viewWithTag(1) as! UIImageView
+            let profileImage = cell.viewWithTag(2) as! UIImageView
+            let progressView = cell.viewWithTag(14) as! KDCircularProgress!
+           
+            
+            let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            let docsDir1 = dirPaths[0]
+            var documentDir=docsDir1 as NSString
+           // var imgPath=documentDir.stringByAppendingPathComponent(msg as! String)
+            var msgArray=msg.componentsSeparatedByString(";")
+            // var imgPath=documentDir.stringByAppendingPathComponent(msg as! String)
+            var imgPath=documentDir.stringByAppendingPathComponent(msgArray[1])
+            
+            var imgNSData=NSFileManager.defaultManager().contentsAtPath(imgPath)
+            
+            if(imgNSData != nil)
+            {
+                 print("imgNSData is not nil")
+                
+                chatImage.userInteractionEnabled = true
+                //now you need a tap gesture recognizer
+                //note that target and action point to what happens when the action is recognized.
+                let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
+                //Add the recognizer to your view.
+    
+    
+                var predicate=NSPredicate(format: "uniqueid = %@", uniqueidDictValue)
+                var resultArray=DatabaseObjectInitialiser.getInstance().uploadInfo.filteredArrayUsingPredicate(predicate)
+                if(resultArray.count>0)
+                {
+                    
+                    
+                    var uploadDone = resultArray.first!.valueForKey("isCompleted") as! Bool
+                    if(uploadDone==false)
+                    {
+                        progressView.hidden=false
+                    }
+                    else
+                    {
+                        progressView.hidden=true
+                        
+                    }
+                    
+                }
+                chatImage.addGestureRecognizer(tapRecognizer)
+                
+                
+                chatImage.frame = CGRectMake(chatImage.frame.origin.x, chatImage.frame.origin.y, 218, 200)
+                
+                chatImage.image = UIImage(data: imgNSData!)!
+                ///.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
+                chatImage.contentMode = .ScaleAspectFill
+                chatImage.setNeedsDisplay()
+                //print("file shownnnnnnnnn")
+                textLable.hidden=true
+                
+                
+                //print("date received in chat is \(date2.debugDescription)")
+                var formatter = NSDateFormatter();
+                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS";
+                //formatter.dateFormat = "MM/dd, HH:mm";
+                formatter.timeZone = NSTimeZone.localTimeZone()
+                var defaultTimeZoneStr = formatter.dateFromString(date2.debugDescription)
+                //print("defaultTimeZoneStr \(defaultTimeZoneStr)")
+                
+                var formatter2 = NSDateFormatter();
+                formatter2.timeZone=NSTimeZone.localTimeZone()
+                formatter2.dateFormat = "MM/dd, HH:mm";
+                var displaydate=formatter2.stringFromDate(defaultTimeZoneStr!)
+                
+                 timeLabel.text=displaydate
+               // timeLabel.text=date2.debugDescription
+            }
+            else{
+                 print("imgNSData is nil")
+            }
+        }
+        if(msgType.isEqualToString("5"))
+        {
+            
+            print("yesss 5")
+            //print("type is 5 hereeeeeeeeeeee")
+            cell = ///tblForChats.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
+                
+                //FileImageReceivedCell
+                tblForGroupChat.dequeueReusableCellWithIdentifier("DocSentCell")! as UITableViewCell
+            let deliveredLabel = cell.viewWithTag(13) as! UILabel
+            let textLable = cell.viewWithTag(12) as! UILabel
+            let timeLabel = cell.viewWithTag(11) as! UILabel
+            let chatImage = cell.viewWithTag(1) as! UIImageView
+            let profileImage = cell.viewWithTag(2) as! UIImageView
+             let progressView=cell.viewWithTag(14) as! KDCircularProgress
+            
+            let distanceFactor = (170.0 - sizeOFStr.width) < 100 ? (170.0 - sizeOFStr.width) : 100
+            
+            
+          
+            textLable.hidden=false
+            //chatImage.frame = CGRectMake(20 + distanceFactor, chatImage.frame.origin.y, ((sizeOFStr.width + 100)  > 200 ? (sizeOFStr.width + 100) : 200), sizeOFStr.height + 40)
+            chatImage.image = UIImage(named: "chat_receive")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
+            
+             chatImage.frame = CGRectMake(chatImage.frame.origin.x, chatImage.frame.origin.y, ((sizeOFStr.width + 100)  > 200 ? (sizeOFStr.width + 100) : 200), sizeOFStr.height + 40)
+            textLable.text = "\(msg)"
+        
+            let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            let docsDir1 = dirPaths[0]
+            var documentDir=docsDir1 as NSString
+            ////var imgPath=documentDir.stringByAppendingPathComponent(msg as! String)
+            
+            selectedText = msg as! String
+            /// var imgNSData=NSFileManager.defaultManager().contentsAtPath(imgPath)
+            chatImage.userInteractionEnabled=true
+         
+            //print("date received in chat is \(date2.debugDescription)")
+            var formatter = NSDateFormatter();
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS";
+            //formatter.dateFormat = "MM/dd, HH:mm";
+            formatter.timeZone = NSTimeZone.localTimeZone()
+            var defaultTimeZoneStr = formatter.dateFromString(date2.debugDescription)
+            //print("defaultTimeZoneStr \(defaultTimeZoneStr)")
+            
+            var formatter2 = NSDateFormatter();
+            formatter2.timeZone=NSTimeZone.localTimeZone()
+            formatter2.dateFormat = "MM/dd, HH:mm";
+            var displaydate=formatter2.stringFromDate(defaultTimeZoneStr!)
+            
+            timeLabel.text=displaydate
+            //timeLabel.text=date2.debugDescription
+        }
+        if(msgType.isEqualToString("6"))
+        {
+            
+            print("yesss 6")
+            //print("type is 6 hereeeeeeeeeeee")
+            cell = ///tblForChats.dequeueReusableCellWithIdentifier("ChatReceivedCell")! as UITableViewCell
+                
+                //FileImageReceivedCell
+                tblForGroupChat.dequeueReusableCellWithIdentifier("DocReceivedCell")! as UITableViewCell
+            let deliveredLabel = cell.viewWithTag(13) as! UILabel
+            let textLable = cell.viewWithTag(12) as! UILabel
+            let timeLabel = cell.viewWithTag(11) as! UILabel
+            let chatImage = cell.viewWithTag(1) as! UIImageView
+            let profileImage = cell.viewWithTag(2) as! UIImageView
+            let progressView=cell.viewWithTag(14) as! KDCircularProgress
+           
+            
+            
+           // let distanceFactor = (170.0 - sizeOFStr.width) < 100 ? (170.0 - sizeOFStr.width) : 100
+    
+            
+            let distanceFactor = (197.0 - sizeOFStr.width) < 107 ? (197.0 - sizeOFStr.width) : 107
+            //print("distanceFactor for \(msg) is \(distanceFactor)")
+            
+        /////    chatImage.frame = CGRectMake(20 + distanceFactor, chatImage.frame.origin.y, ((sizeOFStr.width + 107)  > 207 ? (sizeOFStr.width + 107) : 200), sizeOFStr.height + 40)
+          //  //print("chatImage.x for \(msg) is \(20 + distanceFactor) and chatimage.wdith is \(chatImage.frame.width)")
+            
+
+            
+            var predicate=NSPredicate(format: "uniqueid = %@", uniqueidDictValue)
+            var resultArray=DatabaseObjectInitialiser.getInstance().uploadInfo.filteredArrayUsingPredicate(predicate)
+            if(resultArray.count>0)
+            {
+                
+                
+                var uploadDone = resultArray.first!.valueForKey("isCompleted") as! Bool
+                if(uploadDone==false)
+                {
+                    progressView.hidden=false
+                }
+                else
+                {
+                    progressView.hidden=true
+                    
+                }
+                
+                
+            }
+            
+            chatImage.frame = CGRectMake(20 + distanceFactor, chatImage.frame.origin.y, ((sizeOFStr.width + 107)  > 207 ? (sizeOFStr.width + 107) : 200), sizeOFStr.height + 40)
+              //print("chatImage.x for \(msg) is \(20 + distanceFactor) and chatimage.wdith is \(chatImage.frame.width)")
+            
+            
+            
+            textLable.hidden=false
+            //chatImage.frame = CGRectMake(20 + distanceFactor, chatImage.frame.origin.y, ((sizeOFStr.width + 100)  > 200 ? (sizeOFStr.width + 100) : 200), sizeOFStr.height + 40)
+            chatImage.image = UIImage(named: "chat_send")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
+            
+            // chatImage.layer.borderColor=UIColor.greenColor().CGColor
+            //  chatImage.layer.borderWidth = 3.0;
+            // chatImage.highlighted=true
+            // *********
+            textLable.text = "\(msg)"
+            //old was 36 in place of 60
+            textLable.frame = CGRectMake(60 + distanceFactor, textLable.frame.origin.y, textLable.frame.size.width, sizeOFStr.height)
+            
+            
+            profileImage.center = CGPointMake(45+distanceFactor, textLable.frame.origin.y + textLable.frame.size.height - profileImage.frame.size.height/2+10)
+            
+            profileImage.setNeedsDisplay()
+            
+            timeLabel.frame = CGRectMake(35 + distanceFactor, chatImage.frame.origin.y+sizeOFStr.height + 20, chatImage.frame.size.width-40, timeLabel.frame.size.height)
+            
+            
+            
+            let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            let docsDir1 = dirPaths[0]
+            var documentDir=docsDir1 as NSString
+            ////var imgPath=documentDir.stringByAppendingPathComponent(msg as! String)
+            
+            selectedText = msg as! String
+            /// var imgNSData=NSFileManager.defaultManager().contentsAtPath(imgPath)
+            chatImage.userInteractionEnabled=true
+           var formatter = NSDateFormatter();
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS";
+            //formatter.dateFormat = "MM/dd, HH:mm";
+            formatter.timeZone = NSTimeZone.localTimeZone()
+            var defaultTimeZoneStr = formatter.dateFromString(date2.debugDescription)
+            //print("defaultTimeZoneStr \(defaultTimeZoneStr)")
+            
+            var formatter2 = NSDateFormatter();
+            formatter2.timeZone=NSTimeZone.localTimeZone()
+            formatter2.dateFormat = "MM/dd, HH:mm";
+            var displaydate=formatter2.stringFromDate(defaultTimeZoneStr!)
+            
+            timeLabel.text=displaydate
+
+           // timeLabel.text=date2.debugDescription
+        }
+
+        
         
         return cell
         
     }
+    
+    func imageTapped(gestureRecognizer: UITapGestureRecognizer) {
+        //tappedImageView will be the image view that was tapped.
+        //dismiss it, animate it off screen, whatever.
+        let tappedImageView = gestureRecognizer.view! as! UIImageView
+        selectedImage=tappedImageView.image
+        //==uncomment later self.performSegueWithIdentifier("showFullImageSegue", sender: nil);
+        
+    }
+    
+    func docTapped(gestureRecognizer: UITapGestureRecognizer) {
+        //tappedImageView will be the image view that was tapped.
+        //dismiss it, animate it off screen, whatever.
+        //print("docTapped hereee")
+        
+        let tappedImageView = gestureRecognizer.view! as! UIImageView
+        //selectedImage=tappedImageView.image
+       self.performSegueWithIdentifier("showFullDocSegue", sender: nil);
+        
+    }
+
     
     func refreshChatsUI(message: String, data: AnyObject!) {
         
@@ -992,7 +1389,8 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 var mime=UtilityFunctions.init().MimeType(ftype)
                 print("mime is \(mime)")
                 var filemsgbody="\(mime);\(self.filename)"
-                var chatdata=self.makeChatStanzaAndSaveInDB("file", msg1: mime+";"+self.filename, status1: "pending",filetype1: ftype,filepath1: filePathImage2)
+                
+                var chatdata=self.makeChatStanzaAndSaveInDB("image", msg1: mime+";"+self.filename, status1: "pending",filetype1: ftype,filepath1: filePathImage2)
                 
                /* var stringAngentsToField=chatdata["to"]
                 //chatdata["agentemail"]
@@ -1031,7 +1429,9 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 //============self.saveChatOnServer(chatdata)
                 
                 
-                self.addMessage("\(self.filename)", ofType: "2",date:NSDate().description, uniqueid: chatdata["uniqueid"] as! String)
+                
+                //commented no need refresh table
+               /* self.addMessage("\(self.filename)", ofType: "2",date:NSDate().description, uniqueid: chatdata["uniqueid"] as! String)
                 self.txtFieldPost.text = "";
                 self.tblForGroupChat.reloadData()
                 if(self.messages.count>1)
@@ -1040,7 +1440,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                     var indexPath = NSIndexPath(forRow:self.messages.count-1, inSection: 0)
                     self.tblForGroupChat.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
                     
-                }
+                }*/
 
                 
                 //make chat and store chat ================
@@ -1085,11 +1485,16 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                  }
                  */
                 
+                
+                DatabaseObjectInitialiser.getDB().storeFiles(chatdata["to"] as! String, from1: chatdata["from"] as! String, date1: NSDate(), uniqueid1: chatdata["uniqueid"] as! String, type1: "image", filename1: fname!+"."+ftype, filesize1: "\(self.fileSize1)", filetype1: ftype, filepath1: filePathImage2, requestid1: chatdata["request_id"] as! String)
+                
+                
+                
                 //sqliteDB.SaveChat(self.selectedContact, from1: username!, owneruser1: username!, fromFullName1: displayname, msg1: self.filename, date1: nil, uniqueid1: uniqueID, status1: "pending", type1: "image", file_type1: ftype, file_path1: filePathImage2)
                 
                //==done above== sqliteDB.saveFile(self.selectedContact, from1: username!, owneruser1: username!, file_name1: self.filename, date1: nil, uniqueid1: uniqueID, file_size1: "\(self.fileSize1)", file_type1: ftype, file_path1: filePathImage2, type1: "image")
                 
-               //uncomment later self.addUploadInfo(self.selectedContact,uniqueid1: uniqueID, rowindex: self.messages.count, uploadProgress: 0.0, isCompleted: false)
+               self.addUploadInfo(chatdata["to"] as! String,uniqueid1: chatdata["uniqueid"] as! String, rowindex: self.messages.count, uploadProgress: 0.0, isCompleted: false)
                 
                 
                 UtilityFunctions.init().uploadFile(chatdata, filePath1: filePathImage2, file_name1: self.filename, file_type1: ftype)
@@ -1129,8 +1534,8 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 
                 
                 
-                
-                self.dismissViewControllerAnimated(true, completion:{ ()-> Void in
+                //uncomment later
+               /*self.dismissViewControllerAnimated(true, completion:{ ()-> Void in
                     
                   /*  if(self.showKeyboard==true)
                     {var duration : NSTimeInterval = 0
@@ -1153,7 +1558,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                     
                 });
                 
-                
+                */
                 
                 
                 /*if (controller.documentPickerMode == UIDocumentPickerMode.Import) {
@@ -1406,7 +1811,8 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                         
                       var uniqueID=self.generateUniqueID()
                         var mime=UtilityFunctions.init().MimeType(ftype)
-                        var chatstanza=self.makeChatStanzaAndSaveInDB("file", msg1: mime+";"+fname!, status1: "pending", filetype1: "document", filepath1: filePathImage2)
+                        
+                        var chatstanza=self.makeChatStanzaAndSaveInDB("document", msg1: mime+";"+fname!, status1: "pending", filetype1: "document", filepath1: filePathImage2)
                       
                         
                        //--alternative above====== var imParas=["from":"\(username!)","to":"\(self.selectedContact)","fromFullName":"\(displayname)","msg":fname!+"."+ftype,"uniqueid":uniqueID,"type":"file","file_type":"document"]
@@ -1454,13 +1860,13 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                          }*/
                         
                         
-                        DatabaseObjectInitialiser.getDB().storeFiles(chatstanza["to"] as! String, from1: chatstanza["from"] as! String, date1: NSDate(), uniqueid1: chatstanza["uniqueid"] as! String, type1: "file", filename1: fname!+"."+ftype, filesize1: "\(self.fileSize1)", filetype1: ftype, filepath1: filePathImage2, requestid1: chatstanza["request_id"] as! String)
+                        DatabaseObjectInitialiser.getDB().storeFiles(chatstanza["to"] as! String, from1: chatstanza["from"] as! String, date1: NSDate(), uniqueid1: chatstanza["uniqueid"] as! String, type1: "document", filename1: fname!+"."+ftype, filesize1: "\(self.fileSize1)", filetype1: ftype, filepath1: filePathImage2, requestid1: chatstanza["request_id"] as! String)
                         
                         
                       /////  sqliteDB.saveFile(self.selectedContact, from1: username!, owneruser1: username!, file_name1: fname!+"."+ftype, date1: nil, uniqueid1: uniqueID, file_size1: "\(self.fileSize1)", file_type1: ftype, file_path1: filePathImage2, type1: "document")
                         
                         
-                       //========= self.addUploadInfo(self.selectedContact,uniqueid1: uniqueID, rowindex: self.messages.count, uploadProgress: 0.0, isCompleted: false)
+                       self.addUploadInfo(chatstanza["to"] as! String,uniqueid1: chatstanza["uniqueid"] as! String, rowindex: self.messages.count, uploadProgress: 0.0, isCompleted: false)
                         
                        
                         UtilityFunctions.init().uploadFile(chatstanza, filePath1: filePathImage2, file_name1: fname!+"."+ftype, file_type1: ftype)
@@ -1568,7 +1974,14 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 var messageDic = messages.objectAtIndex(selectedRow) as! [String : String];
                 
                 let msg = messageDic["message"] as NSString!
-                selectedText=msg as String
+                
+                var msgArray=msg.componentsSeparatedByString(";")
+                // var imgPath=documentDir.stringByAppendingPathComponent(msg as! String)
+                //var imgPath=documentDir.stringByAppendingPathComponent(msgArray[1])
+                
+                selectedText=msgArray[1]
+                
+                //====selectedText=msg as String
                 //destinationVC.tabBarController?.selectedIndex=0
                 //self.tabBarController?.selectedIndex=0
                 destinationVC.newtext=selectedText

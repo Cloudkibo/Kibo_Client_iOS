@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KiboEngageSDK/KiboEngageSDK/KiboSDK.swift"
-            timestampString = "499992239.543373"
+            timestampString = "500148466.371587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1173"
-            endingLineNumber = "1173"
+            startingLineNumber = "1174"
+            endingLineNumber = "1174"
             landmarkName = "syncPartialChat(_:customerid:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../KiboEngageSDK/KiboEngageSDK/KiboSDK.swift"
-            timestampString = "499992239.543373"
+            timestampString = "500148466.371587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1184"
-            endingLineNumber = "1184"
+            startingLineNumber = "1185"
+            endingLineNumber = "1185"
             landmarkName = "syncPartialChat(_:customerid:)"
             landmarkType = "5">
          </BreakpointContent>

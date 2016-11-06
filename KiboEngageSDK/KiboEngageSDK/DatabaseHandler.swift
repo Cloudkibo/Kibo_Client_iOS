@@ -1235,7 +1235,7 @@ internal class DatabaseHandler:NSObject
         let from = Expression<String>("from")
         let date = Expression<NSDate>("date")
         let uniqueid = Expression<String>("uniqueid")
-        let contactPhone = Expression<String>("contactPhone")
+       // let contactPhone = Expression<String>("contactPhone")
         let type = Expression<String>("type")  //image or document
         let file_name = Expression<String>("file_name")
         let file_size = Expression<String>("file_size")
@@ -1273,7 +1273,7 @@ internal class DatabaseHandler:NSObject
             try db.run(files.create(ifNotExists: true) { t in
                 t.column(to)
                 t.column(from)
-                t.column(contactPhone)
+               // t.column(contactPhone)
                 t.column(date)
                 t.column(uniqueid)
                 t.column(request_id)
@@ -1307,7 +1307,7 @@ internal class DatabaseHandler:NSObject
         let request_id = Expression<String>("request_id")
         
         do{
-            let rowid = try DatabaseObjectInitialiser.getInstance().database.db.run(files.insert(
+            let rowid = try self.db.run(self.files.insert(
                 to<-to1,
                 from<-from1,
                 date<-date1,
@@ -1321,10 +1321,54 @@ internal class DatabaseHandler:NSObject
             
                 ))}
         catch{
-            
+            print("error in saving file data \(error)")
         }
             
         
+    }
+    
+    func getFileDataFromUniqueID(uniqueid1:String)->[String:AnyObject]
+    {
+        let to = Expression<String>("to")
+        let from = Expression<String>("from")
+        let date = Expression<NSDate>("date")
+        let uniqueid = Expression<String>("uniqueid")
+        //let contactPhone = Expression<String>("contactPhone")
+        let type = Expression<String>("type")  //image or document
+        let file_name = Expression<String>("file_name")
+        let file_size = Expression<String>("file_size")
+        let file_type = Expression<String>("file_type")
+        let file_path = Expression<String>("file_path")
+        let request_id = Expression<String>("request_id")
+        
+        var result=[String:AnyObject]()
+        do{
+            
+            
+           // var query=self.files.select(to,from,date,uniqueid,).filter(request_id == request_id1)
+            
+            
+            
+            for agentsinfo in try self.db.prepare(self.files.filter(uniqueid == uniqueid1))
+            {   result["to"]=agentsinfo.get(to)
+                result["from"]=agentsinfo.get(from)
+                result["date"]=agentsinfo.get(date)
+                result["uniqueid"]=agentsinfo.get(uniqueid)
+                result["type"]=agentsinfo.get(type)
+                result["file_name"]=agentsinfo.get(file_name)
+                result["file_size"]=agentsinfo.get(file_size)
+                result["file_type"]=agentsinfo.get(file_type)
+                result["file_path"]=agentsinfo.get(file_path)
+                result["request_id"]=agentsinfo.get(request_id)
+            }
+        }
+            
+        catch{
+            print("error in fetching agents info")
+        }
+        
+        return result
+
     }
     
     }

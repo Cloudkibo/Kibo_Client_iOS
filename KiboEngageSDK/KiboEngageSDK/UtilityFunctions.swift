@@ -10,10 +10,30 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 class UtilityFunctions{
+    
+    
+
     init()
     {
         
     }
+    
+    let imageExtensions=[
+        "gif",
+        "jpeg",
+        "jpg",
+        "png",
+        "tif",
+        "tiff",
+        "wbmp",
+        "ico",
+        "jng",
+        "bmp",
+        "svg",
+        "svgz",
+        "webp"
+    ]
+    
      let DEFAULT_MIME_TYPE = "application/octet-stream"
     
     let mimeTypes = [
@@ -190,14 +210,14 @@ class UtilityFunctions{
                             let percent = (Float(totalBytesWritten) / Float(totalBytesExpectedToWrite))
                             /////progress(percent: percent)
                             //uncomment later
-                            /*if(self.delegateProgressUpload != nil)
+                            if(DatabaseObjectInitialiser.getInstance().delegateProgressUpload != nil)
                             {
                                 if(percent<1.0)
                                 {
-                                    self.delegateProgressUpload.updateProgressUpload(percent,uniqueid: uniqueid1)
+                                    DatabaseObjectInitialiser.getInstance().delegateProgressUpload.updateProgressUpload(percent,uniqueid: chatstanza["uniqueid"] as! String)
                                 }
                                 
-                            }*/
+                            }
                             //Redraw specific table cell
                             print("percentage is \(percent)")
                         }
@@ -254,7 +274,11 @@ class UtilityFunctions{
                                 
                             }
                             */
-                            
+                            if(DatabaseObjectInitialiser.getInstance().delegateProgressUpload != nil)
+                                {
+                                DatabaseObjectInitialiser.getInstance().delegateProgressUpload.updateProgressUpload(1.0,uniqueid: chatstanza["uniqueid"] as! String)
+                                
+                            }
                             //debugPrint(response)
                             print("file upload success")
                             print(response.result.value)
@@ -332,6 +356,18 @@ class UtilityFunctions{
                 print("totalBytesRead bytes \(totalBytesRead)")
                 var progressbytes=(Float(totalBytesRead)/Float(totalBytesExpectedToRead)) as Float
                 print("totalBytesExpectedToRead are \(totalBytesExpectedToRead)")
+                
+                if(DatabaseObjectInitialiser.getInstance().delegateProgressUpload != nil)
+                {
+                    if(progressbytes<1.0)
+                    {
+                        
+                        print("calling delegate progress bar.....")
+                        DatabaseObjectInitialiser.getInstance().delegateProgressUpload.updateProgressUpload(progressbytes,uniqueid: fileuniqueid)
+                    }
+                    
+                }
+                
                 /* if(self.delegateProgressUpload != nil)
                  {
                  if(progressbytes<1.0)
@@ -362,18 +398,20 @@ class UtilityFunctions{
                 var documentDir=docsDir1 as NSString
                 var filePendingPath=documentDir.stringByAppendingPathComponent(filePendingName)
                 
-               // if(self.imageExtensions.contains(filetype.lowercaseString))
-                //{
+               if(self.imageExtensions.contains(filetype.lowercaseString))
+               {
                     //filePendingName
                 
                 
-                DatabaseObjectInitialiser.getDB().storeFiles(filePendingTo, from1: filefrom, date1: NSDate(), uniqueid1: fileuniqueid, type1: filetype, filename1: filePendingName, filesize1: filePendingSize, filetype1: filetype, filepath1: filePendingPath, requestid1: requestID)
-                //}
-                /*else
+                //set file type doc or image from mimetype
+                DatabaseObjectInitialiser.getDB().storeFiles(filePendingTo, from1: filefrom, date1: NSDate(), uniqueid1: fileuniqueid, type1: "image", filename1: filePendingName, filesize1: filePendingSize, filetype1: filetype, filepath1: filePendingPath, requestid1: requestID)
+                
+                }
+                else
                 {
-                    sqliteDB.saveFile(filePendingTo, from1: filefrom, owneruser1: username!, file_name1: filePendingName, date1: nil, uniqueid1: fileuniqueid, file_size1: filePendingSize, file_type1: filetype, file_path1: filePendingPath, type1: "document")
+                   DatabaseObjectInitialiser.getDB().storeFiles(filePendingTo, from1: filefrom, date1: NSDate(), uniqueid1: fileuniqueid, type1: "document", filename1: filePendingName, filesize1: filePendingSize, filetype1: filetype, filepath1: filePendingPath, requestid1: requestID)
                     
-                }*/
+                }
                
                //UPDATE UI
                 //filedownloaded’ to with parameters ‘senderoffile’, ‘receiveroffile’
@@ -384,21 +422,6 @@ class UtilityFunctions{
         }
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 }
+
+

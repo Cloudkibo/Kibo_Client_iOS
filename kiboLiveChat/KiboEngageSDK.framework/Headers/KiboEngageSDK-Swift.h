@@ -131,6 +131,38 @@ SWIFT_CLASS("_TtC13KiboEngageSDK25ChatsDetailViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIColor;
+@class CAAnimation;
+
+SWIFT_CLASS("_TtC13KiboEngageSDK18KDCircularProgress")
+@interface KDCircularProgress : UIView
+@property (nonatomic) NSInteger angle;
+@property (nonatomic) NSInteger startAngle;
+@property (nonatomic) BOOL clockwise;
+@property (nonatomic) BOOL roundedCorners;
+@property (nonatomic) CGFloat gradientRotateSpeed;
+@property (nonatomic) CGFloat glowAmount;
+@property (nonatomic) CGFloat progressThickness;
+@property (nonatomic) CGFloat trackThickness;
+@property (nonatomic, strong) UIColor * _Nonnull trackColor;
+@property (nonatomic, strong) UIColor * _Nullable progressInsideFillColor;
+@property (nonatomic, copy) NSArray<UIColor *> * _Null_unspecified progressColors;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)awakeFromNib;
++ (Class _Nonnull)layerClass;
+- (void)layoutSubviews;
+- (void)animateFromAngle:(NSInteger)fromAngle toAngle:(NSInteger)toAngle duration:(NSTimeInterval)duration relativeDuration:(BOOL)relativeDuration completion:(void (^ _Nullable)(BOOL))completion;
+- (void)animateToAngle:(NSInteger)toAngle duration:(NSTimeInterval)duration relativeDuration:(BOOL)relativeDuration completion:(void (^ _Nullable)(BOOL))completion;
+- (void)pauseAnimation;
+- (void)stopAnimation;
+- (BOOL)isAnimating;
+- (void)animationDidStop:(CAAnimation * _Nonnull)anim finished:(BOOL)flag;
+- (void)didMoveToWindow;
+- (void)willMoveToSuperview:(UIView * _Nullable)newSuperview;
+- (void)prepareForInterfaceBuilder;
+@end
+
 
 @interface NSDictionary (SWIFT_EXTENSION(KiboEngageSDK))
 @end

@@ -10,6 +10,8 @@ import Foundation
 
 internal class DatabaseObjectInitialiser
 {
+    var delegateProgressUpload:showUploadProgressDelegate!
+    var uploadInfo=NSMutableArray()
     var appid=""
     var clientid=""
     var secretid=""
@@ -53,6 +55,12 @@ internal class DatabaseObjectInitialiser
     }
     
 }
+
+protocol showUploadProgressDelegate:class
+{
+    func updateProgressUpload(progress:Float,uniqueid:String);
+}
+
 
 let sharedInstance = DatabaseObjectInitialiser()
 
