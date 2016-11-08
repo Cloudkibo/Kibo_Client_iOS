@@ -121,6 +121,7 @@ SWIFT_CLASS("_TtC13KiboEngageSDK25ChatsDetailViewController")
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingImage:(UIImage * _Nonnull)image editingInfo:(NSDictionary<NSString *, id> * _Nullable)editingInfo;
 - (void)imagePickerControllerDidCancel:(UIImagePickerController * _Nonnull)picker;
 - (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentAtURL:(NSURL * _Nonnull)url;

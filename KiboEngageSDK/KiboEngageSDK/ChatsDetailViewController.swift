@@ -89,7 +89,9 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                     if((filedata["type"] as! String)=="document")
                     {
                         print("i am sending document")
-                         tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"6", "date":defaultTimeeee, "uniqueid":filedata["uniqueid"] as! String])}
+                         tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"6", "date":defaultTimeeee, "uniqueid":filedata["uniqueid"] as! String])
+                    }
+                    
                 }
                 else{
                 //i sent so type is 2
@@ -113,9 +115,11 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                     updateStatusArray.append(updateStatusData)
 
                 }
-                if((chatsList[i]["type"] as! String)=="file" && filedata.count > 0)
+                if((chatsList[i]["type"] as! String)=="file")
                 {
-                    print("agent chatlist type is \(chatsList[i]["type"] as! String) and filedata type is \(filedata["type"] as! String)")
+                    //file already downloaded
+                    if(filedata.count > 0)
+                    {print("agent chatlist type is \(chatsList[i]["type"] as! String) and filedata type is \(filedata["type"] as! String)")
                     
                     if((filedata["type"] as! String)=="image")
                     { tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"3", "date":defaultTimeeee, "uniqueid":filedata["uniqueid"] as! String])
@@ -127,6 +131,12 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                         tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"5", "date":defaultTimeeee, "uniqueid":filedata["uniqueid"] as! String])
                         //^^^^ self.addMessage(tblContacts[msg], ofType: "5",date: tblContacts[date],uniqueid: tblContacts[uniqueid])
                         
+                    }
+                    
+                }
+                    else{
+                        //file not downloaded yet
+                        tempmessages.addObject(["message":chatsList[i]["msg"] as! String, "type":"5", "date":defaultTimeeee, "uniqueid":chatsList[i]["uniqueid"] as! String])
                     }
                 }
                     
@@ -847,10 +857,14 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             
             
             //split by ; 
+            print("msg is \(msg)")
             var msgArray=msg.componentsSeparatedByString(";")
+            print("msgArray is \(msgArray)")
            // var imgPath=documentDir.stringByAppendingPathComponent(msg as! String)
             var imgPath=documentDir.stringByAppendingPathComponent(msgArray[1])
             //msgArray
+            print("msgArray[1] is \(msgArray[1])")
+            print("imgPath is \(imgPath)")
             var imgNSData=NSFileManager.defaultManager().contentsAtPath(imgPath)
            
             
@@ -863,9 +877,6 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 
                 //now you need a tap gesture recognizer
                 //note that target and action point to what happens when the action is recognized.
-                let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
-                //Add the recognizer to your view.
-                chatImage.addGestureRecognizer(tapRecognizer)
                 
                 
                 chatImage.frame = CGRectMake(chatImage.frame.origin.x, chatImage.frame.origin.y, 200, 200)
@@ -876,6 +887,10 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 chatImage.setNeedsDisplay()
                 //print("file shownnnnnnnnn")
                 textLable.hidden=true
+                let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
+                //Add the recognizer to your view.
+                chatImage.addGestureRecognizer(tapRecognizer)
+
             }
             else
             {
@@ -897,13 +912,25 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             let progressView = cell.viewWithTag(14) as! KDCircularProgress!
            
             
+            
+            //
+            
+            ///
+            
             let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
             let docsDir1 = dirPaths[0]
             var documentDir=docsDir1 as NSString
            // var imgPath=documentDir.stringByAppendingPathComponent(msg as! String)
+            
+            
+            print("msg is \(msg)")
             var msgArray=msg.componentsSeparatedByString(";")
+            print("msgArray is \(msgArray)")
             // var imgPath=documentDir.stringByAppendingPathComponent(msg as! String)
             var imgPath=documentDir.stringByAppendingPathComponent(msgArray[1])
+            
+            print("msgArray[1] is \(msgArray[1])")
+            print("imgPath is \(imgPath)")
             
             var imgNSData=NSFileManager.defaultManager().contentsAtPath(imgPath)
             
@@ -1079,6 +1106,11 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
             //chatImage.frame = CGRectMake(20 + distanceFactor, chatImage.frame.origin.y, ((sizeOFStr.width + 100)  > 200 ? (sizeOFStr.width + 100) : 200), sizeOFStr.height + 40)
             chatImage.image = UIImage(named: "chat_send")?.stretchableImageWithLeftCapWidth(40,topCapHeight: 20);
             
+            
+            
+            //chatImage.frame = CGRectMake(chatImage.frame.origin.x, chatImage.frame.origin.y, ((sizeOFStr.width + 100)  > 200 ? (sizeOFStr.width + 100) : 200), sizeOFStr.height + 40)
+            
+            
             // chatImage.layer.borderColor=UIColor.greenColor().CGColor
             //  chatImage.layer.borderWidth = 3.0;
             // chatImage.highlighted=true
@@ -1132,7 +1164,7 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
         //dismiss it, animate it off screen, whatever.
         let tappedImageView = gestureRecognizer.view! as! UIImageView
         selectedImage=tappedImageView.image
-        //==uncomment later self.performSegueWithIdentifier("showFullImageSegue", sender: nil);
+        self.performSegueWithIdentifier("showFullImageSegue", sender: nil);
         
     }
     
@@ -1296,6 +1328,19 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
          }
          */
         }
+    
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        var messageDic = messages.objectAtIndex(indexPath.row) as! [String : String];
+        NSLog(messageDic["message"]!, 1)
+        let msgType = messageDic["type"] as NSString!
+        let msg = messageDic["message"] as NSString!
+        
+        if(msgType.isEqualToString("5")||msgType.isEqualToString("6")){
+            self.performSegueWithIdentifier("showFullDocSegue", sender: nil);
+        }
+    }
+
         
         public func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
             
@@ -1968,6 +2013,20 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 })
             }
         }*/
+        
+        if segue!.identifier == "showFullImageSegue" {
+            if let destinationVC = segue!.destinationViewController as? ShowImageViewController{
+                //destinationVC.tabBarController?.selectedIndex=0
+                //self.tabBarController?.selectedIndex=0
+                destinationVC.newimage=self.selectedImage
+               /* self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                    
+                    
+                })*/
+            }
+        }
+        
         if segue!.identifier == "showFullDocSegue" {
             if let destinationVC = segue!.destinationViewController as? textDocumentViewController{
                 let selectedRow = tblForGroupChat.indexPathForSelectedRow!.row
@@ -1985,11 +2044,11 @@ public class ChatsDetailViewController: UIViewController,UITableViewDataSource,U
                 //destinationVC.tabBarController?.selectedIndex=0
                 //self.tabBarController?.selectedIndex=0
                 destinationVC.newtext=selectedText
-                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+               /* self.dismissViewControllerAnimated(true, completion: { () -> Void in
                     
                     
                     
-                })
+                })*/
             }
         }
         

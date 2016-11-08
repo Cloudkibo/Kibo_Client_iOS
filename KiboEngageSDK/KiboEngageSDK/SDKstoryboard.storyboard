@@ -1463,6 +1463,432 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="gBq-Cg-TKG">
+                                <rect key="frame" x="0.0" y="22" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="0ek-0F-avi">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="471"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocSentCell" rowHeight="80" id="gM0-Jb-bcc" userLabel="DocSentCell">
+                                                <rect key="frame" x="0.0" y="22" width="320" height="80"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="gM0-Jb-bcc" id="WvY-Dc-xp5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView opaque="NO" clipsSubviews="YES" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" image="chat_receive" highlighted="YES" id="hj5-WQ-ri3">
+                                                            <rect key="frame" x="8" y="0.0" width="232" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tg9-jj-LQt">
+                                                            <rect key="frame" x="37" y="36" width="165" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="63i-hK-KQ7">
+                                                            <rect key="frame" x="173" y="32" width="67" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="top" image="notes" id="lJM-0A-nQk">
+                                                            <rect key="frame" x="37" y="9" width="22" height="31"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="Downloading document.." lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ydv-97-AmF">
+                                                            <rect key="frame" x="67" y="-16" width="170" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view hidden="YES" tag="14" contentMode="scaleToFill" id="vft-BM-vQg" customClass="KDCircularProgress" customModule="KiboEngageSDK" customModuleProvider="target">
+                                                            <rect key="frame" x="204" y="9" width="33" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                                                    <real key="value" value="0.59999999999999998"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                                                                    <real key="value" value="0.25"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                                    <color key="value" red="0.0" green="0.62533538509999997" blue="0.00019143004029999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                                                    <color key="value" red="0.090196078430000007" green="0.68235294120000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="progressInsideFillColor">
+                                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocReceivedCell" rowHeight="80" id="HgG-aW-PD1">
+                                                <rect key="frame" x="0.0" y="102" width="320" height="80"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="HgG-aW-PD1" id="NGZ-ly-goc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView opaque="NO" clipsSubviews="YES" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" image="chat_send" highlighted="YES" id="Nr7-Nt-3Em">
+                                                            <rect key="frame" x="80" y="0.0" width="232" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rtf - 2 KB                 8:07 AM" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BIH-m4-DdU">
+                                                            <rect key="frame" x="114" y="46" width="165" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="afk-a8-FSd">
+                                                            <rect key="frame" x="245" y="59" width="67" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="top" image="notes" id="8s8-9u-IBX">
+                                                            <rect key="frame" x="86" y="38" width="22" height="31"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="What do you think of this tool!" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qTq-8v-PZT">
+                                                            <rect key="frame" x="111" y="14" width="170" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" tag="14" contentMode="scaleToFill" id="NHW-0k-IQk" customClass="KDCircularProgress" customModule="KiboEngageSDK" customModuleProvider="target">
+                                                            <rect key="frame" x="237" y="14" width="33" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                                                    <real key="value" value="0.59999999999999998"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                                                                    <real key="value" value="0.25"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="progressInsideFillColor">
+                                                                    <color key="value" red="0.5" green="0.5" blue="0.5" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ChatSentCell" id="pIe-3c-QwS">
+                                                <rect key="frame" x="0.0" y="182" width="320" height="80"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="pIe-3c-QwS" id="lTB-9T-eO6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" image="chat_receive" id="ivf-0n-r6j">
+                                                            <rect key="frame" x="8" y="0.0" width="232" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QLZ-Nh-B7q">
+                                                            <rect key="frame" x="43" y="4" width="165" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="Its actually pretty good!" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Uh-eR-Ng1">
+                                                            <rect key="frame" x="43" y="25" width="170" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="top" image="profile-pic1" id="xt4-oU-OLN">
+                                                            <rect key="frame" x="8" y="0.0" width="52" height="52"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatReceivedCell" rowHeight="80" id="Z8N-J2-HQK">
+                                                <rect key="frame" x="0.0" y="262" width="320" height="80"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="Z8N-J2-HQK" id="uPc-bI-dta">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView opaque="NO" clipsSubviews="YES" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" image="chat_send" highlighted="YES" id="ipF-Pr-UEJ">
+                                                            <rect key="frame" x="80" y="0.0" width="232" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5UZ-MI-DwV">
+                                                            <rect key="frame" x="96" y="4" width="165" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="What do you think of this tool!" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SMH-q7-9oV">
+                                                            <rect key="frame" x="96" y="25" width="170" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C1P-Qx-hBr">
+                                                            <rect key="frame" x="245" y="59" width="67" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="top" image="profile-pic4" id="dPO-YE-4dR">
+                                                            <rect key="frame" x="260" y="0.0" width="52" height="52"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="FileImageReceivedCell" rowHeight="200" id="Ktg-82-GmT" userLabel="FileImageReceivedCell">
+                                                <rect key="frame" x="0.0" y="342" width="320" height="200"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="Ktg-82-GmT" id="FOu-zO-hl1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" id="b8g-gp-E4q">
+                                                            <rect key="frame" x="80" y="0.0" width="228" height="200"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.7254902124" blue="0.41176474089999998" alpha="1" colorSpace="deviceRGB"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="A3Y-pM-06D">
+                                                            <rect key="frame" x="96" y="4" width="165" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yfN-Oj-Bx1">
+                                                            <rect key="frame" x="245" y="59" width="67" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="top" image="profile-pic4" id="LiO-pL-1it">
+                                                            <rect key="frame" x="260" y="0.0" width="52" height="52"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="What do you think of this tool!" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7cm-Hd-Nab">
+                                                            <rect key="frame" x="96" y="29" width="170" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" alpha="0.5" tag="14" contentMode="scaleToFill" id="exI-wd-idh" customClass="KDCircularProgress" customModule="KiboEngageSDK" customModuleProvider="target">
+                                                            <rect key="frame" x="164" y="84" width="33" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                                                    <real key="value" value="0.59999999999999998"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                                                                    <real key="value" value="0.25"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="progressInsideFillColor">
+                                                                    <color key="value" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="FileImageSentCell" rowHeight="200" id="38X-ww-ZSJ" userLabel="FileImageSentCell">
+                                                <rect key="frame" x="0.0" y="542" width="320" height="200"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="38X-ww-ZSJ" id="8zq-tj-uom">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" id="gpm-TN-XA9">
+                                                            <rect key="frame" x="21" y="0.0" width="208" height="200"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.7254902124" blue="0.41176474089999998" alpha="1" colorSpace="deviceRGB"/>
+                                                        </imageView>
+                                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="inu-nI-ueU">
+                                                            <rect key="frame" x="24" y="4" width="165" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UBP-S8-SNd">
+                                                            <rect key="frame" x="173" y="59" width="67" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="top" image="profile-pic4" id="Rau-nv-vsf">
+                                                            <rect key="frame" x="188" y="0.0" width="52" height="52"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <view hidden="YES" tag="14" contentMode="scaleToFill" id="qKO-pw-IRO" customClass="KDCircularProgress" customModule="KiboEngageSDK" customModuleProvider="target">
+                                                            <rect key="frame" x="81" y="84" width="33" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                                    <integer key="value" value="0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                                                                    <real key="value" value="0.59999999999999998"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                                                                    <real key="value" value="0.25"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="progressInsideFillColor">
+                                                                    <color key="value" red="0.64599116160000003" green="0.64599116160000003" blue="0.64599116160000003" alpha="0.46571473819999998" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <label opaque="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="Downloading Image..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gxj-MT-VAB">
+                                                            <rect key="frame" x="40" y="36" width="170" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="QEw-B4-BAI" id="8ML-ht-U55"/>
+                                            <outlet property="delegate" destination="QEw-B4-BAI" id="aYY-EY-5Ly"/>
+                                        </connections>
+                                    </tableView>
+                                    <view clipsSubviews="YES" contentMode="scaleAspectFit" id="bj5-LI-Pnp">
+                                        <rect key="frame" x="0.0" y="479" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chat_input_background" id="YKF-Se-dlq">
+                                                <rect key="frame" x="0.0" y="1" width="320" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="chat_input_textfield" id="LKM-3f-0Hv">
+                                                <rect key="frame" x="46" y="7" width="220" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="QEw-B4-BAI" id="Ibg-Nz-WkJ"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mXe-QM-MY8">
+                                                <rect key="frame" x="267" y="7" width="46" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Send">
+                                                    <color key="titleColor" red="0.0" green="0.7254902124" blue="0.41176474089999998" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnSendTapped:" destination="QEw-B4-BAI" eventType="touchUpInside" id="Shn-7w-4bb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="x93-5V-viA" userLabel="fileAttachBtn">
+                                                <rect key="frame" x="8" y="8" width="30" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="fileupload"/>
+                                                <connections>
+                                                    <action selector="btnFileSharePressed:" destination="QEw-B4-BAI" eventType="touchUpInside" id="421-bP-Zx1"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <navigationBar contentMode="scaleToFill" id="Qcm-wX-oGZ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1476,438 +1902,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="rBq-Wv-YiN">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" id="gBq-Cg-TKG">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="0ek-0F-avi">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="471"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocSentCell" rowHeight="80" id="gM0-Jb-bcc" userLabel="DocSentCell">
-                                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="gM0-Jb-bcc" id="WvY-Dc-xp5">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <imageView opaque="NO" clipsSubviews="YES" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" image="chat_receive" highlighted="YES" id="hj5-WQ-ri3">
-                                                                    <rect key="frame" x="8" y="0.0" width="232" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                </imageView>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tg9-jj-LQt">
-                                                                    <rect key="frame" x="37" y="36" width="165" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="63i-hK-KQ7">
-                                                                    <rect key="frame" x="173" y="32" width="67" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="top" image="notes" id="lJM-0A-nQk">
-                                                                    <rect key="frame" x="37" y="9" width="22" height="31"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                </imageView>
-                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="Downloading document.." lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ydv-97-AmF">
-                                                                    <rect key="frame" x="67" y="-16" width="170" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <view hidden="YES" tag="14" contentMode="scaleToFill" id="vft-BM-vQg" customClass="KDCircularProgress" customModule="KiboEngageSDK" customModuleProvider="target">
-                                                                    <rect key="frame" x="204" y="9" width="33" height="32"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                                                            <integer key="value" value="0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                                            <integer key="value" value="0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
-                                                                            <real key="value" value="0.0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
-                                                                            <real key="value" value="0.59999999999999998"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
-                                                                            <real key="value" value="0.25"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                                                            <color key="value" red="0.0" green="0.62533538509999997" blue="0.00019143004029999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
-                                                                            <color key="value" red="0.090196078430000007" green="0.68235294120000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="progressInsideFillColor">
-                                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </view>
-                                                            </subviews>
-                                                        </tableViewCellContentView>
-                                                    </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocReceivedCell" rowHeight="80" id="HgG-aW-PD1">
-                                                        <rect key="frame" x="0.0" y="102" width="320" height="80"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="HgG-aW-PD1" id="NGZ-ly-goc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <imageView opaque="NO" clipsSubviews="YES" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" image="chat_send" highlighted="YES" id="Nr7-Nt-3Em">
-                                                                    <rect key="frame" x="80" y="0.0" width="232" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                </imageView>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rtf - 2 KB                 8:07 AM" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BIH-m4-DdU">
-                                                                    <rect key="frame" x="114" y="46" width="165" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="afk-a8-FSd">
-                                                                    <rect key="frame" x="245" y="59" width="67" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="top" image="notes" id="8s8-9u-IBX">
-                                                                    <rect key="frame" x="86" y="38" width="22" height="31"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                </imageView>
-                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="What do you think of this tool!" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qTq-8v-PZT">
-                                                                    <rect key="frame" x="111" y="14" width="170" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <view hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" tag="14" contentMode="scaleToFill" id="NHW-0k-IQk" customClass="KDCircularProgress" customModule="KiboEngageSDK" customModuleProvider="target">
-                                                                    <rect key="frame" x="237" y="14" width="33" height="32"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                                                            <integer key="value" value="0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                                            <integer key="value" value="0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
-                                                                            <real key="value" value="0.0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
-                                                                            <real key="value" value="0.59999999999999998"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
-                                                                            <real key="value" value="0.25"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
-                                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="progressInsideFillColor">
-                                                                            <color key="value" red="0.5" green="0.5" blue="0.5" alpha="0.5" colorSpace="calibratedRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </view>
-                                                            </subviews>
-                                                        </tableViewCellContentView>
-                                                    </tableViewCell>
-                                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ChatSentCell" id="pIe-3c-QwS">
-                                                        <rect key="frame" x="0.0" y="182" width="320" height="80"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="pIe-3c-QwS" id="lTB-9T-eO6">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <imageView opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" image="chat_receive" id="ivf-0n-r6j">
-                                                                    <rect key="frame" x="8" y="0.0" width="232" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                </imageView>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QLZ-Nh-B7q">
-                                                                    <rect key="frame" x="43" y="4" width="165" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="Its actually pretty good!" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Uh-eR-Ng1">
-                                                                    <rect key="frame" x="43" y="25" width="170" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="top" image="profile-pic1" id="xt4-oU-OLN">
-                                                                    <rect key="frame" x="8" y="0.0" width="52" height="52"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                </imageView>
-                                                            </subviews>
-                                                        </tableViewCellContentView>
-                                                    </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatReceivedCell" rowHeight="80" id="Z8N-J2-HQK">
-                                                        <rect key="frame" x="0.0" y="262" width="320" height="80"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="Z8N-J2-HQK" id="uPc-bI-dta">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <imageView opaque="NO" clipsSubviews="YES" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" image="chat_send" highlighted="YES" id="ipF-Pr-UEJ">
-                                                                    <rect key="frame" x="80" y="0.0" width="232" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                </imageView>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5UZ-MI-DwV">
-                                                                    <rect key="frame" x="96" y="4" width="165" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="What do you think of this tool!" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SMH-q7-9oV">
-                                                                    <rect key="frame" x="96" y="25" width="170" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C1P-Qx-hBr">
-                                                                    <rect key="frame" x="245" y="59" width="67" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="top" image="profile-pic4" id="dPO-YE-4dR">
-                                                                    <rect key="frame" x="260" y="0.0" width="52" height="52"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                </imageView>
-                                                            </subviews>
-                                                        </tableViewCellContentView>
-                                                    </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="FileImageReceivedCell" rowHeight="200" id="Ktg-82-GmT" userLabel="FileImageReceivedCell">
-                                                        <rect key="frame" x="0.0" y="342" width="320" height="200"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="Ktg-82-GmT" id="FOu-zO-hl1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" id="b8g-gp-E4q">
-                                                                    <rect key="frame" x="80" y="0.0" width="228" height="200"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" red="0.0" green="0.7254902124" blue="0.41176474089999998" alpha="1" colorSpace="deviceRGB"/>
-                                                                </imageView>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="A3Y-pM-06D">
-                                                                    <rect key="frame" x="96" y="4" width="165" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yfN-Oj-Bx1">
-                                                                    <rect key="frame" x="245" y="59" width="67" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="top" image="profile-pic4" id="LiO-pL-1it">
-                                                                    <rect key="frame" x="260" y="0.0" width="52" height="52"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                </imageView>
-                                                                <label opaque="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="What do you think of this tool!" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7cm-Hd-Nab">
-                                                                    <rect key="frame" x="96" y="29" width="170" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <view hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" alpha="0.5" tag="14" contentMode="scaleToFill" id="exI-wd-idh" customClass="KDCircularProgress" customModule="KiboEngageSDK" customModuleProvider="target">
-                                                                    <rect key="frame" x="164" y="84" width="33" height="32"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                                                            <integer key="value" value="0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                                            <integer key="value" value="0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
-                                                                            <real key="value" value="0.0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
-                                                                            <real key="value" value="0.59999999999999998"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
-                                                                            <real key="value" value="0.25"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
-                                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="progressInsideFillColor">
-                                                                            <color key="value" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </view>
-                                                            </subviews>
-                                                        </tableViewCellContentView>
-                                                    </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="FileImageSentCell" rowHeight="200" id="38X-ww-ZSJ" userLabel="FileImageSentCell">
-                                                        <rect key="frame" x="0.0" y="542" width="320" height="200"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" tableViewCell="38X-ww-ZSJ" id="8zq-tj-uom">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="redraw" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" id="gpm-TN-XA9">
-                                                                    <rect key="frame" x="21" y="0.0" width="208" height="200"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" red="0.0" green="0.7254902124" blue="0.41176474089999998" alpha="1" colorSpace="deviceRGB"/>
-                                                                </imageView>
-                                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="inu-nI-ueU">
-                                                                    <rect key="frame" x="24" y="4" width="165" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UBP-S8-SNd">
-                                                                    <rect key="frame" x="173" y="59" width="67" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="top" image="profile-pic4" id="Rau-nv-vsf">
-                                                                    <rect key="frame" x="188" y="0.0" width="52" height="52"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                </imageView>
-                                                                <view hidden="YES" tag="14" contentMode="scaleToFill" id="qKO-pw-IRO" customClass="KDCircularProgress" customModule="KiboEngageSDK" customModuleProvider="target">
-                                                                    <rect key="frame" x="81" y="84" width="33" height="32"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
-                                                                            <integer key="value" value="0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                                            <integer key="value" value="0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
-                                                                            <real key="value" value="0.0"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
-                                                                            <real key="value" value="0.59999999999999998"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
-                                                                            <real key="value" value="0.25"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
-                                                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
-                                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="progressInsideFillColor">
-                                                                            <color key="value" red="0.64599116160000003" green="0.64599116160000003" blue="0.64599116160000003" alpha="0.46571473819999998" colorSpace="calibratedRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </view>
-                                                                <label opaque="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" preservesSuperviewLayoutMargins="YES" text="Downloading Image..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gxj-MT-VAB">
-                                                                    <rect key="frame" x="40" y="36" width="170" height="80"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </tableViewCellContentView>
-                                                    </tableViewCell>
-                                                </prototypes>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="QEw-B4-BAI" id="8ML-ht-U55"/>
-                                                    <outlet property="delegate" destination="QEw-B4-BAI" id="aYY-EY-5Ly"/>
-                                                </connections>
-                                            </tableView>
-                                            <view clipsSubviews="YES" contentMode="scaleAspectFit" id="bj5-LI-Pnp">
-                                                <rect key="frame" x="0.0" y="479" width="320" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chat_input_background" id="YKF-Se-dlq">
-                                                        <rect key="frame" x="0.0" y="1" width="320" height="44"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="chat_input_textfield" id="LKM-3f-0Hv">
-                                                        <rect key="frame" x="46" y="7" width="220" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="QEw-B4-BAI" id="Ibg-Nz-WkJ"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mXe-QM-MY8">
-                                                        <rect key="frame" x="267" y="7" width="46" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="Send">
-                                                            <color key="titleColor" red="0.0" green="0.7254902124" blue="0.41176474089999998" alpha="1" colorSpace="deviceRGB"/>
-                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="btnSendTapped:" destination="QEw-B4-BAI" eventType="touchUpInside" id="Shn-7w-4bb"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="x93-5V-viA" userLabel="fileAttachBtn">
-                                                        <rect key="frame" x="8" y="8" width="30" height="29"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" image="fileupload"/>
-                                                        <connections>
-                                                            <action selector="btnFileSharePressed:" destination="QEw-B4-BAI" eventType="touchUpInside" id="421-bP-Zx1"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1918,11 +1912,11 @@
                         <outlet property="btnSendChat" destination="mXe-QM-MY8" id="vmq-sm-A8s"/>
                         <outlet property="composeView" destination="bj5-LI-Pnp" id="kw9-CM-Vww"/>
                         <outlet property="navigationBarTitleForChat" destination="dwM-CT-S3q" id="Jax-mm-7Gu"/>
-                        <outlet property="scrollView" destination="rBq-Wv-YiN" id="025-aV-cvn"/>
                         <outlet property="tblForGroupChat" destination="0ek-0F-avi" id="bdG-5G-lEf"/>
                         <outlet property="txtFieldPost" destination="LKM-3f-0Hv" id="V2y-qV-EV1"/>
                         <outlet property="viewfortableandtextfield" destination="gBq-Cg-TKG" id="VKD-rp-73U"/>
-                        <segue destination="z5Q-1R-2ah" kind="push" id="dve-MD-w75"/>
+                        <segue destination="z5Q-1R-2ah" kind="modal" identifier="showFullDocSegue" id="dve-MD-w75"/>
+                        <segue destination="IBd-T2-w4h" kind="modal" identifier="showFullImageSegue" id="iBz-NP-u9L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vzT-xc-A80" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1942,7 +1936,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Document Viewer" id="Q2e-Jy-eLO">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="A0o-8s-yM1"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="A0o-8s-yM1">
+                                            <connections>
+                                                <action selector="btnBackPressed:" destination="z5Q-1R-2ah" id="3Xm-Qk-luG"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -2686,6 +2684,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3v-Zs-xZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1450" y="-1136"/>
+        </scene>
+        <!--Show Image View Controller-->
+        <scene sceneID="J2q-Tw-eCm">
+            <objects>
+                <viewController id="IBd-T2-w4h" customClass="ShowImageViewController" customModule="KiboEngageSDK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GZz-cd-iSc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="zFx-g6-jHY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Image Viewer" id="pVo-nP-vda">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Wgn-ge-Cjd">
+                                            <connections>
+                                                <action selector="btnBackPressed:" destination="IBd-T2-w4h" id="GxI-hu-CaU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ao2-6Y-J4M">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="rc5-kC-mki">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="fillImageView" destination="rc5-kC-mki" id="eGK-le-M7F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebq-8B-YmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832" y="-1164"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Rlg-G3-Dt6">

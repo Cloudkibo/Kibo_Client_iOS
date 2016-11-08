@@ -36,6 +36,7 @@
 		7162D4771D7FE2E6001BF40D /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7162D4761D7FE2E6001BF40D /* TeamsViewController.swift */; };
 		7162D47E1D800811001BF40D /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7162D47D1D800811001BF40D /* arrow.png */; };
 		716734C71DCFA3F200304A11 /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716734C61DCFA3F200304A11 /* KDCircularProgress.swift */; };
+		716734D21DD1CA7500304A11 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716734D11DD1CA7500304A11 /* ShowImageViewController.swift */; };
 		716D34581DCC2D3C006DEDFF /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D34571DCC2D3C006DEDFF /* UtilityFunctions.swift */; };
 		716D345A1DCD4BEC006DEDFF /* textDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D34591DCD4BEC006DEDFF /* textDocumentViewController.swift */; };
 		7181CD9A1D83C58F002A0D05 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7181CD991D83C58F002A0D05 /* Images.xcassets */; };
@@ -110,6 +111,7 @@
 		7162D4761D7FE2E6001BF40D /* TeamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
 		7162D47D1D800811001BF40D /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		716734C61DCFA3F200304A11 /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
+		716734D11DD1CA7500304A11 /* ShowImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
 		716D34571DCC2D3C006DEDFF /* UtilityFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		716D34591DCD4BEC006DEDFF /* textDocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = textDocumentViewController.swift; sourceTree = "<group>"; };
 		7181CD991D83C58F002A0D05 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				716D34571DCC2D3C006DEDFF /* UtilityFunctions.swift */,
 				716D34591DCD4BEC006DEDFF /* textDocumentViewController.swift */,
 				716734C61DCFA3F200304A11 /* KDCircularProgress.swift */,
+				716734D11DD1CA7500304A11 /* ShowImageViewController.swift */,
 				713A6EF41D95BDF50084A816 /* temp.h */,
 				713A6EF51D95BDF50084A816 /* temp.m */,
 			);
@@ -456,6 +459,7 @@
 				7181CDB71D83CF16002A0D05 /* SocketAckManager.swift in Sources */,
 				7181CD9C1D83C710002A0D05 /* ChatsDetailViewController.swift in Sources */,
 				7181CDBE1D83CF16002A0D05 /* SocketEngineSpec.swift in Sources */,
+				716734D21DD1CA7500304A11 /* ShowImageViewController.swift in Sources */,
 				7181CDC71D83CF16002A0D05 /* SocketParsable.swift in Sources */,
 				71117CB81D81186500868E36 /* ChannelsCell.swift in Sources */,
 				7181CDC81D83CF16002A0D05 /* SocketStringReader.swift in Sources */,

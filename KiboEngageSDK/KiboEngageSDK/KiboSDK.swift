@@ -820,8 +820,15 @@ public class KiboSDK{
                             let datens2 = dateFormatter.dateFromString(filechatstanza!["datetime"] as! String)
                             
                             
+                            print("msg download is \(filechatstanza!["msg"] as! String)")
+                            var msgArray=(filechatstanza!["msg"] as! String).componentsSeparatedByString(";")
+                            print("msgArray download is \(msgArray)")
                             
-                            UtilityFunctions.init().downloadFile(filechatstanza!["request_id"] as! String, fileuniqueid: fileuniqueid, filePendingName: filename, filefrom: filefrom, filetype: filetype, filePendingSize: filesize, filependingDate: filedate, filePendingTo: fileTo)
+                            var msgBroken=msgArray[1].componentsSeparatedByString(".")
+                            var fileExtension=msgBroken[1]
+                            print("fileExtension is \(fileExtension)")
+                            
+                            UtilityFunctions.init().downloadFile(filechatstanza!["request_id"] as! String, fileuniqueid: fileuniqueid, filePendingName: filename, filefrom: filefrom, filetype: fileExtension, filePendingSize: filesize, filependingDate: filedate, filePendingTo: fileTo)
                             //store in file download response
                            
                             DatabaseObjectInitialiser.getDB().storeChat(filechatstanza!["to"] as! String, from1: filechatstanza!["from"] as! String, visitoremail1: filechatstanza!["visitoremail"] as! String, type1: filechatstanza!["type"] as! String, uniqueid1: filechatstanza!["uniqueid"] as! String, msg1: filechatstanza!["msg"] as! String, datetime1: datens2!, request_id1: filechatstanza!["request_id"] as! String, messagechannel1: filechatstanza!["messagechannel"] as! String, companyid1: filechatstanza!["companyid"] as! String, is_seen1: filechatstanza!["is_seen"] as! String, fromMobile1: "yes",status1:filechatstanza!["status"] as! String,customername1: customername )
@@ -829,7 +836,8 @@ public class KiboSDK{
                         
                         //UPDATE UI
 
-
+                            Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                            Delegates.getInstance().UpdateChannelsDetailsDelegateCall()
                         
                         
                         }

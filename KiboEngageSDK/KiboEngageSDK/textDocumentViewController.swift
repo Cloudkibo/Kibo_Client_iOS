@@ -18,6 +18,12 @@ class textDocumentViewController: UIViewController {
     var fileextension=""
    
     
+    @IBAction func btnBackPressed(sender: AnyObject) {
+    self.dismissViewControllerAnimated(true) { 
+        
+        
+        }
+    }
     //var textView:UITextView!
     // var docURL:NSURL=NSURL(fileURLWithPath: "/private/var/mobile/Containers/Data/Application/8B265342-96B0-45B0-B603-D314F860B1EB/tmp/iCloud.MyAppTemplates.cloudkibo-Inbox/cartext.rtf")
     override func viewDidLoad() {
@@ -48,6 +54,8 @@ class textDocumentViewController: UIViewController {
             var furl=NSURL(fileURLWithPath: filePathImage2)
             var ftype=furl.pathExtension!
             
+           if( (NSData(contentsOfFile: newtext)) != nil)
+           {
             /* var furl=NSURL(fileURLWithPath: newtext)
              var ftype=furl.pathExtension!
              print("file type found is \(ftype)")
@@ -86,6 +94,7 @@ class textDocumentViewController: UIViewController {
             case "pdf":
                 let webView = UIWebView(frame: CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height))
                 var pdffile=NSData(contentsOfFile: newtext)
+                
                 webView.loadData(pdffile!, MIMEType: "application/pdf", textEncodingName:"", baseURL: NSURL(fileURLWithPath: newtext).URLByDeletingLastPathComponent!)
                 webView.contentMode = UIViewContentMode.ScaleAspectFit
                 webView.scalesPageToFit = true
@@ -129,6 +138,7 @@ class textDocumentViewController: UIViewController {
             textViewDoc.attributedText = attrString
             
             textViewDoc.editable = false
+        }
         }
         catch{
             print("error in textdoc")

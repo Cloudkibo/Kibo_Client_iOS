@@ -15,7 +15,7 @@ class UtilityFunctions{
 
     init()
     {
-        
+        getFileExtension("image/png")
     }
     
     let imageExtensions=[
@@ -142,9 +142,18 @@ class UtilityFunctions{
         "avi": "video/x-msvideo"
     ]
     
+    func getFileExtension(mime:String)
+    {
+        print("taking out extension")
+
+        mimeTypes.keys[mimeTypes.values.indexOf(mime)!]
+    }
+    
     func MimeType(ext: String?) -> String {
         if ext != nil && mimeTypes.contains({ $0.0 == ext!.lowercaseString }) {
             return mimeTypes[ext!.lowercaseString]!
+            //print("taking out extension")
+            //print(mimeTypes.keys[mimeTypes.values.indexOf("image/png")!])
         }
         return DEFAULT_MIME_TYPE
     }
@@ -357,7 +366,7 @@ class UtilityFunctions{
                 var progressbytes=(Float(totalBytesRead)/Float(totalBytesExpectedToRead)) as Float
                 print("totalBytesExpectedToRead are \(totalBytesExpectedToRead)")
                 
-                if(DatabaseObjectInitialiser.getInstance().delegateProgressUpload != nil)
+               /* if(DatabaseObjectInitialiser.getInstance().delegateProgressUpload != nil)
                 {
                     if(progressbytes<1.0)
                     {
@@ -367,6 +376,7 @@ class UtilityFunctions{
                     }
                     
                 }
+                */
                 
                 /* if(self.delegateProgressUpload != nil)
                  {
@@ -415,7 +425,8 @@ class UtilityFunctions{
                
                //UPDATE UI
                 //filedownloaded’ to with parameters ‘senderoffile’, ‘receiveroffile’
-                
+                Delegates.getInstance().UpdateChatDetailsDelegateCall()
+                Delegates.getInstance().UpdateChannelsDetailsDelegateCall()
                 
                 // print(request?.)
                 
