@@ -53,7 +53,7 @@ class textDocumentViewController: UIViewController {
             
             var furl=NSURL(fileURLWithPath: filePathImage2)
             var ftype=furl.pathExtension!
-            
+            print("ftype in textviewer is \(ftype)")
            if( (NSData(contentsOfFile: newtext)) != nil)
            {
             /* var furl=NSURL(fileURLWithPath: newtext)
@@ -118,7 +118,14 @@ class textDocumentViewController: UIViewController {
                 textViewDoc.addSubview(webView)
                 
                 
+                case "xlsx":
                 
+                    let webView = UIWebView(frame: CGRectMake(0,0,self.textViewDoc.frame.size.width,self.textViewDoc.frame.size.height-40))
+                    var docxfile=NSData(contentsOfFile: newtext)
+                    webView.loadData(docxfile!, MIMEType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", textEncodingName:"", baseURL: NSURL(fileURLWithPath: newtext).URLByDeletingLastPathComponent!)
+                    webView.scalesPageToFit = true
+                    webView.contentMode = UIViewContentMode.ScaleAspectFit
+                    textViewDoc.addSubview(webView)
             //application/msword
             default:  attrString =
                 
